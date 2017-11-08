@@ -189,7 +189,6 @@ include_directories( ${catkin_INCLUDE_DIRS} )
 # catkin_add_nosetests(test)
 
 add_executable(testSerial src/testSerial.cpp)
-add_dependencies(axon_link axon_link_generate_messages_cpp)
 target_link_libraries(axon_link ${catkin_LIBRARIES})
 
 # add_executable(joy_ctrl_axon_node src/joy_ctrl_axon_node.cpp)
