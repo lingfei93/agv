@@ -6,9 +6,12 @@ project(axon_link)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   cereal_port
+  geometry_msgs
   roscpp
   rospy
   std_msgs
+  tf
+  message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -45,10 +48,10 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   Message1.msg
-#   Message2.msg
+# add_message_files( 
+#    FILES
+#    AxonApp.msg
+#    AxonNode.msg
 # )
 
 ## Generate services in the 'srv' folder
@@ -66,10 +69,9 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs
-# )
+generate_messages(
+   DEPENDENCIES
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -101,10 +103,10 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES axon_link
-#  CATKIN_DEPENDS cereal_port roscpp rospy std_msgs
-#  DEPENDS system_lib
+  #INCLUDE_DIRS include
+  #LIBRARIES axon_link
+  #CATKIN_DEPENDS cereal_port geometry_msgs roscpp rospy std_msgs tf
+  #DEPENDS system_lib
 )
 
 ###########
@@ -114,9 +116,7 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 # include_directories(include)
-include_directories(
-  ${catkin_INCLUDE_DIRS}
-)
+include_directories( ${catkin_INCLUDE_DIRS} )
 
 ## Declare a C++ library
 # add_library(axon_link
@@ -187,3 +187,37 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+# add_executable(axon_link src/axon_link.cpp)
+# add_dependencies(axon_link axon_link_generate_messages_cpp)
+# target_link_libraries(axon_link ${catkin_LIBRARIES})
+
+# add_executable(joy_ctrl_axon_node src/joy_ctrl_axon_node.cpp)
+# add_dependencies(joy_ctrl_axon_node axon_link_generate_messages_cpp)
+# target_link_libraries(joy_ctrl_axon_node ${catkin_LIBRARIES})
+
+# add_executable(keyboard_ctrl_axon_node src/keyboard_ctrl_axon_node.cpp)
+# add_dependencies(keyboard_ctrl_axon_node axon_link_generate_messages_cpp)
+# target_link_libraries(keyboard_ctrl_axon_node ${catkin_LIBRARIES})
+
+# add_executable(axon_link_vonly src/axon_link_vonly.cpp)
+# add_dependencies(axon_link_vonly axon_link_generate_messages_cpp)
+# target_link_libraries(axon_link_vonly ${catkin_LIBRARIES})
+
+# add_executable(axon_app_vonly src/axon_app_vonly.cpp)
+# add_dependencies(axon_app_vonly axon_link_generate_messages_cpp)
+# target_link_libraries(axon_app_vonly ${catkin_LIBRARIES})
+
+## Mark executables and/or libraries for installation
+install(TARGETS axon_link
+  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+## Mark cpp header files for installation
+install(DIRECTORY include/${PROJECT_NAME}/
+  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+  FILES_MATCHING PATTERN "*.h"
+  PATTERN ".svn" EXCLUDE
+)
