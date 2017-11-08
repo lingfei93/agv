@@ -15,7 +15,7 @@
 
 #define AXON_WHEEL_MINSPEED 0.0065 //(rad/s)
 #define AXON_WHEEL_CMD_LIMIT 127
-
+cereal::CerealPort device;
 
 int main(int argc, char** argv)
 {
@@ -38,7 +38,7 @@ int main(int argc, char** argv)
     baud_rate = 38400;
     ROS_INFO("I get SerialPort: %s", serial_port.c_str());
 
-    n.getParam(GETSTR_RATE, baud_rate);
+ 
     ROS_INFO("I get BaudRate: %d", baud_rate);
 
   
