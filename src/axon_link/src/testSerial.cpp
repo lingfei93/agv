@@ -15,12 +15,13 @@
 
 #define AXON_WHEEL_MINSPEED 0.0065 //(rad/s)
 #define AXON_WHEEL_CMD_LIMIT 127
-cereal::CerealPort device;
+
 
 int main(int argc, char** argv)
 {
+
     ros::init(argc, argv, "axon_link_node");
-    // ros::NodeHandle n;
+    ros::NodeHandle n;
     // ros::Subscriber cmd_vel_sub_;
 
 
@@ -29,7 +30,7 @@ int main(int argc, char** argv)
     // rm.L=AXON_ROBOT_L;
     // rm.r=AXON_ROBOT_R;
     // rc.ts=TS;
-
+    cereal::CerealPort device;
     int i;
     int baud_rate=0;
     std::string serial_port;
