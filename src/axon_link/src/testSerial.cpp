@@ -44,7 +44,12 @@ int main(int argc, char** argv)
   
 
     // Change the next line according to your port name and baud rate
-    //try{ device.open("/dev/ttyUSB0", 115200); }
+    try{ device.open("/dev/ttyUSB2", 38400); }
+    catch(cereal::Exception& e)
+    {
+        ROS_FATAL("Failed to open the AXON serial port222!!!");
+        ROS_BREAK();
+    }
     try{ device.open(serial_port.c_str(), baud_rate); }
     catch(cereal::Exception& e)
     {
