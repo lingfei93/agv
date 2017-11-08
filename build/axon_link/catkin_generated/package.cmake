@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "axon_link")
+set(axon_link_MAINTAINER "eee <eee@todo.todo>")
+set(axon_link_DEPRECATED "")
+set(axon_link_VERSION "0.0.0")
+set(axon_link_BUILD_DEPENDS "cereal_port" "geometry_msgs" "roscpp" "rospy" "std_msgs" "tf")
+set(axon_link_RUN_DEPENDS "cereal_port" "geometry_msgs" "roscpp" "rospy" "std_msgs" "tf")
+set(axon_link_BUILDTOOL_DEPENDS "catkin")

@@ -119,6 +119,7 @@ IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   INCLUDE("/home/ubuntu/agv_lf/agv/build/gtest/cmake_install.cmake")
   INCLUDE("/home/ubuntu/agv_lf/agv/build/beginner_tutorials/cmake_install.cmake")
   INCLUDE("/home/ubuntu/agv_lf/agv/build/cereal_port/cmake_install.cmake")
+  INCLUDE("/home/ubuntu/agv_lf/agv/build/axon_link/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 
