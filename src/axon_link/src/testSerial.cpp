@@ -34,7 +34,7 @@ int main(int argc, char** argv)
     int baud_rate=0;
     std::string serial_port;
 
-    serial_port = '/dev/ttyUSB2';
+    serial_port = "/dev/ttyUSB2";
     baud_rate = 38400;
     ROS_INFO("I get SerialPort: %s", serial_port.c_str());
 
@@ -56,7 +56,7 @@ int main(int argc, char** argv)
     ros::Rate r(20);
     while(ros::ok())
     {
-       ===========================================================================
+
         ros::spinOnce();
         r.sleep();
     }   
