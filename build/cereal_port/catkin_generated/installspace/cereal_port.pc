@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/agv_lf/agv/install
+
+Name: cereal_port
+Description: Description of cereal_port
+Version: 0.0.0
+Cflags: -I/home/ubuntu/agv_lf/agv/install/include
+Libs: -L/home/ubuntu/agv_lf/agv/install/lib -lcereal_port
+Requires: roscpp

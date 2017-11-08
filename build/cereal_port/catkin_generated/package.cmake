@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "cereal_port")
+set(cereal_port_MAINTAINER "eee <eee@todo.todo>")
+set(cereal_port_DEPRECATED "")
+set(cereal_port_VERSION "0.0.0")
+set(cereal_port_BUILD_DEPENDS "roscpp")
+set(cereal_port_RUN_DEPENDS "roscpp")
+set(cereal_port_BUILDTOOL_DEPENDS "catkin")
