@@ -3,6 +3,8 @@
 #include <cereal_port/CerealPort.h>
 #include <iostream>
 
+using namespace std;
+
 
 
 
