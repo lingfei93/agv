@@ -22,13 +22,14 @@ cereal::CerealPort device;
 unsigned char rx_buff[8];
 
 void commandSend(unsigned char a, unsigned char b, unsigned char c){
-	char foo[3];
+	char foo[4];
 	foo[0] = a;
 	foo[1] = b;
 	foo[2] = c;
-	
-	b = device.write(foo, 3);
-	cout << b << endl;
+	foo[3] = '\0';
+	b = device.write(foo, 4);
+	cout << b;
+	cout<< "this is printing" << endl;
 	ROS_INFO("I'm trying to write");
 }
 
