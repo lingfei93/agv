@@ -39,21 +39,23 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	foo[4] = '\0';
 	d = device.write(foo, 3);
 	cout << d << endl;
-	cout<< "this is printing" << endl;
+	cout<< "this is sending" << endl;
 
-	
-	try{ device.read(reply, LENGTH, TIMEOUT);
+	e = device.read(reply, LENGTH, TIMEOUT);
+	cout << e << endl;
+	cout<< "this is sending" << endl;
+	// try{ device.read(reply, LENGTH, TIMEOUT);
 
-		for (j = 0; j < sizeof(reply); j ++) {
+	// 	for (j = 0; j < sizeof(reply); j ++) {
 
-			cout << reply[j] << endl;
-			}
-		}
-    catch(cereal::Exception& e)
-    {
-        ROS_FATAL("Failed to read the AXON serial port!!!");
-        ROS_BREAK();
-    }
+	// 		cout << reply[j] << endl;
+	// 		}
+	// 	}
+ //    catch(cereal::Exception& e)
+ //    {
+ //        ROS_FATAL("Failed to read the AXON serial port!!!");
+ //        ROS_BREAK();
+ //    }
 	ROS_INFO("I'm trying to write");
 }
 
