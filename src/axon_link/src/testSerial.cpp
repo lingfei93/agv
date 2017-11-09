@@ -16,6 +16,7 @@
 #define AXON_WHEEL_MINSPEED 0.0065 //(rad/s)
 #define AXON_WHEEL_CMD_LIMIT 127
 cereal::CerealPort device;
+unsigned char rx_buff[8];
 
 void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	char foo[3];
@@ -23,6 +24,7 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	foo[1] = b;
 	foo[2] = c;
 	device.write(foo, 3);
+	ROS_INFO(rx_buff[0]);
 	ROS_INFO("I'm trying to write");
 }
 
