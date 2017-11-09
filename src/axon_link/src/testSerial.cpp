@@ -44,7 +44,7 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	cout << d << endl;
 	cout<< "this is sending" << endl;
 
-	e = device.read(reply, LENGTH, TIMEOUT);
+	// e = device.read(reply, LENGTH, TIMEOUT);
 	cout << e << endl;
 	cout<< "this is reading" << endl;
 
