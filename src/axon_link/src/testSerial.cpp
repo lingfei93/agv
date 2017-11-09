@@ -24,6 +24,7 @@ using namespace std;
 cereal::CerealPort device;
 unsigned char rx_buff[8];
 char reply[8];
+reply[0] = 'a';
 
 void commandSend(unsigned char a, unsigned char b, unsigned char c){	
 	char foo[4];
@@ -46,6 +47,10 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	cout << e << endl;
 	cout<< "this is reading" << endl;
 	cout << (int)reply[0] << endl;
+	cout<< "this is reply0" << endl;
+	cout << (int)reply[1] << endl;
+	cout<< "this is reply0" << endl;
+	cout << (int)reply[2] << endl;
 	cout<< "this is reply0" << endl;
 	// try{ device.read(reply, LENGTH, TIMEOUT);
 
