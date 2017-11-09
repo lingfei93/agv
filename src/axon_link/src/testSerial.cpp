@@ -1,6 +1,7 @@
 #include <ros/ros.h>
 #include <geometry_msgs/Twist.h>
 #include <cereal_port/CerealPort.h>
+#include <iostream>
 
 
 
