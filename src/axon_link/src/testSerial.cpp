@@ -30,9 +30,9 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	char foo[4];
 	unsigned char bar[3];
     int n;
-    // char reply[9];
+    char reply[9];
      //dynamic declare how big the reply array is.
-    int LENGTH = 9; //reply length
+    int LENGTH = 2; //reply length
 	int d; //testing variable
 	int e; //testing variable
 	int j; //for loop
@@ -46,12 +46,11 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	d = device.write(foo, 3);
 
     if ((int) a == 3) {
-        n = 9;
         LENGTH = 9;
     }
 
     else if ((int) a == 1) {
-        n = 2;
+        
         LENGTH = 2;
     }
 
@@ -64,7 +63,7 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 
 	try{ device.read(reply, LENGTH, TIMEOUT);
 
-		for (j = 0; j < sizeof(reply); j ++) {
+		for (j = 0; j < LENGTH; j ++) {
 
 			cout << (int)reply[j] << endl;
 			cout <<"this is reply " << j << endl;
