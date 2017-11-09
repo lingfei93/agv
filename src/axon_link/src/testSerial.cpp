@@ -41,7 +41,8 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	cout<< "this is printing" << endl;
 
 	
-	try{ device.read(reply, LENGTH, TIMEOUT); }
+	try{ device.read(reply, LENGTH, TIMEOUT);
+		cout << reply[0] << endl }
     catch(cereal::Exception& e)
     {
         ROS_FATAL("Failed to read the AXON serial port!!!");
