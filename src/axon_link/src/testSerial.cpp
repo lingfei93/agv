@@ -35,7 +35,7 @@ int main(int argc, char** argv)
     int baud_rate=0;
     std::string serial_port;
 
-    serial_port = "/dev/ttyUSB2";
+    serial_port = "/dev/ttyUSB0";
     baud_rate = 38400;
     ROS_INFO("I get SerialPort: %s", serial_port.c_str());
 
@@ -45,12 +45,7 @@ int main(int argc, char** argv)
   
 
     // Change the next line according to your port name and baud rate
-    try{ device.open("/dev/ttyUSB2", 38400); }
-    catch(cereal::Exception& e)
-    {
-        ROS_FATAL("Failed to open the AXON serial port222!!!");
-        ROS_BREAK();
-    }
+    
     try{ device.open(serial_port.c_str(), baud_rate); }
     catch(cereal::Exception& e)
     {
