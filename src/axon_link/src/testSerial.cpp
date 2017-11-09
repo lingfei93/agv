@@ -41,12 +41,12 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	foo[2] = (char) c;
 	foo[4] = '\0';
 	d = device.write(foo, 3);
-	cout << d << endl;
-	cout<< "this is sending" << endl;
+
+
 
 	// e = device.read(reply, LENGTH, TIMEOUT);
 	// cout << e << endl;
-	cout<< "this is reading" << endl;
+
 
 
 	try{ device.read(reply, LENGTH, TIMEOUT);
