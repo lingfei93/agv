@@ -114,6 +114,9 @@ int main(int argc, char** argv)
     ros::Rate r(5);
     commandSend(3, 0, 0);
     commandSend(3, 0, 0);
+    commandSend(3, 0, 0);
+    commandSend(3, 0, 0);
+    commandSend(3, 0, 0);
     while(ros::ok())
     {	
     	commandSend(1, 64, 64);
