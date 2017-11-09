@@ -18,9 +18,12 @@ using namespace std;
 
 #define AXON_WHEEL_MINSPEED 0.0065 //(rad/s)
 #define AXON_WHEEL_CMD_LIMIT 127
+
+#define LENGTH 8
+#define TIMEOUT 1000
 cereal::CerealPort device;
 unsigned char rx_buff[8];
-
+char reply[8];
 
 void commandSend(unsigned char a, unsigned char b, unsigned char c){	
 	char foo[4];
@@ -36,6 +39,14 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	d = device.write(foo, 3);
 	cout << d << endl;
 	cout<< "this is printing" << endl;
+
+	
+	try{ device.read(reply, LENGTH, TIMEOUT); }
+    catch(cereal::Exception& e)
+    {
+        ROS_FATAL("Failed to read the AXON serial port!!!");
+        ROS_BREAK();
+    }
 	ROS_INFO("I'm trying to write");
 }
 
