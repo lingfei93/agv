@@ -22,7 +22,7 @@ using namespace std;
 // #define LENGTH 9
 #define TIMEOUT 1000
 cereal::CerealPort device;
-unsigned char rx_buff[8];
+unsigned char reply[8];
 // char reply[9];
 
 
@@ -31,6 +31,8 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	unsigned char bar[3];
     int n;
     char reply[9];
+    int left_ec;
+    int right_ec;
      //dynamic declare how big the reply array is.
     int LENGTH = 2; //reply length, declare as 2 for testing purpose.
 	int d; //testing variable
@@ -59,6 +61,21 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 
 	try{ device.read(reply, LENGTH, TIMEOUT);
 
+        if(LENGTH == 9){
+            left_ec=0;
+            right_ec=0;
+
+            left_ec=(int)(reply[1]<<24);
+            left_ec=left_ec+(int)(reply[2]<<16);
+            left_ec=left_ec+(int)(reply[3]<<8);
+            left_ec=left_ec+(int)(reply[3]);
+
+            right_ec=(int)(reply[5]<<24);
+            right_ec=left_ec+(int)(reply[6]<<16);
+            right_ec=left_ec+(int)(reply[7]<<8);
+            right_ec=left_ec+(int)(reply[8]);
+            cout <<"left ec is : "<< left_ec << "right ec is: " <<right_ec << endl;
+        }
 		for (j = 0; j < LENGTH; j ++) {
 
 			cout << (int)reply[j] << endl;
