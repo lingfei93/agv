@@ -23,9 +23,9 @@ unsigned char rx_buff[8];
 
 void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	char foo[4];
-	foo[0] = a;
-	foo[1] = b;
-	foo[2] = c;
+	foo[0] = (char) a;
+	foo[1] = (char) b;
+	foo[2] = (char) c;
 	foo[3] = '\0';
 	b = device.write(foo, 4);
 	cout << b;
