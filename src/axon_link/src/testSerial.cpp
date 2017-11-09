@@ -29,6 +29,7 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	char foo[4];
 	unsigned char bar[3];
 	int d;
+	int j; //for loop
 	bar[0] = a;
 	bar[1] = b;
 	bar[2] = c;
@@ -42,7 +43,12 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 
 	
 	try{ device.read(reply, LENGTH, TIMEOUT);
-		cout << reply[0] << endl }
+
+		for (j = 0; j < reply.size(); j ++) {
+
+			cout << reply[j] << endl;
+			}
+		}
     catch(cereal::Exception& e)
     {
         ROS_FATAL("Failed to read the AXON serial port!!!");
