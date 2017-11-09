@@ -19,11 +19,11 @@ using namespace std;
 #define AXON_WHEEL_MINSPEED 0.0065 //(rad/s)
 #define AXON_WHEEL_CMD_LIMIT 127
 
-#define LENGTH 8
+#define LENGTH 9
 #define TIMEOUT 1000
 cereal::CerealPort device;
 unsigned char rx_buff[8];
-char reply[8];
+char reply[9];
 
 
 void commandSend(unsigned char a, unsigned char b, unsigned char c){	
