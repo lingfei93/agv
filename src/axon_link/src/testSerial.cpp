@@ -114,7 +114,7 @@ int main(int argc, char** argv)
     ros::Rate r(5);
     while(ros::ok())
     {	
-    	commandSend(3, 0, 0);
+    	commandSend(1, 64, 64);
 
         ros::spinOnce();
         r.sleep();
