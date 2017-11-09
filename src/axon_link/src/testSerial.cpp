@@ -26,7 +26,8 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	foo[0] = a;
 	foo[1] = b;
 	foo[2] = c;
-	int b = device.write(foo, 3);
+	int b;
+	b = device.write(foo, 3);
 	cout << b << endl;
 	ROS_INFO("I'm trying to write");
 }
