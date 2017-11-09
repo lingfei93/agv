@@ -21,9 +21,11 @@ using namespace std;
 cereal::CerealPort device;
 unsigned char rx_buff[8];
 
+
 void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	char foo[2];
 	unsigned char bar[3];
+	int d;
 	bar[0] = a;
 	bar[1] = b;
 	bar[2] = c;
@@ -31,8 +33,8 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	// foo[1] = (char) b;
 	// foo[2] = (char) c;
 	foo[1] = '\0';
-	b = device.write(foo, 1);
-	cout << b << endl;
+	d = device.write(foo, 1);
+	cout << d << endl;
 	cout<< "this is printing" << endl;
 	ROS_INFO("I'm trying to write");
 }
