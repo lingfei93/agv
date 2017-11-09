@@ -23,14 +23,14 @@ using namespace std;
 #define TIMEOUT 1000
 cereal::CerealPort device;
 unsigned char rx_buff[8];
-// char reply[9];
+char reply[9];
 
 
 void commandSend(unsigned char a, unsigned char b, unsigned char c){	
 	char foo[4];
 	unsigned char bar[3];
     int n;
-    char reply[9];
+    // char reply[9];
     // char* reply = new char[n]; //dynamic declare how big the reply array is.
     int LENGTH = 9; //reply length
 	int d; //testing variable
