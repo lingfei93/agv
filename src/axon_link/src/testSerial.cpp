@@ -23,7 +23,7 @@ using namespace std;
 #define TIMEOUT 1000
 cereal::CerealPort device;
 unsigned char rx_buff[8];
-char reply[9];
+// char reply[9];
 
 
 void commandSend(unsigned char a, unsigned char b, unsigned char c){	
@@ -31,7 +31,7 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	unsigned char bar[3];
     int n;
     // char reply[9];
-    // char* reply = new char[n]; //dynamic declare how big the reply array is.
+     //dynamic declare how big the reply array is.
     int LENGTH = 9; //reply length
 	int d; //testing variable
 	int e; //testing variable
@@ -45,17 +45,17 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	foo[4] = '\0';
 	d = device.write(foo, 3);
 
-    // if ((int) a == 3) {
-    //     n = 9;
-    //     LENGTH = 9;
-    // }
+    if ((int) a == 3) {
+        n = 9;
+        LENGTH = 9;
+    }
 
-    // else if ((int) a == 1) {
-    //     n = 2;
-    //     LENGTH = 2;
-    // }
+    else if ((int) a == 1) {
+        n = 2;
+        LENGTH = 2;
+    }
 
-
+    char* reply = new char[n];
 
 	// e = device.read(reply, LENGTH, TIMEOUT);
 	// cout << e << endl;
