@@ -15,6 +15,16 @@
 
 #define AXON_WHEEL_MINSPEED 0.0065 //(rad/s)
 #define AXON_WHEEL_CMD_LIMIT 127
+cereal::CerealPort device;
+
+void commandSend(unsigned char a, unsigned char b, unsigned char c){
+	char foo[3];
+	foo[0] = a;
+	foo[1] = b;
+	foo[2] = c;
+	device.write(foo, 3);
+	ROS_INFO("I'm trying to write");
+}
 
 
 int main(int argc, char** argv)
@@ -30,7 +40,7 @@ int main(int argc, char** argv)
     // rm.L=AXON_ROBOT_L;
     // rm.r=AXON_ROBOT_R;
     // rc.ts=TS;
-    cereal::CerealPort device;
+
     int i;
     int baud_rate=0;
     std::string serial_port;
@@ -56,7 +66,8 @@ int main(int argc, char** argv)
 
     ros::Rate r(20);
     while(ros::ok())
-    {
+    {	
+    	commandSend(3, 0, 0);
 
         ros::spinOnce();
         r.sleep();
