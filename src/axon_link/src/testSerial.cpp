@@ -60,7 +60,7 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	// e = device.read(reply, LENGTH, TIMEOUT);
 	// cout << e << endl;
 
-    cout <<sizeof(reply) << "is the size of the reply array" <<endl;
+    cout <<sizeof(reply) << "is the size of the reply array" <<endl <<"and n is " << n;
 
 	try{ device.read(reply, LENGTH, TIMEOUT);
 
