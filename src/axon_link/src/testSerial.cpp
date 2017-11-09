@@ -44,7 +44,7 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	
 	try{ device.read(reply, LENGTH, TIMEOUT);
 
-		for (j = 0; j < reply.size(); j ++) {
+		for (j = 0; j < sizeof(reply); j ++) {
 
 			cout << reply[j] << endl;
 			}
