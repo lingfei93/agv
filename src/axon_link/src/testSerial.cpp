@@ -30,10 +30,11 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	char foo[4];
 	unsigned char bar[3];
     int n;
-    char* reply = new char[n];
-    int LENGTH;
-	int d;
-	int e;
+    char reply[9];
+    // char* reply = new char[n]; //dynamic declare how big the reply array is.
+    int LENGTH = 9; //reply length
+	int d; //testing variable
+	int e; //testing variable
 	int j; //for loop
 	bar[0] = a;
 	bar[1] = b;
@@ -44,15 +45,15 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	foo[4] = '\0';
 	d = device.write(foo, 3);
 
-    if ((int) a == 3) {
-        n = 9;
-        int LENGTH = 9;
-    }
+    // if ((int) a == 3) {
+    //     n = 9;
+    //     LENGTH = 9;
+    // }
 
-    else if ((int) a == 1) {
-        n = 2;
-        int LENGTH = 2;
-    }
+    // else if ((int) a == 1) {
+    //     n = 2;
+    //     LENGTH = 2;
+    // }
 
 
 
