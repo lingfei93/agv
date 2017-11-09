@@ -112,11 +112,13 @@ int main(int argc, char** argv)
     ROS_INFO("The AXON serial port is opened.");
 
     ros::Rate r(5);
+    commandSend(3, 0, 0);
     while(ros::ok())
     {	
     	commandSend(1, 64, 64);
 
         ros::spinOnce();
         r.sleep();
-    }   
+    }
+    commandSend(3, 0, 0);   
 }
