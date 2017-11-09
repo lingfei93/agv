@@ -29,7 +29,9 @@ unsigned char rx_buff[8];
 void commandSend(unsigned char a, unsigned char b, unsigned char c){	
 	char foo[4];
 	unsigned char bar[3];
-
+    int n;
+    char* reply = new char[n];
+    int LENGTH;
 	int d;
 	int e;
 	int j; //for loop
@@ -43,12 +45,12 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	d = device.write(foo, 3);
 
     if ((int) a == 3) {
-        char reply[9];
+        n = 9;
         int LENGTH = 9;
     }
 
     else if ((int) a == 1) {
-        char reply[2];
+        n = 2;
         int LENGTH = 2;
     }
 
