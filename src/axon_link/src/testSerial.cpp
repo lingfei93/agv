@@ -42,6 +42,10 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	foo[4] = '\0';
 	d = device.write(foo, 3);
 
+    if ((int) a == 3) {
+        cout<<"this is 3";
+    }
+
 
 
 	// e = device.read(reply, LENGTH, TIMEOUT);
