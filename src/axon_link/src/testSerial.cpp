@@ -29,7 +29,7 @@ char reply[8];
 void commandSend(unsigned char a, unsigned char b, unsigned char c){	
 	char foo[4];
 	unsigned char bar[3];
-	reply[0] = 'a';
+
 	int d;
 	int e;
 	int j; //for loop
@@ -47,24 +47,21 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	e = device.read(reply, LENGTH, TIMEOUT);
 	cout << e << endl;
 	cout<< "this is reading" << endl;
-	cout << (int)reply[0] << endl;
-	cout<< "this is reply0" << endl;
-	cout << (int)reply[1] << endl;
-	cout<< "this is reply0" << endl;
-	cout << (int)reply[2] << endl;
-	cout<< "this is reply0" << endl;
-	// try{ device.read(reply, LENGTH, TIMEOUT);
 
-	// 	for (j = 0; j < sizeof(reply); j ++) {
 
-	// 		cout << reply[j] << endl;
-	// 		}
-	// 	}
- //    catch(cereal::Exception& e)
- //    {
- //        ROS_FATAL("Failed to read the AXON serial port!!!");
- //        ROS_BREAK();
- //    }
+	try{ device.read(reply, LENGTH, TIMEOUT);
+
+		for (j = 0; j < sizeof(reply); j ++) {
+
+			cout << reply[j] << endl;
+			cout <<"this is reply " << j << endl;
+			}
+		}
+    catch(cereal::Exception& e)
+    {
+        ROS_FATAL("Failed to read the AXON serial port!!!");
+        ROS_BREAK();
+    }
 	ROS_INFO("I'm trying to write");
 }
 
