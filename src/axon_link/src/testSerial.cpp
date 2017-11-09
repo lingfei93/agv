@@ -32,7 +32,7 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
     int n;
     char reply[9];
      //dynamic declare how big the reply array is.
-    int LENGTH = 2; //reply length
+    int LENGTH = 2; //reply length, declare as 2 for testing purpose.
 	int d; //testing variable
 	int e; //testing variable
 	int j; //for loop
@@ -54,12 +54,8 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
         LENGTH = 2;
     }
 
-    char* reply = new char[n];
-
 	// e = device.read(reply, LENGTH, TIMEOUT);
 	// cout << e << endl;
-
-    cout <<sizeof(reply) << "is the size of the reply array" <<endl <<"and n is " << n;
 
 	try{ device.read(reply, LENGTH, TIMEOUT);
 
