@@ -26,8 +26,8 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	foo[0] = a;
 	foo[1] = b;
 	foo[2] = c;
-	device.write(foo, 3);
-	cout << rx_buff[0] << endl;
+	int b = device.write(foo, 3);
+	cout << b << endl;
 	ROS_INFO("I'm trying to write");
 }
 
@@ -69,7 +69,7 @@ int main(int argc, char** argv)
     }
     ROS_INFO("The AXON serial port is opened.");
 
-    ros::Rate r(20);
+    ros::Rate r(10);
     while(ros::ok())
     {	
     	commandSend(3, 0, 0);
