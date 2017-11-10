@@ -145,9 +145,9 @@ int main(int argc, char** argv)
     // commandSend(3, 0, 0);
     // commandSend(3, 0, 0);
 
-    ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1, oneshot);
-    ros::Timer timer2 = n.createTimer(ros::Duration(1.0), callback2, oneshot);
-    // ros::spin();
+    ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1);
+    ros::Timer timer2 = n.createTimer(ros::Duration(1.0), callback2);
+    ros::spin();
 
     // while(ros::ok())
     // {	
