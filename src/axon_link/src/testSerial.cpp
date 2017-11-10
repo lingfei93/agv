@@ -8,20 +8,25 @@ using namespace std;
 
 
 
-#define PI           3.14159
+#define PI           3.14159265358979323846
 #define RTD          180.0/PI       //Radian to Degree
 #define DTR          PI/180.0       //Degree to Radian
 #define TS 0.1                      //unit:s
 
 #define AXON_ROBOT_R 0.1075         //unit:m
 #define AXON_ROBOT_L 0.2680         //unit:m
+#define CIRCUMFERENCE AXON_ROBOT_R * PI * 2 //units:m
+
 
 #define AXON_WHEEL_MINSPEED 0.0065 //(rad/s)
 #define AXON_WHEEL_CMD_LIMIT 127
+#define ENCODER_COUNT 1024*25 //this is how much it turns in one round
+#define METER_PER_COUNT CIRCUMFERENCE / ENCODER_COUNT 
 
 // #define LENGTH 9
 #define TIMEOUT 1000
 void commandSend(unsigned char a, unsigned char b, unsigned char c);
+double encoderToDistance(int encoderCount);
 cereal::CerealPort device;
 unsigned char reply[8];
 // char reply[9];
@@ -33,6 +38,10 @@ void callback1(const ros::TimerEvent&)
 void callback2(const ros::TimerEvent&)
 {
   commandSend(1, -64, -64);
+}
+
+double encoderToDistance(int encoderCount) {
+    return encoderCount * METER_PER_COUNT;
 }
 
 
