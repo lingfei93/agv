@@ -114,7 +114,7 @@ int main(int argc, char** argv)
     // rm.L=AXON_ROBOT_L;
     // rm.r=AXON_ROBOT_R;
     // rc.ts=TS;
-
+    bool oneshot = true;
     int i;
     int baud_rate=0;
     std::string serial_port;
@@ -145,8 +145,8 @@ int main(int argc, char** argv)
     // commandSend(3, 0, 0);
     // commandSend(3, 0, 0);
 
-    ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1, bool oneshot = true);
-    ros::Timer timer2 = n.createTimer(ros::Duration(1.0), callback2, bool oneshot = true);
+    ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1, oneshot);
+    ros::Timer timer2 = n.createTimer(ros::Duration(1.0), callback2, oneshot);
     ros::spin();
 
     // while(ros::ok())
