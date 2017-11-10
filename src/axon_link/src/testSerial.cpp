@@ -24,6 +24,15 @@ using namespace std;
 cereal::CerealPort device;
 unsigned char reply[8];
 // char reply[9];
+void callback1(const ros::TimerEvent&)
+{
+  commandSend(3, 0, 0);
+}
+
+void callback2(const ros::TimerEvent&)
+{
+  commandSend(1, 64, 64);
+}
 
 
 void commandSend(unsigned char a, unsigned char b, unsigned char c){	
@@ -74,7 +83,7 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
             right_ec=left_ec+(int)(reply[6]<<16);
             right_ec=left_ec+(int)(reply[7]<<8);
             right_ec=left_ec+(int)(reply[8]);
-            cout <<"left ec is : "<< left_ec << "right ec is: " <<right_ec << endl;
+            cout <<"left ec is : "<< left_ec << "right ec is: " <<right_ec << endl;     
         }
 		for (j = 0; j < LENGTH; j ++) {
 
@@ -129,17 +138,21 @@ int main(int argc, char** argv)
     ROS_INFO("The AXON serial port is opened.");
 
     ros::Rate r(5);
-    commandSend(3, 0, 0);
-    commandSend(3, 0, 0);
-    commandSend(3, 0, 0);
-    commandSend(3, 0, 0);
-    commandSend(3, 0, 0);
-    while(ros::ok())
-    {	
-    	commandSend(1, 64, 64);
+    // commandSend(3, 0, 0);
+    // commandSend(3, 0, 0);
+    // commandSend(3, 0, 0);
+    // commandSend(3, 0, 0);
+    // commandSend(3, 0, 0);
 
-        ros::spinOnce();
-        r.sleep();
-    }
+    ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1);
+    ros::Timer timer2 = n.createTimer(ros::Duration(1.0), callback2);
+
+    // while(ros::ok())
+    // {	
+    // 	commandSend(1, 64, 64);
+
+    //     ros::spinOnce();
+    //     r.sleep();
+    // }
     commandSend(3, 0, 0);   
 }
