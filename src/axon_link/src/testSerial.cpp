@@ -61,13 +61,13 @@ void updateOdometry(double l_distance, double r_distance, bool isClear){
     }
     else {
 
-        distance_travelled = (l_distance + r_distance) / 2;
-        delta_theta = (l_distance - r_distance) / AXON_ROBOT_L;
-        delta_x = distance_travelled * cos(theta + delta_theta/2);
-        delta_y = distance_travelled * sin(theta + delta_theta/2);
+        double distance_travelled = (l_distance + r_distance) / 2;
+        double delta_theta = (l_distance - r_distance) / AXON_ROBOT_L;
+        double delta_x = distance_travelled * cos(theta + delta_theta/2);
+        double delta_y = distance_travelled * sin(theta + delta_theta/2);
 
         x_pos = x_pos + delta_x;
-        y_pos = y_post + delta_y;
+        y_pos = y_pos + delta_y;
         theta = theta + delta_theta;
     }
 }
