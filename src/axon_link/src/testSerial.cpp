@@ -35,6 +35,8 @@ unsigned char reply[8];
 double x_pos; //y position
 double y_pos; //x position
 double theta; //rad
+int count_average = 0;
+double total_difference = 0;
 // char reply[9];
 void callback1(const ros::TimerEvent&)
 {
@@ -128,6 +130,11 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
             right_ec=left_ec+(int)(reply[7]<<8);
             right_ec=left_ec+(int)(reply[8]);
             cout <<"left ec is : "<< left_ec << "right ec is: " <<right_ec << endl;  
+            double difference = left_ec - right_ec;
+            count_average = count_average + 1;
+            total_difference = total_difference + difference;
+
+            cout <<"Average difference is : "<<total_difference / count_average << endl;
             double leftTravel = encoderToDistance(left_ec);
             double rightTravel = encoderToDistance(right_ec);
             cout <<"left in meter is : "<< leftTravel << "m. right ec is: " <<rightTravel <<" m"<< endl;
