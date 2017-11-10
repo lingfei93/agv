@@ -94,8 +94,8 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
             right_ec=left_ec+(int)(reply[7]<<8);
             right_ec=left_ec+(int)(reply[8]);
             cout <<"left ec is : "<< left_ec << "right ec is: " <<right_ec << endl;  
-            int leftTravel = encoderToDistance(left_ec);
-            int rightTravel = encoderToDistance(right_ec);
+            double leftTravel = encoderToDistance(left_ec);
+            double rightTravel = encoderToDistance(right_ec);
             cout <<"left in meter is : "<< leftTravel << "m. right ec is: " <<rightTravel <<" m"<< endl;    
         }
 		for (j = 0; j < LENGTH; j ++) {
