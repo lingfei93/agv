@@ -21,7 +21,7 @@ using namespace std;
 #define AXON_WHEEL_MINSPEED 0.0065 //(rad/s)
 #define AXON_WHEEL_CMD_LIMIT 127
 #define ENCODER_COUNT 1024*25 //this is how much it turns in one round
-#define METER_PER_COUNT CIRCUMFERENCE / ENCODER_COUNT 
+// #define METER_PER_COUNT CIRCUMFERENCE / ENCODER_COUNT 
 
 // #define LENGTH 9
 #define TIMEOUT 1000
@@ -41,6 +41,7 @@ void callback2(const ros::TimerEvent&)
 }
 
 double encoderToDistance(int encoderCount) {
+    double METER_PER_COUNT = CIRCUMFERENCE / ENCODER_COUNT;
     cout << encoderCount << "is encoder count " <<  METER_PER_COUNT <<" is meter per count"<< CIRCUMFERENCE << "is circumference" << ENCODER_COUNT << " is encoder count"<< endl;
     return encoderCount * METER_PER_COUNT;
 }
