@@ -147,6 +147,7 @@ int main(int argc, char** argv)
 
     ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1);
     ros::Timer timer2 = n.createTimer(ros::Duration(1.0), callback2);
+    ros::spin();
 
     // while(ros::ok())
     // {	
