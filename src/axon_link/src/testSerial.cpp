@@ -42,8 +42,8 @@ void callback2(const ros::TimerEvent&)
 
 double encoderToDistance(int encoderCount) {
     //double METER_PER_COUNT =(double) CIRCUMFERENCE /(double) ENCODER_COUNT_BASE;
-    cout << encoderCount * METER_PER_COUNT << endl
-    return encoderCount * METER_PER_COUNT;
+    cout << encoderCount * METER_PER_COUNT << endl;
+    return (encoderCount * METER_PER_COUNT);
     
 }
 
