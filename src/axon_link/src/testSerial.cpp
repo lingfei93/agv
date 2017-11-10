@@ -21,7 +21,7 @@ using namespace std;
 #define AXON_WHEEL_MINSPEED 0.0065 //(rad/s)
 #define AXON_WHEEL_CMD_LIMIT 127
 #define ENCODER_COUNT_BASE 1024.000 * 25.000 //this is how much it turns in one round
-#define METER_PER_COUNT  (0.1075 * 3.14159265358979323846 * 2.000) / (1024.000 * 25.000)
+#define METER_PER_COUNT  (AXON_ROBOT_R * PI * 2.000) / (1024.000 * 25.000)
 
 // #define LENGTH 9
 #define TIMEOUT 1000
