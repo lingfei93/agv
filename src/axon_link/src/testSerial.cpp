@@ -145,8 +145,8 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
         }
 		for (j = 0; j < LENGTH; j ++) {
 
-			cout << (int)reply[j] << endl;
-			cout <<"this is reply " << j << endl;
+			// cout << (int)reply[j] << endl;
+			// cout <<"this is reply " << j << endl;
 			}
 		}
     catch(cereal::Exception& e)
