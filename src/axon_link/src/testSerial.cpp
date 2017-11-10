@@ -21,6 +21,7 @@ using namespace std;
 
 // #define LENGTH 9
 #define TIMEOUT 1000
+void commandSend();
 cereal::CerealPort device;
 unsigned char reply[8];
 // char reply[9];
