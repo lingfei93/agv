@@ -45,7 +45,7 @@ void callback1(const ros::TimerEvent&)
 
 void callback2(const ros::TimerEvent&)
 {
-  commandSend(1, -30, -30);
+  commandSend(1, 5, 5);
 }
 
 double encoderToDistance(int encoderCount) {
