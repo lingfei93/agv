@@ -2,6 +2,7 @@
 #include <geometry_msgs/Twist.h>
 #include <cereal_port/CerealPort.h>
 #include <iostream>
+#include <math.h>
 
 using namespace std;
 
@@ -25,10 +26,15 @@ using namespace std;
 
 // #define LENGTH 9
 #define TIMEOUT 1000
+
 void commandSend(unsigned char a, unsigned char b, unsigned char c);
+void updateOdometry(double x_distance, double y_distance, bool isClear);
 double encoderToDistance(int encoderCount);
 cereal::CerealPort device;
 unsigned char reply[8];
+double x_pos; //y position
+double y_pos; //x position
+double theta; //rad
 // char reply[9];
 void callback1(const ros::TimerEvent&)
 {
@@ -41,10 +47,33 @@ void callback2(const ros::TimerEvent&)
 }
 
 double encoderToDistance(int encoderCount) {
-    //double METER_PER_COUNT =(double) CIRCUMFERENCE /(double) ENCODER_COUNT_BASE;
-    cout << encoderCount * METER_PER_COUNT << endl;
+   
+
     return (encoderCount * METER_PER_COUNT);
     
+}
+
+void updateOdometry(double l_distance, double r_distance, bool isClear){
+    if (isClear){
+        x_pos = 0;
+        y_pos = 0;
+        theta = 0;
+    }
+    else {
+
+        distance_travelled = (l_distance + r_distance) / 2;
+        delta_theta = (l_distance - r_distance) / AXON_ROBOT_L;
+        delta_x = distance_travelled * cos(theta + delta_theta/2);
+        delta_y = distance_travelled * sin(theta + delta_theta/2);
+
+        x_pos = x_pos + delta_x;
+        y_pos = y_post + delta_y;
+        theta = theta + delta_theta;
+    }
+}
+
+void getOdometry(){
+    cout << "The current position is: x:" << x_pos << "y: " <<y_pos<<"angle: "<< theta<<endl;
 }
 
 
@@ -99,7 +128,10 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
             cout <<"left ec is : "<< left_ec << "right ec is: " <<right_ec << endl;  
             double leftTravel = encoderToDistance(left_ec);
             double rightTravel = encoderToDistance(right_ec);
-            cout <<"left in meter is : "<< leftTravel << "m. right ec is: " <<rightTravel <<" m"<< endl;    
+            cout <<"left in meter is : "<< leftTravel << "m. right ec is: " <<rightTravel <<" m"<< endl;
+
+            updateOdometry(leftTravel, rightTravel, true);
+
         }
 		for (j = 0; j < LENGTH; j ++) {
 
@@ -142,7 +174,8 @@ int main(int argc, char** argv)
     ROS_INFO("I get BaudRate: %d", baud_rate);
 
   
-
+    updateOdometry(0, 0, false);
+    getOdometry(); //get the odometry
     // Change the next line according to your port name and baud rate
     
     try{ device.open(serial_port.c_str(), baud_rate); }
@@ -160,7 +193,7 @@ int main(int argc, char** argv)
     // commandSend(3, 0, 0);
     // commandSend(3, 0, 0);
 
-    ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1);
+    ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1);           //keep calling 1 and 3
     ros::Timer timer2 = n.createTimer(ros::Duration(1.0), callback2);
     ros::spin();
 
