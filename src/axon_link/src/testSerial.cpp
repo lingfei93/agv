@@ -32,7 +32,7 @@ void callback1(const ros::TimerEvent&)
 
 void callback2(const ros::TimerEvent&)
 {
-  commandSend(1, 64, 64);
+  commandSend(1, -64, -64);
 }
 
 
