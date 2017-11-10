@@ -54,7 +54,7 @@ double encoderToDistance(int encoderCount) {
 }
 
 void updateOdometry(double l_distance, double r_distance, bool isClear){
-    if (isClear){
+    if (!isClear){
         x_pos = 0;
         y_pos = 0;
         theta = 0;
