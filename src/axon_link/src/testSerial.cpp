@@ -83,25 +83,22 @@ void getOdometry(){
 
 
 void commandSend(unsigned char a, unsigned char b, unsigned char c){	
-	char foo[4];
-	unsigned char bar[3];
+	char command[4];
     int n;
     char reply[9];
     int left_ec;
     int right_ec;
-     //dynamic declare how big the reply array is.
-    int LENGTH = 2; //reply length, declare as 2 for testing purpose.
-	int d; //testing variable
-	int e; //testing variable
+
+    int LENGTH; //reply length, declare as 2 for testing purpose.
+
+
 	int j; //for loop
-	bar[0] = a;
-	bar[1] = b;
-	bar[2] = c;
-	foo[0] = (char) a;
-	foo[1] = (char) b;
-	foo[2] = (char) c;
-	foo[4] = '\0';
-	d = device.write(foo, 3);
+
+	command[0] = (char) a;
+	command[1] = (char) b;
+	command[2] = (char) c;
+	command[4] = '\0'; //have to terminate in null;
+	device.write(command, 3);
 
     if ((int) a == 3) {
         LENGTH = 9;
@@ -136,6 +133,7 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
             cout <<"left in meter is : "<< leftTravel << "m. right ec is: " <<rightTravel <<" m"<< endl;
 
             updateOdometry(leftTravel, rightTravel, true);
+            getOdometry();
 
         }
 		for (j = 0; j < LENGTH; j ++) {
