@@ -192,6 +192,54 @@ add_executable(testSerial src/testSerial.cpp)
 add_dependencies(testSerial axon_link_generate_messages_cpp)
 target_link_libraries(testSerial ${catkin_LIBRARIES})
 
+add_executable(testSerial10 src/testSerial10.cpp)
+add_dependencies(testSerial10 axon_link_generate_messages_cpp)
+target_link_libraries(testSerial10 ${catkin_LIBRARIES})
+
+add_executable(testSerial20 src/testSerial20.cpp)
+add_dependencies(testSerial20 axon_link_generate_messages_cpp)
+target_link_libraries(testSerial20 ${catkin_LIBRARIES})
+
+add_executable(testSerial30 src/testSerial30.cpp)
+add_dependencies(testSerial30 axon_link_generate_messages_cpp)
+target_link_libraries(testSerial30 ${catkin_LIBRARIES})
+
+add_executable(testSerial40 src/testSerial40.cpp)
+add_dependencies(testSerial40 axon_link_generate_messages_cpp)
+target_link_libraries(testSerial40 ${catkin_LIBRARIES})
+
+add_executable(testSerial50 src/testSerial50.cpp)
+add_dependencies(testSerial50 axon_link_generate_messages_cpp)
+target_link_libraries(testSerial50 ${catkin_LIBRARIES})
+
+add_executable(testSerial60 src/testSerial60.cpp)
+add_dependencies(testSerial60 axon_link_generate_messages_cpp)
+target_link_libraries(testSerial60 ${catkin_LIBRARIES})
+
+add_executable(testSerial10neg src/testSerial10neg.cpp)
+add_dependencies(testSerial10 axon_link_generate_messages_cpp)
+target_link_libraries(testSerial10 ${catkin_LIBRARIES})
+
+add_executable(testSerial20neg src/testSerial20neg.cpp)
+add_dependencies(testSerial20neg axon_link_generate_messages_cpp)
+target_link_libraries(testSerial20neg ${catkin_LIBRARIES})
+
+add_executable(testSerial30neg src/testSerial30neg.cpp)
+add_dependencies(testSerial30neg axon_link_generate_messages_cpp)
+target_link_libraries(testSerial30neg ${catkin_LIBRARIES})
+
+add_executable(testSerial40neg src/testSerial40neg.cpp)
+add_dependencies(testSerial40neg axon_link_generate_messages_cpp)
+target_link_libraries(testSerial40neg ${catkin_LIBRARIES})
+
+add_executable(testSerial50neg src/testSerial50neg.cpp)
+add_dependencies(testSerial50neg axon_link_generate_messages_cpp)
+target_link_libraries(testSerial50neg ${catkin_LIBRARIES})
+
+add_executable(testSerial60neg src/testSerial60neg.cpp)
+add_dependencies(testSerial60neg axon_link_generate_messages_cpp)
+target_link_libraries(testSerial60neg ${catkin_LIBRARIES})
+
 # add_executable(joy_ctrl_axon_node src/joy_ctrl_axon_node.cpp)
 # add_dependencies(joy_ctrl_axon_node axon_link_generate_messages_cpp)
 # target_link_libraries(joy_ctrl_axon_node ${catkin_LIBRARIES})
