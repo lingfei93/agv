@@ -214,8 +214,7 @@ int main(int argc, char** argv)
     getOdometry(); //get the odometry
     // Change the next line according to your port name and baud rate
     
-    try{ device.open(
-        serial_port.c_str(), baud_rate)；
+    try{ device.open(serial_port.c_str(), baud_rate)；
             
 
         device.write(initialization, 10);
