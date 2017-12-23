@@ -25,7 +25,7 @@ using namespace std;
 #define METER_PER_COUNT  (AXON_ROBOT_R * PI * 2.000) / (1024.000 * 25.000)
 
 // #define LENGTH 9
-#define TIMEOUT 1000
+#define TIMEOUT 5000
 
 void commandSend();
 void updateOdometry(double x_distance, double y_distance, bool isClear);
@@ -85,8 +85,12 @@ void getOdometry(){
 
 void commandSend(){
     char reply[9];
-    int LENGTH = 9;
+    char initialization[10] ={0};
 
+    int LENGTH = 9;
+    device.write(initialization, 10);
+    device.write(initialization, 10);
+    ROS_INFO("IM HERE");
     try {
         device.read(reply, LENGTH, TIMEOUT);
 
