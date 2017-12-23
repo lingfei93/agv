@@ -1,6 +1,7 @@
 #include <ros/ros.h>
 #include <geometry_msgs/Twist.h>
-#include <cereal_port/CerealPort.h>
+// #include <cereal_port/CerealPort.h>
+#include "serial/serial.h"
 #include <iostream>
 #include <math.h>
 
@@ -30,7 +31,8 @@ using namespace std;
 void commandSend();
 void updateOdometry(double x_distance, double y_distance, bool isClear);
 double encoderToDistance(int encoderCount);
-cereal::CerealPort device;
+// cereal::CerealPort device;
+// serial::Serial device;
 unsigned char reply[8];
 double x_pos; //y position
 double y_pos; //x position
@@ -84,15 +86,15 @@ void getOdometry(){
 }
 
 void commandSend(){
-    char reply[9];
-    char initialization[10] ={0};
+    // char reply[9];
+    // char initialization[10] ={0};
 
-    int LENGTH = 9;
-    device.write(initialization, 10);
+    // int LENGTH = 9;
+    // device.write(initialization, 10);
 
     ROS_INFO("IM HERE");
     try {
-        device.read(reply, LENGTH, TIMEOUT);
+        // device.read(reply, LENGTH, TIMEOUT);
 
     }
     catch(cereal::Exception& e)
@@ -221,7 +223,7 @@ int main(int argc, char** argv)
     command[6] = (char) 0;
     command[7] = (char) 0;
     command[8] = (char) 44;
-    command[9] = (char) 0x07;
+    command[9] = (char) 0x07;   
     command[10] = (char) '\0';
 
 
@@ -231,7 +233,7 @@ int main(int argc, char** argv)
     char initialization_two[] = { '0xFF', '0xFE', '2', '0', '72', '0', '0', '0', '44', '0x07'};
    
     
-    
+    serial::Serial my_serial(serial_port, baud_rate, serial::Timeout::simpleTimeout(1000));
    
 
   
@@ -239,85 +241,20 @@ int main(int argc, char** argv)
     getOdometry(); //get the odometry
     // Change the next line according to your port name and baud rate
     
-    try{ 
-            device.open(serial_port.c_str(), baud_rate); 
-            int forDebug = device.write(initialization, 10);
-            ROS_INFO("I wrote: for 10 %d", forDebug);
-
-            device.open(serial_port.c_str(), baud_rate); 
-            forDebug = device.write(initialization, 7);
-            ROS_INFO("I wrote: for 7 %d", forDebug);
-
-            device.open(serial_port.c_str(), baud_rate); 
-            forDebug = device.write(initialization_two, 11);
-            ROS_INFO("I wrote: for init 2 %d", forDebug);
-
-            device.open(serial_port.c_str(), baud_rate); 
-            forDebug = device.write(command, 11);
-            ROS_INFO("I wrote: for command %d", forDebug);
-
-                        device.open(serial_port.c_str(), baud_rate); 
-            forDebug = device.write(command, 11);
-            ROS_INFO("I wrote: for command %d", forDebug);
-
-                        device.open(serial_port.c_str(), baud_rate); 
-            forDebug = device.write(command, 11);
-            ROS_INFO("I wrote: for command %d", forDebug);
-                        device.open(serial_port.c_str(), baud_rate); 
-            forDebug = device.write(command, 11);
-            ROS_INFO("I wrote: for command %d", forDebug);
-                        device.open(serial_port.c_str(), baud_rate); 
-            forDebug = device.write(command, 11);
-            ROS_INFO("I wrote: for command %d", forDebug);
-                        device.open(serial_port.c_str(), baud_rate); 
-            forDebug = device.write(command, 11);
-            ROS_INFO("I wrote: for command %d", forDebug);
-                        device.open(serial_port.c_str(), baud_rate); 
-            forDebug = device.write(command, 11);
-            ROS_INFO("I wrote: for command %d", forDebug);
-                        device.open(serial_port.c_str(), baud_rate); 
-            forDebug = device.write(command, 11);
-            ROS_INFO("I wrote: for command %d", forDebug);
-                        device.open(serial_port.c_str(), baud_rate); 
-            forDebug = device.write(command, 11);
-            ROS_INFO("I wrote: for command %d", forDebug);
-                        device.open(serial_port.c_str(), baud_rate); 
-            forDebug = device.write(command, 11);
-            ROS_INFO("I wrote: for command %d", forDebug);
-                        device.open(serial_port.c_str(), baud_rate); 
-            forDebug = device.write(command, 11);
-            ROS_INFO("I wrote: for command %d", forDebug);
-            
-
-            device.open(serial_port.c_str(), baud_rate); 
-            forDebug = device.write(initialization_three, 11);
-            ROS_INFO("I wrote: %d", forDebug);
-
-
-
-            device.write(initialization, 11);
-            device.write(initialization, 10);
-            device.write(initialization, 12);
-            device.write(initialization, 13);
-            device.write(initialization, 9);
-            device.write(initialization, 8);
-            device.write(initialization, 7);
-            device.write(initialization, 10);
-            device.write(initialization, 10);
-            device.write(initialization, 10);
-            device.write(initialization, 10);
-            device.write(initialization, 10);
-            device.write(initialization, 10);
-            device.write(initialization, 10);
+     
+            if(my_serial.isOpen())
+            cout << " Yes." << endl;
+            else
+            cout << " No." << endl;
 
             ROS_INFO("I TRIED TO WRITE");
 
-    }
-    catch(cereal::Exception& e)
-    {
-        ROS_FATAL("Failed to open the AXON serial port!!!");
-        ROS_BREAK();
-    }
+    
+    // catch(cereal::Exception& e)
+    // {
+    //     ROS_FATAL("Failed to open the AXON serial port!!!");
+    //     ROS_BREAK();
+    // }
     ROS_INFO("The AXON serial port is opened.");
 
     ros::Rate r(5);
