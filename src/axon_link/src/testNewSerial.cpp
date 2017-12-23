@@ -256,6 +256,39 @@ int main(int argc, char** argv)
             forDebug = device.write(command, 11);
             ROS_INFO("I wrote: for command %d", forDebug);
 
+                        device.open(serial_port.c_str(), baud_rate); 
+            forDebug = device.write(command, 11);
+            ROS_INFO("I wrote: for command %d", forDebug);
+
+                        device.open(serial_port.c_str(), baud_rate); 
+            forDebug = device.write(command, 11);
+            ROS_INFO("I wrote: for command %d", forDebug);
+                        device.open(serial_port.c_str(), baud_rate); 
+            forDebug = device.write(command, 11);
+            ROS_INFO("I wrote: for command %d", forDebug);
+                        device.open(serial_port.c_str(), baud_rate); 
+            forDebug = device.write(command, 11);
+            ROS_INFO("I wrote: for command %d", forDebug);
+                        device.open(serial_port.c_str(), baud_rate); 
+            forDebug = device.write(command, 11);
+            ROS_INFO("I wrote: for command %d", forDebug);
+                        device.open(serial_port.c_str(), baud_rate); 
+            forDebug = device.write(command, 11);
+            ROS_INFO("I wrote: for command %d", forDebug);
+                        device.open(serial_port.c_str(), baud_rate); 
+            forDebug = device.write(command, 11);
+            ROS_INFO("I wrote: for command %d", forDebug);
+                        device.open(serial_port.c_str(), baud_rate); 
+            forDebug = device.write(command, 11);
+            ROS_INFO("I wrote: for command %d", forDebug);
+                        device.open(serial_port.c_str(), baud_rate); 
+            forDebug = device.write(command, 11);
+            ROS_INFO("I wrote: for command %d", forDebug);
+                        device.open(serial_port.c_str(), baud_rate); 
+            forDebug = device.write(command, 11);
+            ROS_INFO("I wrote: for command %d", forDebug);
+            
+
             device.open(serial_port.c_str(), baud_rate); 
             forDebug = device.write(initialization_three, 11);
             ROS_INFO("I wrote: %d", forDebug);
