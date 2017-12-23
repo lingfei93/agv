@@ -93,15 +93,15 @@ void commandSend(){
     // device.write(initialization, 10);
 
     ROS_INFO("IM HERE");
-    try {
-        // device.read(reply, LENGTH, TIMEOUT);
+    // try {
+    //     // device.read(reply, LENGTH, TIMEOUT);
 
-    }
-    catch(cereal::Exception& e)
-    {
-        ROS_FATAL("What's going on here");
-        ROS_BREAK();
-    }
+    // }
+    // catch(cereal::Exception& e)
+    // {
+    //     ROS_FATAL("What's going on here");
+    //     ROS_BREAK();
+    // }
 
 
 }
