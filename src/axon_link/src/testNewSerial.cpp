@@ -223,7 +223,7 @@ int main(int argc, char** argv)
     
     try{ 
             device.open(serial_port.c_str(), baud_rate); 
-            device.write(initialization, 10);
+            // device.write(initialization, 10);
             ROS_INFO("I TRIED TO WRITE");
 
     }
