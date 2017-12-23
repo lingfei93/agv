@@ -6,6 +6,7 @@ project(axon_link)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   cereal_port
+  serial
   geometry_msgs
   roscpp
   rospy
