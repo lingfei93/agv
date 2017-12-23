@@ -226,7 +226,7 @@ int main(int argc, char** argv)
 
 
     char initialization[] ={ 0xFF, 0xFE, 2, 0, 72, 0, 0, 0, 44, 0x07};
-    char initialization[] ={ 0xFF, 0xFE, 2, 0, 72, 0, 0, 0, 44, 0x07, '\0'};
+    char initialization_three[] ={ 0xFF, 0xFE, 2, 0, 72, 0, 0, 0, 44, 0x07, '\0'};
 
     char initialization_two[] = { "0xFF", "0xFE", "2", "0", "72", "0", "0", "0", "44", "0x07"};
    
@@ -256,6 +256,9 @@ int main(int argc, char** argv)
             forDebug = device.write(command, 10);
             ROS_INFO("I wrote: for command %d", forDebug);
 
+            device.open(serial_port.c_str(), baud_rate); 
+            forDebug = device.write(initialization_three, 10);
+            ROS_INFO("I wrote: %d", forDebug);
 
 
 
