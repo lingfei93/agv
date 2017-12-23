@@ -40,7 +40,7 @@ double total_difference = 0;
 // char reply[9];
 void callback1(const ros::TimerEvent&)
 {
-  commandSend(3, 0, 0);
+  commandSend();
 }
 
 void callback2(const ros::TimerEvent&)
@@ -83,87 +83,105 @@ void getOdometry(){
     cout << "The current position is: x:" << x_pos << "y: " <<y_pos<<"angle: "<< theta<<endl;
 }
 
+void commandSend(){
+    byte reply[9];
+    int LENGTH = 9;
 
-void commandSend(unsigned char a, unsigned char b, unsigned char c){	
-	char command[4];
-    int n;
-    char reply[9];
-    int left_ec;
-    int right_ec;
-
-    int LENGTH; //reply length, declare as 2 for testing purpose.
-
-
-	int j; //for loop
-
-	command[0] = (char) a;
-	command[1] = (char) b;
-	command[2] = (char) c;
-	command[4] = '\0'; //have to terminate in null;
     try {
-	device.write(command, 3);
+        device.read(reply, LENGTH, TIMEOUT)
+
     }
-    catch(cereal::Exception& e)
-    {
-        ROS_FATAL("I can't write");
-        ROS_BREAK();
-    }
-
-
-    if ((int) a == 3) {
-        LENGTH = 9;
-    }
-
-    else if ((int) a == 1) {
-        
-        LENGTH = 2;
-    }
-
-	// e = device.read(reply, LENGTH, TIMEOUT);
-	// cout << e << endl;
-
-	try{ device.read(reply, LENGTH, TIMEOUT);
-
-        if(LENGTH == 9){
-            left_ec=0;
-            right_ec=0;
-
-            left_ec=(int)(reply[1]<<24);
-            left_ec=left_ec+(int)(reply[2]<<16);
-            left_ec=left_ec+(int)(reply[3]<<8);
-            left_ec=left_ec+(int)(reply[3]);
-
-            right_ec=(int)(reply[5]<<24);
-            right_ec=left_ec+(int)(reply[6]<<16);
-            right_ec=left_ec+(int)(reply[7]<<8);
-            right_ec=left_ec+(int)(reply[8]);
-            cout <<"left ec is : "<< left_ec << "right ec is: " <<right_ec << endl;  
-            double difference = left_ec - right_ec;
-            count_average = count_average + 1;
-            total_difference = total_difference + difference;
-
-            cout <<"Average difference is : "<<total_difference / count_average << endl;
-            double leftTravel = encoderToDistance(left_ec);
-            double rightTravel = encoderToDistance(right_ec);
-            cout <<"left in meter is : "<< leftTravel << "m. right ec is: " <<rightTravel <<" m"<< endl;
-
-            updateOdometry(leftTravel, rightTravel, true);
-            getOdometry();
-
-        }
-		for (j = 0; j < LENGTH; j ++) {
-
-			// cout << (int)reply[j] << endl;
-			// cout <<"this is reply " << j << endl;
-			}
-		}
     catch(cereal::Exception& e)
     {
         ROS_FATAL("What's going on here");
         ROS_BREAK();
     }
-	ROS_INFO("I'm trying to write");
+
+
 }
+// void commandSend(unsigned char a, unsigned char b, unsigned char c){	
+// 	char command[4];
+//     int n;
+//     char reply[9];
+//     int left_ec;
+//     int right_ec;
+
+//     int LENGTH; //reply length, declare as 2 for testing purpose.
+
+
+// 	int j; //for loop
+
+// 	command[0] = (char) a;
+// 	command[1] = (char) b;
+// 	command[2] = (char) c;
+// 	command[4] = '\0'; //have to terminate in null;
+//     try {
+// 	device.write(command, 3);
+//     }
+//     catch(cereal::Exception& e)
+//     {
+//         ROS_FATAL("I can't write");
+//         ROS_BREAK();
+//     }
+
+
+//     if ((int) a == 3) {
+//         LENGTH = 9;
+//     }
+
+//     else if ((int) a == 1) {
+        
+//         LENGTH = 2;
+//     }
+
+// 	// e = device.read(reply, LENGTH, TIMEOUT);
+// 	// cout << e << endl;
+
+// 	try{ device.read(reply, LENGTH, TIMEOUT);
+
+//         if(LENGTH == 9){
+//             left_ec=0;
+//             right_ec=0;
+
+//             left_ec=(int)(reply[1]<<24);
+//             left_ec=left_ec+(int)(reply[2]<<16);
+//             left_ec=left_ec+(int)(reply[3]<<8);
+//             left_ec=left_ec+(int)(reply[3]);
+
+//             right_ec=(int)(reply[5]<<24);
+//             right_ec=left_ec+(int)(reply[6]<<16);
+//             right_ec=left_ec+(int)(reply[7]<<8);
+//             right_ec=left_ec+(int)(reply[8]);
+//             cout <<"left ec is : "<< left_ec << "right ec is: " <<right_ec << endl;  
+//             double difference = left_ec - right_ec;
+//             count_average = count_average + 1;
+//             total_difference = total_difference + difference;
+
+//             cout <<"Average difference is : "<<total_difference / count_average << endl;
+//             double leftTravel = encoderToDistance(left_ec);
+//             double rightTravel = encoderToDistance(right_ec);
+//             cout <<"left in meter is : "<< leftTravel << "m. right ec is: " <<rightTravel <<" m"<< endl;
+
+//             updateOdometry(leftTravel, rightTravel, true);
+//             getOdometry();
+
+//         }
+// 		for (j = 0; j < LENGTH; j ++) {
+
+// 			// cout << (int)reply[j] << endl;
+// 			// cout <<"this is reply " << j << endl;
+// 			}
+// 		}
+//     catch(cereal::Exception& e)
+//     {
+//         ROS_FATAL("What's going on here");
+//         ROS_BREAK();
+//     }
+// 	ROS_INFO("I'm trying to write");
+// }
+
+
+
 
 
 int main(int argc, char** argv)
