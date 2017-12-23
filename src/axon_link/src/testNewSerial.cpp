@@ -252,7 +252,9 @@ int main(int argc, char** argv)
             my_serial.write(initialization);
             my_serial.write(initialization_two);
             my_serial.write(initialization_three);
-            my_serial.read(10);
+            string result = my_serial.read(9);
+
+            ROS_INFO("%s", result.c_str());
 
     
     // catch(cereal::Exception& e)
