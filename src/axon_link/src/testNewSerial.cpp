@@ -211,8 +211,11 @@ int main(int argc, char** argv)
 
 
 
-    char initialization[] ={'a', 'b', 'c', 'd', 'd', 'e', 'f', 'g', 'h', 'i', '\0'};
+    
+    auto intialization = gcnew array<System::Byte> { 0xFF, 0xFE, 2, 0, 72, 0, 0, 0, 44, 0x07};
+    auto intialization_two = gcnew array<System::Byte> { 0xFF, 0xFE, 2, 0, 72, 0, 0, 0, 44, 0x07, '\0'};
 
+    
     
    
 
@@ -223,8 +226,9 @@ int main(int argc, char** argv)
     
     try{ 
             device.open(serial_port.c_str(), baud_rate); 
-            device.write(initialization, 11);
-            device.write(initialization, 12);
+            
+            device.write(initialization, 10);
+            device.write(initialization_two, 10);
             device.write(initialization, 13);
             device.write(initialization, 9);
             device.write(initialization, 8);
