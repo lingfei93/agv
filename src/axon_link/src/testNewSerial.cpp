@@ -87,6 +87,7 @@ void commandSend(){
     char reply[9];
     char initialization[10] ={0};
 
+    int LENGTH = 9;
     device.write(initialization, 10);
     double 
     ROS_INFO("IM HERE");
@@ -200,7 +201,6 @@ int main(int argc, char** argv)
     int i;
     int baud_rate=0;
     std::string serial_port;
-    char initialization[10] ={'a', 'b', 'c', 'd', 'd', 'e', 'f', 'g', 'h', 'i', '\0'};
 
     serial_port = "/dev/ttyUSB0";
     baud_rate = 115200;
@@ -209,17 +209,24 @@ int main(int argc, char** argv)
  
     ROS_INFO("I get BaudRate: %d", baud_rate);
 
+
+
+    char initialization[10] ={'a', 'b', 'c', 'd', 'd', 'e', 'f', 'g', 'h', 'i', '\0'};
+
+    
+   
+
   
     updateOdometry(0, 0, false);
     getOdometry(); //get the odometry
     // Change the next line according to your port name and baud rate
     
-    try{ device.open(serial_port.c_str(), baud_rate)；
-            
+    try{ 
+            device.open(serial_port.c_str(), baud_rate); 
+            device.write(initialization, 10);
+            ROS_INFO("I TRIED TO WRITE");
 
-        device.write(initialization, 10);
-        ROS_INFO("I TRIED TO WRITE");
-             }
+    }
     catch(cereal::Exception& e)
     {
         ROS_FATAL("Failed to open the AXON serial port!!!");
