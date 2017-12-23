@@ -211,8 +211,8 @@ int main(int argc, char** argv)
 
 
 
-    char initialization[] ={ 0xFF, 0xFE, 2, 0, 72, 0, 0, 0, 44, 0x07, '\0' };
-    
+    char initialization[] ={ 0xFF, 0xFE, 2, 0, 72, 0, 0, 0, 44, 0x07};
+   
     
     
    
