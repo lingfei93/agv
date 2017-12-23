@@ -177,7 +177,7 @@ int main(int argc, char** argv)
     std::string serial_port;
 
     serial_port = "/dev/ttyUSB0";
-    baud_rate = 38400;
+    baud_rate = 115200;
     ROS_INFO("I get SerialPort: %s", serial_port.c_str());
 
  
