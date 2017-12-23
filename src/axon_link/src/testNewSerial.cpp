@@ -209,9 +209,26 @@ int main(int argc, char** argv)
  
     ROS_INFO("I get BaudRate: %d", baud_rate);
 
+    char command[11];
+
+    command[0] = (char) 0xFF;
+
+    command[1] = (char) 0xFE;
+    command[2] = (char) 2;
+    command[3] = (char) 0;
+    command[4] = (char) 72;
+    command[5] = (char) 0;
+    command[6] = (char) 0;
+    command[7] = (char) 0;
+    command[8] = (char) 44;
+    command[9] = (char) 0x07;
+    command[10] = (char) '\0';
 
 
     char initialization[] ={ 0xFF, 0xFE, 2, 0, 72, 0, 0, 0, 44, 0x07};
+    char initialization[] ={ 0xFF, 0xFE, 2, 0, 72, 0, 0, 0, 44, 0x07, '\0'};
+
+    char initialization_two[] = { "0xFF", "0xFE", "2", "0", "72", "0", "0", "0", "44", "0x07"};
    
     
     
@@ -225,7 +242,23 @@ int main(int argc, char** argv)
     try{ 
             device.open(serial_port.c_str(), baud_rate); 
             int forDebug = device.write(initialization, 10);
-            ROS_INFO("I wrote: %d", forDebug);
+            ROS_INFO("I wrote: for 10 %d", forDebug);
+
+            device.open(serial_port.c_str(), baud_rate); 
+            forDebug = device.write(initialization, 7);
+            ROS_INFO("I wrote: for 7 %d", forDebug);
+
+            device.open(serial_port.c_str(), baud_rate); 
+            forDebug = device.write(initialization_two, 10);
+            ROS_INFO("I wrote: for init 2 %d", forDebug);
+
+            device.open(serial_port.c_str(), baud_rate); 
+            forDebug = device.write(command, 10);
+            ROS_INFO("I wrote: for command %d", forDebug);
+
+
+
+
             device.write(initialization, 11);
             device.write(initialization, 10);
             device.write(initialization, 12);
