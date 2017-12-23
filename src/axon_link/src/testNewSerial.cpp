@@ -89,7 +89,7 @@ void commandSend(){
 
     int LENGTH = 9;
     device.write(initialization, 10);
-    
+
     ROS_INFO("IM HERE");
     try {
         device.read(reply, LENGTH, TIMEOUT);
@@ -211,7 +211,7 @@ int main(int argc, char** argv)
 
 
 
-    char initialization[10] ={'a', 'b', 'c', 'd', 'd', 'e', 'f', 'g', 'h', 'i', '\0'};
+    char initialization[] ={'a', 'b', 'c', 'd', 'd', 'e', 'f', 'g', 'h', 'i', '\0'};
 
     
    
