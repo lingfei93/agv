@@ -151,7 +151,7 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 		}
     catch(cereal::Exception& e)
     {
-        ROS_FATAL("Failed to read the AXON serial port!!!");
+        ROS_FATAL("What's going on here");
         ROS_BREAK();
     }
 	ROS_INFO("I'm trying to write");
