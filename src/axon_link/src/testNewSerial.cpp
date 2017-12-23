@@ -84,7 +84,7 @@ void getOdometry(){
 }
 
 void commandSend(){
-    byte reply[9];
+    char reply[9];
     int LENGTH = 9;
 
     try {
