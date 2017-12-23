@@ -100,7 +100,15 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	command[1] = (char) b;
 	command[2] = (char) c;
 	command[4] = '\0'; //have to terminate in null;
+    try {
 	device.write(command, 3);
+    }
+    catch(cereal::Exception& e)
+    {
+        ROS_FATAL("I can't write");
+        ROS_BREAK();
+    }
+
 
     if ((int) a == 3) {
         LENGTH = 9;
