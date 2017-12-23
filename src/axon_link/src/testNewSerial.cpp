@@ -88,7 +88,7 @@ void commandSend(){
     int LENGTH = 9;
 
     try {
-        device.read(reply, LENGTH, TIMEOUT)
+        device.read(reply, LENGTH, TIMEOUT);
 
     }
     catch(cereal::Exception& e)
