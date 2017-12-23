@@ -89,7 +89,7 @@ void commandSend(){
 
     int LENGTH = 9;
     device.write(initialization, 10);
-    double 
+    
     ROS_INFO("IM HERE");
     try {
         device.read(reply, LENGTH, TIMEOUT);
