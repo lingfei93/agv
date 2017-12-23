@@ -27,7 +27,7 @@ using namespace std;
 // #define LENGTH 9
 #define TIMEOUT 1000
 
-void commandSend(unsigned char a, unsigned char b, unsigned char c);
+void commandSend();
 void updateOdometry(double x_distance, double y_distance, bool isClear);
 double encoderToDistance(int encoderCount);
 cereal::CerealPort device;
@@ -236,5 +236,5 @@ int main(int argc, char** argv)
     //     ros::spinOnce();
     //     r.sleep();
     // }
-    commandSend(3, 0, 0);   
+    // commandSend(3, 0, 0);   
 }
