@@ -236,6 +236,10 @@ add_executable(testSerial50neg src/testSerial50neg.cpp)
 add_dependencies(testSerial50neg axon_link_generate_messages_cpp)
 target_link_libraries(testSerial50neg ${catkin_LIBRARIES})
 
+add_executable(testSerial50neg src/testNewSerial.cpp)
+add_dependencies(testNewSerial axon_link_generate_messages_cpp)
+target_link_libraries(testNewSerial ${catkin_LIBRARIES})
+
 add_executable(testSerial60neg src/testSerial60neg.cpp)
 add_dependencies(testSerial60neg axon_link_generate_messages_cpp)
 target_link_libraries(testSerial60neg ${catkin_LIBRARIES})
