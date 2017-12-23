@@ -223,6 +223,12 @@ int main(int argc, char** argv)
     
     try{ 
             device.open(serial_port.c_str(), baud_rate); 
+            device.write(initialization, 11);
+            device.write(initialization, 12);
+            device.write(initialization, 13);
+            device.write(initialization, 9);
+            device.write(initialization, 8);
+            device.write(initialization, 7);
             device.write(initialization, 10);
             device.write(initialization, 10);
             device.write(initialization, 10);
@@ -230,13 +236,7 @@ int main(int argc, char** argv)
             device.write(initialization, 10);
             device.write(initialization, 10);
             device.write(initialization, 10);
-            device.write(initialization, 10);
-            device.write(initialization, 10);
-            device.write(initialization, 10);
-            device.write(initialization, 10);
-            device.write(initialization, 10);
-            device.write(initialization, 10);
-            
+
             ROS_INFO("I TRIED TO WRITE");
 
     }
