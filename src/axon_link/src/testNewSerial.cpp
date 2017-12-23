@@ -228,7 +228,7 @@ int main(int argc, char** argv)
     char initialization[] ={ 0xFF, 0xFE, 2, 0, 72, 0, 0, 0, 44, 0x07};
     char initialization_three[] ={ 0xFF, 0xFE, 2, 0, 72, 0, 0, 0, 44, 0x07, '\0'};
 
-    char initialization_two[] = { "0xFF", "0xFE", "2", "0", "72", "0", "0", "0", "44", "0x07"};
+    char initialization_two[] = { '0xFF', '0xFE', '2', '0', '72', '0', '0', '0', '44', '0x07'};
    
     
     
