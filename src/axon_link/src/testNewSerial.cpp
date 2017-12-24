@@ -39,7 +39,7 @@ double y_pos; //x position
 double theta; //rad
 int count_average = 0;
 double total_difference = 0;
-struct termios SerialPortSettings;
+
 
 
 
