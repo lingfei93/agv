@@ -204,7 +204,7 @@ SYSTEM/sys/sys.h)
 
 add_executable(Minibalance USER/Minibalance.c)
 target_link_libraries(Minibalance 
-                      ${{PROJECT_NAME}_LIBRARIES})
+                      ${${PROJECT_NAME}_LIBRARIES})
 
 # add_executable(axon_link_vonly src/axon_link_vonly.cpp)
 # add_dependencies(axon_link_vonly axon_link_generate_messages_cpp)
