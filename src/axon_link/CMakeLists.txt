@@ -13,7 +13,6 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   tf
   message_generation
-  CH341SER_LINUX
 )
 
 ## System dependencies are found with CMake's conventions
