@@ -39,6 +39,18 @@ double y_pos; //x position
 double theta; //rad
 int count_average = 0;
 double total_difference = 0;
+struct termios SerialPortSettings;
+
+struct termios
+{
+tcflag_t c_iflag; /* input mode flags   */
+tcflag_t c_oflag; /* output mode flags  */
+tcflag_t c_cflag; /* control mode flags */
+tcflag_t c_lflag; /* local mode flags   */
+cc_t c_line;      /* line discipline    */
+cc_t c_cc[NCCS];  /* control characters */
+};
+
 // char reply[9];
 void callback1(const ros::TimerEvent&)
 {
