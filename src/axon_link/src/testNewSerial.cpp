@@ -250,11 +250,16 @@ int main(int argc, char** argv)
             ROS_INFO("I TRIED TO WRITE");
 
             my_serial.write(initialization);
-            my_serial.write(initialization_two);
-            my_serial.write(initialization_three);
             string result = my_serial.read(9);
+            ROS_INFO("%s", result.c_str()); 
 
-            ROS_INFO("%s", result.c_str());
+            my_serial.write(initialization_two);
+            result = my_serial.read(9);
+            ROS_INFO("%s", result.c_str()); 
+
+            my_serial.write(initialization_three);
+            result = my_serial.read(9);
+            ROS_INFO("%s", result.c_str()); 
 
     
     // catch(cereal::Exception& e)
