@@ -264,6 +264,58 @@ int main(int argc, char** argv)
             my_serial.write(initialization_three);
             result = my_serial.read(9);
             ROS_INFO("%s", result.c_str()); 
+                        my_serial.write(initialization_three);
+            result = my_serial.read(9);
+            ROS_INFO("%s", result.c_str()); 
+                        my_serial.write(initialization_three);
+            result = my_serial.read(9);
+            ROS_INFO("%s", result.c_str()); 
+                        my_serial.write(initialization_three);
+            result = my_serial.read(9);
+            ROS_INFO("%s", result.c_str()); 
+                        my_serial.write(initialization_three);
+            result = my_serial.read(9);
+            ROS_INFO("%s", result.c_str()); 
+                        my_serial.write(initialization_three);
+            result = my_serial.read(9);
+            ROS_INFO("%s", result.c_str()); 
+                        my_serial.write(initialization_three);
+            result = my_serial.read(9);
+            ROS_INFO("%s", result.c_str()); 
+                        my_serial.write(initialization_three);
+            result = my_serial.read(9);
+            ROS_INFO("%s", result.c_str()); 
+                        my_serial.write(initialization_three);
+            result = my_serial.read(9);
+            ROS_INFO("%s", result.c_str()); 
+                        my_serial.write(initialization_three);
+            result = my_serial.read(9);
+            ROS_INFO("%s", result.c_str()); 
+                        my_serial.write(initialization_three);
+            result = my_serial.read(9);
+            ROS_INFO("%s", result.c_str()); 
+                        my_serial.write(initialization_three);
+            result = my_serial.read(9);
+            ROS_INFO("%s", result.c_str()); 
+                        my_serial.write(initialization_three);
+            result = my_serial.read(9);
+            ROS_INFO("%s", result.c_str()); 
+                        my_serial.write(initialization_three);
+            result = my_serial.read(9);
+            ROS_INFO("%s", result.c_str()); 
+                        my_serial.write(initialization_three);
+            result = my_serial.read(9);
+            ROS_INFO("%s", result.c_str()); 
+                        my_serial.write(initialization_three);
+            result = my_serial.read(9);
+            ROS_INFO("%s", result.c_str()); 
+                        my_serial.write(initialization_three);
+            result = my_serial.read(9);
+            ROS_INFO("%s", result.c_str()); 
+                        my_serial.write(initialization_three);
+            result = my_serial.read(9);
+            ROS_INFO("%s", result.c_str()); 
+            
 
     
     // catch(cereal::Exception& e)
