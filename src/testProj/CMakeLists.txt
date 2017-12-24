@@ -203,7 +203,7 @@ set(${PROJECT_NAME}_LIBRARIES
 SYSTEM/sys/sys.h)
 
 add_executable(Minibalance USER/Minibalance.c)
-target_link_libraries(MiniBalance 
+target_link_libraries(Minibalance 
                       SYSTEM/sys/sys.h)
 
 # add_executable(axon_link_vonly src/axon_link_vonly.cpp)
