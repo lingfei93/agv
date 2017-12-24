@@ -199,6 +199,8 @@ include_directories( ${catkin_INCLUDE_DIRS} )
 # add_dependencies(keyboard_ctrl_axon_node axon_link_generate_messages_cpp)
 # target_link_libraries(keyboard_ctrl_axon_node ${catkin_LIBRARIES})
 
+add_executable(Minibalance.c USER/Minibalance.c)
+
 # add_executable(axon_link_vonly src/axon_link_vonly.cpp)
 # add_dependencies(axon_link_vonly axon_link_generate_messages_cpp)
 # target_link_libraries(axon_link_vonly ${catkin_LIBRARIES})
