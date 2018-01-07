@@ -208,12 +208,12 @@ int main(int argc, char** argv)
     int baud_rate=0;
     std::string serial_port;
 
-    serial_port = "/dev/ttyUSB1";
+    serial_port = "/dev/ttyUSB0";
     baud_rate = 115200;
     ROS_INFO("I get SerialPort: %s", serial_port.c_str());
 
  
-    ROS_INFO("I get BaudRate: %d", baud_rate);
+    ROS_INFO("I get BaudRate: v%d", baud_rate);
 
     char command[11];
 
@@ -254,15 +254,20 @@ int main(int argc, char** argv)
             ROS_INFO("I TRIED TO WRITE");
 
             my_serial.write(initialization);
+/*
             string result = my_serial.read(9);
             ROS_INFO("%s", result.c_str()); 
-
+*/
             my_serial.write(initialization_two);
-            result = my_serial.read(9);
+	    
+            string result = my_serial.read(20);
             ROS_INFO("%s", result.c_str()); 
 
-            my_serial.write(initialization_three);
-            result = my_serial.read(9);
+
+            //my_serial.write(initialization_three);
+            //result = my_serial.read(9);
+	    //ROS_INFO("%s", result.c_str()); 
+/*
             ROS_INFO("%s", result.c_str()); 
                         my_serial.write(initialization_three);
             result = my_serial.read(9);
@@ -312,12 +317,14 @@ int main(int argc, char** argv)
                         my_serial.write(initialization_three);
             result = my_serial.read(9);
             ROS_INFO("%s", result.c_str()); 
+*/
+/*
             while (1){
                         my_serial.write(initialization_three);
             result = my_serial.read(9);
             ROS_INFO("%s", result.c_str()); 
         }
-
+*/
 
     
     // catch(cereal::Exception& e)

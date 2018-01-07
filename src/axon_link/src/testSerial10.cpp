@@ -100,7 +100,7 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	command[1] = (char) b;
 	command[2] = (char) c;
 	command[4] = '\0'; //have to terminate in null;
-	device.write(command, 3);
+	//device.write(command, 3);
 
     if ((int) a == 3) {
         LENGTH = 9;
@@ -166,18 +166,21 @@ int main(int argc, char** argv)
     // ros::Subscriber cmd_vel_sub_;
 
 
-   
-
+    char initialization[] ={ 0xFF, 0xFE, 2, 0, 72, 0, 0, 0, 44, 0x07, 0};
+    char send_speed[] = { '0xFF', '0xFE', '2', '0', '72', '0', '0', '0', '44', '0x07', '\0'};
+	char reply[500];
+	
     // rm.L=AXON_ROBOT_L;
     // rm.r=AXON_ROBOT_R;
     // rc.ts=TS;
     bool oneshot = true;
     int i;
     int baud_rate=0;
+	unsigned char temp;
     std::string serial_port;
 
     serial_port = "/dev/ttyUSB0";
-    baud_rate = 38400;
+    baud_rate = 115200;
     ROS_INFO("I get SerialPort: %s", serial_port.c_str());
 
  
@@ -197,14 +200,35 @@ int main(int argc, char** argv)
     ROS_INFO("The AXON serial port is opened.");
 
     ros::Rate r(5);
-    // commandSend(3, 0, 0);
-    // commandSend(3, 0, 0);
-    // commandSend(3, 0, 0);
-    // commandSend(3, 0, 0);
-    // commandSend(3, 0, 0);
+    //device.write(initialization, 10);
+	
+	device.write(send_speed, 11);
+	
+	try{ device.read(reply, 500, TIMEOUT);
+	ROS_INFO("Successful Read without Write!");
+	for (int i =0; i < 500; i ++){
+	//ROS_INFO("%c", reply[i]);}
+    temp=reply[i];
+	printf("0x%d%d\n", temp/16, temp % 16);
 
+	}
+	}
+
+	catch(cereal::Exception& e)
+    {
+        ROS_FATAL("Failed to read the AXON serial port!!!");
+        ROS_BREAK();
+    }
+	
+    // commandSend(3, 0, 0);
+    // commandSend(3, 0, 0);
+    // commandSend(3, 0, 0);
+    // commandSend(3, 0, 0);
+    // commandSend(3, 0, 0);
+    /*
     ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1);           //keep calling 1 and 3
     ros::Timer timer2 = n.createTimer(ros::Duration(1.0), callback2);
+    */
     ros::spin();
 
     // while(ros::ok())
@@ -214,5 +238,5 @@ int main(int argc, char** argv)
     //     ros::spinOnce();
     //     r.sleep();
     // }
-    commandSend(3, 0, 0);   
+    //commandSend(3, 0, 0);   
 }
