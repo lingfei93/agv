@@ -161,6 +161,7 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 void usart_send(char* toSend) 
 	{
 		device.write(toSend, 1);
+		ROS_INFO("%c this is tosend", toSend[0])
 	}
 
 int main(int argc, char** argv)
@@ -207,8 +208,9 @@ int main(int argc, char** argv)
     ROS_INFO("The AXON serial port is opened.");
     char send_speed1[] = { '0xFF', '0xFE', '2', '0', '72', '0', '0', '0', '44', '0x07', '\0'};
     ros::Rate r(10);
+    char firstByte[] = {'0xFF'}
     //device.write(initialization, 10);
-	usart_send('0xFF');
+	usart_send(firstByte);
 	// usart_send((char*)0xFE);
 	// usart_send((char*)0x01);
 	// usart_send((char*)0x00);
