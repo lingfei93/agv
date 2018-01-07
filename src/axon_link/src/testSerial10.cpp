@@ -208,7 +208,8 @@ int main(int argc, char** argv)
     ROS_INFO("The AXON serial port is opened.");
     char send_speed1[] = { '0xFF', '0xFE', '2', '0', '72', '0', '0', '0', '44', '0x07', '\0'};
     ros::Rate r(10);
-    char firstByte[] = {'0xFF'};
+    unsigned char firstByte[1];
+    firstByte[0] = '0xff';
     //device.write(initialization, 10);
 	usart_send(firstByte);
 	// usart_send((char*)0xFE);
