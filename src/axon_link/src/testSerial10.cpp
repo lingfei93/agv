@@ -161,7 +161,9 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 void usart_send(char* toSend) 
 	{
 		device.write(toSend, 1);
-		ROS_INFO("%d %d this is tosend", toSend[0]/16, toSend[0]%16);
+		unsigned char temp;
+		temp = toSend[0];
+		ROS_INFO("%d %d this is tosend", temp/16,temp%16);
 	}
 
 int main(int argc, char** argv)
@@ -211,9 +213,9 @@ int main(int argc, char** argv)
     char firstByte[2];
     firstByte[0] = '0xff';
     firstByte[1] = '\0';
-    char secondByte[] = {0xff};
+    char secondByte[] = {'0xff'};
     //device.write(initialization, 10);
-	usart_send(secondByte);
+	usart_send(firstByte);
 	// usart_send((char*)0xFE);
 	// usart_send((char*)0x01);
 	// usart_send((char*)0x00);
