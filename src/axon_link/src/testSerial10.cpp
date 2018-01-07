@@ -161,7 +161,7 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 void usart_send(char* toSend) 
 	{
 		device.write(toSend, 1);
-		ROS_INFO("%c this is tosend", toSend[0])
+		ROS_INFO("%c this is tosend", toSend[0]);
 	}
 
 int main(int argc, char** argv)
