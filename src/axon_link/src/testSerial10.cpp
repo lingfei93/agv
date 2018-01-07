@@ -162,7 +162,7 @@ void usart_send(char* toSend)
 	{
 		device.write(toSend, 1);
 		unsigned char temp;
-		temp = toSend[0];
+		temp = 0xff;
 		ROS_INFO("%d %d this is tosend", temp/16,temp%16);
 	}
 
@@ -211,7 +211,7 @@ int main(int argc, char** argv)
     char send_speed1[] = { '0xFF', '0xFE', '2', '0', '72', '0', '0', '0', '44', '0x07', '\0'};
     ros::Rate r(10);
     char firstByte[2];
-    firstByte[0] = '0xff';
+    firstByte[0] = '0xFF';
     firstByte[1] = '\0';
     char secondByte[] = {'0xff'};
     //device.write(initialization, 10);
