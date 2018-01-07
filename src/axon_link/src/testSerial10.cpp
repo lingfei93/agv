@@ -30,7 +30,7 @@ using namespace std;
 void commandSend(unsigned char a, unsigned char b, unsigned char c);
 void updateOdometry(double x_distance, double y_distance, bool isClear);
 double encoderToDistance(int encoderCount);
-void usart_send(char toSend);
+void usart_send(char* toSend);
 cereal::CerealPort device;
 unsigned char reply[8];
 double x_pos; //y position
@@ -158,7 +158,7 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	ROS_INFO("I'm trying to write");
 }
 
-void usart_send(char toSend) 
+void usart_send(char* toSend) 
 	{
 		device.write(toSend, 1);
 	}
