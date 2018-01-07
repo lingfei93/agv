@@ -208,16 +208,16 @@ int main(int argc, char** argv)
     char send_speed1[] = { '0xFF', '0xFE', '2', '0', '72', '0', '0', '0', '44', '0x07', '\0'};
     ros::Rate r(10);
     //device.write(initialization, 10);
-	usart_send((char)0xFF);
-	usart_send((char)0xFE);
-	usart_send((char)0x01);
-	usart_send((char)0x00);
-	usart_send((char)0x00);
-	usart_send((char)0x00);
-	usart_send((char)0x12);
-	usart_send((char)0x00);
-	usart_send((char)0x00);
-	usart_send((char)0x00);
+	usart_send((char*)0xFF);
+	usart_send((char*)0xFE);
+	usart_send((char*)0x01);
+	usart_send((char*)0x00);
+	usart_send((char*)0x00);
+	usart_send((char*)0x00);
+	usart_send((char*)0x12);
+	usart_send((char*)0x00);
+	usart_send((char*)0x00);
+	usart_send((char*)0x00);
 	ROS_INFO("Sent 10 bytes");
 	//device.write(send_speed, 11);
 	
