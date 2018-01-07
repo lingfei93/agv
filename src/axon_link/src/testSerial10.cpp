@@ -211,8 +211,9 @@ int main(int argc, char** argv)
     char firstByte[2];
     firstByte[0] = '0xff';
     firstByte[1] = '\0';
+    char secondByte[] = {0xff};
     //device.write(initialization, 10);
-	usart_send(firstByte);
+	usart_send(secondByte);
 	// usart_send((char*)0xFE);
 	// usart_send((char*)0x01);
 	// usart_send((char*)0x00);
