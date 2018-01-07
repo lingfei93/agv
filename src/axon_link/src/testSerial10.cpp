@@ -160,7 +160,7 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 
 void usart_send(char toSend) 
 	{
-		serial.write(toSend, 1);
+		device.write(toSend, 1);
 	}
 
 int main(int argc, char** argv)
