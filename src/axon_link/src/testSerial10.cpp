@@ -157,6 +157,7 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	ROS_INFO("I'm trying to write");
 }
 
+void usart_send(
 
 int main(int argc, char** argv)
 {
@@ -167,8 +168,17 @@ int main(int argc, char** argv)
 
 
     char initialization[] ={ 0xFF, 0xFE, 2, 0, 72, 0, 0, 0, 44, 0x07, 0};
-    char send_speed[] = { '0xFF', '0xFE', '2', '0', '72', '0', '0', '0', '44', '0x07', '\0'};
-	char reply[500];
+    char send_speed1[] = { '0xFF', '0xFE', '2', '0', '72', '0', '0', '0', '44', '0x07', '\0'};
+	char send_speed2[]
+	char send_speed2[]
+	char send_speed2[]
+char send_speed2[]
+char send_speed2[]
+char send_speed2[]
+char send_speed2[]
+char send_speed2[]
+
+	char reply[40];
 	
     // rm.L=AXON_ROBOT_L;
     // rm.r=AXON_ROBOT_R;
@@ -179,7 +189,7 @@ int main(int argc, char** argv)
 	unsigned char temp;
     std::string serial_port;
 
-    serial_port = "/dev/ttyUSB0";
+    serial_port = "/dev/ttyUSB1";
     baud_rate = 115200;
     ROS_INFO("I get SerialPort: %s", serial_port.c_str());
 
@@ -204,9 +214,9 @@ int main(int argc, char** argv)
 	
 	device.write(send_speed, 11);
 	
-	try{ device.read(reply, 500, TIMEOUT);
+	try{ device.read(reply, 40, TIMEOUT);
 	ROS_INFO("Successful Read without Write!");
-	for (int i =0; i < 500; i ++){
+	for (int i =0; i < 40; i ++){
 	//ROS_INFO("%c", reply[i]);}
     temp=reply[i];
 	printf("0x%d%d\n", temp/16, temp % 16);
