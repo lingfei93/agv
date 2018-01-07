@@ -30,6 +30,7 @@ using namespace std;
 void commandSend(unsigned char a, unsigned char b, unsigned char c);
 void updateOdometry(double x_distance, double y_distance, bool isClear);
 double encoderToDistance(int encoderCount);
+void usart_send(char toSend);
 cereal::CerealPort device;
 unsigned char reply[8];
 double x_pos; //y position
@@ -157,7 +158,10 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	ROS_INFO("I'm trying to write");
 }
 
-void usart_send(
+void usart_send(char toSend) 
+	{
+		serial.write(toSend, 1);
+	}
 
 int main(int argc, char** argv)
 {
@@ -168,15 +172,8 @@ int main(int argc, char** argv)
 
 
     char initialization[] ={ 0xFF, 0xFE, 2, 0, 72, 0, 0, 0, 44, 0x07, 0};
-    char send_speed1[] = { '0xFF', '0xFE', '2', '0', '72', '0', '0', '0', '44', '0x07', '\0'};
-	char send_speed2[]
-	char send_speed2[]
-	char send_speed2[]
-char send_speed2[]
-char send_speed2[]
-char send_speed2[]
-char send_speed2[]
-char send_speed2[]
+    
+
 
 	char reply[40];
 	
@@ -208,11 +205,21 @@ char send_speed2[]
         ROS_BREAK();
     }
     ROS_INFO("The AXON serial port is opened.");
-
-    ros::Rate r(5);
+    char send_speed1[] = { '0xFF', '0xFE', '2', '0', '72', '0', '0', '0', '44', '0x07', '\0'};
+    ros::Rate r(10);
     //device.write(initialization, 10);
-	
-	device.write(send_speed, 11);
+	usart_send(0xFF);
+	usart_send(0xFE);
+	usart_send(0x01);
+	usart_send(0x00);
+	usart_send(0x00);
+	usart_send(0x00);
+	usart_send(0x12);
+	usart_send(0x00);
+	usart_send(0x00);
+	usart_send(0x00);
+	ROS_INFO("Sent 10 bytes");
+	//device.write(send_speed, 11);
 	
 	try{ device.read(reply, 40, TIMEOUT);
 	ROS_INFO("Successful Read without Write!");
