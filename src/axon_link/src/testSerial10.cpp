@@ -162,14 +162,15 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 
 void usart_send(uint8_t* toSend) 
 	{
-		
-        device.write(toSend, 1);
+		size_t N;
+        N = device.write(toSend, 1);
         
+        //below is just testing purposes
 		unsigned char temp, temp2;
         
 		temp = toSend[0];
         temp2 = toSend[1];
-		ROS_INFO("%d %d %d %d %d %d this is tosend updated", temp/16,temp%16, temp, temp2/16, temp2%16,temp2);
+		ROS_INFO("%d %d %d %d this is tosend updated", temp/16,temp%16, temp, N);
 	}
 
 int main(int argc, char** argv)
