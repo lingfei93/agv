@@ -106,7 +106,7 @@ generate_messages(
 catkin_package(
   #INCLUDE_DIRS include
   #LIBRARIES axon_link
-  #CATKIN_DEPENDS cereal_port geometry_msgs roscpp rospy std_msgs tf
+  #CATKIN_DEPENDS cereal_port geometry_msgs roscpp rospy std_msgs tf serial
   #DEPENDS system_lib
 )
 

@@ -1,8 +1,8 @@
 #include <ros/ros.h>
 #include <geometry_msgs/Twist.h>
-#include <cereal_port/CerealPort.h>
 #include <iostream>
 #include <math.h>
+#include "serial/serial.h"
 
 using namespace std;
 
@@ -26,12 +26,14 @@ using namespace std;
 
 // #define LENGTH 9
 #define TIMEOUT 1000
+#define port "dev/ttyUSB0"
+#define baud 1152000
 
 void commandSend(unsigned char a, unsigned char b, unsigned char c);
 void updateOdometry(double x_distance, double y_distance, bool isClear);
 double encoderToDistance(int encoderCount);
 void usart_send(char* toSend);
-cereal::CerealPort device;
+serial::Serial device(port, baud, serial::Timeout::simpleTimeout(1000));
 unsigned char reply[8];
 double x_pos; //y position
 double y_pos; //x position
@@ -150,7 +152,7 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 			cout <<"this is reply " << j << endl;
 			}
 		}
-    catch(cereal::Exception& e)
+    catch(exception& e)
     {
         ROS_FATAL("Failed to read the AXON serial port!!!");
         ROS_BREAK();
@@ -200,13 +202,15 @@ int main(int argc, char** argv)
     updateOdometry(0, 0, false);
     getOdometry(); //get the odometry
     // Change the next line according to your port name and baud rate
-    
-    try{ device.open(serial_port.c_str(), baud_rate); }
-    catch(cereal::Exception& e)
-    {
-        ROS_FATAL("Failed to open the AXON serial port!!!");
-        ROS_BREAK();
+    if(device.isOpen()){
+        ROS_INFO("serial is successful");
     }
+    // try{ device.open(serial_port.c_str(), baud_rate); }
+    // catch(cereal::Exception& e)
+    // {
+    //     ROS_FATAL("Failed to open the AXON serial port!!!");
+    //     ROS_BREAK();
+    // }
 
     ROS_INFO("The AXON serial port is opened.");
     char send_speed1[] = { '0xFF', '0xFE', '2', '0', '72', '0', '0', '0', '44', '0x07', '\0'};
@@ -239,7 +243,7 @@ int main(int argc, char** argv)
 	}
 	}
 
-	catch(cereal::Exception& e)
+	catch(exception& e)
     {
         ROS_FATAL("Failed to read the AXON serial port!!!");
         ROS_BREAK();
