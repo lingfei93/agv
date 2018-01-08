@@ -90,7 +90,7 @@ void getOdometry(){
 void commandSend(unsigned char a, unsigned char b, unsigned char c){	
 	char command[4];
     int n;
-    char reply[9];
+    uint8_t reply[9];
     int left_ec;
     int right_ec;
 
