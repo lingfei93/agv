@@ -75,6 +75,7 @@ void format(uint8_t* reply, int N){
     for (int i = 0; i < N; i ++)
         if(reply[i] == 0xff && reply[i+11] == 0xff && reply[i+1] ==0xfe && reply[i+12] == 0xfe){
         ROS_INFO("%d set of data", count + 1);
+        count = count + 1;
         for (int j = 0; j < 11; j ++){
 
         printf("0x%d%d\n", reply[j]/16, reply[j] % 16);
