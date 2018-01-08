@@ -1,8 +1,8 @@
-prefix=/home/eee/lingfei_ws/agv/install
+prefix=/home/eee/agv/install
 
 Name: serial
 Description: Description of serial
 Version: 1.2.1
-Cflags: -I/home/eee/lingfei_ws/agv/install/include
-Libs: -L/home/eee/lingfei_ws/agv/install/lib -lserial
+Cflags: -I/home/eee/agv/install/include
+Libs: -L/home/eee/agv/install/lib -lserial
 Requires: 

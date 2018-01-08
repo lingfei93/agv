@@ -1,8 +1,8 @@
-prefix=/home/eee/lingfei_ws/agv/install
+prefix=/home/eee/agv/install
 
 Name: beginner_tutorials
 Description: Description of beginner_tutorials
 Version: 0.0.0
 Cflags: 
-Libs: -L/home/eee/lingfei_ws/agv/install/lib 
+Libs: -L/home/eee/agv/install/lib 
 Requires: 

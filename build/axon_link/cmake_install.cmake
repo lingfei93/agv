@@ -1,8 +1,8 @@
-# Install script for directory: /home/eee/lingfei_ws/agv/src/axon_link
+# Install script for directory: /home/eee/agv/src/axon_link
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/eee/lingfei_ws/agv/install")
+  set(CMAKE_INSTALL_PREFIX "/home/eee/agv/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,41 +33,41 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/axon_link/cmake" TYPE FILE FILES "/home/eee/lingfei_ws/agv/build/axon_link/catkin_generated/installspace/axon_link-msg-paths.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/axon_link/cmake" TYPE FILE FILES "/home/eee/agv/build/axon_link/catkin_generated/installspace/axon_link-msg-paths.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/roseus/ros" TYPE DIRECTORY FILES "/home/eee/lingfei_ws/agv/devel/share/roseus/ros/axon_link")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/roseus/ros" TYPE DIRECTORY FILES "/home/eee/agv/devel/share/roseus/ros/axon_link")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  execute_process(COMMAND "/usr/bin/python" -m compileall "/home/eee/lingfei_ws/agv/devel/lib/python2.7/dist-packages/axon_link")
+  execute_process(COMMAND "/usr/bin/python" -m compileall "/home/eee/agv/devel/lib/python2.7/dist-packages/axon_link")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages" TYPE DIRECTORY FILES "/home/eee/lingfei_ws/agv/devel/lib/python2.7/dist-packages/axon_link")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages" TYPE DIRECTORY FILES "/home/eee/agv/devel/lib/python2.7/dist-packages/axon_link")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/eee/lingfei_ws/agv/build/axon_link/catkin_generated/installspace/axon_link.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/eee/agv/build/axon_link/catkin_generated/installspace/axon_link.pc")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/axon_link/cmake" TYPE FILE FILES "/home/eee/lingfei_ws/agv/build/axon_link/catkin_generated/installspace/axon_link-msg-extras.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/axon_link/cmake" TYPE FILE FILES "/home/eee/agv/build/axon_link/catkin_generated/installspace/axon_link-msg-extras.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/axon_link/cmake" TYPE FILE FILES
-    "/home/eee/lingfei_ws/agv/build/axon_link/catkin_generated/installspace/axon_linkConfig.cmake"
-    "/home/eee/lingfei_ws/agv/build/axon_link/catkin_generated/installspace/axon_linkConfig-version.cmake"
+    "/home/eee/agv/build/axon_link/catkin_generated/installspace/axon_linkConfig.cmake"
+    "/home/eee/agv/build/axon_link/catkin_generated/installspace/axon_linkConfig-version.cmake"
     )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/axon_link" TYPE FILE FILES "/home/eee/lingfei_ws/agv/src/axon_link/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/axon_link" TYPE FILE FILES "/home/eee/agv/src/axon_link/package.xml")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/axon_link" TYPE DIRECTORY FILES "/home/eee/lingfei_ws/agv/src/axon_link/include/axon_link/" FILES_MATCHING REGEX "/[^/]*\\.h$" REGEX "/\\.svn$" EXCLUDE)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/axon_link" TYPE DIRECTORY FILES "/home/eee/agv/src/axon_link/include/axon_link/" FILES_MATCHING REGEX "/[^/]*\\.h$" REGEX "/\\.svn$" EXCLUDE)
 endif()
 

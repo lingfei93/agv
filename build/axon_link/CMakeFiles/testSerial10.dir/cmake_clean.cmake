@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/testSerial10.dir/src/testSerial10.cpp.o"
-  "/home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10.pdb"
-  "/home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10"
+  "/home/eee/agv/devel/lib/axon_link/testSerial10.pdb"
+  "/home/eee/agv/devel/lib/axon_link/testSerial10"
 )
 
 # Per-language clean rules from dependency scanning.

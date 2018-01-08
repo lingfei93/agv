@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/eee/lingfei_ws/agv/src
+CMAKE_SOURCE_DIR = /home/eee/agv/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/eee/lingfei_ws/agv/build
+CMAKE_BINARY_DIR = /home/eee/agv/build
 
 # Utility rule file for std_msgs_generate_messages_cpp.
 
@@ -63,10 +63,10 @@ beginner_tutorials/CMakeFiles/std_msgs_generate_messages_cpp.dir/build: std_msgs
 .PHONY : beginner_tutorials/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
 
 beginner_tutorials/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean:
-	cd /home/eee/lingfei_ws/agv/build/beginner_tutorials && $(CMAKE_COMMAND) -P CMakeFiles/std_msgs_generate_messages_cpp.dir/cmake_clean.cmake
+	cd /home/eee/agv/build/beginner_tutorials && $(CMAKE_COMMAND) -P CMakeFiles/std_msgs_generate_messages_cpp.dir/cmake_clean.cmake
 .PHONY : beginner_tutorials/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
 
 beginner_tutorials/CMakeFiles/std_msgs_generate_messages_cpp.dir/depend:
-	cd /home/eee/lingfei_ws/agv/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/eee/lingfei_ws/agv/src /home/eee/lingfei_ws/agv/src/beginner_tutorials /home/eee/lingfei_ws/agv/build /home/eee/lingfei_ws/agv/build/beginner_tutorials /home/eee/lingfei_ws/agv/build/beginner_tutorials/CMakeFiles/std_msgs_generate_messages_cpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/eee/agv/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/eee/agv/src /home/eee/agv/src/beginner_tutorials /home/eee/agv/build /home/eee/agv/build/beginner_tutorials /home/eee/agv/build/beginner_tutorials/CMakeFiles/std_msgs_generate_messages_cpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : beginner_tutorials/CMakeFiles/std_msgs_generate_messages_cpp.dir/depend
 

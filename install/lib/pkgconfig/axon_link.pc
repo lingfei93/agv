@@ -1,8 +1,0 @@
-prefix=/home/eee/lingfei_ws/agv/install
-
-Name: axon_link
-Description: Description of axon_link
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/eee/lingfei_ws/agv/install/lib 
-Requires: 

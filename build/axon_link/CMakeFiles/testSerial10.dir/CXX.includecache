@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/eee/lingfei_ws/agv/src/axon_link/src/testSerial10.cpp
+/home/eee/agv/src/axon_link/src/testSerial10.cpp
 ros/ros.h
 -
 geometry_msgs/Twist.h
@@ -18,7 +18,7 @@ iostream
 math.h
 -
 
-/home/eee/lingfei_ws/agv/src/cereal_port/include/cereal_port/CerealPort.h
+/home/eee/agv/src/cereal_port/include/cereal_port/CerealPort.h
 stdexcept
 -
 termios.h
@@ -319,8 +319,6 @@ ros/rate.h
 /opt/ros/kinetic/include/ros/ros/rate.h
 ros/wall_timer.h
 /opt/ros/kinetic/include/ros/ros/wall_timer.h
-ros/steady_timer.h
-/opt/ros/kinetic/include/ros/ros/steady_timer.h
 ros/advertise_options.h
 /opt/ros/kinetic/include/ros/ros/advertise_options.h
 ros/advertise_service_options.h
@@ -573,20 +571,6 @@ boost/shared_ptr.hpp
 /opt/ros/kinetic/include/ros/static_assert.h
 boost/static_assert.hpp
 -
-
-/opt/ros/kinetic/include/ros/steady_timer.h
-common.h
-/opt/ros/kinetic/include/ros/common.h
-forwards.h
-/opt/ros/kinetic/include/ros/forwards.h
-steady_timer_options.h
-/opt/ros/kinetic/include/ros/steady_timer_options.h
-
-/opt/ros/kinetic/include/ros/steady_timer_options.h
-common.h
-/opt/ros/kinetic/include/ros/common.h
-ros/forwards.h
-/opt/ros/kinetic/include/ros/ros/forwards.h
 
 /opt/ros/kinetic/include/ros/subscribe_options.h
 ros/forwards.h
