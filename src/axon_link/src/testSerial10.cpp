@@ -219,8 +219,10 @@ int main(int argc, char** argv)
     firstByte[0] = '0xFF';
     firstByte[1] = '\0';
     char secondByte[] = {'0xff'};
+    ROS_INFO("I broke before here");
     //device.write(initialization, 10);
 	usart_send(firstByte);
+    ROS_INFO("I broke after here");
 	// usart_send((char*)0xFE);
 	// usart_send((char*)0x01);
 	// usart_send((char*)0x00);
