@@ -189,6 +189,14 @@ include_directories( ${catkin_INCLUDE_DIRS} )
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
+add_executable(speed0 src/speed0.cpp)
+add_dependencies(speed0 axon_link_generate_messages_cpp)
+target_link_libraries(speed0 ${catkin_LIBRARIES})
+
+add_executable(speedP src/speedP.cpp)
+add_dependencies(speedP axon_link_generate_messages_cpp)
+target_link_libraries(speedP ${catkin_LIBRARIES})
+
 add_executable(testSerial src/testSerial.cpp)
 add_dependencies(testSerial axon_link_generate_messages_cpp)
 target_link_libraries(testSerial ${catkin_LIBRARIES})
