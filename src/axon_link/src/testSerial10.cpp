@@ -26,7 +26,7 @@ using namespace std;
 
 // #define LENGTH 9
 #define TIMEOUT 1000
-#define port "dev/ttyUSB0"
+#define port "/dev/ttyUSB0"
 #define baud 115200
 
 void commandSend(unsigned char a, unsigned char b, unsigned char c);
