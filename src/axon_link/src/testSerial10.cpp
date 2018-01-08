@@ -64,7 +64,9 @@ int main(int argc, char** argv)
 
 	uint8_t temp;
     std::string serial_port;
-    uint8_t firstByte[2];
+    uint8_t firstByte[2], secondByte[], thirdByte[], fourthByte[], fifthByte[];
+    uint8_t sixthByte[], seventhByte[], eigthByte[], ninthByte[], tenthByte[];
+
 
     ROS_INFO("I get SerialPort: %s", port);
 
@@ -84,10 +86,30 @@ int main(int argc, char** argv)
 
     ros::Rate r(10);
 
+//this is for all the wheels to turn with a same speed. rotation ont he spot.
     firstByte[0] = 0xFF;
-
+    secondByte[0] = 0xFE;
+    thirdByte[0] = 2;
+    fourthByte[0] = 0;
+    fifthByte[0] = 0xD;
+    sixthByte[0] = 0;
+    seventhByte[0] = 0xD;
+    eigthByte[0] = 0;
+    ninthByte[0] = 0xD;
+    tenthByte[0] = 0x07;
     ROS_INFO("I broke before here");
+
 	usart_send(firstByte);
+    usart_send(secondByte);
+    usart_send(thirdByte);
+    usart_send(fourthByte);
+    usart_send(fifthByte);
+    usart_send(sixthByte);
+    usart_send(seventhByte);
+    usart_send(eigthByte);
+    usart_send(ninthByte);
+    usart_send(tenthByte);
+
 
 	
 	try{ device.read(reply, 100);
