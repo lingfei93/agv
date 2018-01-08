@@ -215,12 +215,12 @@ int main(int argc, char** argv)
     ROS_INFO("The AXON serial port is opened.");
     char send_speed1[] = { '0xFF', '0xFE', '2', '0', '72', '0', '0', '0', '44', '0x07', '\0'};
     ros::Rate r(10);
-    unsigned char firstByte[2];
+    char firstByte[2];
     firstByte[0] = '0xFF';
     firstByte[1] = '\0';
     char secondByte[] = {'0xff'};
     //device.write(initialization, 10);
-	usart_send((char)firstByte);
+	usart_send(firstByte);
 	// usart_send((char*)0xFE);
 	// usart_send((char*)0x01);
 	// usart_send((char*)0x00);
@@ -233,7 +233,7 @@ int main(int argc, char** argv)
 	ROS_INFO("Sent 10 bytes");
 	//device.write(send_speed, 11);
 	
-	try{ device.read(reply, 100, TIMEOUT);
+	try{ device.read(reply, 100);
 	ROS_INFO("Successful Read without Write!");
 	for (int i =0; i < 40; i ++){
 	//ROS_INFO("%c", reply[i]);}
