@@ -108,11 +108,11 @@ int main(int argc, char** argv)
     secondByte[0] = 0xFE;
     thirdByte[0] = 2;
     fourthByte[0] = 0;
-    fifthByte[0] = 0xD;
+    fifthByte[0] = 0x06;
     sixthByte[0] = 0;
-    seventhByte[0] = 0xD;
+    seventhByte[0] = 0x06;
     eigthByte[0] = 0;
-    ninthByte[0] = 0xD;
+    ninthByte[0] = 0x06;
     tenthByte[0] = 0x00;
     ROS_INFO("I broke before here");
 
