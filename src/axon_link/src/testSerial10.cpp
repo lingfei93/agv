@@ -96,7 +96,7 @@ int main(int argc, char** argv)
     seventhByte[0] = 0xD;
     eigthByte[0] = 0;
     ninthByte[0] = 0xD;
-    tenthByte[0] = 0x07;
+    tenthByte[0] = 0x00;
     ROS_INFO("I broke before here");
 
 	usart_send(firstByte);
