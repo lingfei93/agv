@@ -19,8 +19,7 @@ using namespace std;
 #define port "/dev/ttyUSB0"
 #define baud 115200
 
-void updateOdometry(double x_distance, double y_distance, bool isClear);
-double encoderToDistance(int encoderCount);
+
 void usart_send(char* toSend);
 serial::Serial device(port, baud, serial::Timeout::simpleTimeout(1000));
 unsigned char reply[8];
@@ -30,50 +29,9 @@ double theta; //rad
 int count_average = 0;
 double total_difference = 0;
 // char reply[9];
-void callback1(const ros::TimerEvent&)
-{
-  commandSend(3, 0, 0);
-}
 
-void callback2(const ros::TimerEvent&)
-{
-  commandSend(1, 10, 10);
-}
 
-double encoderToDistance(int encoderCount) {
-   
 
-    return (encoderCount * METER_PER_COUNT);
-    
-}
-
-void updateOdometry(double l_distance, double r_distance, bool isClear){
-    if (!isClear){
-        x_pos = 0;
-        y_pos = 0;
-        theta = 0;
-    }
-    else {
-
-        double distance_travelled;
-        double delta_theta;
-        double delta_x;
-        double delta_y;
-
-        distance_travelled = (l_distance + r_distance) / 2;
-        delta_theta = (l_distance - r_distance) / AXON_ROBOT_L;
-        delta_x = distance_travelled * cos(theta + delta_theta/2);
-        delta_y = distance_travelled * sin(theta + delta_theta/2);
-
-        x_pos = x_pos + delta_x;
-        y_pos = y_pos + delta_y;
-        theta = theta + delta_theta;
-    }
-}
-
-void getOdometry(){
-    cout << "The current position is: x:" << x_pos << "y: " <<y_pos<<"angle: "<< theta<<endl;
-}
 
 
 
@@ -108,7 +66,7 @@ int main(int argc, char** argv)
     std::string serial_port;
     uint8_t firstByte[2];
 
-    ROS_INFO("I get SerialPort: %s", port.c_str());
+    ROS_INFO("I get SerialPort: %s", port);
 
  
     ROS_INFO("I get BaudRate: %d", baud);
