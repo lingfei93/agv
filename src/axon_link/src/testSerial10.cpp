@@ -33,7 +33,26 @@ double total_difference = 0;
 
 
 
+void callback1(const ros::TimerEvent&)
+{
+    uint8_t reply[40];
+    uint8_t temp;
+    try{ device.read(reply, 100);
+    ROS_INFO("Successful Read without Write!");
+    for (int i =0; i < 40; i ++){
+    //ROS_INFO("%c", reply[i]);}
+    temp=reply[i];
+    printf("0x%d%d\n", temp/16, temp % 16);
 
+    }
+    }
+
+    catch(exception& e)
+    {
+        ROS_FATAL("Failed to read the AXON serial port!!!");
+        ROS_BREAK();
+    }
+}
 
 
 void usart_send(uint8_t* toSend) 
@@ -112,7 +131,7 @@ int main(int argc, char** argv)
 
 
 	
-	try{ device.read(reply, 100);
+	try{ device.read(reply, 40);
 	ROS_INFO("Successful Read without Write!");
 	for (int i =0; i < 40; i ++){
 	//ROS_INFO("%c", reply[i]);}
@@ -128,10 +147,10 @@ int main(int argc, char** argv)
         ROS_BREAK();
     }
 	
-    /*
+    
     ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1);           //keep calling 1 and 3
-    ros::Timer timer2 = n.createTimer(ros::Duration(1.0), callback2);
-    */
+    //ros::Timer timer2 = n.createTimer(ros::Duration(1.0), callback2);
+    
     ros::spin();
 
     
