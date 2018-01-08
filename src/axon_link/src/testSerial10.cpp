@@ -207,6 +207,7 @@ int main(int argc, char** argv)
         ROS_FATAL("Failed to open the AXON serial port!!!");
         ROS_BREAK();
     }
+
     ROS_INFO("The AXON serial port is opened.");
     char send_speed1[] = { '0xFF', '0xFE', '2', '0', '72', '0', '0', '0', '44', '0x07', '\0'};
     ros::Rate r(10);
@@ -228,7 +229,7 @@ int main(int argc, char** argv)
 	ROS_INFO("Sent 10 bytes");
 	//device.write(send_speed, 11);
 	
-	try{ device.read(reply, 40, TIMEOUT);
+	try{ device.read(reply, 100, TIMEOUT);
 	ROS_INFO("Successful Read without Write!");
 	for (int i =0; i < 40; i ++){
 	//ROS_INFO("%c", reply[i]);}
