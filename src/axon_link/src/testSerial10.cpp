@@ -70,7 +70,7 @@ void usart_send(uint8_t* toSend)
 //format the reply so that it becomes nice
 void format(uint8_t* reply, int N){
     for (int i = 0; i < N; i ++)
-        if(reply[i] == 0xfe){
+        if(reply[i] == 0xfe && reply[i+11] == 0xfe){
             ROS_INFO("yes");
         }
 
