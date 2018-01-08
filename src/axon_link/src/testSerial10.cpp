@@ -160,7 +160,7 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 
 void usart_send(char* toSend) 
 	{
-		device.write(toSend, 1);
+		device.write(toSend, 2);
 		unsigned char temp;
 		temp = 0xff;
 		ROS_INFO("%d %d this is tosend", temp/16,temp%16);
