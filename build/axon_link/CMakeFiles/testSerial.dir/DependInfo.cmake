@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/eee/lingfei_ws/agv/src/axon_link/src/testSerial.cpp" "/home/eee/lingfei_ws/agv/build/axon_link/CMakeFiles/testSerial.dir/src/testSerial.cpp.o"
+  "/home/eee/agv/src/axon_link/src/testSerial.cpp" "/home/eee/agv/build/axon_link/CMakeFiles/testSerial.dir/src/testSerial.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -17,14 +17,16 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/home/eee/lingfei_ws/agv/src/cereal_port/include"
+  "/home/eee/agv/src/cereal_port/include"
+  "/home/eee/agv/src/serial/include"
   "/opt/ros/kinetic/include"
   "/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/eee/lingfei_ws/agv/build/cereal_port/CMakeFiles/cereal_port.dir/DependInfo.cmake"
+  "/home/eee/agv/build/cereal_port/CMakeFiles/cereal_port.dir/DependInfo.cmake"
+  "/home/eee/agv/build/serial/CMakeFiles/serial.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

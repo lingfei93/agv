@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/eee/lingfei_ws/agv/src
+CMAKE_SOURCE_DIR = /home/eee/agv/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/eee/lingfei_ws/agv/build
+CMAKE_BINARY_DIR = /home/eee/agv/build
 
 # Utility rule file for _catkin_empty_exported_target.
 
@@ -63,10 +63,10 @@ serial/CMakeFiles/_catkin_empty_exported_target.dir/build: _catkin_empty_exporte
 .PHONY : serial/CMakeFiles/_catkin_empty_exported_target.dir/build
 
 serial/CMakeFiles/_catkin_empty_exported_target.dir/clean:
-	cd /home/eee/lingfei_ws/agv/build/serial && $(CMAKE_COMMAND) -P CMakeFiles/_catkin_empty_exported_target.dir/cmake_clean.cmake
+	cd /home/eee/agv/build/serial && $(CMAKE_COMMAND) -P CMakeFiles/_catkin_empty_exported_target.dir/cmake_clean.cmake
 .PHONY : serial/CMakeFiles/_catkin_empty_exported_target.dir/clean
 
 serial/CMakeFiles/_catkin_empty_exported_target.dir/depend:
-	cd /home/eee/lingfei_ws/agv/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/eee/lingfei_ws/agv/src /home/eee/lingfei_ws/agv/src/serial /home/eee/lingfei_ws/agv/build /home/eee/lingfei_ws/agv/build/serial /home/eee/lingfei_ws/agv/build/serial/CMakeFiles/_catkin_empty_exported_target.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/eee/agv/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/eee/agv/src /home/eee/agv/src/serial /home/eee/agv/build /home/eee/agv/build/serial /home/eee/agv/build/serial/CMakeFiles/_catkin_empty_exported_target.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : serial/CMakeFiles/_catkin_empty_exported_target.dir/depend
 

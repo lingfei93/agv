@@ -1,8 +1,8 @@
-# Install script for directory: /home/eee/lingfei_ws/agv/src/cereal_port
+# Install script for directory: /home/eee/agv/src/cereal_port
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/eee/lingfei_ws/agv/install")
+  set(CMAKE_INSTALL_PREFIX "/home/eee/agv/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,21 +33,21 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/eee/lingfei_ws/agv/build/cereal_port/catkin_generated/installspace/cereal_port.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/eee/agv/build/cereal_port/catkin_generated/installspace/cereal_port.pc")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cereal_port/cmake" TYPE FILE FILES
-    "/home/eee/lingfei_ws/agv/build/cereal_port/catkin_generated/installspace/cereal_portConfig.cmake"
-    "/home/eee/lingfei_ws/agv/build/cereal_port/catkin_generated/installspace/cereal_portConfig-version.cmake"
+    "/home/eee/agv/build/cereal_port/catkin_generated/installspace/cereal_portConfig.cmake"
+    "/home/eee/agv/build/cereal_port/catkin_generated/installspace/cereal_portConfig-version.cmake"
     )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cereal_port" TYPE FILE FILES "/home/eee/lingfei_ws/agv/src/cereal_port/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cereal_port" TYPE FILE FILES "/home/eee/agv/src/cereal_port/package.xml")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/cereal_port" TYPE FILE FILES "/home/eee/lingfei_ws/agv/src/cereal_port/include/cereal_port/CerealPort.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/cereal_port" TYPE FILE FILES "/home/eee/agv/src/cereal_port/include/cereal_port/CerealPort.h")
 endif()
 

@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/eee/lingfei_ws/agv/src
+CMAKE_SOURCE_DIR = /home/eee/agv/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/eee/lingfei_ws/agv/build
+CMAKE_BINARY_DIR = /home/eee/agv/build
 
 # Include any dependencies generated for this target.
 include axon_link/CMakeFiles/testSerial10neg.dir/depend.make
@@ -58,17 +58,17 @@ include axon_link/CMakeFiles/testSerial10neg.dir/progress.make
 include axon_link/CMakeFiles/testSerial10neg.dir/flags.make
 
 axon_link/CMakeFiles/testSerial10neg.dir/src/testSerial10neg.cpp.o: axon_link/CMakeFiles/testSerial10neg.dir/flags.make
-axon_link/CMakeFiles/testSerial10neg.dir/src/testSerial10neg.cpp.o: /home/eee/lingfei_ws/agv/src/axon_link/src/testSerial10neg.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/eee/lingfei_ws/agv/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object axon_link/CMakeFiles/testSerial10neg.dir/src/testSerial10neg.cpp.o"
-	cd /home/eee/lingfei_ws/agv/build/axon_link && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/testSerial10neg.dir/src/testSerial10neg.cpp.o -c /home/eee/lingfei_ws/agv/src/axon_link/src/testSerial10neg.cpp
+axon_link/CMakeFiles/testSerial10neg.dir/src/testSerial10neg.cpp.o: /home/eee/agv/src/axon_link/src/testSerial10neg.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/eee/agv/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object axon_link/CMakeFiles/testSerial10neg.dir/src/testSerial10neg.cpp.o"
+	cd /home/eee/agv/build/axon_link && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/testSerial10neg.dir/src/testSerial10neg.cpp.o -c /home/eee/agv/src/axon_link/src/testSerial10neg.cpp
 
 axon_link/CMakeFiles/testSerial10neg.dir/src/testSerial10neg.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/testSerial10neg.dir/src/testSerial10neg.cpp.i"
-	cd /home/eee/lingfei_ws/agv/build/axon_link && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eee/lingfei_ws/agv/src/axon_link/src/testSerial10neg.cpp > CMakeFiles/testSerial10neg.dir/src/testSerial10neg.cpp.i
+	cd /home/eee/agv/build/axon_link && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eee/agv/src/axon_link/src/testSerial10neg.cpp > CMakeFiles/testSerial10neg.dir/src/testSerial10neg.cpp.i
 
 axon_link/CMakeFiles/testSerial10neg.dir/src/testSerial10neg.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/testSerial10neg.dir/src/testSerial10neg.cpp.s"
-	cd /home/eee/lingfei_ws/agv/build/axon_link && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eee/lingfei_ws/agv/src/axon_link/src/testSerial10neg.cpp -o CMakeFiles/testSerial10neg.dir/src/testSerial10neg.cpp.s
+	cd /home/eee/agv/build/axon_link && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eee/agv/src/axon_link/src/testSerial10neg.cpp -o CMakeFiles/testSerial10neg.dir/src/testSerial10neg.cpp.s
 
 axon_link/CMakeFiles/testSerial10neg.dir/src/testSerial10neg.cpp.o.requires:
 
@@ -88,39 +88,40 @@ testSerial10neg_OBJECTS = \
 # External object files for target testSerial10neg
 testSerial10neg_EXTERNAL_OBJECTS =
 
-/home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10neg: axon_link/CMakeFiles/testSerial10neg.dir/src/testSerial10neg.cpp.o
-/home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10neg: axon_link/CMakeFiles/testSerial10neg.dir/build.make
-/home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10neg: /home/eee/lingfei_ws/agv/devel/lib/libcereal_port.so
-/home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10neg: /opt/ros/kinetic/lib/libtf.so
-/home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10neg: /opt/ros/kinetic/lib/libtf2_ros.so
-/home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10neg: /opt/ros/kinetic/lib/libactionlib.so
-/home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10neg: /opt/ros/kinetic/lib/libmessage_filters.so
-/home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10neg: /opt/ros/kinetic/lib/libroscpp.so
-/home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10neg: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
-/home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10neg: /usr/lib/x86_64-linux-gnu/libboost_signals.so
-/home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10neg: /opt/ros/kinetic/lib/libxmlrpcpp.so
-/home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10neg: /opt/ros/kinetic/lib/libtf2.so
-/home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10neg: /opt/ros/kinetic/lib/libroscpp_serialization.so
-/home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10neg: /opt/ros/kinetic/lib/librosconsole.so
-/home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10neg: /opt/ros/kinetic/lib/librosconsole_log4cxx.so
-/home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10neg: /opt/ros/kinetic/lib/librosconsole_backend_interface.so
-/home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10neg: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
-/home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10neg: /usr/lib/x86_64-linux-gnu/libboost_regex.so
-/home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10neg: /opt/ros/kinetic/lib/librostime.so
-/home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10neg: /opt/ros/kinetic/lib/libcpp_common.so
-/home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10neg: /usr/lib/x86_64-linux-gnu/libboost_system.so
-/home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10neg: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-/home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10neg: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
-/home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10neg: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-/home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10neg: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
-/home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10neg: /usr/lib/x86_64-linux-gnu/libpthread.so
-/home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10neg: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so
-/home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10neg: axon_link/CMakeFiles/testSerial10neg.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/eee/lingfei_ws/agv/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10neg"
-	cd /home/eee/lingfei_ws/agv/build/axon_link && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/testSerial10neg.dir/link.txt --verbose=$(VERBOSE)
+/home/eee/agv/devel/lib/axon_link/testSerial10neg: axon_link/CMakeFiles/testSerial10neg.dir/src/testSerial10neg.cpp.o
+/home/eee/agv/devel/lib/axon_link/testSerial10neg: axon_link/CMakeFiles/testSerial10neg.dir/build.make
+/home/eee/agv/devel/lib/axon_link/testSerial10neg: /home/eee/agv/devel/lib/libcereal_port.so
+/home/eee/agv/devel/lib/axon_link/testSerial10neg: /home/eee/agv/devel/lib/libserial.so
+/home/eee/agv/devel/lib/axon_link/testSerial10neg: /opt/ros/kinetic/lib/libtf.so
+/home/eee/agv/devel/lib/axon_link/testSerial10neg: /opt/ros/kinetic/lib/libtf2_ros.so
+/home/eee/agv/devel/lib/axon_link/testSerial10neg: /opt/ros/kinetic/lib/libactionlib.so
+/home/eee/agv/devel/lib/axon_link/testSerial10neg: /opt/ros/kinetic/lib/libmessage_filters.so
+/home/eee/agv/devel/lib/axon_link/testSerial10neg: /opt/ros/kinetic/lib/libroscpp.so
+/home/eee/agv/devel/lib/axon_link/testSerial10neg: /usr/lib/x86_64-linux-gnu/libboost_signals.so
+/home/eee/agv/devel/lib/axon_link/testSerial10neg: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+/home/eee/agv/devel/lib/axon_link/testSerial10neg: /opt/ros/kinetic/lib/libxmlrpcpp.so
+/home/eee/agv/devel/lib/axon_link/testSerial10neg: /opt/ros/kinetic/lib/libtf2.so
+/home/eee/agv/devel/lib/axon_link/testSerial10neg: /opt/ros/kinetic/lib/libroscpp_serialization.so
+/home/eee/agv/devel/lib/axon_link/testSerial10neg: /opt/ros/kinetic/lib/librosconsole.so
+/home/eee/agv/devel/lib/axon_link/testSerial10neg: /opt/ros/kinetic/lib/librosconsole_log4cxx.so
+/home/eee/agv/devel/lib/axon_link/testSerial10neg: /opt/ros/kinetic/lib/librosconsole_backend_interface.so
+/home/eee/agv/devel/lib/axon_link/testSerial10neg: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
+/home/eee/agv/devel/lib/axon_link/testSerial10neg: /usr/lib/x86_64-linux-gnu/libboost_regex.so
+/home/eee/agv/devel/lib/axon_link/testSerial10neg: /opt/ros/kinetic/lib/librostime.so
+/home/eee/agv/devel/lib/axon_link/testSerial10neg: /opt/ros/kinetic/lib/libcpp_common.so
+/home/eee/agv/devel/lib/axon_link/testSerial10neg: /usr/lib/x86_64-linux-gnu/libboost_system.so
+/home/eee/agv/devel/lib/axon_link/testSerial10neg: /usr/lib/x86_64-linux-gnu/libboost_thread.so
+/home/eee/agv/devel/lib/axon_link/testSerial10neg: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
+/home/eee/agv/devel/lib/axon_link/testSerial10neg: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+/home/eee/agv/devel/lib/axon_link/testSerial10neg: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
+/home/eee/agv/devel/lib/axon_link/testSerial10neg: /usr/lib/x86_64-linux-gnu/libpthread.so
+/home/eee/agv/devel/lib/axon_link/testSerial10neg: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so
+/home/eee/agv/devel/lib/axon_link/testSerial10neg: axon_link/CMakeFiles/testSerial10neg.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/eee/agv/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/eee/agv/devel/lib/axon_link/testSerial10neg"
+	cd /home/eee/agv/build/axon_link && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/testSerial10neg.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-axon_link/CMakeFiles/testSerial10neg.dir/build: /home/eee/lingfei_ws/agv/devel/lib/axon_link/testSerial10neg
+axon_link/CMakeFiles/testSerial10neg.dir/build: /home/eee/agv/devel/lib/axon_link/testSerial10neg
 
 .PHONY : axon_link/CMakeFiles/testSerial10neg.dir/build
 
@@ -129,10 +130,10 @@ axon_link/CMakeFiles/testSerial10neg.dir/requires: axon_link/CMakeFiles/testSeri
 .PHONY : axon_link/CMakeFiles/testSerial10neg.dir/requires
 
 axon_link/CMakeFiles/testSerial10neg.dir/clean:
-	cd /home/eee/lingfei_ws/agv/build/axon_link && $(CMAKE_COMMAND) -P CMakeFiles/testSerial10neg.dir/cmake_clean.cmake
+	cd /home/eee/agv/build/axon_link && $(CMAKE_COMMAND) -P CMakeFiles/testSerial10neg.dir/cmake_clean.cmake
 .PHONY : axon_link/CMakeFiles/testSerial10neg.dir/clean
 
 axon_link/CMakeFiles/testSerial10neg.dir/depend:
-	cd /home/eee/lingfei_ws/agv/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/eee/lingfei_ws/agv/src /home/eee/lingfei_ws/agv/src/axon_link /home/eee/lingfei_ws/agv/build /home/eee/lingfei_ws/agv/build/axon_link /home/eee/lingfei_ws/agv/build/axon_link/CMakeFiles/testSerial10neg.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/eee/agv/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/eee/agv/src /home/eee/agv/src/axon_link /home/eee/agv/build /home/eee/agv/build/axon_link /home/eee/agv/build/axon_link/CMakeFiles/testSerial10neg.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : axon_link/CMakeFiles/testSerial10neg.dir/depend
 

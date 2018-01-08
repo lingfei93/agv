@@ -6,5 +6,5 @@ CXX_FLAGS = -fPIC
 
 CXX_DEFINES = -DROS_BUILD_SHARED_LIBS=1 -Dserial_EXPORTS
 
-CXX_INCLUDES = -I/home/eee/lingfei_ws/agv/src/serial/include 
+CXX_INCLUDES = -I/home/eee/agv/src/serial/include 
 
