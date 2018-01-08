@@ -169,7 +169,7 @@ void usart_send(uint8_t* toSend)
         ROS_INFO("i broke at 3");
 		temp = toSend[0];
         ROS_INFO("i broke at 4");
-		ROS_INFO("%s this is tosend updated", temp/16,temp%16);
+		ROS_INFO("%d %d this is tosend updated", temp/16,temp%16);
 	}
 
 int main(int argc, char** argv)
