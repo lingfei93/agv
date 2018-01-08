@@ -168,8 +168,9 @@ void usart_send(uint8_t* toSend)
 		unsigned char temp;
         ROS_INFO("i broke at 3");
 		temp = toSend[0];
+        temp2 = toSend[1];
         ROS_INFO("i broke at 4");
-		ROS_INFO("%d %d this is tosend updated", temp/16,temp%16);
+		ROS_INFO("%d %d %d %d %d %d this is tosend updated", temp/16,temp%16, temp, temp2/16, temp2%16,temp2);
 	}
 
 int main(int argc, char** argv)
