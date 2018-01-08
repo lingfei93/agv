@@ -66,6 +66,15 @@ void usart_send(uint8_t* toSend)
 		ROS_INFO("%d %d %d %d this is tosend updated", temp/16,temp%16, temp, N);
 	}
 
+//format the reply so that it becomes nice
+void format(uint8_t* reply, int N){
+    for (int i = 0; i < N; i ++)
+        if(reply[i] == reply[i+11] == 0xff && reply[i+1] == reply[i+12] == 0xfe){
+            ROS_INFO("yes");
+        }
+
+}
+
 int main(int argc, char** argv)
 {
 
@@ -130,7 +139,7 @@ int main(int argc, char** argv)
 
 	
 	try{ device.read(reply, 44);
-    //format(reply);
+    format(reply, 44);
 	ROS_INFO("Successful Read without Write!");
 	for (int i =0; i < 43; i ++){
 	//ROS_INFO("%c", reply[i]);}
