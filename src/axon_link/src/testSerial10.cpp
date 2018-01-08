@@ -162,14 +162,13 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 
 void usart_send(uint8_t* toSend) 
 	{
-		ROS_INFO("i broke at 1");
+		
         device.write(toSend, 1);
-        ROS_INFO("i broke at 2");
-		unsigned char temp;
-        ROS_INFO("i broke at 3");
+        
+		unsigned char temp, temp2;
+        
 		temp = toSend[0];
         temp2 = toSend[1];
-        ROS_INFO("i broke at 4");
 		ROS_INFO("%d %d %d %d %d %d this is tosend updated", temp/16,temp%16, temp, temp2/16, temp2%16,temp2);
 	}
 
@@ -210,12 +209,7 @@ int main(int argc, char** argv)
     if(device.isOpen()){
         ROS_INFO("serial is successful");
     }
-    // try{ device.open(serial_port.c_str(), baud_rate); }
-    // catch(cereal::Exception& e)
-    // {
-    //     ROS_FATAL("Failed to open the AXON serial port!!!");
-    //     ROS_BREAK();
-    // }
+
 
     ROS_INFO("The AXON serial port is opened.");
     char send_speed1[] = { '0xFF', '0xFE', '2', '0', '72', '0', '0', '0', '44', '0x07', '\0'};
