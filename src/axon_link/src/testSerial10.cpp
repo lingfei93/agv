@@ -19,7 +19,7 @@ using namespace std;
 #define port "/dev/ttyUSB0"
 #define baud 115200
 
-void format(uint8_t* reply);
+void format(uint8_t* reply, int N);
 void usart_send(char* toSend);
 serial::Serial device(port, baud, serial::Timeout::simpleTimeout(1000));
 
@@ -37,7 +37,7 @@ void callback1(const ros::TimerEvent&)
     uint8_t temp;
     try{ device.read(reply, 44);
     ROS_INFO("Successful Read without Write!");
-    format(reply, 43)
+    format(reply, 43);
     for (int i =0; i < 43; i ++){
     //ROS_INFO("%c", reply[i]);}
     temp=reply[i];
