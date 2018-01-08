@@ -69,7 +69,7 @@ void usart_send(uint8_t* toSend)
 
 //format the reply so that it becomes nice. checks if the data is formatted properly. throws away the last set of 
     //data for now
-    //TODO: can we check if the last set of data can be read?
+    //TODO: can we check if the last set of data can be read?, actually i think it works for now!
 void format(uint8_t* reply, int N){
     int count = 0;
     for (int i = 0; i < N; i ++)
@@ -126,11 +126,11 @@ int main(int argc, char** argv)
     secondByte[0] = 0xFE;
     thirdByte[0] = 2;
     fourthByte[0] = 0;
-    fifthByte[0] = 0x06;
+    fifthByte[0] = 0x0D;
     sixthByte[0] = 0;
-    seventhByte[0] = 0x06;
+    seventhByte[0] = 0x0D;
     eigthByte[0] = 0;
-    ninthByte[0] = 0x06;
+    ninthByte[0] = 0x0D;
     tenthByte[0] = 0x00;
     ROS_INFO("I broke before here");
 
