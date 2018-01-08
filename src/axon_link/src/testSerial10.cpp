@@ -22,10 +22,8 @@ using namespace std;
 
 void usart_send(char* toSend);
 serial::Serial device(port, baud, serial::Timeout::simpleTimeout(1000));
-unsigned char reply[8];
-double x_pos; //y position
-double y_pos; //x position
-double theta; //rad
+
+
 int count_average = 0;
 double total_difference = 0;
 // char reply[9];
@@ -37,7 +35,7 @@ void callback1(const ros::TimerEvent&)
 {
     uint8_t reply[40];
     uint8_t temp;
-    try{ device.read(reply, 100);
+    try{ device.read(reply, 40);
     ROS_INFO("Successful Read without Write!");
     for (int i =0; i < 40; i ++){
     //ROS_INFO("%c", reply[i]);}
