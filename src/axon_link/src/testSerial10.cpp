@@ -19,7 +19,7 @@ using namespace std;
 #define port "/dev/ttyUSB0"
 #define baud 115200
 
-
+void format(uint8_t* reply);
 void usart_send(char* toSend);
 serial::Serial device(port, baud, serial::Timeout::simpleTimeout(1000));
 
