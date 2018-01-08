@@ -78,7 +78,7 @@ void format(uint8_t* reply, int N){
         count = count + 1;
         for (int j = 0; j < 11; j ++){
 
-        printf("0x%d%d\n", reply[j]/16, reply[j] % 16);
+        printf("0x%d%d\n", reply[i+j]/16, reply[i+j] % 16);
         }
         }
 
