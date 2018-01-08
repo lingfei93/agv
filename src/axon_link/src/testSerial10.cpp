@@ -33,11 +33,11 @@ double total_difference = 0;
 
 void callback1(const ros::TimerEvent&)
 {
-    uint8_t reply[44];
+    uint8_t reply[43];
     uint8_t temp;
-    try{ device.read(reply, 44);
+    try{ device.read(reply, 43);
     ROS_INFO("Successful Read without Write!");
-    for (int i =0; i < 44; i ++){
+    for (int i =0; i < 43; i ++){
     //ROS_INFO("%c", reply[i]);}
     temp=reply[i];
     printf("0x%d%d\n", temp/16, temp % 16);
@@ -73,7 +73,7 @@ int main(int argc, char** argv)
     ros::NodeHandle n;
 
 
-	uint8_t reply[44];
+	uint8_t reply[43];
 	
 
 
@@ -129,9 +129,9 @@ int main(int argc, char** argv)
 
 
 	
-	try{ device.read(reply, 44);
+	try{ device.read(reply, 43);
 	ROS_INFO("Successful Read without Write!");
-	for (int i =0; i < 44; i ++){
+	for (int i =0; i < 43; i ++){
 	//ROS_INFO("%c", reply[i]);}
     temp=reply[i];
 	printf("0x%d%d\n", temp/16, temp % 16);
