@@ -130,7 +130,7 @@ int main(int argc, char** argv)
 
 	
 	try{ device.read(reply, 44);
-    format(reply);
+    //format(reply);
 	ROS_INFO("Successful Read without Write!");
 	for (int i =0; i < 43; i ++){
 	//ROS_INFO("%c", reply[i]);}
