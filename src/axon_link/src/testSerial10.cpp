@@ -117,7 +117,7 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	// e = device.read(reply, LENGTH, TIMEOUT);
 	// cout << e << endl;
 
-	try{ device.read(reply, LENGTH, TIMEOUT);
+	try{ device.read(reply, LENGTH);
 
         if(LENGTH == 9){
             left_ec=0;
@@ -164,7 +164,7 @@ void usart_send(uint8_t* toSend)
 	{
 		device.write(toSend, 1);
 		unsigned char temp;
-		temp = toSend;
+		temp = toSend[0];
 		ROS_INFO("%s this is tosend updated", temp/16,temp%16);
 	}
 
