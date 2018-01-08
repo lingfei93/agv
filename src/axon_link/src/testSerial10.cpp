@@ -37,6 +37,7 @@ void callback1(const ros::TimerEvent&)
     uint8_t temp;
     try{ device.read(reply, 44);
     ROS_INFO("Successful Read without Write!");
+    format(reply, 43)
     for (int i =0; i < 43; i ++){
     //ROS_INFO("%c", reply[i]);}
     temp=reply[i];
@@ -69,7 +70,7 @@ void usart_send(uint8_t* toSend)
 //format the reply so that it becomes nice
 void format(uint8_t* reply, int N){
     for (int i = 0; i < N; i ++)
-        if(reply[i] == reply[i+11] == 0xff && reply[i+1] == reply[i+12] == 0xfe){
+        if(reply[i] == reply[i+11]){
             ROS_INFO("yes");
         }
 
