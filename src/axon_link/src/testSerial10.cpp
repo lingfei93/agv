@@ -160,9 +160,9 @@ void commandSend(unsigned char a, unsigned char b, unsigned char c){
 	ROS_INFO("I'm trying to write");
 }
 
-void usart_send(char* toSend) 
+void usart_send(unsigned uint8_t* toSend) 
 	{
-		device.write(toSend, 2);
+		device.write(toSend, 1);
 		unsigned char temp;
 		temp = toSend;
 		ROS_INFO("%s this is tosend updated", temp/16,temp%16);
@@ -188,7 +188,7 @@ int main(int argc, char** argv)
     bool oneshot = true;
     int i;
     int baud_rate=0;
-	unsigned char temp;
+	unsigned uint8_t temp;
     std::string serial_port;
 
     serial_port = "/dev/ttyUSB0";
@@ -215,7 +215,7 @@ int main(int argc, char** argv)
     ROS_INFO("The AXON serial port is opened.");
     char send_speed1[] = { '0xFF', '0xFE', '2', '0', '72', '0', '0', '0', '44', '0x07', '\0'};
     ros::Rate r(10);
-    char firstByte[2];
+    unsigned uint8_t firstByte[2];
     firstByte[0] = '0xFF';
     firstByte[1] = '\0';
     char secondByte[] = {'0xff'};
