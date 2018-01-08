@@ -72,8 +72,7 @@ int main(int argc, char** argv)
     ROS_INFO("I get BaudRate: %d", baud);
 
   
-    updateOdometry(0, 0, false);
-    getOdometry(); //get the odometry
+
     // Change the next line according to your port name and baud rate
     if(device.isOpen()){
         ROS_INFO("serial is successful");
