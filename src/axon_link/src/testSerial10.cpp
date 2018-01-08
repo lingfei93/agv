@@ -38,12 +38,12 @@ void callback1(const ros::TimerEvent&)
     try{ device.read(reply, 44);
     ROS_INFO("Successful Read without Write!");
     format(reply, 43);
-    for (int i =0; i < 43; i ++){
-    //ROS_INFO("%c", reply[i]);}
-    temp=reply[i];
-    printf("0x%d%d\n", temp/16, temp % 16);
+    // for (int i =0; i < 43; i ++){
+    // //ROS_INFO("%c", reply[i]);}
+    // temp=reply[i];
+    // printf("0x%d%d\n", temp/16, temp % 16);
 
-    }
+    // }
     }
 
     catch(exception& e)
@@ -67,11 +67,18 @@ void usart_send(uint8_t* toSend)
 		ROS_INFO("%d %d %d %d this is tosend updated", temp/16,temp%16, temp, N);
 	}
 
-//format the reply so that it becomes nice
+//format the reply so that it becomes nice. checks if the data is formatted properly. throws away the last set of 
+    //data for now
+    //TODO: can we check if the last set of data can be read?
 void format(uint8_t* reply, int N){
+    int count = 0;
     for (int i = 0; i < N; i ++)
-        if(reply[i] == 0xfe && reply[i+11] == 0xfe){
-            ROS_INFO("yes");
+        if(reply[i] == 0xff && reply[i+11] == 0xff && reply[i+1] ==0xfe && reply[i+12] == 0xfe){
+        ROS_INFO("%d set of data", count + 1);
+        for (int j = 0; j < 11; j ++){
+
+        printf("0x%d%d\n", reply[j]/16, reply[j] % 16);
+        }
         }
 
 }
@@ -142,12 +149,12 @@ int main(int argc, char** argv)
 	try{ device.read(reply, 44);
     format(reply, 43);
 	ROS_INFO("Successful Read without Write!");
-	for (int i =0; i < 43; i ++){
-	//ROS_INFO("%c", reply[i]);}
-    temp=reply[i];
-	printf("0x%d%d\n", temp/16, temp % 16);
+	// for (int i =0; i < 43; i ++){
+	// //ROS_INFO("%c", reply[i]);}
+ //    temp=reply[i];
+	// printf("0x%d%d\n", temp/16, temp % 16);
 
-	}
+	// }
 	}
 
 	catch(exception& e)
