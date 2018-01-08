@@ -180,7 +180,7 @@ int main(int argc, char** argv)
     
 
 
-	char reply[40];
+	uint8_t reply[40];
 	
     // rm.L=AXON_ROBOT_L;
     // rm.r=AXON_ROBOT_R;
