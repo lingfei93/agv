@@ -215,7 +215,7 @@ int main(int argc, char** argv)
     char send_speed1[] = { '0xFF', '0xFE', '2', '0', '72', '0', '0', '0', '44', '0x07', '\0'};
     ros::Rate r(10);
     uint8_t firstByte[2];
-    firstByte[0] = '0xFF';
+    firstByte[0] = 0xFF;
     firstByte[1] = '\0';
     char secondByte[] = {'0xff'};
     ROS_INFO("I broke before here");
