@@ -6,7 +6,7 @@
 #include <axon_link/Taobot.h>
 
 using namespace std;
-void chatterCallback(const std_msgs::String::ConstPtr& msg)
+void chatterCallback(const axon_link::Taobot::ConstPtr& msg)
 {
   ROS_INFO("I heard: [%d %d %d %d %d %d %d]", msg.motorA_encoder, msg.motorA_dir, msg.motorB_encoder, msg.motorB_dir, msg.motorC_encoder, msg.motorC_dir, voltage);
 }
