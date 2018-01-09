@@ -3,6 +3,7 @@
 #include <iostream>
 #include <math.h>
 #include "serial/serial.h"
+#include "msg/Taobot.h"
 
 using namespace std;
 
