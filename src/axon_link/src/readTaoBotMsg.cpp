@@ -18,7 +18,7 @@ int main(int argc, char **argv){
 
 
 
-	ros::Subscriber sub = n.subscribe("taobot_listener", 1000, taobotCallback);
+	ros::Subscriber sub = n.subscribe("taobot_listener", 1000, taoBotCallback);
 
 
 	ros::spin();
