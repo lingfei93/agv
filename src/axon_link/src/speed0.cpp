@@ -23,7 +23,7 @@ using namespace std;
 void format(uint8_t* reply, int N);
 void usart_send(char* toSend);
 serial::Serial device(port, baud, serial::Timeout::simpleTimeout(1000));
-
+ros::Publisher taobot_pub = n.advertise<axon_link::Taobot>("taobot_listener", 1000);
 
 int count_average = 0;
 double total_difference = 0;
@@ -87,6 +87,7 @@ void format(uint8_t* reply, int N){
         msg.motorC_encoder = reply[i+6];
         msg.motorC_dir     = reply[i+7];
         msg.voltage        = reply[i+10];
+        taobot_pub.publish(msg);
         for (int j = 0; j < 11; j ++){
 
         printf("0x%d%d\n", reply[i+j]/16, reply[i+j] % 16);
@@ -102,7 +103,7 @@ int main(int argc, char** argv)
     ros::NodeHandle n;
 
 
-    ros::Publisher taobot_pub = n.advertise<axon_link::Taobot>("taobot_listener", 1000);
+    
 
     ros::Rate loop_rate(5);
     while (ros::ok()){
