@@ -23,7 +23,7 @@ using namespace std;
 void format(uint8_t* reply, int N);
 void usart_send(char* toSend);
 serial::Serial device(port, baud, serial::Timeout::simpleTimeout(1000));
-ros::Publisher taobot_pub = n.advertise<axon_link::Taobot>("taobot_listener", 1000);
+ros::Publisher taobot_pub;
 
 int count_average = 0;
 double total_difference = 0;
@@ -102,7 +102,7 @@ int main(int argc, char** argv)
     ros::init(argc, argv, "Taobot_Info");
     ros::NodeHandle n;
 
-
+    taobot_pub = n.advertise<axon_link::Taobot>("taobot_listener", 1000);
     
 
     ros::Rate loop_rate(5);
