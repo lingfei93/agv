@@ -74,7 +74,7 @@ void usart_send(uint8_t* toSend)
 void format(uint8_t* reply, int N){
     int count = 0;
     axon_link::Taobot msg;
-    msg.motorA = 1;
+    msg.motorD = 1;
     for (int i = 0; i < N; i ++)
         if(reply[i] == 0xff && reply[i+11] == 0xff && reply[i+1] ==0xfe && reply[i+12] == 0xfe){
         ROS_INFO("%d set of data, i is %d", count + 1, i);
