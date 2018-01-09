@@ -4,6 +4,7 @@
 #include <math.h>
 #include "serial/serial.h"
 #include <axon_link/Taobot.h>
+void taoBotCallback(const axon_link::Taobot::ConstPtr& msg);
 
 using namespace std;
 void taoBotCallback(const axon_link::Taobot::ConstPtr& msg)
