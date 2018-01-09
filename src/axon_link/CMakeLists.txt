@@ -49,11 +49,11 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files( 
-#    FILES
-#    AxonApp.msg
+ add_message_files( 
+    FILES
+    Taobot.msg
 #    AxonNode.msg
-# )
+ )
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -72,6 +72,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate added messages and services with any dependencies listed here
 generate_messages(
    DEPENDENCIES
+   std_msgs
 )
 
 ################################################
@@ -106,7 +107,7 @@ generate_messages(
 catkin_package(
   #INCLUDE_DIRS include
   #LIBRARIES axon_link
-  #CATKIN_DEPENDS cereal_port geometry_msgs roscpp rospy std_msgs tf serial
+  CATKIN_DEPENDS cereal_port geometry_msgs roscpp rospy std_msgs tf serial message_runtime
   #DEPENDS system_lib
 )
 
