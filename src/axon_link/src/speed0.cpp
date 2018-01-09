@@ -73,6 +73,8 @@ void usart_send(uint8_t* toSend)
     //TODO: can we check if the last set of data can be read?, actually i think it works for now!
 void format(uint8_t* reply, int N){
     int count = 0;
+    axon_link::Taobot msg;
+    msg.motorA = 1;
     for (int i = 0; i < N; i ++)
         if(reply[i] == 0xff && reply[i+11] == 0xff && reply[i+1] ==0xfe && reply[i+12] == 0xfe){
         ROS_INFO("%d set of data, i is %d", count + 1, i);
@@ -94,6 +96,8 @@ int main(int argc, char** argv)
 
     ros::Publisher taobot_pub = n.advertise<axon_link::Taobot>("taobot_listener", 1000);
 
+    ros::Rate loop_rate(5);
+    while (ros::ok()){
 	uint8_t reply[44];
 	
 
@@ -171,6 +175,6 @@ int main(int argc, char** argv)
     //ros::Timer timer2 = n.createTimer(ros::Duration(1.0), callback2);
     
     ros::spin();
-
+    }
     
 }
