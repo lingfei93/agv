@@ -9,7 +9,9 @@ void taoBotCallback(const axon_link::Taobot::ConstPtr& msg);
 using namespace std;
 void taoBotCallback(const axon_link::Taobot::ConstPtr& msg)
 {
-  ROS_INFO("I heard: [%d %d %d %d %d %d %d]", msg.motorA_encoder, msg.motorA_dir, msg.motorB_encoder, msg.motorB_dir, msg.motorC_encoder, msg.motorC_dir, msg.voltage);
+  ROS_INFO("I heard: [%d %d %d %d %d %d %d]", msg->data.motorA_encoder, msg->data.motorA_dir, 
+  	msg->data.motorB_encoder, msg->data.motorB_dir, msg->data.motorC_encoder, 
+  	msg->data.motorC_dir, msg->data.voltage);
 }
 
 int main(int argc, char **argv){
