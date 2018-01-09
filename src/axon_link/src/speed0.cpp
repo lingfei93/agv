@@ -88,9 +88,11 @@ void format(uint8_t* reply, int N){
 int main(int argc, char** argv)
 {
 
-    ros::init(argc, argv, "axon_link_node");
+    ros::init(argc, argv, "Taobot_Info");
     ros::NodeHandle n;
 
+
+    ros::Publisher taobot_pub = n.advertise<axon_link::Taobot>("taobot_listener", 1000);
 
 	uint8_t reply[44];
 	
