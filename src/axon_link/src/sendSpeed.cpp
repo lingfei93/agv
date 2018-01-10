@@ -172,11 +172,11 @@ uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double 
     toSend[3] = 0;
     toSend[4] = motorA_speed * 0xf;
     toSend[5] = 0;
-    toSend[6] = motorC_speed * 0xf;
+    toSend[6] = motorB_speed * 0xf;
 
     toSend[7] = 0;
     
-    toSend[8] = motorB_speed * 0xf; 
+    toSend[8] = motorC_speed * 0xf; 
 
     toSend[9] = count;
     ROS_INFO("broke here2");
