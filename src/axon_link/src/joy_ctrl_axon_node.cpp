@@ -58,6 +58,7 @@ void CTRL_OUT(double V, double W)
 
 void JoySubCallback(const sensor_msgs::Joy::ConstPtr& joy_msg)
 {
+    ROS_INFO("testing2");
     int i;
     double joy_axes[8];
     double joy_buttons[11];
@@ -89,7 +90,7 @@ void JoySubCallback(const sensor_msgs::Joy::ConstPtr& joy_msg)
 int main(int argc, char** argv)
 {
     int i;
-
+    ROS_INFO("testing");
     ros::init(argc, argv, "joy_ctrl_axon_node");
     ros::NodeHandle n;
 
