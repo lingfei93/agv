@@ -8,5 +8,5 @@ int main()
   m(1,0) = 2.5;
   m(0,1) = -1;
   m(1,1) = m(1,0) + m(0,1);
-  std::cout << m.inverse() << std::endl;
+  std::cout << m << std::endl;
 }
