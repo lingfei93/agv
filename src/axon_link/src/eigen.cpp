@@ -20,5 +20,5 @@ int main()
   m(2,0) = radius*paramB/lengthToCenter;
   m(2,1) = radius*paramB/lengthToCenter;
   m(2,2) = radius*paramB/lengthToCenter;
-  std::cout << m.inverse() << std::endl;
+  std::cout << m << std::endl;
 }
