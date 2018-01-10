@@ -10,6 +10,10 @@ int main()
   paramB = 1/sqrt(9);
   lengthToCenter = 26.3;
   MatrixXd m(3,3);
+  MatrixXd c(3,1);
+  c(0,0) = 1;
+  c(1,0) = 2;
+  c(2,0) = 3;
   m(0,0) = 1/3;
   
   m(0,1) = -paramA*radius;
@@ -21,4 +25,8 @@ int main()
   m(2,1) = radius*paramB/lengthToCenter;
   m(2,2) = radius*paramB/lengthToCenter;
   std::cout << m.inverse() << std::endl;
+  e = c * m;
+  std::cout << e << std::endl;
+
+  std::cout << c << std::endl;
 }
