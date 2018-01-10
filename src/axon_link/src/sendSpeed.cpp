@@ -288,7 +288,7 @@ int main(int argc, char** argv)
     }
 	ROS_INFO("reached here too");
     //comment out this first so i dont keep finding reply
-    ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1);           //keep calling 1 and 3
+    //ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1);           //keep calling 1 and 3
     //ros::Timer timer2 = n.createTimer(ros::Duration(1.0), callback2);
     ROS_INFO("reached here 1");
     ros::spin();
