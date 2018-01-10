@@ -113,10 +113,11 @@ void sendCommand(uint8_t* arrayToSend, int length){
 
 uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double angle){
     
-
+    uint8_t toSend[10];
     double radius, lengthToCenter, paramA, paramB;
     double motorA_speed, motorB_speed, motorC_speed, max;
     int count;
+
     radius = 5;
     paramA = 1/sqrt(3);
     paramB = 1/sqrt(9);
@@ -180,7 +181,7 @@ void cmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel){
     double v_cmd = cmd_vel->linear.x;
     double   w_cmd = cmd_vel->angular.z;
     uint8_t* arrayToSend;
-    arrayToSend = changeToOmniSpeed(v_cmd, w_cmd);
+    arrayToSend = changeToOmniSpeed(v_cmd, w_cmd, 0);
     sendCommand(arrayToSend, 10);
 }
 
