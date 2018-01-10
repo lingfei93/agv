@@ -241,6 +241,36 @@ testSerial10neg/fast:
 .PHONY : testSerial10neg/fast
 
 # Convenience name for target.
+axon_link/CMakeFiles/testSerial30.dir/rule:
+	cd /home/eee/agv/build && $(MAKE) -f CMakeFiles/Makefile2 axon_link/CMakeFiles/testSerial30.dir/rule
+.PHONY : axon_link/CMakeFiles/testSerial30.dir/rule
+
+# Convenience name for target.
+testSerial30: axon_link/CMakeFiles/testSerial30.dir/rule
+
+.PHONY : testSerial30
+
+# fast build rule for target.
+testSerial30/fast:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/testSerial30.dir/build.make axon_link/CMakeFiles/testSerial30.dir/build
+.PHONY : testSerial30/fast
+
+# Convenience name for target.
+axon_link/CMakeFiles/testSerial10.dir/rule:
+	cd /home/eee/agv/build && $(MAKE) -f CMakeFiles/Makefile2 axon_link/CMakeFiles/testSerial10.dir/rule
+.PHONY : axon_link/CMakeFiles/testSerial10.dir/rule
+
+# Convenience name for target.
+testSerial10: axon_link/CMakeFiles/testSerial10.dir/rule
+
+.PHONY : testSerial10
+
+# fast build rule for target.
+testSerial10/fast:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/testSerial10.dir/build.make axon_link/CMakeFiles/testSerial10.dir/build
+.PHONY : testSerial10/fast
+
+# Convenience name for target.
 axon_link/CMakeFiles/axon_link_generate_messages_py.dir/rule:
 	cd /home/eee/agv/build && $(MAKE) -f CMakeFiles/Makefile2 axon_link/CMakeFiles/axon_link_generate_messages_py.dir/rule
 .PHONY : axon_link/CMakeFiles/axon_link_generate_messages_py.dir/rule
@@ -269,21 +299,6 @@ actionlib_generate_messages_py: axon_link/CMakeFiles/actionlib_generate_messages
 actionlib_generate_messages_py/fast:
 	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/actionlib_generate_messages_py.dir/build.make axon_link/CMakeFiles/actionlib_generate_messages_py.dir/build
 .PHONY : actionlib_generate_messages_py/fast
-
-# Convenience name for target.
-axon_link/CMakeFiles/axon_link_generate_messages_nodejs.dir/rule:
-	cd /home/eee/agv/build && $(MAKE) -f CMakeFiles/Makefile2 axon_link/CMakeFiles/axon_link_generate_messages_nodejs.dir/rule
-.PHONY : axon_link/CMakeFiles/axon_link_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-axon_link_generate_messages_nodejs: axon_link/CMakeFiles/axon_link_generate_messages_nodejs.dir/rule
-
-.PHONY : axon_link_generate_messages_nodejs
-
-# fast build rule for target.
-axon_link_generate_messages_nodejs/fast:
-	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/axon_link_generate_messages_nodejs.dir/build.make axon_link/CMakeFiles/axon_link_generate_messages_nodejs.dir/build
-.PHONY : axon_link_generate_messages_nodejs/fast
 
 # Convenience name for target.
 axon_link/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule:
@@ -391,6 +406,51 @@ tf_generate_messages_cpp/fast:
 .PHONY : tf_generate_messages_cpp/fast
 
 # Convenience name for target.
+axon_link/CMakeFiles/testSerial60neg.dir/rule:
+	cd /home/eee/agv/build && $(MAKE) -f CMakeFiles/Makefile2 axon_link/CMakeFiles/testSerial60neg.dir/rule
+.PHONY : axon_link/CMakeFiles/testSerial60neg.dir/rule
+
+# Convenience name for target.
+testSerial60neg: axon_link/CMakeFiles/testSerial60neg.dir/rule
+
+.PHONY : testSerial60neg
+
+# fast build rule for target.
+testSerial60neg/fast:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/testSerial60neg.dir/build.make axon_link/CMakeFiles/testSerial60neg.dir/build
+.PHONY : testSerial60neg/fast
+
+# Convenience name for target.
+axon_link/CMakeFiles/testSerial40.dir/rule:
+	cd /home/eee/agv/build && $(MAKE) -f CMakeFiles/Makefile2 axon_link/CMakeFiles/testSerial40.dir/rule
+.PHONY : axon_link/CMakeFiles/testSerial40.dir/rule
+
+# Convenience name for target.
+testSerial40: axon_link/CMakeFiles/testSerial40.dir/rule
+
+.PHONY : testSerial40
+
+# fast build rule for target.
+testSerial40/fast:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/testSerial40.dir/build.make axon_link/CMakeFiles/testSerial40.dir/build
+.PHONY : testSerial40/fast
+
+# Convenience name for target.
+axon_link/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/eee/agv/build && $(MAKE) -f CMakeFiles/Makefile2 axon_link/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
+.PHONY : axon_link/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+geometry_msgs_generate_messages_nodejs: axon_link/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : geometry_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+geometry_msgs_generate_messages_nodejs/fast:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make axon_link/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
+.PHONY : geometry_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
 axon_link/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule:
 	cd /home/eee/agv/build && $(MAKE) -f CMakeFiles/Makefile2 axon_link/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
 .PHONY : axon_link/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
@@ -434,6 +494,21 @@ tf2_msgs_generate_messages_nodejs: axon_link/CMakeFiles/tf2_msgs_generate_messag
 tf2_msgs_generate_messages_nodejs/fast:
 	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/build.make axon_link/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/build
 .PHONY : tf2_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+axon_link/CMakeFiles/joy_ctrl_axon_node.dir/rule:
+	cd /home/eee/agv/build && $(MAKE) -f CMakeFiles/Makefile2 axon_link/CMakeFiles/joy_ctrl_axon_node.dir/rule
+.PHONY : axon_link/CMakeFiles/joy_ctrl_axon_node.dir/rule
+
+# Convenience name for target.
+joy_ctrl_axon_node: axon_link/CMakeFiles/joy_ctrl_axon_node.dir/rule
+
+.PHONY : joy_ctrl_axon_node
+
+# fast build rule for target.
+joy_ctrl_axon_node/fast:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/joy_ctrl_axon_node.dir/build.make axon_link/CMakeFiles/joy_ctrl_axon_node.dir/build
+.PHONY : joy_ctrl_axon_node/fast
 
 # Convenience name for target.
 axon_link/CMakeFiles/axon_link_generate_messages_lisp.dir/rule:
@@ -601,21 +676,6 @@ tf_generate_messages_eus/fast:
 .PHONY : tf_generate_messages_eus/fast
 
 # Convenience name for target.
-axon_link/CMakeFiles/testSerial10.dir/rule:
-	cd /home/eee/agv/build && $(MAKE) -f CMakeFiles/Makefile2 axon_link/CMakeFiles/testSerial10.dir/rule
-.PHONY : axon_link/CMakeFiles/testSerial10.dir/rule
-
-# Convenience name for target.
-testSerial10: axon_link/CMakeFiles/testSerial10.dir/rule
-
-.PHONY : testSerial10
-
-# fast build rule for target.
-testSerial10/fast:
-	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/testSerial10.dir/build.make axon_link/CMakeFiles/testSerial10.dir/build
-.PHONY : testSerial10/fast
-
-# Convenience name for target.
 axon_link/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule:
 	cd /home/eee/agv/build && $(MAKE) -f CMakeFiles/Makefile2 axon_link/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
 .PHONY : axon_link/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
@@ -659,6 +719,21 @@ tf_generate_messages_nodejs: axon_link/CMakeFiles/tf_generate_messages_nodejs.di
 tf_generate_messages_nodejs/fast:
 	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/tf_generate_messages_nodejs.dir/build.make axon_link/CMakeFiles/tf_generate_messages_nodejs.dir/build
 .PHONY : tf_generate_messages_nodejs/fast
+
+# Convenience name for target.
+axon_link/CMakeFiles/speed0.dir/rule:
+	cd /home/eee/agv/build && $(MAKE) -f CMakeFiles/Makefile2 axon_link/CMakeFiles/speed0.dir/rule
+.PHONY : axon_link/CMakeFiles/speed0.dir/rule
+
+# Convenience name for target.
+speed0: axon_link/CMakeFiles/speed0.dir/rule
+
+.PHONY : speed0
+
+# fast build rule for target.
+speed0/fast:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/speed0.dir/build.make axon_link/CMakeFiles/speed0.dir/build
+.PHONY : speed0/fast
 
 # Convenience name for target.
 axon_link/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule:
@@ -719,6 +794,21 @@ actionlib_msgs_generate_messages_lisp: axon_link/CMakeFiles/actionlib_msgs_gener
 actionlib_msgs_generate_messages_lisp/fast:
 	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build.make axon_link/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build
 .PHONY : actionlib_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+axon_link/CMakeFiles/readTaoBotMsg.dir/rule:
+	cd /home/eee/agv/build && $(MAKE) -f CMakeFiles/Makefile2 axon_link/CMakeFiles/readTaoBotMsg.dir/rule
+.PHONY : axon_link/CMakeFiles/readTaoBotMsg.dir/rule
+
+# Convenience name for target.
+readTaoBotMsg: axon_link/CMakeFiles/readTaoBotMsg.dir/rule
+
+.PHONY : readTaoBotMsg
+
+# fast build rule for target.
+readTaoBotMsg/fast:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/readTaoBotMsg.dir/build.make axon_link/CMakeFiles/readTaoBotMsg.dir/build
+.PHONY : readTaoBotMsg/fast
 
 # Convenience name for target.
 axon_link/CMakeFiles/testSerial50.dir/rule:
@@ -809,6 +899,21 @@ axon_link_generate_messages: axon_link/CMakeFiles/axon_link_generate_messages.di
 axon_link_generate_messages/fast:
 	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/axon_link_generate_messages.dir/build.make axon_link/CMakeFiles/axon_link_generate_messages.dir/build
 .PHONY : axon_link_generate_messages/fast
+
+# Convenience name for target.
+axon_link/CMakeFiles/_axon_link_generate_messages_check_deps_Taobot.dir/rule:
+	cd /home/eee/agv/build && $(MAKE) -f CMakeFiles/Makefile2 axon_link/CMakeFiles/_axon_link_generate_messages_check_deps_Taobot.dir/rule
+.PHONY : axon_link/CMakeFiles/_axon_link_generate_messages_check_deps_Taobot.dir/rule
+
+# Convenience name for target.
+_axon_link_generate_messages_check_deps_Taobot: axon_link/CMakeFiles/_axon_link_generate_messages_check_deps_Taobot.dir/rule
+
+.PHONY : _axon_link_generate_messages_check_deps_Taobot
+
+# fast build rule for target.
+_axon_link_generate_messages_check_deps_Taobot/fast:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/_axon_link_generate_messages_check_deps_Taobot.dir/build.make axon_link/CMakeFiles/_axon_link_generate_messages_check_deps_Taobot.dir/build
+.PHONY : _axon_link_generate_messages_check_deps_Taobot/fast
 
 # Convenience name for target.
 axon_link/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/rule:
@@ -931,64 +1036,142 @@ axon_link_genpy/fast:
 .PHONY : axon_link_genpy/fast
 
 # Convenience name for target.
-axon_link/CMakeFiles/testSerial30.dir/rule:
-	cd /home/eee/agv/build && $(MAKE) -f CMakeFiles/Makefile2 axon_link/CMakeFiles/testSerial30.dir/rule
-.PHONY : axon_link/CMakeFiles/testSerial30.dir/rule
+axon_link/CMakeFiles/axon_link_generate_messages_nodejs.dir/rule:
+	cd /home/eee/agv/build && $(MAKE) -f CMakeFiles/Makefile2 axon_link/CMakeFiles/axon_link_generate_messages_nodejs.dir/rule
+.PHONY : axon_link/CMakeFiles/axon_link_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-testSerial30: axon_link/CMakeFiles/testSerial30.dir/rule
+axon_link_generate_messages_nodejs: axon_link/CMakeFiles/axon_link_generate_messages_nodejs.dir/rule
 
-.PHONY : testSerial30
+.PHONY : axon_link_generate_messages_nodejs
 
 # fast build rule for target.
-testSerial30/fast:
-	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/testSerial30.dir/build.make axon_link/CMakeFiles/testSerial30.dir/build
-.PHONY : testSerial30/fast
+axon_link_generate_messages_nodejs/fast:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/axon_link_generate_messages_nodejs.dir/build.make axon_link/CMakeFiles/axon_link_generate_messages_nodejs.dir/build
+.PHONY : axon_link_generate_messages_nodejs/fast
 
 # Convenience name for target.
-axon_link/CMakeFiles/testSerial60neg.dir/rule:
-	cd /home/eee/agv/build && $(MAKE) -f CMakeFiles/Makefile2 axon_link/CMakeFiles/testSerial60neg.dir/rule
-.PHONY : axon_link/CMakeFiles/testSerial60neg.dir/rule
+axon_link/CMakeFiles/speedP.dir/rule:
+	cd /home/eee/agv/build && $(MAKE) -f CMakeFiles/Makefile2 axon_link/CMakeFiles/speedP.dir/rule
+.PHONY : axon_link/CMakeFiles/speedP.dir/rule
 
 # Convenience name for target.
-testSerial60neg: axon_link/CMakeFiles/testSerial60neg.dir/rule
+speedP: axon_link/CMakeFiles/speedP.dir/rule
 
-.PHONY : testSerial60neg
+.PHONY : speedP
 
 # fast build rule for target.
-testSerial60neg/fast:
-	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/testSerial60neg.dir/build.make axon_link/CMakeFiles/testSerial60neg.dir/build
-.PHONY : testSerial60neg/fast
+speedP/fast:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/speedP.dir/build.make axon_link/CMakeFiles/speedP.dir/build
+.PHONY : speedP/fast
 
-# Convenience name for target.
-axon_link/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/eee/agv/build && $(MAKE) -f CMakeFiles/Makefile2 axon_link/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
-.PHONY : axon_link/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
+src/joy_ctrl_axon_node.o: src/joy_ctrl_axon_node.cpp.o
 
-# Convenience name for target.
-geometry_msgs_generate_messages_nodejs: axon_link/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
+.PHONY : src/joy_ctrl_axon_node.o
 
-.PHONY : geometry_msgs_generate_messages_nodejs
+# target to build an object file
+src/joy_ctrl_axon_node.cpp.o:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/joy_ctrl_axon_node.dir/build.make axon_link/CMakeFiles/joy_ctrl_axon_node.dir/src/joy_ctrl_axon_node.cpp.o
+.PHONY : src/joy_ctrl_axon_node.cpp.o
 
-# fast build rule for target.
-geometry_msgs_generate_messages_nodejs/fast:
-	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make axon_link/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
-.PHONY : geometry_msgs_generate_messages_nodejs/fast
+src/joy_ctrl_axon_node.i: src/joy_ctrl_axon_node.cpp.i
 
-# Convenience name for target.
-axon_link/CMakeFiles/testSerial40.dir/rule:
-	cd /home/eee/agv/build && $(MAKE) -f CMakeFiles/Makefile2 axon_link/CMakeFiles/testSerial40.dir/rule
-.PHONY : axon_link/CMakeFiles/testSerial40.dir/rule
+.PHONY : src/joy_ctrl_axon_node.i
 
-# Convenience name for target.
-testSerial40: axon_link/CMakeFiles/testSerial40.dir/rule
+# target to preprocess a source file
+src/joy_ctrl_axon_node.cpp.i:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/joy_ctrl_axon_node.dir/build.make axon_link/CMakeFiles/joy_ctrl_axon_node.dir/src/joy_ctrl_axon_node.cpp.i
+.PHONY : src/joy_ctrl_axon_node.cpp.i
 
-.PHONY : testSerial40
+src/joy_ctrl_axon_node.s: src/joy_ctrl_axon_node.cpp.s
 
-# fast build rule for target.
-testSerial40/fast:
-	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/testSerial40.dir/build.make axon_link/CMakeFiles/testSerial40.dir/build
-.PHONY : testSerial40/fast
+.PHONY : src/joy_ctrl_axon_node.s
+
+# target to generate assembly for a file
+src/joy_ctrl_axon_node.cpp.s:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/joy_ctrl_axon_node.dir/build.make axon_link/CMakeFiles/joy_ctrl_axon_node.dir/src/joy_ctrl_axon_node.cpp.s
+.PHONY : src/joy_ctrl_axon_node.cpp.s
+
+src/readTaoBotMsg.o: src/readTaoBotMsg.cpp.o
+
+.PHONY : src/readTaoBotMsg.o
+
+# target to build an object file
+src/readTaoBotMsg.cpp.o:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/readTaoBotMsg.dir/build.make axon_link/CMakeFiles/readTaoBotMsg.dir/src/readTaoBotMsg.cpp.o
+.PHONY : src/readTaoBotMsg.cpp.o
+
+src/readTaoBotMsg.i: src/readTaoBotMsg.cpp.i
+
+.PHONY : src/readTaoBotMsg.i
+
+# target to preprocess a source file
+src/readTaoBotMsg.cpp.i:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/readTaoBotMsg.dir/build.make axon_link/CMakeFiles/readTaoBotMsg.dir/src/readTaoBotMsg.cpp.i
+.PHONY : src/readTaoBotMsg.cpp.i
+
+src/readTaoBotMsg.s: src/readTaoBotMsg.cpp.s
+
+.PHONY : src/readTaoBotMsg.s
+
+# target to generate assembly for a file
+src/readTaoBotMsg.cpp.s:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/readTaoBotMsg.dir/build.make axon_link/CMakeFiles/readTaoBotMsg.dir/src/readTaoBotMsg.cpp.s
+.PHONY : src/readTaoBotMsg.cpp.s
+
+src/speed0.o: src/speed0.cpp.o
+
+.PHONY : src/speed0.o
+
+# target to build an object file
+src/speed0.cpp.o:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/speed0.dir/build.make axon_link/CMakeFiles/speed0.dir/src/speed0.cpp.o
+.PHONY : src/speed0.cpp.o
+
+src/speed0.i: src/speed0.cpp.i
+
+.PHONY : src/speed0.i
+
+# target to preprocess a source file
+src/speed0.cpp.i:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/speed0.dir/build.make axon_link/CMakeFiles/speed0.dir/src/speed0.cpp.i
+.PHONY : src/speed0.cpp.i
+
+src/speed0.s: src/speed0.cpp.s
+
+.PHONY : src/speed0.s
+
+# target to generate assembly for a file
+src/speed0.cpp.s:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/speed0.dir/build.make axon_link/CMakeFiles/speed0.dir/src/speed0.cpp.s
+.PHONY : src/speed0.cpp.s
+
+src/speedP.o: src/speedP.cpp.o
+
+.PHONY : src/speedP.o
+
+# target to build an object file
+src/speedP.cpp.o:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/speedP.dir/build.make axon_link/CMakeFiles/speedP.dir/src/speedP.cpp.o
+.PHONY : src/speedP.cpp.o
+
+src/speedP.i: src/speedP.cpp.i
+
+.PHONY : src/speedP.i
+
+# target to preprocess a source file
+src/speedP.cpp.i:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/speedP.dir/build.make axon_link/CMakeFiles/speedP.dir/src/speedP.cpp.i
+.PHONY : src/speedP.cpp.i
+
+src/speedP.s: src/speedP.cpp.s
+
+.PHONY : src/speedP.s
+
+# target to generate assembly for a file
+src/speedP.cpp.s:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/speedP.dir/build.make axon_link/CMakeFiles/speedP.dir/src/speedP.cpp.s
+.PHONY : src/speedP.cpp.s
 
 src/testNewSerial.o: src/testNewSerial.cpp.o
 
@@ -1384,9 +1567,10 @@ help:
 	@echo "... testSerial40neg"
 	@echo "... testSerial20neg"
 	@echo "... testSerial10neg"
+	@echo "... testSerial30"
+	@echo "... testSerial10"
 	@echo "... axon_link_generate_messages_py"
 	@echo "... actionlib_generate_messages_py"
-	@echo "... axon_link_generate_messages_nodejs"
 	@echo "... sensor_msgs_generate_messages_nodejs"
 	@echo "... test"
 	@echo "... geometry_msgs_generate_messages_cpp"
@@ -1395,9 +1579,13 @@ help:
 	@echo "... actionlib_generate_messages_eus"
 	@echo "... testSerial60"
 	@echo "... tf_generate_messages_cpp"
+	@echo "... testSerial60neg"
+	@echo "... testSerial40"
+	@echo "... geometry_msgs_generate_messages_nodejs"
 	@echo "... geometry_msgs_generate_messages_lisp"
 	@echo "... tf_generate_messages_lisp"
 	@echo "... tf2_msgs_generate_messages_nodejs"
+	@echo "... joy_ctrl_axon_node"
 	@echo "... axon_link_generate_messages_lisp"
 	@echo "... tf_generate_messages_py"
 	@echo "... sensor_msgs_generate_messages_py"
@@ -1410,20 +1598,22 @@ help:
 	@echo "... actionlib_msgs_generate_messages_cpp"
 	@echo "... rebuild_cache"
 	@echo "... tf_generate_messages_eus"
-	@echo "... testSerial10"
 	@echo "... geometry_msgs_generate_messages_py"
 	@echo "... testSerial20"
 	@echo "... tf_generate_messages_nodejs"
+	@echo "... speed0"
 	@echo "... sensor_msgs_generate_messages_cpp"
 	@echo "... axon_link_gencpp"
 	@echo "... testSerial"
 	@echo "... actionlib_msgs_generate_messages_lisp"
+	@echo "... readTaoBotMsg"
 	@echo "... testSerial50"
 	@echo "... tf2_msgs_generate_messages_cpp"
 	@echo "... axon_link_generate_messages_cpp"
 	@echo "... tf2_msgs_generate_messages_eus"
 	@echo "... testSerial30neg"
 	@echo "... axon_link_generate_messages"
+	@echo "... _axon_link_generate_messages_check_deps_Taobot"
 	@echo "... actionlib_msgs_generate_messages_nodejs"
 	@echo "... tf2_msgs_generate_messages_py"
 	@echo "... axon_link_geneus"
@@ -1432,10 +1622,20 @@ help:
 	@echo "... axon_link_genlisp"
 	@echo "... axon_link_gennodejs"
 	@echo "... axon_link_genpy"
-	@echo "... testSerial30"
-	@echo "... testSerial60neg"
-	@echo "... geometry_msgs_generate_messages_nodejs"
-	@echo "... testSerial40"
+	@echo "... axon_link_generate_messages_nodejs"
+	@echo "... speedP"
+	@echo "... src/joy_ctrl_axon_node.o"
+	@echo "... src/joy_ctrl_axon_node.i"
+	@echo "... src/joy_ctrl_axon_node.s"
+	@echo "... src/readTaoBotMsg.o"
+	@echo "... src/readTaoBotMsg.i"
+	@echo "... src/readTaoBotMsg.s"
+	@echo "... src/speed0.o"
+	@echo "... src/speed0.i"
+	@echo "... src/speed0.s"
+	@echo "... src/speedP.o"
+	@echo "... src/speedP.i"
+	@echo "... src/speedP.s"
 	@echo "... src/testNewSerial.o"
 	@echo "... src/testNewSerial.i"
 	@echo "... src/testNewSerial.s"

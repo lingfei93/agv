@@ -1,3 +1,7 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/axon_link_generate_messages_cpp"
+  "/home/eee/agv/devel/include/axon_link/Taobot.h"
+)
 
 # Per-language clean rules from dependency scanning.
 foreach(lang )

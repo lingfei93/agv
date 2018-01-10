@@ -17,6 +17,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "/home/eee/agv/devel/include"
   "/home/eee/agv/src/cereal_port/include"
   "/home/eee/agv/src/serial/include"
   "/opt/ros/kinetic/include"

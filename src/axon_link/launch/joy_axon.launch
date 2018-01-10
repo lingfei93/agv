@@ -1,0 +1,16 @@
+<!-- Joystick Control AXON platform -->
+<launch>
+  <param name="/use_sim_time" value="false"/>
+<!--
+  <node pkg="axon_link" name="axon_link_vonly" type="axon_link_vonly" output="screen">
+	<rosparam file="$(find axon_link)/config/axon_param.yaml" command="load"/>        
+  </node>
+-->
+  <node pkg="joy" name="joy_node" type="joy_node">
+    <param name="joy_node/dev" value="/dev/input/js0"/>
+  </node>
+
+  <node pkg="axon_link" name="joy_ctrl_axon_node" type="joy_ctrl_axon_node">
+  	<remap from="cmd_vel" to="axon_cmd_vel"/>
+  </node>
+</launch>

@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/axon_link_generate_messages_eus"
+  "/home/eee/agv/devel/share/roseus/ros/axon_link/msg/Taobot.l"
   "/home/eee/agv/devel/share/roseus/ros/axon_link/manifest.l"
 )
 

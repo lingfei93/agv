@@ -3,6 +3,6 @@ prefix=/home/eee/agv/install
 Name: axon_link
 Description: Description of axon_link
 Version: 0.0.0
-Cflags: 
+Cflags: -I/home/eee/agv/install/include
 Libs: -L/home/eee/agv/install/lib 
-Requires: 
+Requires: cereal_port geometry_msgs roscpp rospy std_msgs tf serial message_runtime

@@ -53,14 +53,21 @@ CMAKE_BINARY_DIR = /home/eee/agv/build
 # Include the progress variables for this target.
 include axon_link/CMakeFiles/axon_link_generate_messages_eus.dir/progress.make
 
+axon_link/CMakeFiles/axon_link_generate_messages_eus: /home/eee/agv/devel/share/roseus/ros/axon_link/msg/Taobot.l
 axon_link/CMakeFiles/axon_link_generate_messages_eus: /home/eee/agv/devel/share/roseus/ros/axon_link/manifest.l
 
 
+/home/eee/agv/devel/share/roseus/ros/axon_link/msg/Taobot.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
+/home/eee/agv/devel/share/roseus/ros/axon_link/msg/Taobot.l: /home/eee/agv/src/axon_link/msg/Taobot.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/eee/agv/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from axon_link/Taobot.msg"
+	cd /home/eee/agv/build/axon_link && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/eee/agv/src/axon_link/msg/Taobot.msg -Iaxon_link:/home/eee/agv/src/axon_link/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p axon_link -o /home/eee/agv/devel/share/roseus/ros/axon_link/msg
+
 /home/eee/agv/devel/share/roseus/ros/axon_link/manifest.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/eee/agv/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp manifest code for axon_link"
-	cd /home/eee/agv/build/axon_link && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/eee/agv/devel/share/roseus/ros/axon_link axon_link
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/eee/agv/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp manifest code for axon_link"
+	cd /home/eee/agv/build/axon_link && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/eee/agv/devel/share/roseus/ros/axon_link axon_link std_msgs
 
 axon_link_generate_messages_eus: axon_link/CMakeFiles/axon_link_generate_messages_eus
+axon_link_generate_messages_eus: /home/eee/agv/devel/share/roseus/ros/axon_link/msg/Taobot.l
 axon_link_generate_messages_eus: /home/eee/agv/devel/share/roseus/ros/axon_link/manifest.l
 axon_link_generate_messages_eus: axon_link/CMakeFiles/axon_link_generate_messages_eus.dir/build.make
 

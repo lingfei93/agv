@@ -53,6 +53,23 @@ CMAKE_BINARY_DIR = /home/eee/agv/build
 # Include the progress variables for this target.
 include axon_link/CMakeFiles/axon_link_generate_messages_py.dir/progress.make
 
+axon_link/CMakeFiles/axon_link_generate_messages_py: /home/eee/agv/devel/lib/python2.7/dist-packages/axon_link/msg/_Taobot.py
+axon_link/CMakeFiles/axon_link_generate_messages_py: /home/eee/agv/devel/lib/python2.7/dist-packages/axon_link/msg/__init__.py
+
+
+/home/eee/agv/devel/lib/python2.7/dist-packages/axon_link/msg/_Taobot.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
+/home/eee/agv/devel/lib/python2.7/dist-packages/axon_link/msg/_Taobot.py: /home/eee/agv/src/axon_link/msg/Taobot.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/eee/agv/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python from MSG axon_link/Taobot"
+	cd /home/eee/agv/build/axon_link && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/eee/agv/src/axon_link/msg/Taobot.msg -Iaxon_link:/home/eee/agv/src/axon_link/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p axon_link -o /home/eee/agv/devel/lib/python2.7/dist-packages/axon_link/msg
+
+/home/eee/agv/devel/lib/python2.7/dist-packages/axon_link/msg/__init__.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
+/home/eee/agv/devel/lib/python2.7/dist-packages/axon_link/msg/__init__.py: /home/eee/agv/devel/lib/python2.7/dist-packages/axon_link/msg/_Taobot.py
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/eee/agv/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python msg __init__.py for axon_link"
+	cd /home/eee/agv/build/axon_link && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/eee/agv/devel/lib/python2.7/dist-packages/axon_link/msg --initpy
+
+axon_link_generate_messages_py: axon_link/CMakeFiles/axon_link_generate_messages_py
+axon_link_generate_messages_py: /home/eee/agv/devel/lib/python2.7/dist-packages/axon_link/msg/_Taobot.py
+axon_link_generate_messages_py: /home/eee/agv/devel/lib/python2.7/dist-packages/axon_link/msg/__init__.py
 axon_link_generate_messages_py: axon_link/CMakeFiles/axon_link_generate_messages_py.dir/build.make
 
 .PHONY : axon_link_generate_messages_py
