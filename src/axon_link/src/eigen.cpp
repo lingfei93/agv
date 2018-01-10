@@ -4,7 +4,7 @@
 using Eigen::MatrixXd;
 int main()
 {
-  double radius, lengthToCenter, paramA;
+  double radius, lengthToCenter, paramA, paramB;
   radius = 5;
   paramA = 1/sqrt(3);
   paramB = 1/3;
