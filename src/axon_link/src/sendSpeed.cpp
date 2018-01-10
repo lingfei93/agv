@@ -276,6 +276,7 @@ int main(int argc, char** argv)
 	try{ device.read(reply, 44);
     format(reply, 43);
 	ROS_INFO("Successful Read without Write!");
+    ROS_INFO("reached here");
 	// for (int i =0; i < 43; i ++){
 	// //ROS_INFO("%c", reply[i]);}
  //    temp=reply[i];
@@ -289,11 +290,11 @@ int main(int argc, char** argv)
         ROS_FATAL("Failed to read the AXON serial port!!!");
         ROS_BREAK();
     }
-	
+	ROS_INFO("reached here too");
     //comment out this first so i dont keep finding reply
     ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1);           //keep calling 1 and 3
     //ros::Timer timer2 = n.createTimer(ros::Duration(1.0), callback2);
-    
+    ROS_INFO("reached here 1");
     ros::spin();
     }
     
