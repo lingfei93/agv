@@ -258,9 +258,9 @@ add_executable(testSerial60neg src/testSerial60neg.cpp)
 add_dependencies(testSerial60neg axon_link_generate_messages_cpp)
 target_link_libraries(testSerial60neg ${catkin_LIBRARIES})
 
-add_executable(joy_ctrl_axon_node src/joy_ctrl_axon_node.cpp)
-add_dependencies(joy_ctrl_axon_node axon_link_generate_messages_cpp)
-target_link_libraries(joy_ctrl_axon_node ${catkin_LIBRARIES})
+add_executable(joy_ctrl_taobot_node src/joy_ctrl_taobot_node.cpp)
+add_dependencies(joy_ctrl_taobot_node axon_link_generate_messages_cpp)
+target_link_libraries(joy_ctrl_taobot_node ${catkin_LIBRARIES})
 
 # add_executable(joy_ctrl_axon_node src/joy_ctrl_axon_node.cpp)
 # add_dependencies(joy_ctrl_axon_node axon_link_generate_messages_cpp)

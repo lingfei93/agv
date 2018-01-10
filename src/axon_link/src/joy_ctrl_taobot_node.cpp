@@ -2,7 +2,9 @@
 //Title: Joystick Control AXON platform (IoT Lab.)
 //Author: Chen Chun-Lin
 //Data: 2015/08/15, 2017/04/06
-//Update:
+//Update: 
+//Author: Ren Lingfei for Taobao Robot Platform
+//Date: 2018/01/08
 
 Joystick button:
 Speed 1: "A"  (MIN Speed)
@@ -93,7 +95,7 @@ int main(int argc, char** argv)
 {
     int i;
     ROS_INFO("testing");
-    ros::init(argc, argv, "joy_ctrl_axon_node");
+    ros::init(argc, argv, "joy_ctrl_taobot_node");
     ros::NodeHandle n;
 
     //==================================================
