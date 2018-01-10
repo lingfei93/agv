@@ -38,9 +38,11 @@ void callback1(const ros::TimerEvent&)
 {
     uint8_t reply[44];
     uint8_t temp;
-    try{ device.read(reply, 44);
-    ROS_INFO("Successful Read without Write!");
-    format(reply, 43);
+    try{ 
+
+        device.read(reply, 44);
+        ROS_INFO("Successful Read without Write!");
+        format(reply, 43);
     // for (int i =0; i < 43; i ++){
     // //ROS_INFO("%c", reply[i]);}
     // temp=reply[i];
@@ -79,24 +81,25 @@ void format(uint8_t* reply, int N){
 
     for (int i = 0; i < N; i ++)
         if(reply[i] == 0xff && reply[i+11] == 0xff && reply[i+1] ==0xfe && reply[i+12] == 0xfe){
-        ROS_INFO("%d set of data, i is %d", count + 1, i);
-        count = count + 1;
-        //assigning message here and publishing it here probably
-        msg.motorA_encoder = reply[i+2];
-        msg.motorA_dir     = reply[i+3];
-        msg.motorB_encoder = reply[i+4];
-        msg.motorB_dir     = reply[i+5];
-        msg.motorC_encoder = reply[i+6];
-        msg.motorC_dir     = reply[i+7];
-        msg.voltage        = reply[i+10];
-        taobot_pub.publish(msg);
+            ROS_INFO("%d set of data, i is %d", count + 1, i);
+            count = count + 1;
+            //assigning message here and publishing it here probably
+            msg.motorA_encoder = reply[i+2];
+            msg.motorA_dir     = reply[i+3];
+            msg.motorB_encoder = reply[i+4];
+            msg.motorB_dir     = reply[i+5];
+            msg.motorC_encoder = reply[i+6];
+            msg.motorC_dir     = reply[i+7];
+            msg.voltage        = reply[i+10];
+            taobot_pub.publish(msg);
+        //print every set of correct messages
         for (int j = 0; j < 11; j ++){
-
-        printf("0x%d%d\n", reply[i+j]/16, reply[i+j] % 16);
+            printf("0x%d%d\n", reply[i+j]/16, reply[i+j] % 16);
         }
         }
 
 }
+//send in an array of bytes and it will send for you;
 void sendCommand(uint8_t* arrayToSend, int length){
     uint8_t toSend[1];
     for (int i = 0; i < length; i ++){
@@ -106,11 +109,19 @@ void sendCommand(uint8_t* arrayToSend, int length){
     }
 }
 
+uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress){
+    uint8_t toSend[10];
+    toSend[0] = 0xff;
+    toSend[1] = 0xfe;
+    toSend[2] = 2;
+}
+
 void cmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel){
     geometry_msgs::Twist wlr_cmd;
     double v_cmd = cmd_vel->linear.x;
     double   w_cmd = cmd_vel->angular.z;
     uint8_t arrayToSend[10];
+    arrayToSend = changeToOmniSpeed(v_cmd, w_cmd);
     sendCommand(arrayToSend, 10);
 }
 
