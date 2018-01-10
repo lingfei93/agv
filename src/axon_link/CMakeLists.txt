@@ -194,6 +194,9 @@ include_directories( ${catkin_INCLUDE_DIRS}
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+add_executable(eigen src/eigen.cpp)
+add_dependencies(eigen axon_link_generate_messages_cpp)
+target_link_libraries(eigen ${catkin_LIBRARIES})
 
 add_executable(readTaoBotMsg src/readTaoBotMsg.cpp)
 add_dependencies(readTaoBotMsg axon_link_generate_messages_cpp)
