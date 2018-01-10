@@ -98,9 +98,10 @@ void format(uint8_t* reply, int N){
 
 }
 void sendCommand(uint8_t* arrayToSend, int length){
-
-    for (int i = 0; i < lenth; i ++){
-        usart_send(arrayToSend[i]);
+    uint8_t toSend[1];
+    for (int i = 0; i < length; i ++){
+        toSend[0] = arrayToSend[i];
+        usart_send(toSend);
     }
 }
 
@@ -193,7 +194,7 @@ int main(int argc, char** argv)
     sendArray[9] = 0x07;
 	
     sendCommand(sendArray, 10);
-    
+
 	try{ device.read(reply, 44);
     format(reply, 43);
 	ROS_INFO("Successful Read without Write!");
