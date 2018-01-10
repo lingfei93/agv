@@ -38,6 +38,7 @@ double total_difference = 0;
 
 void callback1(const ros::TimerEvent&)
 {
+    ROS_INFO("did not reac here?");
     uint8_t reply[44];
     uint8_t temp;
     try{ 
@@ -186,7 +187,7 @@ void cmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel){
     geometry_msgs::Twist wlr_cmd;
     double v_cmd = cmd_vel->linear.x;
     double   w_cmd = cmd_vel->angular.z;
-    uint8_t* arrayToSend;
+    uint8_t* arrayToSend[10];
     arrayToSend = changeToOmniSpeed(v_cmd, w_cmd, 0);
     sendCommand(arrayToSend, 10);
 }
@@ -277,12 +278,7 @@ int main(int argc, char** argv)
     format(reply, 43);
 	ROS_INFO("Successful Read without Write!");
     ROS_INFO("reached here");
-	// for (int i =0; i < 43; i ++){
-	// //ROS_INFO("%c", reply[i]);}
- //    temp=reply[i];
-	// printf("0x%d%d\n", temp/16, temp % 16);
 
-	// }
 	}
 
 	catch(exception& e)
