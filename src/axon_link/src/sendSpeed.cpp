@@ -113,7 +113,7 @@ void sendCommand(uint8_t* arrayToSend, int length){
 }
 
 uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double angle){
-    
+    ROS_INFO("broke here");
     uint8_t* toSend;
     double radius, lengthToCenter, paramA, paramB;
     double motorA_speed, motorB_speed, motorC_speed, max;
@@ -179,7 +179,7 @@ uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double 
     toSend[8] = motorC_speed * 0xf; 
 
     toSend[9] = count;
-
+    ROS_INFO("broke here2");
     return toSend;
 }
 
@@ -202,7 +202,7 @@ int main(int argc, char** argv)
     taobot_pub = n.advertise<axon_link::Taobot>("taobot_listener", 1000);
 
     //this channel is to subscribe to velocity commands from the joystick
-   // cmd_vel_sub_  = n.subscribe<geometry_msgs::Twist>("taobot_cmd_vel", 1000, cmdVelReceived);
+    cmd_vel_sub_  = n.subscribe<geometry_msgs::Twist>("taobot_cmd_vel", 1000, cmdVelReceived);
 
     
 
