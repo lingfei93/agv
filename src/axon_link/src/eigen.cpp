@@ -11,6 +11,7 @@ int main()
   lengthToCenter = 26.3;
   MatrixXd m(3,3);
   MatrixXd c(3,1);
+  MatrixXd e(3,1);
   c(0,0) = 1;
   c(1,0) = 2;
   c(2,0) = 3;
@@ -25,7 +26,7 @@ int main()
   m(2,1) = radius*paramB/lengthToCenter;
   m(2,2) = radius*paramB/lengthToCenter;
   std::cout << m.inverse() << std::endl;
-  e = c * m;
+  e = m.inverse() * c;
   std::cout << e << std::endl;
 
   std::cout << c << std::endl;
