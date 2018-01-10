@@ -4,7 +4,9 @@
 #include <math.h>
 #include "serial/serial.h"
 #include <axon_link/Taobot.h>
-
+#include <Eigen/Dense>
+#include <cmath>
+using Eigen::MatrixXd;
 using namespace std;
 
 
@@ -109,11 +111,68 @@ void sendCommand(uint8_t* arrayToSend, int length){
     }
 }
 
-uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress){
-    uint8_t toSend[10];
+uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double angle){
+    
+
+    double radius, lengthToCenter, paramA, paramB;
+    double motorA_speed, motorB_speed, motorC_speed, max;
+    int count;
+    radius = 5;
+    paramA = 1/sqrt(3);
+    paramB = 1/sqrt(9);
+    lengthToCenter = 26.3;
+    MatrixXd m(3,3);
+    MatrixXd input(3,1);
+    MatrixXd output(3,1);
+
+    m(0,0) =  0;
+  
+    m(0,1) = -paramA*radius;
+    m(0,2) = paramA*radius;
+    m(1,0) = -2*paramB*radius;
+    m(1,1) = paramB*radius;
+    m(1,2) = paramB*radius; 
+    m(2,0) = radius*paramB/lengthToCenter;
+    m(2,1) = radius*paramB/lengthToCenter;
+    m(2,2) = radius*paramB/lengthToCenter;
+    input(0,0) = verticalPress;
+    input(1,0) = horizontalPress;
+    input(2,0) = angle;
+    max = 0;
+    output = m.inverse() * input;
+    for (int i = 0; i < 2; i++){
+        if (std::abs(output(i,0)) > max){
+            max = std::abs(output(i,0));
+        }
+    }
+    count = 0;
+
+    motorA_speed = output(0,0);
+    motorB_speed = output(1,0);
+    motorC_speed = output(2,0);
+    if (motorA_speed < 0) {count = count + 4;}
+    if (motorB_speed < 0) {count = count + 2;}
+    if (motorC_speed < 0) {count = count + 1;}
+    motorA_speed = std::abs(motorA_speed)/max;
+    motorB_speed = std::abs(motorB_speed)/max;
+    motorC_speed = std::abs(motorC_speed)/max;
+    //figure out the direction for each of the motor
+
     toSend[0] = 0xff;
     toSend[1] = 0xfe;
     toSend[2] = 2;
+    toSend[3] = 0;
+    toSend[4] = motorA_speed * 0xf;
+    toSend[5] = 0;
+    toSend[6] = motorB_speed * 0xf;
+
+    toSend[7] = 0;
+    
+    toSend[8] = motorC_speed * 0xf; 
+
+    toSend[9] = count;
+
+    return toSend;
 }
 
 void cmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel){
