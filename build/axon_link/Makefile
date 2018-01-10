@@ -241,6 +241,21 @@ testSerial10neg/fast:
 .PHONY : testSerial10neg/fast
 
 # Convenience name for target.
+axon_link/CMakeFiles/joy_ctrl_taobot_node.dir/rule:
+	cd /home/eee/agv/build && $(MAKE) -f CMakeFiles/Makefile2 axon_link/CMakeFiles/joy_ctrl_taobot_node.dir/rule
+.PHONY : axon_link/CMakeFiles/joy_ctrl_taobot_node.dir/rule
+
+# Convenience name for target.
+joy_ctrl_taobot_node: axon_link/CMakeFiles/joy_ctrl_taobot_node.dir/rule
+
+.PHONY : joy_ctrl_taobot_node
+
+# fast build rule for target.
+joy_ctrl_taobot_node/fast:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/joy_ctrl_taobot_node.dir/build.make axon_link/CMakeFiles/joy_ctrl_taobot_node.dir/build
+.PHONY : joy_ctrl_taobot_node/fast
+
+# Convenience name for target.
 axon_link/CMakeFiles/testSerial30.dir/rule:
 	cd /home/eee/agv/build && $(MAKE) -f CMakeFiles/Makefile2 axon_link/CMakeFiles/testSerial30.dir/rule
 .PHONY : axon_link/CMakeFiles/testSerial30.dir/rule
@@ -496,21 +511,6 @@ tf2_msgs_generate_messages_nodejs/fast:
 .PHONY : tf2_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
-axon_link/CMakeFiles/joy_ctrl_axon_node.dir/rule:
-	cd /home/eee/agv/build && $(MAKE) -f CMakeFiles/Makefile2 axon_link/CMakeFiles/joy_ctrl_axon_node.dir/rule
-.PHONY : axon_link/CMakeFiles/joy_ctrl_axon_node.dir/rule
-
-# Convenience name for target.
-joy_ctrl_axon_node: axon_link/CMakeFiles/joy_ctrl_axon_node.dir/rule
-
-.PHONY : joy_ctrl_axon_node
-
-# fast build rule for target.
-joy_ctrl_axon_node/fast:
-	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/joy_ctrl_axon_node.dir/build.make axon_link/CMakeFiles/joy_ctrl_axon_node.dir/build
-.PHONY : joy_ctrl_axon_node/fast
-
-# Convenience name for target.
 axon_link/CMakeFiles/axon_link_generate_messages_lisp.dir/rule:
 	cd /home/eee/agv/build && $(MAKE) -f CMakeFiles/Makefile2 axon_link/CMakeFiles/axon_link_generate_messages_lisp.dir/rule
 .PHONY : axon_link/CMakeFiles/axon_link_generate_messages_lisp.dir/rule
@@ -676,6 +676,36 @@ tf_generate_messages_eus/fast:
 .PHONY : tf_generate_messages_eus/fast
 
 # Convenience name for target.
+axon_link/CMakeFiles/testSerial.dir/rule:
+	cd /home/eee/agv/build && $(MAKE) -f CMakeFiles/Makefile2 axon_link/CMakeFiles/testSerial.dir/rule
+.PHONY : axon_link/CMakeFiles/testSerial.dir/rule
+
+# Convenience name for target.
+testSerial: axon_link/CMakeFiles/testSerial.dir/rule
+
+.PHONY : testSerial
+
+# fast build rule for target.
+testSerial/fast:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/testSerial.dir/build.make axon_link/CMakeFiles/testSerial.dir/build
+.PHONY : testSerial/fast
+
+# Convenience name for target.
+axon_link/CMakeFiles/axon_link_gencpp.dir/rule:
+	cd /home/eee/agv/build && $(MAKE) -f CMakeFiles/Makefile2 axon_link/CMakeFiles/axon_link_gencpp.dir/rule
+.PHONY : axon_link/CMakeFiles/axon_link_gencpp.dir/rule
+
+# Convenience name for target.
+axon_link_gencpp: axon_link/CMakeFiles/axon_link_gencpp.dir/rule
+
+.PHONY : axon_link_gencpp
+
+# fast build rule for target.
+axon_link_gencpp/fast:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/axon_link_gencpp.dir/build.make axon_link/CMakeFiles/axon_link_gencpp.dir/build
+.PHONY : axon_link_gencpp/fast
+
+# Convenience name for target.
 axon_link/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule:
 	cd /home/eee/agv/build && $(MAKE) -f CMakeFiles/Makefile2 axon_link/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
 .PHONY : axon_link/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
@@ -749,36 +779,6 @@ sensor_msgs_generate_messages_cpp: axon_link/CMakeFiles/sensor_msgs_generate_mes
 sensor_msgs_generate_messages_cpp/fast:
 	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make axon_link/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
 .PHONY : sensor_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-axon_link/CMakeFiles/axon_link_gencpp.dir/rule:
-	cd /home/eee/agv/build && $(MAKE) -f CMakeFiles/Makefile2 axon_link/CMakeFiles/axon_link_gencpp.dir/rule
-.PHONY : axon_link/CMakeFiles/axon_link_gencpp.dir/rule
-
-# Convenience name for target.
-axon_link_gencpp: axon_link/CMakeFiles/axon_link_gencpp.dir/rule
-
-.PHONY : axon_link_gencpp
-
-# fast build rule for target.
-axon_link_gencpp/fast:
-	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/axon_link_gencpp.dir/build.make axon_link/CMakeFiles/axon_link_gencpp.dir/build
-.PHONY : axon_link_gencpp/fast
-
-# Convenience name for target.
-axon_link/CMakeFiles/testSerial.dir/rule:
-	cd /home/eee/agv/build && $(MAKE) -f CMakeFiles/Makefile2 axon_link/CMakeFiles/testSerial.dir/rule
-.PHONY : axon_link/CMakeFiles/testSerial.dir/rule
-
-# Convenience name for target.
-testSerial: axon_link/CMakeFiles/testSerial.dir/rule
-
-.PHONY : testSerial
-
-# fast build rule for target.
-testSerial/fast:
-	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/testSerial.dir/build.make axon_link/CMakeFiles/testSerial.dir/build
-.PHONY : testSerial/fast
 
 # Convenience name for target.
 axon_link/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule:
@@ -1065,32 +1065,47 @@ speedP/fast:
 	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/speedP.dir/build.make axon_link/CMakeFiles/speedP.dir/build
 .PHONY : speedP/fast
 
-src/joy_ctrl_axon_node.o: src/joy_ctrl_axon_node.cpp.o
+# Convenience name for target.
+axon_link/CMakeFiles/sendSpeed.dir/rule:
+	cd /home/eee/agv/build && $(MAKE) -f CMakeFiles/Makefile2 axon_link/CMakeFiles/sendSpeed.dir/rule
+.PHONY : axon_link/CMakeFiles/sendSpeed.dir/rule
 
-.PHONY : src/joy_ctrl_axon_node.o
+# Convenience name for target.
+sendSpeed: axon_link/CMakeFiles/sendSpeed.dir/rule
+
+.PHONY : sendSpeed
+
+# fast build rule for target.
+sendSpeed/fast:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/sendSpeed.dir/build.make axon_link/CMakeFiles/sendSpeed.dir/build
+.PHONY : sendSpeed/fast
+
+src/joy_ctrl_taobot_node.o: src/joy_ctrl_taobot_node.cpp.o
+
+.PHONY : src/joy_ctrl_taobot_node.o
 
 # target to build an object file
-src/joy_ctrl_axon_node.cpp.o:
-	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/joy_ctrl_axon_node.dir/build.make axon_link/CMakeFiles/joy_ctrl_axon_node.dir/src/joy_ctrl_axon_node.cpp.o
-.PHONY : src/joy_ctrl_axon_node.cpp.o
+src/joy_ctrl_taobot_node.cpp.o:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/joy_ctrl_taobot_node.dir/build.make axon_link/CMakeFiles/joy_ctrl_taobot_node.dir/src/joy_ctrl_taobot_node.cpp.o
+.PHONY : src/joy_ctrl_taobot_node.cpp.o
 
-src/joy_ctrl_axon_node.i: src/joy_ctrl_axon_node.cpp.i
+src/joy_ctrl_taobot_node.i: src/joy_ctrl_taobot_node.cpp.i
 
-.PHONY : src/joy_ctrl_axon_node.i
+.PHONY : src/joy_ctrl_taobot_node.i
 
 # target to preprocess a source file
-src/joy_ctrl_axon_node.cpp.i:
-	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/joy_ctrl_axon_node.dir/build.make axon_link/CMakeFiles/joy_ctrl_axon_node.dir/src/joy_ctrl_axon_node.cpp.i
-.PHONY : src/joy_ctrl_axon_node.cpp.i
+src/joy_ctrl_taobot_node.cpp.i:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/joy_ctrl_taobot_node.dir/build.make axon_link/CMakeFiles/joy_ctrl_taobot_node.dir/src/joy_ctrl_taobot_node.cpp.i
+.PHONY : src/joy_ctrl_taobot_node.cpp.i
 
-src/joy_ctrl_axon_node.s: src/joy_ctrl_axon_node.cpp.s
+src/joy_ctrl_taobot_node.s: src/joy_ctrl_taobot_node.cpp.s
 
-.PHONY : src/joy_ctrl_axon_node.s
+.PHONY : src/joy_ctrl_taobot_node.s
 
 # target to generate assembly for a file
-src/joy_ctrl_axon_node.cpp.s:
-	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/joy_ctrl_axon_node.dir/build.make axon_link/CMakeFiles/joy_ctrl_axon_node.dir/src/joy_ctrl_axon_node.cpp.s
-.PHONY : src/joy_ctrl_axon_node.cpp.s
+src/joy_ctrl_taobot_node.cpp.s:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/joy_ctrl_taobot_node.dir/build.make axon_link/CMakeFiles/joy_ctrl_taobot_node.dir/src/joy_ctrl_taobot_node.cpp.s
+.PHONY : src/joy_ctrl_taobot_node.cpp.s
 
 src/readTaoBotMsg.o: src/readTaoBotMsg.cpp.o
 
@@ -1118,6 +1133,33 @@ src/readTaoBotMsg.s: src/readTaoBotMsg.cpp.s
 src/readTaoBotMsg.cpp.s:
 	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/readTaoBotMsg.dir/build.make axon_link/CMakeFiles/readTaoBotMsg.dir/src/readTaoBotMsg.cpp.s
 .PHONY : src/readTaoBotMsg.cpp.s
+
+src/sendSpeed.o: src/sendSpeed.cpp.o
+
+.PHONY : src/sendSpeed.o
+
+# target to build an object file
+src/sendSpeed.cpp.o:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/sendSpeed.dir/build.make axon_link/CMakeFiles/sendSpeed.dir/src/sendSpeed.cpp.o
+.PHONY : src/sendSpeed.cpp.o
+
+src/sendSpeed.i: src/sendSpeed.cpp.i
+
+.PHONY : src/sendSpeed.i
+
+# target to preprocess a source file
+src/sendSpeed.cpp.i:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/sendSpeed.dir/build.make axon_link/CMakeFiles/sendSpeed.dir/src/sendSpeed.cpp.i
+.PHONY : src/sendSpeed.cpp.i
+
+src/sendSpeed.s: src/sendSpeed.cpp.s
+
+.PHONY : src/sendSpeed.s
+
+# target to generate assembly for a file
+src/sendSpeed.cpp.s:
+	cd /home/eee/agv/build && $(MAKE) -f axon_link/CMakeFiles/sendSpeed.dir/build.make axon_link/CMakeFiles/sendSpeed.dir/src/sendSpeed.cpp.s
+.PHONY : src/sendSpeed.cpp.s
 
 src/speed0.o: src/speed0.cpp.o
 
@@ -1567,6 +1609,7 @@ help:
 	@echo "... testSerial40neg"
 	@echo "... testSerial20neg"
 	@echo "... testSerial10neg"
+	@echo "... joy_ctrl_taobot_node"
 	@echo "... testSerial30"
 	@echo "... testSerial10"
 	@echo "... axon_link_generate_messages_py"
@@ -1585,7 +1628,6 @@ help:
 	@echo "... geometry_msgs_generate_messages_lisp"
 	@echo "... tf_generate_messages_lisp"
 	@echo "... tf2_msgs_generate_messages_nodejs"
-	@echo "... joy_ctrl_axon_node"
 	@echo "... axon_link_generate_messages_lisp"
 	@echo "... tf_generate_messages_py"
 	@echo "... sensor_msgs_generate_messages_py"
@@ -1598,13 +1640,13 @@ help:
 	@echo "... actionlib_msgs_generate_messages_cpp"
 	@echo "... rebuild_cache"
 	@echo "... tf_generate_messages_eus"
+	@echo "... testSerial"
+	@echo "... axon_link_gencpp"
 	@echo "... geometry_msgs_generate_messages_py"
 	@echo "... testSerial20"
 	@echo "... tf_generate_messages_nodejs"
 	@echo "... speed0"
 	@echo "... sensor_msgs_generate_messages_cpp"
-	@echo "... axon_link_gencpp"
-	@echo "... testSerial"
 	@echo "... actionlib_msgs_generate_messages_lisp"
 	@echo "... readTaoBotMsg"
 	@echo "... testSerial50"
@@ -1624,12 +1666,16 @@ help:
 	@echo "... axon_link_genpy"
 	@echo "... axon_link_generate_messages_nodejs"
 	@echo "... speedP"
-	@echo "... src/joy_ctrl_axon_node.o"
-	@echo "... src/joy_ctrl_axon_node.i"
-	@echo "... src/joy_ctrl_axon_node.s"
+	@echo "... sendSpeed"
+	@echo "... src/joy_ctrl_taobot_node.o"
+	@echo "... src/joy_ctrl_taobot_node.i"
+	@echo "... src/joy_ctrl_taobot_node.s"
 	@echo "... src/readTaoBotMsg.o"
 	@echo "... src/readTaoBotMsg.i"
 	@echo "... src/readTaoBotMsg.s"
+	@echo "... src/sendSpeed.o"
+	@echo "... src/sendSpeed.i"
+	@echo "... src/sendSpeed.s"
 	@echo "... src/speed0.o"
 	@echo "... src/speed0.i"
 	@echo "... src/speed0.s"

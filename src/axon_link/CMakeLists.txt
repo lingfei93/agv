@@ -13,11 +13,12 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   tf
   message_generation
+  cmake_modules
 )
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
-
+find_package(Eigen REQUIRED)
 
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
@@ -109,6 +110,7 @@ catkin_package(
   #LIBRARIES axon_link
   CATKIN_DEPENDS cereal_port geometry_msgs roscpp rospy std_msgs tf serial message_runtime
   #DEPENDS system_lib
+  DEPENDS Eigen
 )
 
 ###########
@@ -118,7 +120,10 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 # include_directories(include)
-include_directories( ${catkin_INCLUDE_DIRS} )
+include_directories( ${catkin_INCLUDE_DIRS} 
+
+					 ${Eigen_INCLUDE_DIRS}
+)
 
 ## Declare a C++ library
 # add_library(axon_link
