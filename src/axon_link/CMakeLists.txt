@@ -194,6 +194,10 @@ add_executable(readTaoBotMsg src/readTaoBotMsg.cpp)
 add_dependencies(readTaoBotMsg axon_link_generate_messages_cpp)
 target_link_libraries(readTaoBotMsg ${catkin_LIBRARIES})
 
+add_executable(sendSpeed src/sendSpeed.cpp)
+add_dependencies(sendSpeed axon_link_generate_messages_cpp)
+target_link_libraries(sendSpeed ${catkin_LIBRARIES})
+
 add_executable(speed0 src/speed0.cpp)
 add_dependencies(speed0 axon_link_generate_messages_cpp)
 target_link_libraries(speed0 ${catkin_LIBRARIES})
