@@ -7,7 +7,7 @@ int main()
   double radius, lengthToCenter, paramA, paramB;
   radius = 5;
   paramA = 1/sqrt(3);
-  paramB = 1/3;
+  paramB = 1/sqrt(9);
   lengthToCenter = 26.3;
   MatrixXd m(3,3);
   m(0,0) = 0;
