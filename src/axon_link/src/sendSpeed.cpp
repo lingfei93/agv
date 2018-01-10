@@ -183,7 +183,7 @@ int main(int argc, char** argv)
     usart_send(tenthByte);
 
     sendArray[0] = 0xFF;
-    sendArray[1]] = 0xFE;
+    sendArray[1] = 0xFE;
     sendArray[2] = 2;
     sendArray[3] = 0;
     sendArray[4] = 0x00;
