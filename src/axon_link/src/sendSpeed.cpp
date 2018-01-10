@@ -102,7 +102,7 @@ void sendCommand(uint8_t* arrayToSend, int length){
     for (int i = 0; i < length; i ++){
         toSend[0] = arrayToSend[i];
         usart_send(toSend);
-        ROS_INFO("sending from here!");
+        ROS_INFO("sending from here! %d %d", toSend[0]/16, toSend[0]%16);
     }
 }
 
