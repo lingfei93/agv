@@ -22,8 +22,10 @@ using namespace std;
 
 void format(uint8_t* reply, int N);
 void usart_send(char* toSend);
+void sendCommand(uint8_t* arrayToSend, int length);
 serial::Serial device(port, baud, serial::Timeout::simpleTimeout(1000));
 ros::Publisher taobot_pub;
+ros::Subscriber cmd_vel_sub_;
 
 int count_average = 0;
 double total_difference = 0;
@@ -95,6 +97,20 @@ void format(uint8_t* reply, int N){
         }
 
 }
+void sendCommand(uint8_t* arrayToSend, int length){
+
+    for (int i = 0; i < lenth; i ++){
+        usart_send(arrayToSend[i]);
+    }
+}
+
+void cmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel){
+    geometry_msgs::Twist wlr_cmd;
+    double v_cmd = cmd_vel->linear.x;
+    double   w_cmd = cmd_vel->angular.z;
+    uint8_t arrayToSend[10];
+    sendCommand(arrayToSend, 10);
+}
 
 int main(int argc, char** argv)
 {
@@ -113,7 +129,7 @@ int main(int argc, char** argv)
     ros::Rate loop_rate(5);
     while (ros::ok()){
 	uint8_t reply[44];
-	
+	uint8_t sendArray[10];
 
 
     int i;
@@ -165,8 +181,19 @@ int main(int argc, char** argv)
     usart_send(ninthByte);
     usart_send(tenthByte);
 
-
+    sendArray[0] = 0xFF;
+    sendArray[1]] = 0xFE;
+    sendArray[2] = 2;
+    sendArray[3] = 0;
+    sendArray[4] = 0x00;
+    sendArray[5] = 0;
+    sendArray[6] = 0x00;
+    sendArray[7] = 0;
+    sendArray[8] = 0x00;
+    sendArray[9] = 0x07;
 	
+    sendCommand(sendArray, 10);
+    
 	try{ device.read(reply, 44);
     format(reply, 43);
 	ROS_INFO("Successful Read without Write!");
