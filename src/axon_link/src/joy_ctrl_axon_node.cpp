@@ -65,6 +65,7 @@ void JoySubCallback(const sensor_msgs::Joy::ConstPtr& joy_msg)
     joy_axes[0]=joy_msg->axes[0];
     joy_axes[1]=joy_msg->axes[1];
 
+
     for (i=0;i<11;i++)
         joy_buttons[i]=joy_msg->buttons[i];
 
@@ -79,7 +80,8 @@ void JoySubCallback(const sensor_msgs::Joy::ConstPtr& joy_msg)
     if (joy_buttons[10]==1)
         cmd_scale=0.0;
     else
-        cmd_scale=old_cmd_scale;
+        //cmd_scale=old_cmd_scale;
+        cmd_scale = 1;
 
     printf("I Get Joy axes[0]=%+3.3f axes[1]=%+3.3f cmd_scale=%+3.3f\n", joy_axes[0], joy_axes[1], cmd_scale);
     cmd_vel_v=joy_axes[1]*cmd_scale*1;
