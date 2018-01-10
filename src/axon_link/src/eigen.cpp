@@ -12,8 +12,8 @@ int main()
   MatrixXd m(3,3);
   MatrixXd c(3,1);
   MatrixXd e(3,1);
-  c(0,0) = 1;
-  c(1,0) = 1;
+  c(0,0) = -1;
+  c(1,0) = 0;
   c(2,0) = 0;
   m(0,0) = 1/3;
   
