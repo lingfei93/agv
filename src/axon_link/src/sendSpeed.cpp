@@ -141,6 +141,8 @@ uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double 
     input(2,0) = angle;
     max = 0;
     output = m.inverse() * input;
+
+    //find otu whats the max speed so i can normalize it
     for (int i = 0; i < 2; i++){
         if (std::abs(output(i,0)) > max){
             max = std::abs(output(i,0));
@@ -151,13 +153,17 @@ uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double 
     motorA_speed = output(0,0);
     motorB_speed = output(1,0);
     motorC_speed = output(2,0);
+
+    //figure out the direction for each of the motor
     if (motorA_speed < 0) {count = count + 4;}
     if (motorB_speed < 0) {count = count + 2;}
     if (motorC_speed < 0) {count = count + 1;}
+
+    //normalize the speed
     motorA_speed = std::abs(motorA_speed)/max;
     motorB_speed = std::abs(motorB_speed)/max;
     motorC_speed = std::abs(motorC_speed)/max;
-    //figure out the direction for each of the motor
+    
 
     toSend[0] = 0xff;
     toSend[1] = 0xfe;
@@ -284,8 +290,8 @@ int main(int argc, char** argv)
         ROS_BREAK();
     }
 	
-    
-    ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1);           //keep calling 1 and 3
+    //comment out this first so i dont keep finding reply
+    //ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1);           //keep calling 1 and 3
     //ros::Timer timer2 = n.createTimer(ros::Duration(1.0), callback2);
     
     ros::spin();
