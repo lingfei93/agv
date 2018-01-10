@@ -202,7 +202,7 @@ int main(int argc, char** argv)
     taobot_pub = n.advertise<axon_link::Taobot>("taobot_listener", 1000);
 
     //this channel is to subscribe to velocity commands from the joystick
-    cmd_vel_sub_  = n.subscribe<geometry_msgs::Twist>("taobot_cmd_vel", 1000, cmdVelReceived);
+   // cmd_vel_sub_  = n.subscribe<geometry_msgs::Twist>("taobot_cmd_vel", 1000, cmdVelReceived);
 
     
 
