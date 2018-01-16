@@ -7,4 +7,4 @@
 # new environment variables
 
 # modified environment variables
-export PWD="/home/eee/agv/build"
+export PWD="/home/eee/lingfei_ws/agv/build"

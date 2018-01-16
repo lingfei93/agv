@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/eee/agv/src
+CMAKE_SOURCE_DIR = /home/eee/lingfei_ws/agv/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/eee/agv/build
+CMAKE_BINARY_DIR = /home/eee/lingfei_ws/agv/build
 
 # Include any dependencies generated for this target.
 include serial/tests/CMakeFiles/serial-test.dir/depend.make
@@ -58,17 +58,17 @@ include serial/tests/CMakeFiles/serial-test.dir/progress.make
 include serial/tests/CMakeFiles/serial-test.dir/flags.make
 
 serial/tests/CMakeFiles/serial-test.dir/unix_serial_tests.cc.o: serial/tests/CMakeFiles/serial-test.dir/flags.make
-serial/tests/CMakeFiles/serial-test.dir/unix_serial_tests.cc.o: /home/eee/agv/src/serial/tests/unix_serial_tests.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/eee/agv/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object serial/tests/CMakeFiles/serial-test.dir/unix_serial_tests.cc.o"
-	cd /home/eee/agv/build/serial/tests && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/serial-test.dir/unix_serial_tests.cc.o -c /home/eee/agv/src/serial/tests/unix_serial_tests.cc
+serial/tests/CMakeFiles/serial-test.dir/unix_serial_tests.cc.o: /home/eee/lingfei_ws/agv/src/serial/tests/unix_serial_tests.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/eee/lingfei_ws/agv/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object serial/tests/CMakeFiles/serial-test.dir/unix_serial_tests.cc.o"
+	cd /home/eee/lingfei_ws/agv/build/serial/tests && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/serial-test.dir/unix_serial_tests.cc.o -c /home/eee/lingfei_ws/agv/src/serial/tests/unix_serial_tests.cc
 
 serial/tests/CMakeFiles/serial-test.dir/unix_serial_tests.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/serial-test.dir/unix_serial_tests.cc.i"
-	cd /home/eee/agv/build/serial/tests && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eee/agv/src/serial/tests/unix_serial_tests.cc > CMakeFiles/serial-test.dir/unix_serial_tests.cc.i
+	cd /home/eee/lingfei_ws/agv/build/serial/tests && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eee/lingfei_ws/agv/src/serial/tests/unix_serial_tests.cc > CMakeFiles/serial-test.dir/unix_serial_tests.cc.i
 
 serial/tests/CMakeFiles/serial-test.dir/unix_serial_tests.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/serial-test.dir/unix_serial_tests.cc.s"
-	cd /home/eee/agv/build/serial/tests && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eee/agv/src/serial/tests/unix_serial_tests.cc -o CMakeFiles/serial-test.dir/unix_serial_tests.cc.s
+	cd /home/eee/lingfei_ws/agv/build/serial/tests && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eee/lingfei_ws/agv/src/serial/tests/unix_serial_tests.cc -o CMakeFiles/serial-test.dir/unix_serial_tests.cc.s
 
 serial/tests/CMakeFiles/serial-test.dir/unix_serial_tests.cc.o.requires:
 
@@ -88,16 +88,16 @@ serial__test_OBJECTS = \
 # External object files for target serial-test
 serial__test_EXTERNAL_OBJECTS =
 
-/home/eee/agv/devel/lib/serial/serial-test: serial/tests/CMakeFiles/serial-test.dir/unix_serial_tests.cc.o
-/home/eee/agv/devel/lib/serial/serial-test: serial/tests/CMakeFiles/serial-test.dir/build.make
-/home/eee/agv/devel/lib/serial/serial-test: gtest/libgtest.so
-/home/eee/agv/devel/lib/serial/serial-test: /home/eee/agv/devel/lib/libserial.so
-/home/eee/agv/devel/lib/serial/serial-test: serial/tests/CMakeFiles/serial-test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/eee/agv/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/eee/agv/devel/lib/serial/serial-test"
-	cd /home/eee/agv/build/serial/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/serial-test.dir/link.txt --verbose=$(VERBOSE)
+/home/eee/lingfei_ws/agv/devel/lib/serial/serial-test: serial/tests/CMakeFiles/serial-test.dir/unix_serial_tests.cc.o
+/home/eee/lingfei_ws/agv/devel/lib/serial/serial-test: serial/tests/CMakeFiles/serial-test.dir/build.make
+/home/eee/lingfei_ws/agv/devel/lib/serial/serial-test: gtest/libgtest.so
+/home/eee/lingfei_ws/agv/devel/lib/serial/serial-test: /home/eee/lingfei_ws/agv/devel/lib/libserial.so
+/home/eee/lingfei_ws/agv/devel/lib/serial/serial-test: serial/tests/CMakeFiles/serial-test.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/eee/lingfei_ws/agv/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/eee/lingfei_ws/agv/devel/lib/serial/serial-test"
+	cd /home/eee/lingfei_ws/agv/build/serial/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/serial-test.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-serial/tests/CMakeFiles/serial-test.dir/build: /home/eee/agv/devel/lib/serial/serial-test
+serial/tests/CMakeFiles/serial-test.dir/build: /home/eee/lingfei_ws/agv/devel/lib/serial/serial-test
 
 .PHONY : serial/tests/CMakeFiles/serial-test.dir/build
 
@@ -106,10 +106,10 @@ serial/tests/CMakeFiles/serial-test.dir/requires: serial/tests/CMakeFiles/serial
 .PHONY : serial/tests/CMakeFiles/serial-test.dir/requires
 
 serial/tests/CMakeFiles/serial-test.dir/clean:
-	cd /home/eee/agv/build/serial/tests && $(CMAKE_COMMAND) -P CMakeFiles/serial-test.dir/cmake_clean.cmake
+	cd /home/eee/lingfei_ws/agv/build/serial/tests && $(CMAKE_COMMAND) -P CMakeFiles/serial-test.dir/cmake_clean.cmake
 .PHONY : serial/tests/CMakeFiles/serial-test.dir/clean
 
 serial/tests/CMakeFiles/serial-test.dir/depend:
-	cd /home/eee/agv/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/eee/agv/src /home/eee/agv/src/serial/tests /home/eee/agv/build /home/eee/agv/build/serial/tests /home/eee/agv/build/serial/tests/CMakeFiles/serial-test.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/eee/lingfei_ws/agv/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/eee/lingfei_ws/agv/src /home/eee/lingfei_ws/agv/src/serial/tests /home/eee/lingfei_ws/agv/build /home/eee/lingfei_ws/agv/build/serial/tests /home/eee/lingfei_ws/agv/build/serial/tests/CMakeFiles/serial-test.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : serial/tests/CMakeFiles/serial-test.dir/depend
 

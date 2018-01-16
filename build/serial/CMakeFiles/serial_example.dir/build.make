@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/eee/agv/src
+CMAKE_SOURCE_DIR = /home/eee/lingfei_ws/agv/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/eee/agv/build
+CMAKE_BINARY_DIR = /home/eee/lingfei_ws/agv/build
 
 # Include any dependencies generated for this target.
 include serial/CMakeFiles/serial_example.dir/depend.make
@@ -58,17 +58,17 @@ include serial/CMakeFiles/serial_example.dir/progress.make
 include serial/CMakeFiles/serial_example.dir/flags.make
 
 serial/CMakeFiles/serial_example.dir/examples/serial_example.cc.o: serial/CMakeFiles/serial_example.dir/flags.make
-serial/CMakeFiles/serial_example.dir/examples/serial_example.cc.o: /home/eee/agv/src/serial/examples/serial_example.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/eee/agv/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object serial/CMakeFiles/serial_example.dir/examples/serial_example.cc.o"
-	cd /home/eee/agv/build/serial && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/serial_example.dir/examples/serial_example.cc.o -c /home/eee/agv/src/serial/examples/serial_example.cc
+serial/CMakeFiles/serial_example.dir/examples/serial_example.cc.o: /home/eee/lingfei_ws/agv/src/serial/examples/serial_example.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/eee/lingfei_ws/agv/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object serial/CMakeFiles/serial_example.dir/examples/serial_example.cc.o"
+	cd /home/eee/lingfei_ws/agv/build/serial && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/serial_example.dir/examples/serial_example.cc.o -c /home/eee/lingfei_ws/agv/src/serial/examples/serial_example.cc
 
 serial/CMakeFiles/serial_example.dir/examples/serial_example.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/serial_example.dir/examples/serial_example.cc.i"
-	cd /home/eee/agv/build/serial && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eee/agv/src/serial/examples/serial_example.cc > CMakeFiles/serial_example.dir/examples/serial_example.cc.i
+	cd /home/eee/lingfei_ws/agv/build/serial && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eee/lingfei_ws/agv/src/serial/examples/serial_example.cc > CMakeFiles/serial_example.dir/examples/serial_example.cc.i
 
 serial/CMakeFiles/serial_example.dir/examples/serial_example.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/serial_example.dir/examples/serial_example.cc.s"
-	cd /home/eee/agv/build/serial && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eee/agv/src/serial/examples/serial_example.cc -o CMakeFiles/serial_example.dir/examples/serial_example.cc.s
+	cd /home/eee/lingfei_ws/agv/build/serial && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eee/lingfei_ws/agv/src/serial/examples/serial_example.cc -o CMakeFiles/serial_example.dir/examples/serial_example.cc.s
 
 serial/CMakeFiles/serial_example.dir/examples/serial_example.cc.o.requires:
 
@@ -88,15 +88,15 @@ serial_example_OBJECTS = \
 # External object files for target serial_example
 serial_example_EXTERNAL_OBJECTS =
 
-/home/eee/agv/devel/lib/serial/serial_example: serial/CMakeFiles/serial_example.dir/examples/serial_example.cc.o
-/home/eee/agv/devel/lib/serial/serial_example: serial/CMakeFiles/serial_example.dir/build.make
-/home/eee/agv/devel/lib/serial/serial_example: /home/eee/agv/devel/lib/libserial.so
-/home/eee/agv/devel/lib/serial/serial_example: serial/CMakeFiles/serial_example.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/eee/agv/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/eee/agv/devel/lib/serial/serial_example"
-	cd /home/eee/agv/build/serial && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/serial_example.dir/link.txt --verbose=$(VERBOSE)
+/home/eee/lingfei_ws/agv/devel/lib/serial/serial_example: serial/CMakeFiles/serial_example.dir/examples/serial_example.cc.o
+/home/eee/lingfei_ws/agv/devel/lib/serial/serial_example: serial/CMakeFiles/serial_example.dir/build.make
+/home/eee/lingfei_ws/agv/devel/lib/serial/serial_example: /home/eee/lingfei_ws/agv/devel/lib/libserial.so
+/home/eee/lingfei_ws/agv/devel/lib/serial/serial_example: serial/CMakeFiles/serial_example.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/eee/lingfei_ws/agv/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/eee/lingfei_ws/agv/devel/lib/serial/serial_example"
+	cd /home/eee/lingfei_ws/agv/build/serial && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/serial_example.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-serial/CMakeFiles/serial_example.dir/build: /home/eee/agv/devel/lib/serial/serial_example
+serial/CMakeFiles/serial_example.dir/build: /home/eee/lingfei_ws/agv/devel/lib/serial/serial_example
 
 .PHONY : serial/CMakeFiles/serial_example.dir/build
 
@@ -105,10 +105,10 @@ serial/CMakeFiles/serial_example.dir/requires: serial/CMakeFiles/serial_example.
 .PHONY : serial/CMakeFiles/serial_example.dir/requires
 
 serial/CMakeFiles/serial_example.dir/clean:
-	cd /home/eee/agv/build/serial && $(CMAKE_COMMAND) -P CMakeFiles/serial_example.dir/cmake_clean.cmake
+	cd /home/eee/lingfei_ws/agv/build/serial && $(CMAKE_COMMAND) -P CMakeFiles/serial_example.dir/cmake_clean.cmake
 .PHONY : serial/CMakeFiles/serial_example.dir/clean
 
 serial/CMakeFiles/serial_example.dir/depend:
-	cd /home/eee/agv/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/eee/agv/src /home/eee/agv/src/serial /home/eee/agv/build /home/eee/agv/build/serial /home/eee/agv/build/serial/CMakeFiles/serial_example.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/eee/lingfei_ws/agv/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/eee/lingfei_ws/agv/src /home/eee/lingfei_ws/agv/src/serial /home/eee/lingfei_ws/agv/build /home/eee/lingfei_ws/agv/build/serial /home/eee/lingfei_ws/agv/build/serial/CMakeFiles/serial_example.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : serial/CMakeFiles/serial_example.dir/depend
 

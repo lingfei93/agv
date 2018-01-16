@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/cereal_port.dir/src/CerealPort.cpp.o"
-  "/home/eee/agv/devel/lib/libcereal_port.pdb"
-  "/home/eee/agv/devel/lib/libcereal_port.so"
+  "/home/eee/lingfei_ws/agv/devel/lib/libcereal_port.pdb"
+  "/home/eee/lingfei_ws/agv/devel/lib/libcereal_port.so"
 )
 
 # Per-language clean rules from dependency scanning.

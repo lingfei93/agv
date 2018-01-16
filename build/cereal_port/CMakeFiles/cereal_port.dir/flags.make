@@ -6,5 +6,5 @@ CXX_FLAGS = -fPIC
 
 CXX_DEFINES = -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\"cereal_port\" -Dcereal_port_EXPORTS
 
-CXX_INCLUDES = -I/home/eee/agv/src/cereal_port/include 
+CXX_INCLUDES = -I/home/eee/lingfei_ws/agv/src/cereal_port/include 
 
