@@ -126,7 +126,7 @@ uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double 
     MatrixXd m(3,3);
     MatrixXd input(3,1);
     MatrixXd output(3,1);
-
+    
     m(0,0) =  0;
   
     m(0,1) = -paramA*radius;
@@ -185,6 +185,7 @@ uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double 
 
 void cmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel){
     geometry_msgs::Twist wlr_cmd;
+    //NOT SURE WHY I NEED TO FLIP THIS
     double v_cmd = cmd_vel->linear.x * -1 ;
     double   w_cmd = cmd_vel->angular.z;
     uint8_t* arrayToSend;
