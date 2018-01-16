@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/eee/agv/src
+CMAKE_SOURCE_DIR = /home/eee/lingfei_ws/agv/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/eee/agv/build
+CMAKE_BINARY_DIR = /home/eee/lingfei_ws/agv/build
 
 # Utility rule file for run_tests_serial_gtest.
 
@@ -63,10 +63,10 @@ serial/tests/CMakeFiles/run_tests_serial_gtest.dir/build: run_tests_serial_gtest
 .PHONY : serial/tests/CMakeFiles/run_tests_serial_gtest.dir/build
 
 serial/tests/CMakeFiles/run_tests_serial_gtest.dir/clean:
-	cd /home/eee/agv/build/serial/tests && $(CMAKE_COMMAND) -P CMakeFiles/run_tests_serial_gtest.dir/cmake_clean.cmake
+	cd /home/eee/lingfei_ws/agv/build/serial/tests && $(CMAKE_COMMAND) -P CMakeFiles/run_tests_serial_gtest.dir/cmake_clean.cmake
 .PHONY : serial/tests/CMakeFiles/run_tests_serial_gtest.dir/clean
 
 serial/tests/CMakeFiles/run_tests_serial_gtest.dir/depend:
-	cd /home/eee/agv/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/eee/agv/src /home/eee/agv/src/serial/tests /home/eee/agv/build /home/eee/agv/build/serial/tests /home/eee/agv/build/serial/tests/CMakeFiles/run_tests_serial_gtest.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/eee/lingfei_ws/agv/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/eee/lingfei_ws/agv/src /home/eee/lingfei_ws/agv/src/serial/tests /home/eee/lingfei_ws/agv/build /home/eee/lingfei_ws/agv/build/serial/tests /home/eee/lingfei_ws/agv/build/serial/tests/CMakeFiles/run_tests_serial_gtest.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : serial/tests/CMakeFiles/run_tests_serial_gtest.dir/depend
 

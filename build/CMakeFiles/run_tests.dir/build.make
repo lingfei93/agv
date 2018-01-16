@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/eee/agv/src
+CMAKE_SOURCE_DIR = /home/eee/lingfei_ws/agv/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/eee/agv/build
+CMAKE_BINARY_DIR = /home/eee/lingfei_ws/agv/build
 
 # Utility rule file for run_tests.
 
@@ -67,6 +67,6 @@ CMakeFiles/run_tests.dir/clean:
 .PHONY : CMakeFiles/run_tests.dir/clean
 
 CMakeFiles/run_tests.dir/depend:
-	cd /home/eee/agv/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/eee/agv/src /home/eee/agv/src /home/eee/agv/build /home/eee/agv/build /home/eee/agv/build/CMakeFiles/run_tests.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/eee/lingfei_ws/agv/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/eee/lingfei_ws/agv/src /home/eee/lingfei_ws/agv/src /home/eee/lingfei_ws/agv/build /home/eee/lingfei_ws/agv/build /home/eee/lingfei_ws/agv/build/CMakeFiles/run_tests.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/run_tests.dir/depend
 

@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/eee/agv/src/cereal_port/include/cereal_port/CerealPort.h
+/home/eee/lingfei_ws/agv/src/cereal_port/include/cereal_port/CerealPort.h
 stdexcept
 -
 termios.h
@@ -22,7 +22,7 @@ boost/function.hpp
 boost/thread/thread.hpp
 -
 
-/home/eee/agv/src/cereal_port/src/CerealPort.cpp
+/home/eee/lingfei_ws/agv/src/cereal_port/src/CerealPort.cpp
 stdio.h
 -
 string.h
@@ -46,5 +46,5 @@ fstream
 stdexcept
 -
 cereal_port/CerealPort.h
-/home/eee/agv/src/cereal_port/src/cereal_port/CerealPort.h
+/home/eee/lingfei_ws/agv/src/cereal_port/src/cereal_port/CerealPort.h
 
