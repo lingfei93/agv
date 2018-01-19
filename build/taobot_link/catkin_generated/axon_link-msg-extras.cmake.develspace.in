@@ -1,2 +1,0 @@
-set(axon_link_MESSAGE_FILES "/home/eee/lingfei_ws/agv/src/taobot_link/msg/Taobot.msg")
-set(axon_link_SERVICE_FILES "")
