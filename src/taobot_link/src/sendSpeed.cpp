@@ -80,12 +80,10 @@ void usart_send(uint8_t* toSend)
     //TODO: can we check if the last set of data can be read?, actually i think it works for now!
 void format(uint8_t* reply, int N){
     int count = 0;
-<<<<<<< HEAD:src/axon_link/src/sendSpeed.cpp
-    axon_link::Taobot msg;	
+
+    taobot_link::Taobot msg;	
 	float voltage;
-=======
-    taobot_link::Taobot msg;
->>>>>>> 3eee1f35c09e103efb42b088a3fb81e897c89ae1:src/taobot_link/src/sendSpeed.cpp
+
 
     for (int i = 0; i < N; i ++)
         if(reply[i] == 0xff && reply[i+11] == 0xff && reply[i+1] ==0xfe && reply[i+12] == 0xfe){
