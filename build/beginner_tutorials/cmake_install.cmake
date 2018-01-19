@@ -1,8 +1,8 @@
-# Install script for directory: /home/eee/agv/src/beginner_tutorials
+# Install script for directory: /home/eee/lingfei_ws/agv/src/beginner_tutorials
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/eee/agv/install")
+  set(CMAKE_INSTALL_PREFIX "/home/eee/lingfei_ws/agv/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,17 +33,17 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/eee/agv/build/beginner_tutorials/catkin_generated/installspace/beginner_tutorials.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/eee/lingfei_ws/agv/build/beginner_tutorials/catkin_generated/installspace/beginner_tutorials.pc")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/beginner_tutorials/cmake" TYPE FILE FILES
-    "/home/eee/agv/build/beginner_tutorials/catkin_generated/installspace/beginner_tutorialsConfig.cmake"
-    "/home/eee/agv/build/beginner_tutorials/catkin_generated/installspace/beginner_tutorialsConfig-version.cmake"
+    "/home/eee/lingfei_ws/agv/build/beginner_tutorials/catkin_generated/installspace/beginner_tutorialsConfig.cmake"
+    "/home/eee/lingfei_ws/agv/build/beginner_tutorials/catkin_generated/installspace/beginner_tutorialsConfig-version.cmake"
     )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/beginner_tutorials" TYPE FILE FILES "/home/eee/agv/src/beginner_tutorials/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/beginner_tutorials" TYPE FILE FILES "/home/eee/lingfei_ws/agv/src/beginner_tutorials/package.xml")
 endif()
 

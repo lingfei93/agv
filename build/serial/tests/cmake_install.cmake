@@ -1,8 +1,8 @@
-# Install script for directory: /home/eee/agv/src/serial/tests
+# Install script for directory: /home/eee/lingfei_ws/agv/src/serial/tests
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/eee/agv/install")
+  set(CMAKE_INSTALL_PREFIX "/home/eee/lingfei_ws/agv/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 

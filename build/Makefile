@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/eee/agv/src
+CMAKE_SOURCE_DIR = /home/eee/lingfei_ws/agv/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/eee/agv/build
+CMAKE_BINARY_DIR = /home/eee/lingfei_ws/agv/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -135,9 +135,9 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/eee/agv/build/CMakeFiles /home/eee/agv/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/eee/lingfei_ws/agv/build/CMakeFiles /home/eee/lingfei_ws/agv/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/eee/agv/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/eee/lingfei_ws/agv/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -647,71 +647,6 @@ cereal_port/fast:
 .PHONY : cereal_port/fast
 
 #=============================================================================
-# Target rules for targets named testSerial50neg
-
-# Build rule for target.
-testSerial50neg: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 testSerial50neg
-.PHONY : testSerial50neg
-
-# fast build rule for target.
-testSerial50neg/fast:
-	$(MAKE) -f axon_link/CMakeFiles/testSerial50neg.dir/build.make axon_link/CMakeFiles/testSerial50neg.dir/build
-.PHONY : testSerial50neg/fast
-
-#=============================================================================
-# Target rules for targets named testNewSerial
-
-# Build rule for target.
-testNewSerial: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 testNewSerial
-.PHONY : testNewSerial
-
-# fast build rule for target.
-testNewSerial/fast:
-	$(MAKE) -f axon_link/CMakeFiles/testNewSerial.dir/build.make axon_link/CMakeFiles/testNewSerial.dir/build
-.PHONY : testNewSerial/fast
-
-#=============================================================================
-# Target rules for targets named testSerial40neg
-
-# Build rule for target.
-testSerial40neg: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 testSerial40neg
-.PHONY : testSerial40neg
-
-# fast build rule for target.
-testSerial40neg/fast:
-	$(MAKE) -f axon_link/CMakeFiles/testSerial40neg.dir/build.make axon_link/CMakeFiles/testSerial40neg.dir/build
-.PHONY : testSerial40neg/fast
-
-#=============================================================================
-# Target rules for targets named testSerial20neg
-
-# Build rule for target.
-testSerial20neg: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 testSerial20neg
-.PHONY : testSerial20neg
-
-# fast build rule for target.
-testSerial20neg/fast:
-	$(MAKE) -f axon_link/CMakeFiles/testSerial20neg.dir/build.make axon_link/CMakeFiles/testSerial20neg.dir/build
-.PHONY : testSerial20neg/fast
-
-#=============================================================================
-# Target rules for targets named testSerial10neg
-
-# Build rule for target.
-testSerial10neg: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 testSerial10neg
-.PHONY : testSerial10neg
-
-# fast build rule for target.
-testSerial10neg/fast:
-	$(MAKE) -f axon_link/CMakeFiles/testSerial10neg.dir/build.make axon_link/CMakeFiles/testSerial10neg.dir/build
-.PHONY : testSerial10neg/fast
-
-#=============================================================================
 # Target rules for targets named joy_ctrl_taobot_node
 
 # Build rule for target.
@@ -721,47 +656,21 @@ joy_ctrl_taobot_node: cmake_check_build_system
 
 # fast build rule for target.
 joy_ctrl_taobot_node/fast:
-	$(MAKE) -f axon_link/CMakeFiles/joy_ctrl_taobot_node.dir/build.make axon_link/CMakeFiles/joy_ctrl_taobot_node.dir/build
+	$(MAKE) -f taobot_link/CMakeFiles/joy_ctrl_taobot_node.dir/build.make taobot_link/CMakeFiles/joy_ctrl_taobot_node.dir/build
 .PHONY : joy_ctrl_taobot_node/fast
 
 #=============================================================================
-# Target rules for targets named testSerial30
+# Target rules for targets named speedP
 
 # Build rule for target.
-testSerial30: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 testSerial30
-.PHONY : testSerial30
+speedP: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 speedP
+.PHONY : speedP
 
 # fast build rule for target.
-testSerial30/fast:
-	$(MAKE) -f axon_link/CMakeFiles/testSerial30.dir/build.make axon_link/CMakeFiles/testSerial30.dir/build
-.PHONY : testSerial30/fast
-
-#=============================================================================
-# Target rules for targets named testSerial10
-
-# Build rule for target.
-testSerial10: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 testSerial10
-.PHONY : testSerial10
-
-# fast build rule for target.
-testSerial10/fast:
-	$(MAKE) -f axon_link/CMakeFiles/testSerial10.dir/build.make axon_link/CMakeFiles/testSerial10.dir/build
-.PHONY : testSerial10/fast
-
-#=============================================================================
-# Target rules for targets named axon_link_generate_messages_py
-
-# Build rule for target.
-axon_link_generate_messages_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 axon_link_generate_messages_py
-.PHONY : axon_link_generate_messages_py
-
-# fast build rule for target.
-axon_link_generate_messages_py/fast:
-	$(MAKE) -f axon_link/CMakeFiles/axon_link_generate_messages_py.dir/build.make axon_link/CMakeFiles/axon_link_generate_messages_py.dir/build
-.PHONY : axon_link_generate_messages_py/fast
+speedP/fast:
+	$(MAKE) -f taobot_link/CMakeFiles/speedP.dir/build.make taobot_link/CMakeFiles/speedP.dir/build
+.PHONY : speedP/fast
 
 #=============================================================================
 # Target rules for targets named actionlib_generate_messages_py
@@ -773,7 +682,7 @@ actionlib_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 actionlib_generate_messages_py/fast:
-	$(MAKE) -f axon_link/CMakeFiles/actionlib_generate_messages_py.dir/build.make axon_link/CMakeFiles/actionlib_generate_messages_py.dir/build
+	$(MAKE) -f taobot_link/CMakeFiles/actionlib_generate_messages_py.dir/build.make taobot_link/CMakeFiles/actionlib_generate_messages_py.dir/build
 .PHONY : actionlib_generate_messages_py/fast
 
 #=============================================================================
@@ -812,7 +721,7 @@ sensor_msgs_generate_messages_nodejs: cmake_check_build_system
 
 # fast build rule for target.
 sensor_msgs_generate_messages_nodejs/fast:
-	$(MAKE) -f axon_link/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make axon_link/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
+	$(MAKE) -f taobot_link/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make taobot_link/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
 .PHONY : sensor_msgs_generate_messages_nodejs/fast
 
 #=============================================================================
@@ -825,7 +734,7 @@ geometry_msgs_generate_messages_cpp: cmake_check_build_system
 
 # fast build rule for target.
 geometry_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f axon_link/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make axon_link/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
+	$(MAKE) -f taobot_link/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make taobot_link/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
 .PHONY : geometry_msgs_generate_messages_cpp/fast
 
 #=============================================================================
@@ -838,21 +747,8 @@ sensor_msgs_generate_messages_lisp: cmake_check_build_system
 
 # fast build rule for target.
 sensor_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f axon_link/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make axon_link/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
+	$(MAKE) -f taobot_link/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make taobot_link/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
 .PHONY : sensor_msgs_generate_messages_lisp/fast
-
-#=============================================================================
-# Target rules for targets named tf2_msgs_generate_messages_lisp
-
-# Build rule for target.
-tf2_msgs_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 tf2_msgs_generate_messages_lisp
-.PHONY : tf2_msgs_generate_messages_lisp
-
-# fast build rule for target.
-tf2_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f axon_link/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/build.make axon_link/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/build
-.PHONY : tf2_msgs_generate_messages_lisp/fast
 
 #=============================================================================
 # Target rules for targets named actionlib_generate_messages_eus
@@ -864,21 +760,8 @@ actionlib_generate_messages_eus: cmake_check_build_system
 
 # fast build rule for target.
 actionlib_generate_messages_eus/fast:
-	$(MAKE) -f axon_link/CMakeFiles/actionlib_generate_messages_eus.dir/build.make axon_link/CMakeFiles/actionlib_generate_messages_eus.dir/build
+	$(MAKE) -f taobot_link/CMakeFiles/actionlib_generate_messages_eus.dir/build.make taobot_link/CMakeFiles/actionlib_generate_messages_eus.dir/build
 .PHONY : actionlib_generate_messages_eus/fast
-
-#=============================================================================
-# Target rules for targets named testSerial60
-
-# Build rule for target.
-testSerial60: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 testSerial60
-.PHONY : testSerial60
-
-# fast build rule for target.
-testSerial60/fast:
-	$(MAKE) -f axon_link/CMakeFiles/testSerial60.dir/build.make axon_link/CMakeFiles/testSerial60.dir/build
-.PHONY : testSerial60/fast
 
 #=============================================================================
 # Target rules for targets named tf_generate_messages_cpp
@@ -890,34 +773,34 @@ tf_generate_messages_cpp: cmake_check_build_system
 
 # fast build rule for target.
 tf_generate_messages_cpp/fast:
-	$(MAKE) -f axon_link/CMakeFiles/tf_generate_messages_cpp.dir/build.make axon_link/CMakeFiles/tf_generate_messages_cpp.dir/build
+	$(MAKE) -f taobot_link/CMakeFiles/tf_generate_messages_cpp.dir/build.make taobot_link/CMakeFiles/tf_generate_messages_cpp.dir/build
 .PHONY : tf_generate_messages_cpp/fast
 
 #=============================================================================
-# Target rules for targets named testSerial60neg
+# Target rules for targets named taobot_link_generate_messages_cpp
 
 # Build rule for target.
-testSerial60neg: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 testSerial60neg
-.PHONY : testSerial60neg
+taobot_link_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 taobot_link_generate_messages_cpp
+.PHONY : taobot_link_generate_messages_cpp
 
 # fast build rule for target.
-testSerial60neg/fast:
-	$(MAKE) -f axon_link/CMakeFiles/testSerial60neg.dir/build.make axon_link/CMakeFiles/testSerial60neg.dir/build
-.PHONY : testSerial60neg/fast
+taobot_link_generate_messages_cpp/fast:
+	$(MAKE) -f taobot_link/CMakeFiles/taobot_link_generate_messages_cpp.dir/build.make taobot_link/CMakeFiles/taobot_link_generate_messages_cpp.dir/build
+.PHONY : taobot_link_generate_messages_cpp/fast
 
 #=============================================================================
-# Target rules for targets named testSerial40
+# Target rules for targets named taobot_link_genlisp
 
 # Build rule for target.
-testSerial40: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 testSerial40
-.PHONY : testSerial40
+taobot_link_genlisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 taobot_link_genlisp
+.PHONY : taobot_link_genlisp
 
 # fast build rule for target.
-testSerial40/fast:
-	$(MAKE) -f axon_link/CMakeFiles/testSerial40.dir/build.make axon_link/CMakeFiles/testSerial40.dir/build
-.PHONY : testSerial40/fast
+taobot_link_genlisp/fast:
+	$(MAKE) -f taobot_link/CMakeFiles/taobot_link_genlisp.dir/build.make taobot_link/CMakeFiles/taobot_link_genlisp.dir/build
+.PHONY : taobot_link_genlisp/fast
 
 #=============================================================================
 # Target rules for targets named geometry_msgs_generate_messages_nodejs
@@ -929,21 +812,8 @@ geometry_msgs_generate_messages_nodejs: cmake_check_build_system
 
 # fast build rule for target.
 geometry_msgs_generate_messages_nodejs/fast:
-	$(MAKE) -f axon_link/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make axon_link/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
+	$(MAKE) -f taobot_link/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make taobot_link/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
 .PHONY : geometry_msgs_generate_messages_nodejs/fast
-
-#=============================================================================
-# Target rules for targets named geometry_msgs_generate_messages_lisp
-
-# Build rule for target.
-geometry_msgs_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 geometry_msgs_generate_messages_lisp
-.PHONY : geometry_msgs_generate_messages_lisp
-
-# fast build rule for target.
-geometry_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f axon_link/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make axon_link/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
-.PHONY : geometry_msgs_generate_messages_lisp/fast
 
 #=============================================================================
 # Target rules for targets named tf_generate_messages_lisp
@@ -955,7 +825,7 @@ tf_generate_messages_lisp: cmake_check_build_system
 
 # fast build rule for target.
 tf_generate_messages_lisp/fast:
-	$(MAKE) -f axon_link/CMakeFiles/tf_generate_messages_lisp.dir/build.make axon_link/CMakeFiles/tf_generate_messages_lisp.dir/build
+	$(MAKE) -f taobot_link/CMakeFiles/tf_generate_messages_lisp.dir/build.make taobot_link/CMakeFiles/tf_generate_messages_lisp.dir/build
 .PHONY : tf_generate_messages_lisp/fast
 
 #=============================================================================
@@ -968,21 +838,47 @@ tf2_msgs_generate_messages_nodejs: cmake_check_build_system
 
 # fast build rule for target.
 tf2_msgs_generate_messages_nodejs/fast:
-	$(MAKE) -f axon_link/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/build.make axon_link/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/build
+	$(MAKE) -f taobot_link/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/build.make taobot_link/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/build
 .PHONY : tf2_msgs_generate_messages_nodejs/fast
 
 #=============================================================================
-# Target rules for targets named axon_link_generate_messages_lisp
+# Target rules for targets named _taobot_link_generate_messages_check_deps_Taobot
 
 # Build rule for target.
-axon_link_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 axon_link_generate_messages_lisp
-.PHONY : axon_link_generate_messages_lisp
+_taobot_link_generate_messages_check_deps_Taobot: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _taobot_link_generate_messages_check_deps_Taobot
+.PHONY : _taobot_link_generate_messages_check_deps_Taobot
 
 # fast build rule for target.
-axon_link_generate_messages_lisp/fast:
-	$(MAKE) -f axon_link/CMakeFiles/axon_link_generate_messages_lisp.dir/build.make axon_link/CMakeFiles/axon_link_generate_messages_lisp.dir/build
-.PHONY : axon_link_generate_messages_lisp/fast
+_taobot_link_generate_messages_check_deps_Taobot/fast:
+	$(MAKE) -f taobot_link/CMakeFiles/_taobot_link_generate_messages_check_deps_Taobot.dir/build.make taobot_link/CMakeFiles/_taobot_link_generate_messages_check_deps_Taobot.dir/build
+.PHONY : _taobot_link_generate_messages_check_deps_Taobot/fast
+
+#=============================================================================
+# Target rules for targets named geometry_msgs_generate_messages_lisp
+
+# Build rule for target.
+geometry_msgs_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 geometry_msgs_generate_messages_lisp
+.PHONY : geometry_msgs_generate_messages_lisp
+
+# fast build rule for target.
+geometry_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f taobot_link/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make taobot_link/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
+.PHONY : geometry_msgs_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named taobot_link_generate_messages_py
+
+# Build rule for target.
+taobot_link_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 taobot_link_generate_messages_py
+.PHONY : taobot_link_generate_messages_py
+
+# fast build rule for target.
+taobot_link_generate_messages_py/fast:
+	$(MAKE) -f taobot_link/CMakeFiles/taobot_link_generate_messages_py.dir/build.make taobot_link/CMakeFiles/taobot_link_generate_messages_py.dir/build
+.PHONY : taobot_link_generate_messages_py/fast
 
 #=============================================================================
 # Target rules for targets named tf_generate_messages_py
@@ -994,7 +890,7 @@ tf_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 tf_generate_messages_py/fast:
-	$(MAKE) -f axon_link/CMakeFiles/tf_generate_messages_py.dir/build.make axon_link/CMakeFiles/tf_generate_messages_py.dir/build
+	$(MAKE) -f taobot_link/CMakeFiles/tf_generate_messages_py.dir/build.make taobot_link/CMakeFiles/tf_generate_messages_py.dir/build
 .PHONY : tf_generate_messages_py/fast
 
 #=============================================================================
@@ -1007,7 +903,7 @@ sensor_msgs_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 sensor_msgs_generate_messages_py/fast:
-	$(MAKE) -f axon_link/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make axon_link/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
+	$(MAKE) -f taobot_link/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make taobot_link/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
 .PHONY : sensor_msgs_generate_messages_py/fast
 
 #=============================================================================
@@ -1020,34 +916,8 @@ actionlib_generate_messages_cpp: cmake_check_build_system
 
 # fast build rule for target.
 actionlib_generate_messages_cpp/fast:
-	$(MAKE) -f axon_link/CMakeFiles/actionlib_generate_messages_cpp.dir/build.make axon_link/CMakeFiles/actionlib_generate_messages_cpp.dir/build
+	$(MAKE) -f taobot_link/CMakeFiles/actionlib_generate_messages_cpp.dir/build.make taobot_link/CMakeFiles/actionlib_generate_messages_cpp.dir/build
 .PHONY : actionlib_generate_messages_cpp/fast
-
-#=============================================================================
-# Target rules for targets named axon_link_generate_messages_eus
-
-# Build rule for target.
-axon_link_generate_messages_eus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 axon_link_generate_messages_eus
-.PHONY : axon_link_generate_messages_eus
-
-# fast build rule for target.
-axon_link_generate_messages_eus/fast:
-	$(MAKE) -f axon_link/CMakeFiles/axon_link_generate_messages_eus.dir/build.make axon_link/CMakeFiles/axon_link_generate_messages_eus.dir/build
-.PHONY : axon_link_generate_messages_eus/fast
-
-#=============================================================================
-# Target rules for targets named geometry_msgs_generate_messages_eus
-
-# Build rule for target.
-geometry_msgs_generate_messages_eus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 geometry_msgs_generate_messages_eus
-.PHONY : geometry_msgs_generate_messages_eus
-
-# fast build rule for target.
-geometry_msgs_generate_messages_eus/fast:
-	$(MAKE) -f axon_link/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make axon_link/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
-.PHONY : geometry_msgs_generate_messages_eus/fast
 
 #=============================================================================
 # Target rules for targets named actionlib_msgs_generate_messages_py
@@ -1059,7 +929,7 @@ actionlib_msgs_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 actionlib_msgs_generate_messages_py/fast:
-	$(MAKE) -f axon_link/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build.make axon_link/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build
+	$(MAKE) -f taobot_link/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build.make taobot_link/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build
 .PHONY : actionlib_msgs_generate_messages_py/fast
 
 #=============================================================================
@@ -1072,7 +942,7 @@ sensor_msgs_generate_messages_eus: cmake_check_build_system
 
 # fast build rule for target.
 sensor_msgs_generate_messages_eus/fast:
-	$(MAKE) -f axon_link/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make axon_link/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
+	$(MAKE) -f taobot_link/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make taobot_link/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
 .PHONY : sensor_msgs_generate_messages_eus/fast
 
 #=============================================================================
@@ -1085,7 +955,7 @@ actionlib_generate_messages_nodejs: cmake_check_build_system
 
 # fast build rule for target.
 actionlib_generate_messages_nodejs/fast:
-	$(MAKE) -f axon_link/CMakeFiles/actionlib_generate_messages_nodejs.dir/build.make axon_link/CMakeFiles/actionlib_generate_messages_nodejs.dir/build
+	$(MAKE) -f taobot_link/CMakeFiles/actionlib_generate_messages_nodejs.dir/build.make taobot_link/CMakeFiles/actionlib_generate_messages_nodejs.dir/build
 .PHONY : actionlib_generate_messages_nodejs/fast
 
 #=============================================================================
@@ -1098,7 +968,7 @@ actionlib_msgs_generate_messages_cpp: cmake_check_build_system
 
 # fast build rule for target.
 actionlib_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f axon_link/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build.make axon_link/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build
+	$(MAKE) -f taobot_link/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build.make taobot_link/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build
 .PHONY : actionlib_msgs_generate_messages_cpp/fast
 
 #=============================================================================
@@ -1111,34 +981,8 @@ tf_generate_messages_eus: cmake_check_build_system
 
 # fast build rule for target.
 tf_generate_messages_eus/fast:
-	$(MAKE) -f axon_link/CMakeFiles/tf_generate_messages_eus.dir/build.make axon_link/CMakeFiles/tf_generate_messages_eus.dir/build
+	$(MAKE) -f taobot_link/CMakeFiles/tf_generate_messages_eus.dir/build.make taobot_link/CMakeFiles/tf_generate_messages_eus.dir/build
 .PHONY : tf_generate_messages_eus/fast
-
-#=============================================================================
-# Target rules for targets named testSerial
-
-# Build rule for target.
-testSerial: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 testSerial
-.PHONY : testSerial
-
-# fast build rule for target.
-testSerial/fast:
-	$(MAKE) -f axon_link/CMakeFiles/testSerial.dir/build.make axon_link/CMakeFiles/testSerial.dir/build
-.PHONY : testSerial/fast
-
-#=============================================================================
-# Target rules for targets named axon_link_gencpp
-
-# Build rule for target.
-axon_link_gencpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 axon_link_gencpp
-.PHONY : axon_link_gencpp
-
-# fast build rule for target.
-axon_link_gencpp/fast:
-	$(MAKE) -f axon_link/CMakeFiles/axon_link_gencpp.dir/build.make axon_link/CMakeFiles/axon_link_gencpp.dir/build
-.PHONY : axon_link_gencpp/fast
 
 #=============================================================================
 # Target rules for targets named geometry_msgs_generate_messages_py
@@ -1150,216 +994,8 @@ geometry_msgs_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 geometry_msgs_generate_messages_py/fast:
-	$(MAKE) -f axon_link/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make axon_link/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
+	$(MAKE) -f taobot_link/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make taobot_link/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
 .PHONY : geometry_msgs_generate_messages_py/fast
-
-#=============================================================================
-# Target rules for targets named testSerial20
-
-# Build rule for target.
-testSerial20: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 testSerial20
-.PHONY : testSerial20
-
-# fast build rule for target.
-testSerial20/fast:
-	$(MAKE) -f axon_link/CMakeFiles/testSerial20.dir/build.make axon_link/CMakeFiles/testSerial20.dir/build
-.PHONY : testSerial20/fast
-
-#=============================================================================
-# Target rules for targets named tf_generate_messages_nodejs
-
-# Build rule for target.
-tf_generate_messages_nodejs: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 tf_generate_messages_nodejs
-.PHONY : tf_generate_messages_nodejs
-
-# fast build rule for target.
-tf_generate_messages_nodejs/fast:
-	$(MAKE) -f axon_link/CMakeFiles/tf_generate_messages_nodejs.dir/build.make axon_link/CMakeFiles/tf_generate_messages_nodejs.dir/build
-.PHONY : tf_generate_messages_nodejs/fast
-
-#=============================================================================
-# Target rules for targets named speed0
-
-# Build rule for target.
-speed0: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 speed0
-.PHONY : speed0
-
-# fast build rule for target.
-speed0/fast:
-	$(MAKE) -f axon_link/CMakeFiles/speed0.dir/build.make axon_link/CMakeFiles/speed0.dir/build
-.PHONY : speed0/fast
-
-#=============================================================================
-# Target rules for targets named sensor_msgs_generate_messages_cpp
-
-# Build rule for target.
-sensor_msgs_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 sensor_msgs_generate_messages_cpp
-.PHONY : sensor_msgs_generate_messages_cpp
-
-# fast build rule for target.
-sensor_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f axon_link/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make axon_link/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
-.PHONY : sensor_msgs_generate_messages_cpp/fast
-
-#=============================================================================
-# Target rules for targets named actionlib_msgs_generate_messages_lisp
-
-# Build rule for target.
-actionlib_msgs_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 actionlib_msgs_generate_messages_lisp
-.PHONY : actionlib_msgs_generate_messages_lisp
-
-# fast build rule for target.
-actionlib_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f axon_link/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build.make axon_link/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build
-.PHONY : actionlib_msgs_generate_messages_lisp/fast
-
-#=============================================================================
-# Target rules for targets named readTaoBotMsg
-
-# Build rule for target.
-readTaoBotMsg: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 readTaoBotMsg
-.PHONY : readTaoBotMsg
-
-# fast build rule for target.
-readTaoBotMsg/fast:
-	$(MAKE) -f axon_link/CMakeFiles/readTaoBotMsg.dir/build.make axon_link/CMakeFiles/readTaoBotMsg.dir/build
-.PHONY : readTaoBotMsg/fast
-
-#=============================================================================
-# Target rules for targets named testSerial50
-
-# Build rule for target.
-testSerial50: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 testSerial50
-.PHONY : testSerial50
-
-# fast build rule for target.
-testSerial50/fast:
-	$(MAKE) -f axon_link/CMakeFiles/testSerial50.dir/build.make axon_link/CMakeFiles/testSerial50.dir/build
-.PHONY : testSerial50/fast
-
-#=============================================================================
-# Target rules for targets named tf2_msgs_generate_messages_cpp
-
-# Build rule for target.
-tf2_msgs_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 tf2_msgs_generate_messages_cpp
-.PHONY : tf2_msgs_generate_messages_cpp
-
-# fast build rule for target.
-tf2_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f axon_link/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/build.make axon_link/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/build
-.PHONY : tf2_msgs_generate_messages_cpp/fast
-
-#=============================================================================
-# Target rules for targets named axon_link_generate_messages_cpp
-
-# Build rule for target.
-axon_link_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 axon_link_generate_messages_cpp
-.PHONY : axon_link_generate_messages_cpp
-
-# fast build rule for target.
-axon_link_generate_messages_cpp/fast:
-	$(MAKE) -f axon_link/CMakeFiles/axon_link_generate_messages_cpp.dir/build.make axon_link/CMakeFiles/axon_link_generate_messages_cpp.dir/build
-.PHONY : axon_link_generate_messages_cpp/fast
-
-#=============================================================================
-# Target rules for targets named tf2_msgs_generate_messages_eus
-
-# Build rule for target.
-tf2_msgs_generate_messages_eus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 tf2_msgs_generate_messages_eus
-.PHONY : tf2_msgs_generate_messages_eus
-
-# fast build rule for target.
-tf2_msgs_generate_messages_eus/fast:
-	$(MAKE) -f axon_link/CMakeFiles/tf2_msgs_generate_messages_eus.dir/build.make axon_link/CMakeFiles/tf2_msgs_generate_messages_eus.dir/build
-.PHONY : tf2_msgs_generate_messages_eus/fast
-
-#=============================================================================
-# Target rules for targets named testSerial30neg
-
-# Build rule for target.
-testSerial30neg: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 testSerial30neg
-.PHONY : testSerial30neg
-
-# fast build rule for target.
-testSerial30neg/fast:
-	$(MAKE) -f axon_link/CMakeFiles/testSerial30neg.dir/build.make axon_link/CMakeFiles/testSerial30neg.dir/build
-.PHONY : testSerial30neg/fast
-
-#=============================================================================
-# Target rules for targets named axon_link_generate_messages
-
-# Build rule for target.
-axon_link_generate_messages: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 axon_link_generate_messages
-.PHONY : axon_link_generate_messages
-
-# fast build rule for target.
-axon_link_generate_messages/fast:
-	$(MAKE) -f axon_link/CMakeFiles/axon_link_generate_messages.dir/build.make axon_link/CMakeFiles/axon_link_generate_messages.dir/build
-.PHONY : axon_link_generate_messages/fast
-
-#=============================================================================
-# Target rules for targets named _axon_link_generate_messages_check_deps_Taobot
-
-# Build rule for target.
-_axon_link_generate_messages_check_deps_Taobot: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _axon_link_generate_messages_check_deps_Taobot
-.PHONY : _axon_link_generate_messages_check_deps_Taobot
-
-# fast build rule for target.
-_axon_link_generate_messages_check_deps_Taobot/fast:
-	$(MAKE) -f axon_link/CMakeFiles/_axon_link_generate_messages_check_deps_Taobot.dir/build.make axon_link/CMakeFiles/_axon_link_generate_messages_check_deps_Taobot.dir/build
-.PHONY : _axon_link_generate_messages_check_deps_Taobot/fast
-
-#=============================================================================
-# Target rules for targets named actionlib_msgs_generate_messages_nodejs
-
-# Build rule for target.
-actionlib_msgs_generate_messages_nodejs: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 actionlib_msgs_generate_messages_nodejs
-.PHONY : actionlib_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-actionlib_msgs_generate_messages_nodejs/fast:
-	$(MAKE) -f axon_link/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build.make axon_link/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build
-.PHONY : actionlib_msgs_generate_messages_nodejs/fast
-
-#=============================================================================
-# Target rules for targets named tf2_msgs_generate_messages_py
-
-# Build rule for target.
-tf2_msgs_generate_messages_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 tf2_msgs_generate_messages_py
-.PHONY : tf2_msgs_generate_messages_py
-
-# fast build rule for target.
-tf2_msgs_generate_messages_py/fast:
-	$(MAKE) -f axon_link/CMakeFiles/tf2_msgs_generate_messages_py.dir/build.make axon_link/CMakeFiles/tf2_msgs_generate_messages_py.dir/build
-.PHONY : tf2_msgs_generate_messages_py/fast
-
-#=============================================================================
-# Target rules for targets named axon_link_geneus
-
-# Build rule for target.
-axon_link_geneus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 axon_link_geneus
-.PHONY : axon_link_geneus
-
-# fast build rule for target.
-axon_link_geneus/fast:
-	$(MAKE) -f axon_link/CMakeFiles/axon_link_geneus.dir/build.make axon_link/CMakeFiles/axon_link_geneus.dir/build
-.PHONY : axon_link_geneus/fast
 
 #=============================================================================
 # Target rules for targets named actionlib_generate_messages_lisp
@@ -1371,7 +1007,7 @@ actionlib_generate_messages_lisp: cmake_check_build_system
 
 # fast build rule for target.
 actionlib_generate_messages_lisp/fast:
-	$(MAKE) -f axon_link/CMakeFiles/actionlib_generate_messages_lisp.dir/build.make axon_link/CMakeFiles/actionlib_generate_messages_lisp.dir/build
+	$(MAKE) -f taobot_link/CMakeFiles/actionlib_generate_messages_lisp.dir/build.make taobot_link/CMakeFiles/actionlib_generate_messages_lisp.dir/build
 .PHONY : actionlib_generate_messages_lisp/fast
 
 #=============================================================================
@@ -1384,47 +1020,267 @@ actionlib_msgs_generate_messages_eus: cmake_check_build_system
 
 # fast build rule for target.
 actionlib_msgs_generate_messages_eus/fast:
-	$(MAKE) -f axon_link/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build.make axon_link/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build
+	$(MAKE) -f taobot_link/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build.make taobot_link/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build
 .PHONY : actionlib_msgs_generate_messages_eus/fast
 
 #=============================================================================
-# Target rules for targets named axon_link_genlisp
+# Target rules for targets named taobot_link_generate_messages_nodejs
 
 # Build rule for target.
-axon_link_genlisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 axon_link_genlisp
-.PHONY : axon_link_genlisp
+taobot_link_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 taobot_link_generate_messages_nodejs
+.PHONY : taobot_link_generate_messages_nodejs
 
 # fast build rule for target.
-axon_link_genlisp/fast:
-	$(MAKE) -f axon_link/CMakeFiles/axon_link_genlisp.dir/build.make axon_link/CMakeFiles/axon_link_genlisp.dir/build
-.PHONY : axon_link_genlisp/fast
+taobot_link_generate_messages_nodejs/fast:
+	$(MAKE) -f taobot_link/CMakeFiles/taobot_link_generate_messages_nodejs.dir/build.make taobot_link/CMakeFiles/taobot_link_generate_messages_nodejs.dir/build
+.PHONY : taobot_link_generate_messages_nodejs/fast
 
 #=============================================================================
-# Target rules for targets named axon_link_gennodejs
+# Target rules for targets named tf_generate_messages_nodejs
 
 # Build rule for target.
-axon_link_gennodejs: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 axon_link_gennodejs
-.PHONY : axon_link_gennodejs
+tf_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tf_generate_messages_nodejs
+.PHONY : tf_generate_messages_nodejs
 
 # fast build rule for target.
-axon_link_gennodejs/fast:
-	$(MAKE) -f axon_link/CMakeFiles/axon_link_gennodejs.dir/build.make axon_link/CMakeFiles/axon_link_gennodejs.dir/build
-.PHONY : axon_link_gennodejs/fast
+tf_generate_messages_nodejs/fast:
+	$(MAKE) -f taobot_link/CMakeFiles/tf_generate_messages_nodejs.dir/build.make taobot_link/CMakeFiles/tf_generate_messages_nodejs.dir/build
+.PHONY : tf_generate_messages_nodejs/fast
 
 #=============================================================================
-# Target rules for targets named axon_link_genpy
+# Target rules for targets named taobot_link_gennodejs
 
 # Build rule for target.
-axon_link_genpy: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 axon_link_genpy
-.PHONY : axon_link_genpy
+taobot_link_gennodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 taobot_link_gennodejs
+.PHONY : taobot_link_gennodejs
 
 # fast build rule for target.
-axon_link_genpy/fast:
-	$(MAKE) -f axon_link/CMakeFiles/axon_link_genpy.dir/build.make axon_link/CMakeFiles/axon_link_genpy.dir/build
-.PHONY : axon_link_genpy/fast
+taobot_link_gennodejs/fast:
+	$(MAKE) -f taobot_link/CMakeFiles/taobot_link_gennodejs.dir/build.make taobot_link/CMakeFiles/taobot_link_gennodejs.dir/build
+.PHONY : taobot_link_gennodejs/fast
+
+#=============================================================================
+# Target rules for targets named speed0
+
+# Build rule for target.
+speed0: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 speed0
+.PHONY : speed0
+
+# fast build rule for target.
+speed0/fast:
+	$(MAKE) -f taobot_link/CMakeFiles/speed0.dir/build.make taobot_link/CMakeFiles/speed0.dir/build
+.PHONY : speed0/fast
+
+#=============================================================================
+# Target rules for targets named sensor_msgs_generate_messages_cpp
+
+# Build rule for target.
+sensor_msgs_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sensor_msgs_generate_messages_cpp
+.PHONY : sensor_msgs_generate_messages_cpp
+
+# fast build rule for target.
+sensor_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f taobot_link/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make taobot_link/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
+.PHONY : sensor_msgs_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named actionlib_msgs_generate_messages_lisp
+
+# Build rule for target.
+actionlib_msgs_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 actionlib_msgs_generate_messages_lisp
+.PHONY : actionlib_msgs_generate_messages_lisp
+
+# fast build rule for target.
+actionlib_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f taobot_link/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build.make taobot_link/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build
+.PHONY : actionlib_msgs_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named readTaoBotMsg
+
+# Build rule for target.
+readTaoBotMsg: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 readTaoBotMsg
+.PHONY : readTaoBotMsg
+
+# fast build rule for target.
+readTaoBotMsg/fast:
+	$(MAKE) -f taobot_link/CMakeFiles/readTaoBotMsg.dir/build.make taobot_link/CMakeFiles/readTaoBotMsg.dir/build
+.PHONY : readTaoBotMsg/fast
+
+#=============================================================================
+# Target rules for targets named tf2_msgs_generate_messages_cpp
+
+# Build rule for target.
+tf2_msgs_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tf2_msgs_generate_messages_cpp
+.PHONY : tf2_msgs_generate_messages_cpp
+
+# fast build rule for target.
+tf2_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f taobot_link/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/build.make taobot_link/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/build
+.PHONY : tf2_msgs_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named tf2_msgs_generate_messages_eus
+
+# Build rule for target.
+tf2_msgs_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tf2_msgs_generate_messages_eus
+.PHONY : tf2_msgs_generate_messages_eus
+
+# fast build rule for target.
+tf2_msgs_generate_messages_eus/fast:
+	$(MAKE) -f taobot_link/CMakeFiles/tf2_msgs_generate_messages_eus.dir/build.make taobot_link/CMakeFiles/tf2_msgs_generate_messages_eus.dir/build
+.PHONY : tf2_msgs_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named actionlib_msgs_generate_messages_nodejs
+
+# Build rule for target.
+actionlib_msgs_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 actionlib_msgs_generate_messages_nodejs
+.PHONY : actionlib_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+actionlib_msgs_generate_messages_nodejs/fast:
+	$(MAKE) -f taobot_link/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build.make taobot_link/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build
+.PHONY : actionlib_msgs_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named tf2_msgs_generate_messages_py
+
+# Build rule for target.
+tf2_msgs_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tf2_msgs_generate_messages_py
+.PHONY : tf2_msgs_generate_messages_py
+
+# fast build rule for target.
+tf2_msgs_generate_messages_py/fast:
+	$(MAKE) -f taobot_link/CMakeFiles/tf2_msgs_generate_messages_py.dir/build.make taobot_link/CMakeFiles/tf2_msgs_generate_messages_py.dir/build
+.PHONY : tf2_msgs_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named taobot_link_generate_messages
+
+# Build rule for target.
+taobot_link_generate_messages: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 taobot_link_generate_messages
+.PHONY : taobot_link_generate_messages
+
+# fast build rule for target.
+taobot_link_generate_messages/fast:
+	$(MAKE) -f taobot_link/CMakeFiles/taobot_link_generate_messages.dir/build.make taobot_link/CMakeFiles/taobot_link_generate_messages.dir/build
+.PHONY : taobot_link_generate_messages/fast
+
+#=============================================================================
+# Target rules for targets named tf2_msgs_generate_messages_lisp
+
+# Build rule for target.
+tf2_msgs_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tf2_msgs_generate_messages_lisp
+.PHONY : tf2_msgs_generate_messages_lisp
+
+# fast build rule for target.
+tf2_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f taobot_link/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/build.make taobot_link/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/build
+.PHONY : tf2_msgs_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named taobot_link_gencpp
+
+# Build rule for target.
+taobot_link_gencpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 taobot_link_gencpp
+.PHONY : taobot_link_gencpp
+
+# fast build rule for target.
+taobot_link_gencpp/fast:
+	$(MAKE) -f taobot_link/CMakeFiles/taobot_link_gencpp.dir/build.make taobot_link/CMakeFiles/taobot_link_gencpp.dir/build
+.PHONY : taobot_link_gencpp/fast
+
+#=============================================================================
+# Target rules for targets named taobot_link_generate_messages_eus
+
+# Build rule for target.
+taobot_link_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 taobot_link_generate_messages_eus
+.PHONY : taobot_link_generate_messages_eus
+
+# fast build rule for target.
+taobot_link_generate_messages_eus/fast:
+	$(MAKE) -f taobot_link/CMakeFiles/taobot_link_generate_messages_eus.dir/build.make taobot_link/CMakeFiles/taobot_link_generate_messages_eus.dir/build
+.PHONY : taobot_link_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named taobot_link_generate_messages_lisp
+
+# Build rule for target.
+taobot_link_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 taobot_link_generate_messages_lisp
+.PHONY : taobot_link_generate_messages_lisp
+
+# fast build rule for target.
+taobot_link_generate_messages_lisp/fast:
+	$(MAKE) -f taobot_link/CMakeFiles/taobot_link_generate_messages_lisp.dir/build.make taobot_link/CMakeFiles/taobot_link_generate_messages_lisp.dir/build
+.PHONY : taobot_link_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named taobot_link_geneus
+
+# Build rule for target.
+taobot_link_geneus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 taobot_link_geneus
+.PHONY : taobot_link_geneus
+
+# fast build rule for target.
+taobot_link_geneus/fast:
+	$(MAKE) -f taobot_link/CMakeFiles/taobot_link_geneus.dir/build.make taobot_link/CMakeFiles/taobot_link_geneus.dir/build
+.PHONY : taobot_link_geneus/fast
+
+#=============================================================================
+<<<<<<< HEAD
+# Target rules for targets named eigen
+
+# Build rule for target.
+eigen: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 eigen
+.PHONY : eigen
+
+# fast build rule for target.
+eigen/fast:
+	$(MAKE) -f axon_link/CMakeFiles/eigen.dir/build.make axon_link/CMakeFiles/eigen.dir/build
+=======
+# Target rules for targets named geometry_msgs_generate_messages_eus
+
+# Build rule for target.
+geometry_msgs_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 geometry_msgs_generate_messages_eus
+.PHONY : geometry_msgs_generate_messages_eus
+
+# fast build rule for target.
+geometry_msgs_generate_messages_eus/fast:
+	$(MAKE) -f taobot_link/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make taobot_link/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
+.PHONY : geometry_msgs_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named taobot_link_genpy
+
+# Build rule for target.
+taobot_link_genpy: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 taobot_link_genpy
+.PHONY : taobot_link_genpy
+
+# fast build rule for target.
+taobot_link_genpy/fast:
+	$(MAKE) -f taobot_link/CMakeFiles/taobot_link_genpy.dir/build.make taobot_link/CMakeFiles/taobot_link_genpy.dir/build
+.PHONY : taobot_link_genpy/fast
 
 #=============================================================================
 # Target rules for targets named eigen
@@ -1436,7 +1292,8 @@ eigen: cmake_check_build_system
 
 # fast build rule for target.
 eigen/fast:
-	$(MAKE) -f axon_link/CMakeFiles/eigen.dir/build.make axon_link/CMakeFiles/eigen.dir/build
+	$(MAKE) -f taobot_link/CMakeFiles/eigen.dir/build.make taobot_link/CMakeFiles/eigen.dir/build
+>>>>>>> 3eee1f35c09e103efb42b088a3fb81e897c89ae1
 .PHONY : eigen/fast
 
 #=============================================================================
@@ -1449,7 +1306,7 @@ sendSpeed: cmake_check_build_system
 
 # fast build rule for target.
 sendSpeed/fast:
-	$(MAKE) -f axon_link/CMakeFiles/sendSpeed.dir/build.make axon_link/CMakeFiles/sendSpeed.dir/build
+	$(MAKE) -f taobot_link/CMakeFiles/sendSpeed.dir/build.make taobot_link/CMakeFiles/sendSpeed.dir/build
 .PHONY : sendSpeed/fast
 
 # Help Target
@@ -1502,66 +1359,63 @@ help:
 	@echo "... std_msgs_generate_messages_py"
 	@echo "... rosgraph_msgs_generate_messages_py"
 	@echo "... cereal_port"
-	@echo "... testSerial50neg"
-	@echo "... testNewSerial"
-	@echo "... testSerial40neg"
-	@echo "... testSerial20neg"
-	@echo "... testSerial10neg"
 	@echo "... joy_ctrl_taobot_node"
-	@echo "... testSerial30"
-	@echo "... testSerial10"
-	@echo "... axon_link_generate_messages_py"
+	@echo "... speedP"
 	@echo "... actionlib_generate_messages_py"
 	@echo "... speedP"
 	@echo "... axon_link_generate_messages_nodejs"
 	@echo "... sensor_msgs_generate_messages_nodejs"
 	@echo "... geometry_msgs_generate_messages_cpp"
 	@echo "... sensor_msgs_generate_messages_lisp"
-	@echo "... tf2_msgs_generate_messages_lisp"
 	@echo "... actionlib_generate_messages_eus"
-	@echo "... testSerial60"
 	@echo "... tf_generate_messages_cpp"
-	@echo "... testSerial60neg"
-	@echo "... testSerial40"
+	@echo "... taobot_link_generate_messages_cpp"
+	@echo "... taobot_link_genlisp"
 	@echo "... geometry_msgs_generate_messages_nodejs"
-	@echo "... geometry_msgs_generate_messages_lisp"
 	@echo "... tf_generate_messages_lisp"
 	@echo "... tf2_msgs_generate_messages_nodejs"
-	@echo "... axon_link_generate_messages_lisp"
+	@echo "... _taobot_link_generate_messages_check_deps_Taobot"
+	@echo "... geometry_msgs_generate_messages_lisp"
+	@echo "... taobot_link_generate_messages_py"
 	@echo "... tf_generate_messages_py"
 	@echo "... sensor_msgs_generate_messages_py"
 	@echo "... actionlib_generate_messages_cpp"
-	@echo "... axon_link_generate_messages_eus"
-	@echo "... geometry_msgs_generate_messages_eus"
 	@echo "... actionlib_msgs_generate_messages_py"
 	@echo "... sensor_msgs_generate_messages_eus"
 	@echo "... actionlib_generate_messages_nodejs"
 	@echo "... actionlib_msgs_generate_messages_cpp"
 	@echo "... tf_generate_messages_eus"
-	@echo "... testSerial"
-	@echo "... axon_link_gencpp"
 	@echo "... geometry_msgs_generate_messages_py"
-	@echo "... testSerial20"
+	@echo "... actionlib_generate_messages_lisp"
+	@echo "... actionlib_msgs_generate_messages_eus"
+	@echo "... taobot_link_generate_messages_nodejs"
 	@echo "... tf_generate_messages_nodejs"
+	@echo "... taobot_link_gennodejs"
 	@echo "... speed0"
 	@echo "... sensor_msgs_generate_messages_cpp"
 	@echo "... actionlib_msgs_generate_messages_lisp"
 	@echo "... readTaoBotMsg"
-	@echo "... testSerial50"
 	@echo "... tf2_msgs_generate_messages_cpp"
-	@echo "... axon_link_generate_messages_cpp"
 	@echo "... tf2_msgs_generate_messages_eus"
-	@echo "... testSerial30neg"
-	@echo "... axon_link_generate_messages"
-	@echo "... _axon_link_generate_messages_check_deps_Taobot"
 	@echo "... actionlib_msgs_generate_messages_nodejs"
 	@echo "... tf2_msgs_generate_messages_py"
+<<<<<<< HEAD
 	@echo "... axon_link_geneus"
 	@echo "... actionlib_generate_messages_lisp"
 	@echo "... actionlib_msgs_generate_messages_eus"
 	@echo "... axon_link_genlisp"
 	@echo "... axon_link_gennodejs"
 	@echo "... axon_link_genpy"
+=======
+	@echo "... taobot_link_generate_messages"
+	@echo "... tf2_msgs_generate_messages_lisp"
+	@echo "... taobot_link_gencpp"
+	@echo "... taobot_link_generate_messages_eus"
+	@echo "... taobot_link_generate_messages_lisp"
+	@echo "... taobot_link_geneus"
+	@echo "... geometry_msgs_generate_messages_eus"
+	@echo "... taobot_link_genpy"
+>>>>>>> 3eee1f35c09e103efb42b088a3fb81e897c89ae1
 	@echo "... eigen"
 	@echo "... sendSpeed"
 .PHONY : help

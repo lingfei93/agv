@@ -7,9 +7,13 @@
 # new environment variables
 
 # modified environment variables
+<<<<<<< HEAD
 export CMAKE_PREFIX_PATH="/home/eee/agv/devel:$CMAKE_PREFIX_PATH"
 export LD_LIBRARY_PATH="/home/eee/agv/devel/lib:$LD_LIBRARY_PATH"
 export PKG_CONFIG_PATH="/home/eee/agv/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD="/home/eee/agv/build"
 export ROSLISP_PACKAGE_DIRECTORIES="/home/eee/agv/devel/share/common-lisp"
 export ROS_PACKAGE_PATH="/home/eee/agv/src:$ROS_PACKAGE_PATH"
+=======
+export PWD="/home/eee/lingfei_ws/agv/build"
+>>>>>>> 3eee1f35c09e103efb42b088a3fb81e897c89ae1
