@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/eee/agv/src/axon_link/src/joy_ctrl_axon_node.cpp" "/home/eee/agv/build/axon_link/CMakeFiles/joy_ctrl_axon_node.dir/src/joy_ctrl_axon_node.cpp.o"
+  "/home/eee/agv/src/axon_link/src/eigen.cpp" "/home/eee/agv/build/axon_link/CMakeFiles/eigen.dir/src/eigen.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -22,6 +22,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/eee/agv/src/serial/include"
   "/opt/ros/kinetic/include"
   "/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
+  "/usr/include/eigen3"
   )
 
 # Targets to which this target links.

@@ -7,7 +7,7 @@ import struct
 
 
 class Taobot(genpy.Message):
-  _md5sum = "7d650a23fc1ea1941c14405910e8d823"
+  _md5sum = "8683fead56235780b4aa5f54f5f7b789"
   _type = "axon_link/Taobot"
   _has_header = False #flag to mark the presence of a Header object
   _full_text = """uint8 motorA_encoder
@@ -16,10 +16,10 @@ uint8 motorB_encoder
 uint8 motorB_dir
 uint8 motorC_encoder
 uint8 motorC_dir
-uint8 voltage
+float32 voltage
 """
   __slots__ = ['motorA_encoder','motorA_dir','motorB_encoder','motorB_dir','motorC_encoder','motorC_dir','voltage']
-  _slot_types = ['uint8','uint8','uint8','uint8','uint8','uint8','uint8']
+  _slot_types = ['uint8','uint8','uint8','uint8','uint8','uint8','float32']
 
   def __init__(self, *args, **kwds):
     """
@@ -51,7 +51,7 @@ uint8 voltage
       if self.motorC_dir is None:
         self.motorC_dir = 0
       if self.voltage is None:
-        self.voltage = 0
+        self.voltage = 0.
     else:
       self.motorA_encoder = 0
       self.motorA_dir = 0
@@ -59,7 +59,7 @@ uint8 voltage
       self.motorB_dir = 0
       self.motorC_encoder = 0
       self.motorC_dir = 0
-      self.voltage = 0
+      self.voltage = 0.
 
   def _get_types(self):
     """
@@ -74,7 +74,7 @@ uint8 voltage
     """
     try:
       _x = self
-      buff.write(_get_struct_7B().pack(_x.motorA_encoder, _x.motorA_dir, _x.motorB_encoder, _x.motorB_dir, _x.motorC_encoder, _x.motorC_dir, _x.voltage))
+      buff.write(_get_struct_6Bf().pack(_x.motorA_encoder, _x.motorA_dir, _x.motorB_encoder, _x.motorB_dir, _x.motorC_encoder, _x.motorC_dir, _x.voltage))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -87,8 +87,8 @@ uint8 voltage
       end = 0
       _x = self
       start = end
-      end += 7
-      (_x.motorA_encoder, _x.motorA_dir, _x.motorB_encoder, _x.motorB_dir, _x.motorC_encoder, _x.motorC_dir, _x.voltage,) = _get_struct_7B().unpack(str[start:end])
+      end += 10
+      (_x.motorA_encoder, _x.motorA_dir, _x.motorB_encoder, _x.motorB_dir, _x.motorC_encoder, _x.motorC_dir, _x.voltage,) = _get_struct_6Bf().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -102,7 +102,7 @@ uint8 voltage
     """
     try:
       _x = self
-      buff.write(_get_struct_7B().pack(_x.motorA_encoder, _x.motorA_dir, _x.motorB_encoder, _x.motorB_dir, _x.motorC_encoder, _x.motorC_dir, _x.voltage))
+      buff.write(_get_struct_6Bf().pack(_x.motorA_encoder, _x.motorA_dir, _x.motorB_encoder, _x.motorB_dir, _x.motorC_encoder, _x.motorC_dir, _x.voltage))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -116,8 +116,8 @@ uint8 voltage
       end = 0
       _x = self
       start = end
-      end += 7
-      (_x.motorA_encoder, _x.motorA_dir, _x.motorB_encoder, _x.motorB_dir, _x.motorC_encoder, _x.motorC_dir, _x.voltage,) = _get_struct_7B().unpack(str[start:end])
+      end += 10
+      (_x.motorA_encoder, _x.motorA_dir, _x.motorB_encoder, _x.motorB_dir, _x.motorC_encoder, _x.motorC_dir, _x.voltage,) = _get_struct_6Bf().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -126,9 +126,9 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_7B = None
-def _get_struct_7B():
-    global _struct_7B
-    if _struct_7B is None:
-        _struct_7B = struct.Struct("<7B")
-    return _struct_7B
+_struct_6Bf = None
+def _get_struct_6Bf():
+    global _struct_6Bf
+    if _struct_6Bf is None:
+        _struct_6Bf = struct.Struct("<6Bf")
+    return _struct_6Bf

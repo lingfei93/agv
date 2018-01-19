@@ -30,7 +30,7 @@ struct Taobot_
     , motorB_dir(0)
     , motorC_encoder(0)
     , motorC_dir(0)
-    , voltage(0)  {
+    , voltage(0.0)  {
     }
   Taobot_(const ContainerAllocator& _alloc)
     : motorA_encoder(0)
@@ -39,7 +39,7 @@ struct Taobot_
     , motorB_dir(0)
     , motorC_encoder(0)
     , motorC_dir(0)
-    , voltage(0)  {
+    , voltage(0.0)  {
   (void)_alloc;
     }
 
@@ -63,7 +63,7 @@ struct Taobot_
    typedef uint8_t _motorC_dir_type;
   _motorC_dir_type motorC_dir;
 
-   typedef uint8_t _voltage_type;
+   typedef float _voltage_type;
   _voltage_type voltage;
 
 
@@ -143,12 +143,12 @@ struct MD5Sum< ::axon_link::Taobot_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "7d650a23fc1ea1941c14405910e8d823";
+    return "8683fead56235780b4aa5f54f5f7b789";
   }
 
   static const char* value(const ::axon_link::Taobot_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x7d650a23fc1ea194ULL;
-  static const uint64_t static_value2 = 0x1c14405910e8d823ULL;
+  static const uint64_t static_value1 = 0x8683fead56235780ULL;
+  static const uint64_t static_value2 = 0xb4aa5f54f5f7b789ULL;
 };
 
 template<class ContainerAllocator>
@@ -173,7 +173,7 @@ uint8 motorB_encoder\n\
 uint8 motorB_dir\n\
 uint8 motorC_encoder\n\
 uint8 motorC_dir\n\
-uint8 voltage\n\
+float32 voltage\n\
 ";
   }
 
@@ -230,7 +230,7 @@ struct Printer< ::axon_link::Taobot_<ContainerAllocator> >
     s << indent << "motorC_dir: ";
     Printer<uint8_t>::stream(s, indent + "  ", v.motorC_dir);
     s << indent << "voltage: ";
-    Printer<uint8_t>::stream(s, indent + "  ", v.voltage);
+    Printer<float>::stream(s, indent + "  ", v.voltage);
   }
 };
 

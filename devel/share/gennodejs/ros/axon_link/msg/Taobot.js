@@ -67,7 +67,7 @@ class Taobot {
         this.voltage = initObj.voltage
       }
       else {
-        this.voltage = 0;
+        this.voltage = 0.0;
       }
     }
   }
@@ -87,7 +87,7 @@ class Taobot {
     // Serialize message field [motorC_dir]
     bufferOffset = _serializer.uint8(obj.motorC_dir, buffer, bufferOffset);
     // Serialize message field [voltage]
-    bufferOffset = _serializer.uint8(obj.voltage, buffer, bufferOffset);
+    bufferOffset = _serializer.float32(obj.voltage, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -108,12 +108,12 @@ class Taobot {
     // Deserialize message field [motorC_dir]
     data.motorC_dir = _deserializer.uint8(buffer, bufferOffset);
     // Deserialize message field [voltage]
-    data.voltage = _deserializer.uint8(buffer, bufferOffset);
+    data.voltage = _deserializer.float32(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 7;
+    return 10;
   }
 
   static datatype() {
@@ -123,7 +123,7 @@ class Taobot {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '7d650a23fc1ea1941c14405910e8d823';
+    return '8683fead56235780b4aa5f54f5f7b789';
   }
 
   static messageDefinition() {
@@ -135,7 +135,7 @@ class Taobot {
     uint8 motorB_dir
     uint8 motorC_encoder
     uint8 motorC_dir
-    uint8 voltage
+    float32 voltage
     
     `;
   }
@@ -192,7 +192,7 @@ class Taobot {
       resolved.voltage = msg.voltage;
     }
     else {
-      resolved.voltage = 0
+      resolved.voltage = 0.0
     }
 
     return resolved;

@@ -25,7 +25,7 @@
     ((:motorB_dir __motorB_dir) 0)
     ((:motorC_encoder __motorC_encoder) 0)
     ((:motorC_dir __motorC_dir) 0)
-    ((:voltage __voltage) 0)
+    ((:voltage __voltage) 0.0)
     )
    (send-super :init)
    (setq _motorA_encoder (round __motorA_encoder))
@@ -34,7 +34,7 @@
    (setq _motorB_dir (round __motorB_dir))
    (setq _motorC_encoder (round __motorC_encoder))
    (setq _motorC_dir (round __motorC_dir))
-   (setq _voltage (round __voltage))
+   (setq _voltage (float __voltage))
    self)
   (:motorA_encoder
    (&optional __motorA_encoder)
@@ -72,8 +72,8 @@
     1
     ;; uint8 _motorC_dir
     1
-    ;; uint8 _voltage
-    1
+    ;; float32 _voltage
+    4
     ))
   (:serialize
    (&optional strm)
@@ -91,8 +91,8 @@
        (write-byte _motorC_encoder s)
      ;; uint8 _motorC_dir
        (write-byte _motorC_dir s)
-     ;; uint8 _voltage
-       (write-byte _voltage s)
+     ;; float32 _voltage
+       (sys::poke _voltage (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
@@ -109,13 +109,13 @@
      (setq _motorC_encoder (sys::peek buf ptr- :char)) (incf ptr- 1)
    ;; uint8 _motorC_dir
      (setq _motorC_dir (sys::peek buf ptr- :char)) (incf ptr- 1)
-   ;; uint8 _voltage
-     (setq _voltage (sys::peek buf ptr- :char)) (incf ptr- 1)
+   ;; float32 _voltage
+     (setq _voltage (sys::peek buf ptr- :float)) (incf ptr- 4)
    ;;
    self)
   )
 
-(setf (get axon_link::Taobot :md5sum-) "7d650a23fc1ea1941c14405910e8d823")
+(setf (get axon_link::Taobot :md5sum-) "8683fead56235780b4aa5f54f5f7b789")
 (setf (get axon_link::Taobot :datatype-) "axon_link/Taobot")
 (setf (get axon_link::Taobot :definition-)
       "uint8 motorA_encoder
@@ -124,12 +124,12 @@ uint8 motorB_encoder
 uint8 motorB_dir
 uint8 motorC_encoder
 uint8 motorC_dir
-uint8 voltage
+float32 voltage
 
 ")
 
 
 
-(provide :axon_link/Taobot "7d650a23fc1ea1941c14405910e8d823")
+(provide :axon_link/Taobot "8683fead56235780b4aa5f54f5f7b789")
 
 

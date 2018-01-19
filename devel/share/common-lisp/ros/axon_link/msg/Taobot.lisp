@@ -40,8 +40,8 @@
    (voltage
     :reader voltage
     :initarg :voltage
-    :type cl:fixnum
-    :initform 0))
+    :type cl:float
+    :initform 0.0))
 )
 
 (cl:defclass Taobot (<Taobot>)
@@ -94,7 +94,11 @@
   (cl:write-byte (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'motorB_dir)) ostream)
   (cl:write-byte (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'motorC_encoder)) ostream)
   (cl:write-byte (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'motorC_dir)) ostream)
-  (cl:write-byte (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'voltage)) ostream)
+  (cl:let ((bits (roslisp-utils:encode-single-float-bits (cl:slot-value msg 'voltage))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream))
 )
 (cl:defmethod roslisp-msg-protocol:deserialize ((msg <Taobot>) istream)
   "Deserializes a message object of type '<Taobot>"
@@ -104,7 +108,12 @@
     (cl:setf (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'motorB_dir)) (cl:read-byte istream))
     (cl:setf (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'motorC_encoder)) (cl:read-byte istream))
     (cl:setf (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'motorC_dir)) (cl:read-byte istream))
-    (cl:setf (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'voltage)) (cl:read-byte istream))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'voltage) (roslisp-utils:decode-single-float-bits bits)))
   msg
 )
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<Taobot>)))
@@ -115,16 +124,16 @@
   "axon_link/Taobot")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<Taobot>)))
   "Returns md5sum for a message object of type '<Taobot>"
-  "7d650a23fc1ea1941c14405910e8d823")
+  "8683fead56235780b4aa5f54f5f7b789")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'Taobot)))
   "Returns md5sum for a message object of type 'Taobot"
-  "7d650a23fc1ea1941c14405910e8d823")
+  "8683fead56235780b4aa5f54f5f7b789")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<Taobot>)))
   "Returns full string definition for message of type '<Taobot>"
-  (cl:format cl:nil "uint8 motorA_encoder~%uint8 motorA_dir~%uint8 motorB_encoder~%uint8 motorB_dir~%uint8 motorC_encoder~%uint8 motorC_dir~%uint8 voltage~%~%~%"))
+  (cl:format cl:nil "uint8 motorA_encoder~%uint8 motorA_dir~%uint8 motorB_encoder~%uint8 motorB_dir~%uint8 motorC_encoder~%uint8 motorC_dir~%float32 voltage~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'Taobot)))
   "Returns full string definition for message of type 'Taobot"
-  (cl:format cl:nil "uint8 motorA_encoder~%uint8 motorA_dir~%uint8 motorB_encoder~%uint8 motorB_dir~%uint8 motorC_encoder~%uint8 motorC_dir~%uint8 voltage~%~%~%"))
+  (cl:format cl:nil "uint8 motorA_encoder~%uint8 motorA_dir~%uint8 motorB_encoder~%uint8 motorB_dir~%uint8 motorC_encoder~%uint8 motorC_dir~%float32 voltage~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <Taobot>))
   (cl:+ 0
      1
@@ -133,7 +142,7 @@
      1
      1
      1
-     1
+     4
 ))
 (cl:defmethod roslisp-msg-protocol:ros-message-to-list ((msg <Taobot>))
   "Converts a ROS message object to a list"
