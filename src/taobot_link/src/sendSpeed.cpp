@@ -80,7 +80,10 @@ void usart_send(uint8_t* toSend)
     //TODO: can we check if the last set of data can be read?, actually i think it works for now!
 void format(uint8_t* reply, int N){
     int count = 0;
-    taobot_link::Taobot msg;
+
+    taobot_link::Taobot msg;	
+	float voltage;
+
 
     for (int i = 0; i < N; i ++)
         if(reply[i] == 0xff && reply[i+11] == 0xff && reply[i+1] ==0xfe && reply[i+12] == 0xfe){
@@ -93,7 +96,8 @@ void format(uint8_t* reply, int N){
             msg.motorB_dir     = reply[i+5];
             msg.motorC_encoder = reply[i+6];
             msg.motorC_dir     = reply[i+7];
-            msg.voltage        = reply[i+10];
+			voltage = reply[i+10];
+            msg.voltage        = voltage / 10 ;
             taobot_pub.publish(msg);
         //print every set of correct messages
         for (int j = 0; j < 11; j ++){
@@ -290,7 +294,7 @@ int main(int argc, char** argv)
     }
 
     //comment out this first so i dont keep finding reply
-    //ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1);           //keep calling 1 and 3
+    ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1);           //keep calling 1 and 3
     //ros::Timer timer2 = n.createTimer(ros::Duration(1.0), callback2);
 
     ros::spin();
