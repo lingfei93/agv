@@ -191,7 +191,7 @@ uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double 
 
     toSend[9] = count;
     ROS_INFO("here_1?");
-    return toSend;
+    return toSend[0];
 }
 
 void cmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel){
