@@ -47,7 +47,7 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
     // input(2,0) = angle;
 
 
-    ouput = m * input;
+    //ouput = m * input;
 
     x_pos = output(0,0);
     y_pos = output(1,0);
