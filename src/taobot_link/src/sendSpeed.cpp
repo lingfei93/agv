@@ -221,8 +221,7 @@ int main(int argc, char** argv)
 
 	uint8_t temp;
     std::string serial_port;
-    uint8_t firstByte[2], secondByte[1], thirdByte[1], fourthByte[1], fifthByte[1];
-    uint8_t sixthByte[1], seventhByte[1], eigthByte[1], ninthByte[1], tenthByte[1];
+
 
 
     ROS_INFO("I get SerialPort: %s", port);
@@ -300,6 +299,8 @@ int main(int argc, char** argv)
     //ros::Timer timer2 = n.createTimer(ros::Duration(1.0), callback2);
     ROS_INFO("wait or am i here");
     ros::spin();
+
+    ROS_INFO("does this even work after spin");
     }
     
 }
