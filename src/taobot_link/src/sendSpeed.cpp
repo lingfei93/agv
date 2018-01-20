@@ -123,7 +123,7 @@ void sendCommand(uint8_t* arrayToSend, int length){
 }
 
 uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double angle){
-    ROS_INFO("or here");
+
     uint8_t* toSend;
     double radius, lengthToCenter, paramA, paramB;
     double motorA_speed, motorB_speed, motorC_speed, max;
@@ -152,7 +152,7 @@ uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double 
     input(2,0) = angle;
     max = 0;
     output = m.inverse() * input;
-
+    ROS_INFO("no idea_1");
     //find out whats the max speed so i can normalize it
     for (int i = 0; i < 2; i++){
         if (std::abs(output(i,0)) > max){
@@ -160,7 +160,7 @@ uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double 
         }
     }
     count = 0;
-
+ ROS_INFO("no idea_2");
     motorA_speed = output(0,0);
     motorB_speed = output(1,0);
     motorC_speed = output(2,0);
@@ -174,7 +174,7 @@ uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double 
     motorA_speed = std::abs(motorA_speed)/max;
     motorB_speed = std::abs(motorB_speed)/max;
     motorC_speed = std::abs(motorC_speed)/max;
-    
+     ROS_INFO("no idea_3");
     //prepare the message in the taobot format
     toSend[0] = 0xff;
     toSend[1] = 0xfe;
