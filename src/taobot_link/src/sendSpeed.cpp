@@ -39,13 +39,13 @@ double total_difference = 0;
 void callback1(const ros::TimerEvent&)
 {
     ROS_INFO("did not reac here?");
-    uint8_t reply[44];
+    uint8_t reply[50];
     uint8_t temp;
     try{ 
 
-        device.read(reply, 44);
+        device.read(reply, 50);
         ROS_INFO("Successful Read without Write!");
-        format(reply, 43);
+        format(reply, 49);
 
         ROS_INFO("HELLOOO I BROKE HERE in callback1");
     // for (int i =0; i < 43; i ++){
@@ -213,13 +213,14 @@ int main(int argc, char** argv)
     //this channel is to subscribe to velocity commands from the joystick
     cmd_vel_sub_  = n.subscribe<geometry_msgs::Twist>("taobot_cmd_vel", 1000, cmdVelReceived);
 
-    ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1);   
+  
 
     ros::Rate loop_rate(5);
     while (ros::ok()){
-	uint8_t reply[44];
+	uint8_t reply[50];
 	uint8_t sendArray[10];
 
+    ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1); 
 
     int i;
 
@@ -283,11 +284,11 @@ int main(int argc, char** argv)
 	
     sendCommand(sendArray, 10);
     
-	try{ device.read(reply, 44);
+	try{ device.read(reply, 50);
     // for (int i = 0; i < 43; i++){
     //     ROS_INFO("0x%d%d\n YOHOOOO NEW ONE", reply[i]/16, reply[i] % 16);
     // }
-    format(reply, 43);
+    format(reply, 49);
 
 
 	}
