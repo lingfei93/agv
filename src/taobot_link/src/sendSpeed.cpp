@@ -177,6 +177,7 @@ uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double 
      ROS_INFO("no idea_3");
     //prepare the message in the taobot format
     toSend[0] = 0xff;
+     ROS_INFO("no idea_4");
     toSend[1] = 0xfe;
     toSend[2] = 2;
     toSend[3] = 0;
