@@ -114,6 +114,7 @@ void format(uint8_t* reply, int N){
 void sendCommand(uint8_t* arrayToSend, int length){
     uint8_t toSend[1];
     for (int i = 0; i < length; i ++){
+        ROS_INFO("broke here");
         toSend[0] = arrayToSend[i];
         usart_send(toSend);
         ROS_INFO("sending from here! %d %d", toSend[0]/16, toSend[0]%16);
