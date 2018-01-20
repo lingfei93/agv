@@ -61,6 +61,8 @@ void callback1(const ros::TimerEvent&)
         ROS_FATAL("Failed to read the taobot serial port!!!");
         ROS_BREAK();
     }
+
+    ROS_INFO("I BROKE IN CALLBACK1_@_@_@_@");
 }
 
 
