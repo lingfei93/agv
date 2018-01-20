@@ -281,9 +281,11 @@ int main(int argc, char** argv)
     sendCommand(sendArray, 10);
     
 	try{ device.read(reply, 44);
+    for (int i = 0; i < 43; i++){
+        ROS_INFO("0x%d%d\n YOHOOOO NEW ONE", reply[i]/16, reply[i] % 16);
+    }
     format(reply, 43);
-	ROS_INFO("Successful Read without Write!");
-    ROS_INFO("reached here");
+
 
 	}
 
