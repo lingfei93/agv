@@ -118,6 +118,8 @@ void sendCommand(uint8_t* arrayToSend, int length){
         usart_send(toSend);
         ROS_INFO("sending from here! %d %d", toSend[0]/16, toSend[0]%16);
     }
+
+    ROS_INFO("im sending a command");
 }
 
 uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double angle){
