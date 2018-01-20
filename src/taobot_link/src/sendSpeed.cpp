@@ -113,6 +113,7 @@ void format(uint8_t* reply, int N){
 //send in an array of bytes and it will send for you;
 void sendCommand(uint8_t* arrayToSend, int length){
     uint8_t toSend[1];
+    ROS_INFO("%d", arrayToSend[0]);
     for (int i = 0; i < length; i ++){
         ROS_INFO("broke here"); 
         ROS_INFO("%d", arrayToSend[i]);
