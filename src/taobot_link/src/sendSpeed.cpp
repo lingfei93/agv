@@ -193,6 +193,7 @@ uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double 
 
 void cmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel){
     geometry_msgs::Twist wlr_cmd;
+    ROS_INFO("BROKE HERE IN CMD VEL RECIEVED");
     //NOT SURE WHY I NEED TO FLIP THIS
     double v_cmd = cmd_vel->linear.x * -1 ;
     double   w_cmd = cmd_vel->angular.z;
