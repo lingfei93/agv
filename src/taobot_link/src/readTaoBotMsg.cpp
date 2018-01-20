@@ -21,7 +21,7 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
 
 	double radius, lengthToCenter, paramA, paramB;
 	double x_pos, y_pos, theta;
-
+	double motorA_speed, motorB_speed, motorC_speed;
   	radius = 5;
     paramA = 1/sqrt(3);
     paramB = 1/sqrt(9);
@@ -42,9 +42,9 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
     m(2,2) = radius*paramB/lengthToCenter;
 
     //TODO:::::
-    input(0,0) = verticalPress;
-    input(1,0) = horizontalPress;
-    input(2,0) = angle;
+    // input(0,0) = verticalPress;
+    // input(1,0) = horizontalPress;
+    // input(2,0) = angle;
 
 
     ouput = m * input;
