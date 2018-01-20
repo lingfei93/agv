@@ -209,7 +209,7 @@ int main(int argc, char** argv)
     //this channel is to subscribe to velocity commands from the joystick
     cmd_vel_sub_  = n.subscribe<geometry_msgs::Twist>("taobot_cmd_vel", 1000, cmdVelReceived);
 
-    
+    ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1);   
 
     ros::Rate loop_rate(5);
     while (ros::ok()){
@@ -295,12 +295,11 @@ int main(int argc, char** argv)
     }
     ROS_INFO("BROKE BEFORE CALLBACK");
     //comment out this first so i dont keep finding reply
-    ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1);           //keep calling 1 and 3
+            //keep calling 1 and 3
     //ros::Timer timer2 = n.createTimer(ros::Duration(1.0), callback2);
     ROS_INFO("wait or am i here");
     ros::spin();
 
-    ROS_INFO("does this even work after spin");
     }
     
 }
