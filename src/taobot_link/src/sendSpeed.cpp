@@ -294,7 +294,7 @@ int main(int argc, char** argv)
         ROS_FATAL("Failed to read the serial port!!!");
         ROS_BREAK();
     }
-
+    ROS_INFO("BROKE BEFORE CALLBACK");
     //comment out this first so i dont keep finding reply
     ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1);           //keep calling 1 and 3
     //ros::Timer timer2 = n.createTimer(ros::Duration(1.0), callback2);
