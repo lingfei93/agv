@@ -123,7 +123,7 @@ void sendCommand(uint8_t* arrayToSend, int length){
 }
 
 uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double angle){
-
+    ROS_INFO("or here");
     uint8_t* toSend;
     double radius, lengthToCenter, paramA, paramB;
     double motorA_speed, motorB_speed, motorC_speed, max;
@@ -189,7 +189,7 @@ uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double 
     toSend[8] = motorC_speed * 0xf; 
 
     toSend[9] = count;
-
+    ROS_INFO("here_1?");
     return toSend;
 }
 
