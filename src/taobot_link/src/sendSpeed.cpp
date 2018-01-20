@@ -86,7 +86,7 @@ void format(uint8_t* reply, int N){
 
 
     for (int i = 0; i < N; i ++)
-        if(reply[i] == 0xff && reply[i+11] == 0xff && reply[i+1] ==0xfe && reply[i+12] == 0xfe){
+        if(reply[i] == 0xff && reply[i+13] == 0xff && reply[i+1] ==0xfe && reply[i+14] == 0xfe){
             ROS_INFO("%d set of data, i is %d", count + 1, i);
             count = count + 1;
             //assigning message here and publishing it here probably
@@ -100,7 +100,7 @@ void format(uint8_t* reply, int N){
             msg.voltage        = voltage / 10 ;
             taobot_pub.publish(msg);
         //print every set of correct messages
-        for (int j = 0; j < 11; j ++){
+        for (int j = 0; j < 13; j ++){
             ROS_INFO("0x%d%d\n", reply[i+j]/16, reply[i+j] % 16);
         }
         }
