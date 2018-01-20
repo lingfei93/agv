@@ -46,6 +46,8 @@ void callback1(const ros::TimerEvent&)
         device.read(reply, 44);
         ROS_INFO("Successful Read without Write!");
         format(reply, 43);
+
+        ROS_INFO("HELLOOO I BROKE HERE in callback1");
     // for (int i =0; i < 43; i ++){
     // //ROS_INFO("%c", reply[i]);}
     // temp=reply[i];
