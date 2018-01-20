@@ -201,6 +201,7 @@ void cmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel){
     double v_cmd = cmd_vel->linear.x * -1 ;
     double   w_cmd = cmd_vel->angular.z;
     uint8_t* arrayToSend;
+    ROS_INFO("%d", arrayToSend[0]);
     arrayToSend = changeToOmniSpeed(v_cmd, w_cmd, 0);
     ROS_INFO("Here is ok");
     sendCommand(arrayToSend, 10);
