@@ -340,7 +340,7 @@ int main(int argc, char** argv)
     //comment out this first so i dont keep finding reply
             //keep calling 1 and 3
     //ros::Timer timer2 = n.createTimer(ros::Duration(1.0), callback2);
-    ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1); 
+    // ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1); 
 
     ros::spin();
 
