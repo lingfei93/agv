@@ -227,20 +227,20 @@ void cmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel){
 
     sendCommand(arrayToSend, 10);
 
-    if (!checkIfCommandIsZero(arrayToSend, 10)){
-    try{ device.read(reply, 50);
-    // for (int i = 0; i < 43; i++){
-    //     ROS_INFO("0x%d%d\n YOHOOOO NEW ONE", reply[i]/16, reply[i] % 16);
+    // if (!checkIfCommandIsZero(arrayToSend, 10)){
+    // try{ device.read(reply, 50);
+    // // for (int i = 0; i < 43; i++){
+    // //     ROS_INFO("0x%d%d\n YOHOOOO NEW ONE", reply[i]/16, reply[i] % 16);
+    // // }
+    // format(reply, 49);
+
+
+    // }catch(exception& e)
+    // {
+    //     ROS_FATAL("Failed to read the serial port!!!");
+    //     ROS_BREAK();
     // }
-    format(reply, 49);
-
-
-    }catch(exception& e)
-    {
-        ROS_FATAL("Failed to read the serial port!!!");
-        ROS_BREAK();
-    }
-    }
+    // }
 }
 
 int main(int argc, char** argv)
@@ -262,7 +262,7 @@ int main(int argc, char** argv)
 	uint8_t reply[50];
 	uint8_t sendArray[10];
     //INFO: THIS WAS NOT IN THE CODE
-    //ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1); 
+    ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1); 
 
     int i;
 
@@ -344,6 +344,7 @@ int main(int argc, char** argv)
     //comment out this first so i dont keep finding reply
             //keep calling 1 and 3
     //ros::Timer timer2 = n.createTimer(ros::Duration(1.0), callback2);
+    ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1); 
     ROS_INFO("wait or am i here");
     ros::spin();
 
