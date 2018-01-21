@@ -262,7 +262,7 @@ int main(int argc, char** argv)
 	uint8_t reply[50];
 	uint8_t sendArray[10];
     //INFO: THIS WAS NOT IN THE CODE
-    ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1); 
+    //ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1); 
 
     int i;
 
