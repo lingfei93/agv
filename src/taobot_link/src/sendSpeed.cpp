@@ -230,7 +230,7 @@ void cmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel){
     // }
     format(reply, 29);
 
-
+}
   
     
 }
