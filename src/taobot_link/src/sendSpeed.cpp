@@ -40,13 +40,13 @@ double total_difference = 0;
 void callback1(const ros::TimerEvent&)
 {
     ROS_INFO("did not reac here?");
-    uint8_t reply[50];
+    uint8_t reply[40];
     uint8_t temp;
     try{ 
 
-        device.read(reply, 50);
+        device.read(reply, 40);
         ROS_INFO("Successful Read without Write!");
-        format(reply, 49);
+        format(reply, 39);
 
         ROS_INFO("HELLOOO I BROKE HERE in callback1");
     // for (int i =0; i < 43; i ++){
