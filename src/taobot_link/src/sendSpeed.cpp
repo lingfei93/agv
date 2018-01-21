@@ -223,14 +223,7 @@ void cmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel){
 
     sendCommand(arrayToSend, 10);
 
-    if (!checkIfCommandIsZero(arrayToSend, 30)){
-    device.read(reply, 30);
-    // for (int i = 0; i < 43; i++){
-    //     ROS_INFO("0x%d%d\n YOHOOOO NEW ONE", reply[i]/16, reply[i] % 16);
-    // }
-    format(reply, 29);
-
-}
+     
   
     
 }
@@ -336,7 +329,7 @@ int main(int argc, char** argv)
     //comment out this first so i dont keep finding reply
             //keep calling 1 and 3
     //ros::Timer timer2 = n.createTimer(ros::Duration(1.0), callback2);
-    // ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1); 
+    ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1); 
 
     ros::spin();
 
