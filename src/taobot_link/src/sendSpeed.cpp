@@ -39,16 +39,15 @@ double total_difference = 0;
 
 void callback1(const ros::TimerEvent&)
 {
-    ROS_INFO("did not reac here?");
+
     uint8_t reply[40];
     uint8_t temp;
     try{ 
 
         device.read(reply, 40);
-        ROS_INFO("Successful Read without Write!");
+
         format(reply, 39);
 
-        ROS_INFO("HELLOOO I BROKE HERE in callback1");
     // for (int i =0; i < 43; i ++){
     // //ROS_INFO("%c", reply[i]);}
     // temp=reply[i];
@@ -63,7 +62,6 @@ void callback1(const ros::TimerEvent&)
         ROS_BREAK();
     }
 
-    ROS_INFO("I BROKE IN CALLBACK1_@_@_@_@");
 }
 
 
@@ -91,7 +89,7 @@ void format(uint8_t* reply, int N){
 
 
     for (int i = 0; i < N; i ++)
-        if(reply[i] == 0xff && reply[i+14] == 0xff && reply[i+1] ==0xfe && reply[i+15] == 0xfe){
+        if(reply[i] == 0xff && reply[i+11] == 0xff && reply[i+1] ==0xfe && reply[i+12] == 0xfe){
             ROS_INFO("%d set of data, i is %d", count + 1, i);
             count = count + 1;
             //assigning message here and publishing it here probably
@@ -102,9 +100,7 @@ void format(uint8_t* reply, int N){
             msg.motorC_encoder = reply[i+6];
             msg.motorC_dir     = reply[i+7];
 			voltage = reply[i+10];
-            msg.motorA_position = reply[i+11];
-            msg.motorB_position = reply[i+12];
-            msg.motorC_position = reply[i+13];
+
             msg.voltage        = voltage / 10 ;
             taobot_pub.publish(msg);
         //print every set of correct messages
@@ -119,14 +115,14 @@ void sendCommand(uint8_t* arrayToSend, int length){
     uint8_t toSend[1];
     ROS_INFO("%d", arrayToSend[0]);
     for (int i = 0; i < length; i ++){
-        ROS_INFO("broke here"); 
+     
         ROS_INFO("%d", arrayToSend[i]);
         toSend[0] = arrayToSend[i];
         usart_send(toSend);
         ROS_INFO("sending from here! %d %d", toSend[0]/16, toSend[0]%16);
     }
 
-    ROS_INFO("im sending a command");
+
 }
 
 uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double angle){
@@ -159,7 +155,7 @@ uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double 
     input(2,0) = angle;
     max = 0;
     output = m.inverse() * input;
-    ROS_INFO("no idea_1");
+
     //find out whats the max speed so i can normalize it
     for (int i = 0; i < 2; i++){
         if (std::abs(output(i,0)) > max){
@@ -167,7 +163,7 @@ uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double 
         }
     }
     count = 0;
- ROS_INFO("no idea_2");
+
     motorA_speed = output(0,0);
     motorB_speed = output(1,0);
     motorC_speed = output(2,0);
@@ -181,10 +177,10 @@ uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double 
     motorA_speed = std::abs(motorA_speed)/max;
     motorB_speed = std::abs(motorB_speed)/max;
     motorC_speed = std::abs(motorC_speed)/max;
-     ROS_INFO("no idea_3");
+
     //prepare the message in the taobot format
     toSend[0] = 0xff;
-     ROS_INFO("no idea_4");
+
     toSend[1] = 0xfe;
     toSend[2] = 2;
     toSend[3] = 0;
@@ -197,18 +193,18 @@ uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double 
     toSend[8] = motorC_speed * 0xf; 
 
     toSend[9] = count;
-    ROS_INFO("here_1?");
+
     return toSend;
 }
 
 int checkIfCommandIsZero(uint8_t* arrayToSend, int length){
     if (arrayToSend[4] == 0 && arrayToSend[6] == 0 && arrayToSend[8] == 0){
-        ROS_INFO("here whew");
+
         return 1;
     }
 
     else {
-        ROS_INFO("not true");
+
         return 0;
     }
 
@@ -217,7 +213,7 @@ int checkIfCommandIsZero(uint8_t* arrayToSend, int length){
 void cmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel){
     geometry_msgs::Twist wlr_cmd;
     uint8_t reply[50];
-    ROS_INFO("BROKE HERE IN CMD VEL RECIEVED");
+
     //NOT SURE WHY I NEED TO FLIP THIS
     double v_cmd = cmd_vel->linear.x * -1 ;
     double   w_cmd = cmd_vel->angular.z;
@@ -340,12 +336,12 @@ int main(int argc, char** argv)
         ROS_FATAL("Failed to read the serial port!!!");
         ROS_BREAK();
     }
-    ROS_INFO("BROKE BEFORE CALLBACK");
+
     //comment out this first so i dont keep finding reply
             //keep calling 1 and 3
     //ros::Timer timer2 = n.createTimer(ros::Duration(1.0), callback2);
-    ros::Timer timer1 = n.createTimer(ros::Duration(0.3), callback1); 
-    ROS_INFO("wait or am i here");
+    ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1); 
+
     ros::spin();
 
     }
