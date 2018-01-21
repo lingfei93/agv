@@ -126,7 +126,7 @@ void sendCommand(uint8_t* arrayToSend, int length){
 }
 
 uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double angle){
-
+//THIS FIXED IT//
     uint8_t* toSend = new uint8_t[10];
     double radius, lengthToCenter, paramA, paramB;
     double motorA_speed, motorB_speed, motorC_speed, max;
