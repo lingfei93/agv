@@ -127,7 +127,7 @@ void sendCommand(uint8_t* arrayToSend, int length){
 
 uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double angle){
 
-    uint8_t toSend[10];
+    uint8_t* toSend;
     double radius, lengthToCenter, paramA, paramB;
     double motorA_speed, motorB_speed, motorC_speed, max;
     int count;
@@ -204,9 +204,9 @@ void cmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel){
     double v_cmd = cmd_vel->linear.x * -1 ;
     double   w_cmd = cmd_vel->angular.z;
     uint8_t* arrayToSend;
-    ROS_INFO("%d", arrayToSend[0]);
+
     arrayToSend = changeToOmniSpeed(v_cmd, w_cmd, 0);
-    ROS_INFO("Here is ok");
+
     sendCommand(arrayToSend, 10);
 }
 
@@ -228,8 +228,8 @@ int main(int argc, char** argv)
     while (ros::ok()){
 	uint8_t reply[50];
 	uint8_t sendArray[10];
-
-    ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1); 
+    //INFO: THIS WAS NOT IN THE CODE
+    //ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1); 
 
     int i;
 
