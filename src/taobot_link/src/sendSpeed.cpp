@@ -227,7 +227,7 @@ void cmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel){
 
     sendCommand(arrayToSend, 10);
 
-    if (checkIfCommandIsZero(arrayToSend, 10)){
+    if (!checkIfCommandIsZero(arrayToSend, 10)){
     try{ device.read(reply, 50);
     // for (int i = 0; i < 43; i++){
     //     ROS_INFO("0x%d%d\n YOHOOOO NEW ONE", reply[i]/16, reply[i] % 16);
