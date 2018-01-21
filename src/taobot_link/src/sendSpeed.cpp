@@ -101,6 +101,9 @@ void format(uint8_t* reply, int N){
             msg.motorC_encoder = reply[i+6];
             msg.motorC_dir     = reply[i+7];
 			voltage = reply[i+10];
+            msg.motorA_position = reply[i+11];
+            msg.motorB_position = reply[i+12];
+            msg.motorC_position = reply[i+13];
             msg.voltage        = voltage / 10 ;
             taobot_pub.publish(msg);
         //print every set of correct messages
@@ -199,6 +202,7 @@ uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double 
 
 void cmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel){
     geometry_msgs::Twist wlr_cmd;
+    uint8_t reply[50];
     ROS_INFO("BROKE HERE IN CMD VEL RECIEVED");
     //NOT SURE WHY I NEED TO FLIP THIS
     double v_cmd = cmd_vel->linear.x * -1 ;
@@ -208,6 +212,14 @@ void cmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel){
     arrayToSend = changeToOmniSpeed(v_cmd, w_cmd, 0);
 
     sendCommand(arrayToSend, 10);
+    try{ device.read(reply, 50);
+    // for (int i = 0; i < 43; i++){
+    //     ROS_INFO("0x%d%d\n YOHOOOO NEW ONE", reply[i]/16, reply[i] % 16);
+    // }
+    format(reply, 49);
+
+
+    }
 }
 
 int main(int argc, char** argv)
