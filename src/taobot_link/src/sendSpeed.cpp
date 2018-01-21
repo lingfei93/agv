@@ -25,6 +25,7 @@ using namespace std;
 void format(uint8_t* reply, int N);
 void usart_send(char* toSend);
 void sendCommand(uint8_t* arrayToSend, int length);
+int checkIfCommandIsZero(uint8_t* arrayToSend, int length);
 serial::Serial device(port, baud, serial::Timeout::simpleTimeout(1000));
 ros::Publisher taobot_pub;
 ros::Subscriber cmd_vel_sub_;
@@ -200,6 +201,19 @@ uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double 
     return toSend;
 }
 
+int checkIfCommandIsZero(uint8_t* arrayToSend, int length){
+    if (arrayToSend[4] == 0 && arrayToSend[6] == 0 && arrayToSend[8] == 0){
+        ROS_INFO("here whew");
+        return 1;
+    }
+
+    else {
+        ROS_INFO("not true");
+        return 0;
+    }
+
+}
+
 void cmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel){
     geometry_msgs::Twist wlr_cmd;
     uint8_t reply[50];
@@ -212,18 +226,21 @@ void cmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel){
     arrayToSend = changeToOmniSpeed(v_cmd, w_cmd, 0);
 
     sendCommand(arrayToSend, 10);
-    // try{ device.read(reply, 50);
-    // // for (int i = 0; i < 43; i++){
-    // //     ROS_INFO("0x%d%d\n YOHOOOO NEW ONE", reply[i]/16, reply[i] % 16);
-    // // }
-    // format(reply, 49);
 
-
-    // }catch(exception& e)
-    // {
-    //     ROS_FATAL("Failed to read the serial port!!!");
-    //     ROS_BREAK();
+    if (checkIfCommandIsZero(arrayToSend, 10)){
+    try{ device.read(reply, 50);
+    // for (int i = 0; i < 43; i++){
+    //     ROS_INFO("0x%d%d\n YOHOOOO NEW ONE", reply[i]/16, reply[i] % 16);
     // }
+    format(reply, 49);
+
+
+    }catch(exception& e)
+    {
+        ROS_FATAL("Failed to read the serial port!!!");
+        ROS_BREAK();
+    }
+    }
 }
 
 int main(int argc, char** argv)
