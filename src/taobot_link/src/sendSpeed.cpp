@@ -219,6 +219,10 @@ void cmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel){
     format(reply, 49);
 
 
+    }catch(exception& e)
+    {
+        ROS_FATAL("Failed to read the serial port!!!");
+        ROS_BREAK();
     }
 }
 
