@@ -212,7 +212,7 @@ int checkIfCommandIsZero(uint8_t* arrayToSend, int length){
 
 void cmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel){
     geometry_msgs::Twist wlr_cmd;
-    uint8_t reply[50];
+    uint8_t reply[30];
 
     //NOT SURE WHY I NEED TO FLIP THIS
     double v_cmd = cmd_vel->linear.x * -1 ;
@@ -223,20 +223,20 @@ void cmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel){
 
     sendCommand(arrayToSend, 10);
 
-    // if (!checkIfCommandIsZero(arrayToSend, 10)){
-    // try{ device.read(reply, 50);
-    // // for (int i = 0; i < 43; i++){
-    // //     ROS_INFO("0x%d%d\n YOHOOOO NEW ONE", reply[i]/16, reply[i] % 16);
-    // // }
-    // format(reply, 49);
+    if (!checkIfCommandIsZero(arrayToSend, 30)){
+    try{ device.read(reply, 30);
+    // for (int i = 0; i < 43; i++){
+    //     ROS_INFO("0x%d%d\n YOHOOOO NEW ONE", reply[i]/16, reply[i] % 16);
+    // }
+    format(reply, 29);
 
 
-    // }catch(exception& e)
-    // {
-    //     ROS_FATAL("Failed to read the serial port!!!");
-    //     ROS_BREAK();
-    // }
-    // }
+    }catch(exception& e)
+    {
+        ROS_FATAL("Failed to read the serial port!!!");
+        ROS_BREAK();
+    }
+    }
 }
 
 int main(int argc, char** argv)
