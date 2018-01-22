@@ -89,6 +89,8 @@ int main(int argc, char **argv){
 
 	ros::spin();
 
+    //test;
+
 
 	return 0;
 
