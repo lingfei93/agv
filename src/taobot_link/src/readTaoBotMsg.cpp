@@ -12,9 +12,9 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg);
 int checkIfUpdate(int motorA_encoder, int motorB_encoder, int motorC_encoder);
 ros::Publisher odom_pub;
 ros::Subscriber odom_sub;
-float32 x_pos;
-float32 y_pos;
-float32 theta;
+float x_pos;
+float y_pos;
+float theta;
 
 using namespace std;
 
