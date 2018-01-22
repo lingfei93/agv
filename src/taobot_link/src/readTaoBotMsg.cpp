@@ -9,15 +9,31 @@
 using Eigen::MatrixXd;
 
 void taoBotOdomCallback(const taobot_link::Taobot& msg);
+int checkIfUpdate(int motorA_encoder, int motorB_encoder, int motorC_encoder);
 ros::Publisher odom_pub;
 ros::Subscriber odom_sub;
+float32 x_pos;
+float32 y_pos;
+float32 theta;
 
 using namespace std;
+
+int checkIfUpdate(int motorA_encoder, int motorB_encoder, int motorC_encoder);
+{
+    return (motorA_encoder == 0 && motorB_encoder == 0 && motorC_encoder == 0) ? 0 : 1;
+}
 void taoBotOdomCallback(const taobot_link::Taobot& msg)
 {
+    taobot_link::Odom odomMsg;
+    odomMsg.x_pos = x_pos;
+    odomMsg.y_pos = y_pos;
+    odomMsg.theta = theta;
   ROS_INFO("I heard: [%d %d %d %d %d %d %d]", msg.motorA_encoder, msg.motorA_dir, 
   	msg.motorB_encoder, msg.motorB_dir, msg.motorC_encoder, 
   	msg.motorC_dir, msg.voltage);
+
+    //ONLY UPDATE IF THERE IS ACTUALLY SOMETHING TO UPDATE
+    if(checkIfUpdate(msg.motorA_encoder, msg.motorB_encoder, msg.motorC_encoder)){
 
 	double radius, lengthToCenter, paramA, paramB;
 	double x_pos, y_pos, theta;
@@ -53,19 +69,27 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
     y_pos = output(1,0);
     theta = output(2,0);
 
+    odom_pub.publish(odomMsg);
+
+
+    }
 
 }
 
 int main(int argc, char **argv){
 	ros::init(argc, argv, "Taobot_reciever");
 	ros::NodeHandle n;
+    x_pos = 0;
+    y_pos = 0;
+    theta = 0;
 
-
-	odom_pub = n.advertise<taobot_link::Taobot>("taobot_listener", 1000);
+	odom_pub = n.advertise<taobot_link::Odom>("taobot_odom", 1000);
 	odom_sub = n.subscribe("taobot_listener", 1000, taoBotOdomCallback);
 	
 
 	ros::spin();
+
+    //test;
 
 
 	return 0;
