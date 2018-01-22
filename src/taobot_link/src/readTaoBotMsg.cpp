@@ -4,6 +4,7 @@
 #include <math.h>
 #include "serial/serial.h"
 #include <taobot_link/Taobot.h>
+#include <taobot_link/Odom.h>
 #include <Eigen/Dense>
 #include <cmath>
 using Eigen::MatrixXd;

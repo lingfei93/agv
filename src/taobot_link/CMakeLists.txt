@@ -53,6 +53,7 @@ find_package(Eigen REQUIRED)
  add_message_files( 
     FILES
     Taobot.msg
+    Odom.msg
 #    taobotNode.msg
  )
 
