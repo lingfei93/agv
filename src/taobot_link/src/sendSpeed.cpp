@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 #include <ros/ros.h>
 #include <geometry_msgs/Twist.h>
 #include <iostream>
@@ -338,4 +337,4 @@ int main(int argc, char** argv)
     }
     
 }
->>>>>>> 154ee42ca9b1dfeefb425ce95948e1a2a41363cf
+
