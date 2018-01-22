@@ -33,9 +33,16 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
   	msg.motorB_encoder, msg.motorB_dir, msg.motorC_encoder, 
   	msg.motorC_dir, msg.voltage);
 
-    //ONLY UPDATE IF THERE IS ACTUALLY SOMETHING TO UPDATE
+    //ONLY UPDATE IF THERE IS ACTUALLY SOMETHING TO UPDATE -> checked to work
     if(checkIfUpdate(msg.motorA_encoder, msg.motorB_encoder, msg.motorC_encoder)){
-    ROS_INFO("THIS ACTUALLY WORKED");
+    
+
+    x_pos = msg.motorA_encoder;
+    y_pos = msg.motorB_encoder;
+    theta = 0;
+    odomMsg.x_pos = x_pos;
+    odomMsg.y_pos = y_pos;
+    odomMsg.theta = theta;
 	double radius, lengthToCenter, paramA, paramB;
 	double x_pos, y_pos, theta;
 	double motorA_speed, motorB_speed, motorC_speed;
