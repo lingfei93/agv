@@ -19,7 +19,7 @@ float theta;
 
 using namespace std;
 
-int checkIfUpdate(int motorA_encoder, int motorB_encoder, int motorC_encoder);
+int checkIfUpdate(int motorA_encoder, int motorB_encoder, int motorC_encoder)
 {
     return (motorA_encoder == 0 && motorB_encoder == 0 && motorC_encoder == 0) ? 0 : 1;
 }
