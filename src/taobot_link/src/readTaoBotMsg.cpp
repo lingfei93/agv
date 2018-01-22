@@ -32,6 +32,7 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
     float motorA_incr;
     float motorB_incr;
     float motorC_incr;
+    float magical_factor 0.5;
   ROS_INFO("I heard: [%d %d %d %d %d %d %f]", msg.motorA_encoder, msg.motorA_dir, 
   	msg.motorB_encoder, msg.motorB_dir, msg.motorC_encoder, 
   	msg.motorC_dir, msg.voltage);
@@ -71,7 +72,13 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
     m(2,1) = radius*paramB/lengthToCenter;
     m(2,2) = radius*paramB/lengthToCenter;
 
-    input(0,0) = 
+    input(0,0) = motorA_incr;
+    input(1,0) = motorB_incr;
+    input(2,0) = motorC_incr;
+
+
+
+    output = m * input;
 
     //TODO:::::
     // input(0,0) = verticalPress;
@@ -81,9 +88,11 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
 
     //ouput = m * input;
 
-    x_pos = output(0,0);
-    y_pos = output(1,0);
-    theta = output(2,0);
+    // x_pos = output(0,0);
+    // y_pos = output(1,0);
+    // theta = output(2,0);
+
+    ROS_INFO("%f is 1 %f is 2 %f is 3", output(0,0), output(1,0), output(2,0));
 
     odom_pub.publish(odomMsg);
 
