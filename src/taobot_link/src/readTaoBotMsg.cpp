@@ -26,9 +26,12 @@ int checkIfUpdate(int motorA_encoder, int motorB_encoder, int motorC_encoder)
 void taoBotOdomCallback(const taobot_link::Taobot& msg)
 {
     taobot_link::Odom odomMsg;
-    odomMsg.x_pos = x_pos;
-    odomMsg.y_pos = y_pos;
-    odomMsg.theta = theta;
+    // odomMsg.x_pos = x_pos;
+    // odomMsg.y_pos = y_pos;
+    // odomMsg.theta = theta;
+    float motorA_incr;
+    float motorB_incr;
+    float motorC_incr;
   ROS_INFO("I heard: [%d %d %d %d %d %d %f]", msg.motorA_encoder, msg.motorA_dir, 
   	msg.motorB_encoder, msg.motorB_dir, msg.motorC_encoder, 
   	msg.motorC_dir, msg.voltage);
@@ -36,9 +39,12 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
     //ONLY UPDATE IF THERE IS ACTUALLY SOMETHING TO UPDATE -> checked to work
     if(checkIfUpdate(msg.motorA_encoder, msg.motorB_encoder, msg.motorC_encoder)){
     
+    motorA_incr = msg.motorA_encoder * ( msg.motorA_dir - 1 );
+    motorB_incr = msg.motorB_encoder * ( msg.motorB_dir - 1 );
+    motorC_incr = msg.motorC_encoder * ( msg.motorC_dir - 1 );
 
-    x_pos = x_pos + msg.motorA_encoder;
-    y_pos = y_pos + msg.motorB_encoder;
+    x_pos = x_pos + motorA_incr;
+    y_pos = y_pos + motorB_incr;
     theta = 0;
     odomMsg.x_pos = x_pos;
     odomMsg.y_pos = y_pos;
@@ -64,6 +70,8 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
     m(2,0) = radius*paramB/lengthToCenter;
     m(2,1) = radius*paramB/lengthToCenter;
     m(2,2) = radius*paramB/lengthToCenter;
+
+    input(0,0) = 
 
     //TODO:::::
     // input(0,0) = verticalPress;
