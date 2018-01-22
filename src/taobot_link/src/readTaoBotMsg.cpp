@@ -29,7 +29,7 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
     odomMsg.x_pos = x_pos;
     odomMsg.y_pos = y_pos;
     odomMsg.theta = theta;
-  ROS_INFO("I heard: [%d %d %d %d %d %d %d]", msg.motorA_encoder, msg.motorA_dir, 
+  ROS_INFO("I heard: [%d %d %d %d %d %d %f]", msg.motorA_encoder, msg.motorA_dir, 
   	msg.motorB_encoder, msg.motorB_dir, msg.motorC_encoder, 
   	msg.motorC_dir, msg.voltage);
 
