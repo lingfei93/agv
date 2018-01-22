@@ -49,7 +49,7 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
     // theta = theta ;
 
 	double radius, lengthToCenter, paramA, paramB;
-	double x_pos, y_pos, theta;
+
 	double motorA_speed, motorB_speed, motorC_speed;
   	radius = 5;
     paramA = 1/sqrt(3);
@@ -92,9 +92,9 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
 
     ROS_INFO("%f is X %f is Y %f is theta", output(0,0), output(1,0), output(2,0));
 
-    x_pos += output(0,0)/magical_factor;
-    y_pos += output(1,0)/magical_factor;
-    theta += output(2,0)/magical_factor;
+    x_pos = x_pos + output(0,0)/magical_factor;
+    y_pos = y_pos + output(1,0)/magical_factor;
+    theta = theta + output(2,0)/magical_factor;
 
     odomMsg.x_pos = x_pos;
     odomMsg.y_pos = y_pos;
