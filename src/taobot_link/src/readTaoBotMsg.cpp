@@ -37,8 +37,8 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
     if(checkIfUpdate(msg.motorA_encoder, msg.motorB_encoder, msg.motorC_encoder)){
     
 
-    x_pos = msg.motorA_encoder;
-    y_pos = msg.motorB_encoder;
+    x_pos = x_pos + msg.motorA_encoder;
+    y_pos = y_pos + msg.motorB_encoder;
     theta = 0;
     odomMsg.x_pos = x_pos;
     odomMsg.y_pos = y_pos;
