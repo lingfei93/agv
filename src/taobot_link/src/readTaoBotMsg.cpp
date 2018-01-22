@@ -32,7 +32,7 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
     float motorA_incr;
     float motorB_incr;
     float motorC_incr;
-    float magical_factor 0.5;
+    float magical_factor = 0.5;
   ROS_INFO("I heard: [%d %d %d %d %d %d %f]", msg.motorA_encoder, msg.motorA_dir, 
   	msg.motorB_encoder, msg.motorB_dir, msg.motorC_encoder, 
   	msg.motorC_dir, msg.voltage);
