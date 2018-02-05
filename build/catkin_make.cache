@@ -1,0 +1,2 @@
+beginner_tutorials:cereal_port:taobot_link
+-DCATKIN_DEVEL_PREFIX=/home/eee/lingfei_ws/agv/devel -DCMAKE_INSTALL_PREFIX=/home/eee/lingfei_ws/agv/install -G Unix Makefiles
