@@ -74,7 +74,7 @@ void format(uint8_t* reply, int N){
     int count = 0;
     for (int i = 0; i < N; i ++)
     {
-    	ROS_INFO("0x%d%d\n", reply[i+j]/16, reply[i+j] % 16);
+    	ROS_INFO("0x%d%d\n", reply[i]/16, reply[i] % 16);
     }
         // if(reply[i] == 0xff && reply[i+11] == 0xff && reply[i+1] ==0xfe && reply[i+12] == 0xfe){
         // ROS_INFO("%d set of data, i is %d", count + 1, i);
