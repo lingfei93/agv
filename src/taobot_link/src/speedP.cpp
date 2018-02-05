@@ -73,14 +73,17 @@ void usart_send(uint8_t* toSend)
 void format(uint8_t* reply, int N){
     int count = 0;
     for (int i = 0; i < N; i ++)
-        if(reply[i] == 0xff && reply[i+11] == 0xff && reply[i+1] ==0xfe && reply[i+12] == 0xfe){
-        ROS_INFO("%d set of data, i is %d", count + 1, i);
-        count = count + 1;
-        for (int j = 0; j < 11; j ++){
+    {
+    	ROS_INFO("0x%d%d\n", reply[i+j]/16, reply[i+j] % 16);
+    }
+        // if(reply[i] == 0xff && reply[i+11] == 0xff && reply[i+1] ==0xfe && reply[i+12] == 0xfe){
+        // ROS_INFO("%d set of data, i is %d", count + 1, i);
+        // count = count + 1;
+        // for (int j = 0; j < 11; j ++){
 
-        printf("0x%d%d\n", reply[i+j]/16, reply[i+j] % 16);
-        }
-        }
+        // printf("0x%d%d\n", reply[i+j]/16, reply[i+j] % 16);
+        // }
+        // }
 
 }
 
