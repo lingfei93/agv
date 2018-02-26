@@ -1,6 +1,7 @@
 
 #include <ros/ros.h>
 #include <geometry_msgs/Twist.h>
+#include <std_msgs/Float32.h>
 #include <iostream>
 #include <math.h>
 #include "serial/serial.h"
@@ -29,6 +30,7 @@ void sendCommand(uint8_t* arrayToSend, int length);
 int checkIfCommandIsZero(uint8_t* arrayToSend, int length);
 serial::Serial device(port, baud, serial::Timeout::simpleTimeout(1000));
 ros::Publisher taobot_pub;
+ros::Publisher taobot_voltage_pub;
 ros::Subscriber cmd_vel_sub_;
 
 int count_average = 0;
@@ -85,12 +87,14 @@ void usart_send(uint8_t* toSend)
 void format(uint8_t* reply, int N){
     int count = 0;
 
-    taobot_link::Taobot msg;	
+    taobot_link::Taobot msg;
+    std_msgs::Float32 msg_voltage;	
 	float voltage;
 
 
     for (int i = 0; i < N; i ++)
-        if(reply[i] == 0xff && reply[i+10] == 0xff && reply[i+1] ==0xfe && reply[i+11] == 0xfe){
+        if(reply[i] == 0xff && reply[i+11] == 0xff && reply[i+1] ==0xfe && reply[i+12] == 0xfe)
+		{
             ROS_INFO("%d set of data, i is %d", count + 1, i);
             count = count + 1;
             //assigning message here and publishing it here probably
@@ -103,7 +107,9 @@ void format(uint8_t* reply, int N){
                         voltage = reply[i+7];
 
             msg.voltage        = voltage / 10 ;
+	    msg_voltage.data = voltage / 10;
             taobot_pub.publish(msg);
+	    taobot_voltage_pub.publish(msg_voltage);
         //print every set of correct messages
         for (int j = 0; j < 14; j ++){
             ROS_INFO("0x%d%d\n", reply[i+j]/16, reply[i+j] % 16);
@@ -237,7 +243,7 @@ int main(int argc, char** argv)
 
     //this channel publishes news recieved from the robot
     taobot_pub = n.advertise<taobot_link::Taobot>("taobot_listener", 1000);
-
+    taobot_voltage_pub = n.advertise<std_msgs::Float32>("taobot_voltage_listener", 1000);
     //this channel is to subscribe to velocity commands from the joystick
     cmd_vel_sub_  = n.subscribe<geometry_msgs::Twist>("taobot_cmd_vel", 1000, cmdVelReceived);
 
