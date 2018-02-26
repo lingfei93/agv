@@ -90,7 +90,7 @@ void format(uint8_t* reply, int N){
 
 
     for (int i = 0; i < N; i ++)
-        if(reply[i] == 0xff && reply[i+11] == 0xff && reply[i+1] ==0xfe && reply[i+12] == 0xfe){
+        if(reply[i] == 0xff && reply[i+10] == 0xff && reply[i+1] ==0xfe && reply[i+11] == 0xfe){
             ROS_INFO("%d set of data, i is %d", count + 1, i);
             count = count + 1;
             //assigning message here and publishing it here probably
@@ -100,7 +100,7 @@ void format(uint8_t* reply, int N){
             msg.motorB_dir     = reply[i+5];
             msg.motorC_encoder = reply[i+6];
             msg.motorC_dir     = reply[i+7];
-			voltage = reply[i+10];
+                        voltage = reply[i+7];
 
             msg.voltage        = voltage / 10 ;
             taobot_pub.publish(msg);
