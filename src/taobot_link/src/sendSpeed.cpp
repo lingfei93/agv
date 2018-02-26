@@ -104,7 +104,8 @@ void format(uint8_t* reply, int N){
             msg.motorB_dir     = reply[i+5];
             msg.motorC_encoder = reply[i+6];
             msg.motorC_dir     = reply[i+7];
-                        voltage = reply[i+7];
+
+                        voltage = reply[i+10];
 
             msg.voltage        = voltage / 10 ;
 	    msg_voltage.data = voltage / 10;
