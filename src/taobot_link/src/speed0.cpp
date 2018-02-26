@@ -86,7 +86,7 @@ void format(uint8_t* reply, int N){
         msg.motorB_dir     = reply[i+5];
         msg.motorC_encoder = reply[i+6];
         msg.motorC_dir     = reply[i+7];
-        msg.voltage        = 20.1 .//THIS IS A PLACEHOLDER;
+        msg.voltage        = reply[i+7]; //THIS IS A PLACEHOLDER;
         taobot_pub.publish(msg);
         for (int j = 0; j < 11; j ++){
 
