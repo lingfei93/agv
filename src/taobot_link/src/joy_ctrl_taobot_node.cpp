@@ -61,7 +61,7 @@ void CTRL_OUT(double V, double W, int clockwise, int counterclockwise)
     cmd_vel.linear.y=1;
         }
     if (counterclockwise == 1) {
-	cmd_vel.linear.y=1;
+	cmd_vel.linear.y=-1;
 	}
     cmd_vel_pub_.publish(cmd_vel);
 }
