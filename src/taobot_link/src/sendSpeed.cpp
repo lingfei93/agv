@@ -105,7 +105,7 @@ void format(uint8_t* reply, int N){
             msg.motorC_encoder = reply[i+6];
             msg.motorC_dir     = reply[i+7];
 
-                        voltage = reply[i+10];
+                    voltage = reply[i+10];
 
             msg.voltage        = voltage / 10 ;
 	    msg_voltage.data = voltage / 10;
@@ -223,11 +223,12 @@ void cmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel){
     uint8_t reply[30];
 
     //NOT SURE WHY I NEED TO FLIP THIS
-    double v_cmd = cmd_vel->linear.x * -1 ;
-    double   w_cmd = cmd_vel->angular.z;
+    double v_cmd 	     = cmd_vel->linear.x * -1 ;
+    double w_cmd 	     = cmd_vel->angular.z;
+    double directionToRotate = cmd_vel->linear.y; 
     uint8_t* arrayToSend;
 
-    arrayToSend = changeToOmniSpeed(v_cmd, w_cmd, 0);
+    arrayToSend = changeToOmniSpeed(v_cmd, w_cmd, directionToRotate);
 
     sendCommand(arrayToSend, 10);
 
