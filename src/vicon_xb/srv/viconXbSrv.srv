@@ -1,0 +1,4 @@
+bool block			#Set as true to block, false to unblock
+int32 logfile_idx		#Index to suffix the log file name, used when unblocking the node from start.
+---
+uint8 result			#result of the command

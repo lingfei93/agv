@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+
+  <node pkg="tf" type="static_transform_publisher" name="vicon_local_broadcaster" args="0 0 0 1 0 0 0 vicon_frame local_frame 500" />
+  
+</launch>
