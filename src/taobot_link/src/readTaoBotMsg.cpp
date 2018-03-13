@@ -118,6 +118,7 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
     	int y = msg.y;
     	int yaw = msg.yaw;
     	ROS_INFO("x pos is: %f y pos is: %f yaw is: %f ", x, y, yaw);
+    	ROS_INFO("x pos is: %f y pos is: %f yaw is: %f ", msg.x, msg.y, msg.yaw);
     }
 
 int main(int argc, char **argv){
