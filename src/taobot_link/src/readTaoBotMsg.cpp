@@ -108,11 +108,13 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
 
     }
 
-    void viconPoseCallback(const vicon_xb_node::viconPoseMsg& msg){
-    	ROS_INFO("recieved vicon");
-    }
+ 
 
 }
+
+   void viconPoseCallback(const vicon_xb_node::viconPoseMsg& msg){
+    	ROS_INFO("recieved vicon");
+    }
 
 int main(int argc, char **argv){
 	ros::init(argc, argv, "Taobot_reciever");
