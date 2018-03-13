@@ -16,6 +16,7 @@ int checkIfUpdate(int motorA_encoder, int motorB_encoder, int motorC_encoder);
 ros::Publisher odom_pub;
 ros::Subscriber odom_sub;
 ros::Subscriber vicon_sub;
+int counter;
 float x_pos;
 float y_pos;
 float theta;
@@ -117,9 +118,13 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
 
    void viconPoseCallback(const vicon_xb::viconPoseMsg& msg){
     	ROS_INFO("recieved vicon");
+    	counter++;
+    	if (counter == 1){
     	vicon_x = msg.x;
     	vicon_y = msg.y;
     	vicon_yaw = msg.yaw;
+    	}
+
     	ROS_INFO("x pos is: %f y pos is: %f yaw is: %f ", vicon_x, vicon_y, vicon_yaw);
     	ROS_INFO("x pos is: %f y pos is: %f yaw is: %f ", msg.x, msg.y, msg.yaw);
     }
