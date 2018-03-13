@@ -5,7 +5,7 @@
 #include "serial/serial.h"
 #include <taobot_link/Taobot.h>
 #include <taobot_link/Odom.h>
-#include <vicon_xb_node/viconPoseMsg.h>
+#include <vicon_xb/viconPoseMsg.h>
 #include <Eigen/Dense>
 #include <cmath>
 using Eigen::MatrixXd;
