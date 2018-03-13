@@ -114,6 +114,7 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
 
    void viconPoseCallback(const vicon_xb::viconPoseMsg& msg){
     	ROS_INFO("recieved vicon");
+    	ROS_INFO("x pos is: %f y pos is: %f " msg.x, msg.y);
     }
 
 int main(int argc, char **argv){
