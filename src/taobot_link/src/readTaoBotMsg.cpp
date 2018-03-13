@@ -19,6 +19,9 @@ ros::Subscriber vicon_sub;
 float x_pos;
 float y_pos;
 float theta;
+float vicon_x;
+float vicon_y;
+float vicon_yaw;
 
 using namespace std;
 
@@ -114,9 +117,9 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
 
    void viconPoseCallback(const vicon_xb::viconPoseMsg& msg){
     	ROS_INFO("recieved vicon");
-    	int x = msg.x;
-    	int y = msg.y;
-    	int yaw = msg.yaw;
+    	vicon_x = msg.x;
+    	vicon_y = msg.y;
+    	vicon_yaw = msg.yaw;
     	ROS_INFO("x pos is: %f y pos is: %f yaw is: %f ", x, y, yaw);
     	ROS_INFO("x pos is: %f y pos is: %f yaw is: %f ", msg.x, msg.y, msg.yaw);
     }
