@@ -43,7 +43,7 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
     float motorA_incr;
     float motorB_incr;
     float motorC_incr;
-    float magical_factor = 3775;
+    float magical_factor = 3575;
   // ROS_INFO("I heard: [%d %d %d %d %d %d %f]", msg.motorA_encoder, msg.motorA_dir, 
   // 	msg.motorB_encoder, msg.motorB_dir, msg.motorC_encoder, 
   // 	msg.motorC_dir, msg.voltage);
@@ -115,9 +115,9 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
     ROS_INFO("%f is vicon X %f is vicon Y %f is vicon theta", current_vicon_x - initial_vicon_x
     											,current_vicon_y - initial_vicon_y, 
     											current_vicon_yaw - initial_vicon_yaw);
-    ROS_INFO("%f is X %f is Y %f is theta", x_pos - current_vicon_x - initial_vicon_x
-    											,y_pos - current_vicon_y - initial_vicon_y, 
-    											theta- current_vicon_yaw - initial_vicon_yaw);
+    ROS_INFO("%f is X %f is Y %f is theta", x_pos - (current_vicon_x - initial_vicon_x)
+    											,y_pos - (current_vicon_y - initial_vicon_y), 
+    											theta- (current_vicon_yaw - initial_vicon_yaw));
 
     odom_pub.publish(odomMsg);
 
