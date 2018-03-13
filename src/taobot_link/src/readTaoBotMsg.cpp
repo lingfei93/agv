@@ -105,7 +105,7 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
 
     x_pos = x_pos + output(0,0)/magical_factor;
     y_pos = y_pos + output(1,0)/magical_factor;
-    theta = theta + output(2,0)/magical_factor;
+    theta = theta + output(2,0);
 
     odomMsg.x_pos = x_pos;
     odomMsg.y_pos = y_pos;
