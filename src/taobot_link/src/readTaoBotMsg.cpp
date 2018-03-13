@@ -5,14 +5,17 @@
 #include "serial/serial.h"
 #include <taobot_link/Taobot.h>
 #include <taobot_link/Odom.h>
+#include <vicon_xb_node/viconPoseMsg.h>
 #include <Eigen/Dense>
 #include <cmath>
 using Eigen::MatrixXd;
 
 void taoBotOdomCallback(const taobot_link::Taobot& msg);
+void viconPoseCallback(const vicon_xb_node::viconPoseMsg& msg);
 int checkIfUpdate(int motorA_encoder, int motorB_encoder, int motorC_encoder);
 ros::Publisher odom_pub;
 ros::Subscriber odom_sub;
+ros::Subscriber vicon_sub;
 float x_pos;
 float y_pos;
 float theta;
@@ -105,6 +108,10 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
 
     }
 
+    void viconPoseCallback(const vicon_xb_node::viconPoseMsg& msg){
+    	ROS_INFO("recieved vicon");
+    }
+
 }
 
 int main(int argc, char **argv){
@@ -116,6 +123,7 @@ int main(int argc, char **argv){
 
 	odom_pub = n.advertise<taobot_link::Odom>("taobot_odom", 1000);
 	odom_sub = n.subscribe("taobot_listener", 1000, taoBotOdomCallback);
+	vicon_sub = n.subscribe("vicon_xb_node/viconPoseTopic", 1000, viconPoseCallback);
 	
 
 	ros::spin();
