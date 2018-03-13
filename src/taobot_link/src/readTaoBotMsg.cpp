@@ -11,7 +11,7 @@
 using Eigen::MatrixXd;
 
 void taoBotOdomCallback(const taobot_link::Taobot& msg);
-void viconPoseCallback(const vicon_xb_node::viconPoseMsg& msg);
+void viconPoseCallback(const vicon_xb::viconPoseMsg& msg);
 int checkIfUpdate(int motorA_encoder, int motorB_encoder, int motorC_encoder);
 ros::Publisher odom_pub;
 ros::Subscriber odom_sub;
@@ -112,7 +112,7 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
 
 }
 
-   void viconPoseCallback(const vicon_xb_node::viconPoseMsg& msg){
+   void viconPoseCallback(const vicon_xb::viconPoseMsg& msg){
     	ROS_INFO("recieved vicon");
     }
 
