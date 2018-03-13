@@ -20,9 +20,13 @@ int counter;
 float x_pos;
 float y_pos;
 float theta;
-float vicon_x;
-float vicon_y;
-float vicon_yaw;
+float initial_vicon_x;
+float initial_vicon_y;
+float initial_vicon_yaw;
+float current_vicon_x;
+float current_vicon_y;
+float current_vicon_yaw;
+
 
 using namespace std;
 
@@ -107,6 +111,11 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
     odomMsg.y_pos = y_pos;
     odomMsg.theta = theta; 
 
+    ROS_INFO("%f is final X %f is final Y %f is final theta", x_pos, y_pos, theta);
+    ROS_INFO("%f is vicon X %f is vicon Y %f is vicon theta", current_vicon_x - initial_vicon_x
+    											,current_vicon_y - initial_vicon_y, 
+    											current_vicon_yaw - initial_vicon_yaw);
+
     odom_pub.publish(odomMsg);
 
 
@@ -120,13 +129,15 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
     	ROS_INFO("recieved vicon");
     	counter++;
     	if (counter == 1){
-    	vicon_x = msg.x;
-    	vicon_y = msg.y;
-    	vicon_yaw = msg.yaw;
+    	initial_vicon_x = msg.x;
+    	initial_vicon_y = msg.y;
+    	initial_vicon_yaw = msg.yaw;
     	}
-
-    	ROS_INFO("x pos is: %f y pos is: %f yaw is: %f ", vicon_x, vicon_y, vicon_yaw);
-    	ROS_INFO("x pos is: %f y pos is: %f yaw is: %f ", msg.x - vicon_x, msg.y - vicon_y, msg.yaw - vicon_yaw);
+    	current_vicon_yaw = msg.yaw;
+    	current_vicon_x = msg.x;
+    	current_vicon_y = msg.y;
+    	// ROS_INFO("x pos is: %f y pos is: %f yaw is: %f ", vicon_x, vicon_y, vicon_yaw);
+    	// ROS_INFO("x pos is: %f y pos is: %f yaw is: %f ", msg.x - vicon_x, msg.y - vicon_y, msg.yaw - vicon_yaw);
     }
 
 int main(int argc, char **argv){
