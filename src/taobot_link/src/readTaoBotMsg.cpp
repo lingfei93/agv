@@ -8,7 +8,10 @@
 #include <vicon_xb/viconPoseMsg.h>
 #include <Eigen/Dense>
 #include <cmath>
+#include <math.h>
+
 using Eigen::MatrixXd;
+
 
 void taoBotOdomCallback(const taobot_link::Taobot& msg);
 void viconPoseCallback(const vicon_xb::viconPoseMsg& msg);
@@ -16,6 +19,7 @@ int checkIfUpdate(int motorA_encoder, int motorB_encoder, int motorC_encoder);
 ros::Publisher odom_pub;
 ros::Subscriber odom_sub;
 ros::Subscriber vicon_sub;
+#define _USE_MATH_DEFINES;
 int counter;
 float x_pos;
 float y_pos;
@@ -105,7 +109,7 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
 
     x_pos = x_pos + output(0,0)/magical_factor;
     y_pos = y_pos + output(1,0)/magical_factor;
-    theta = theta + output(2,0);
+    theta = (theta + output(2,0)) % (2 * M_PI);
 
     odomMsg.x_pos = x_pos;
     odomMsg.y_pos = y_pos;
