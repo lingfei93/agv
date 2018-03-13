@@ -126,7 +126,7 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
 }
 
    void viconPoseCallback(const vicon_xb::viconPoseMsg& msg){
-    	ROS_INFO("recieved vicon");
+    	// ROS_INFO("recieved vicon");
     	counter++;
     	if (counter == 1){
     	initial_vicon_x = msg.x;
