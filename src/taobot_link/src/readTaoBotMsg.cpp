@@ -110,7 +110,7 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
 
     x_pos = x_pos + output(0,0)/magical_factor;
     y_pos = y_pos + output(1,0)/magical_factor;
-    theta = (theta + output(2,0))/angle_factor;
+    theta = theta + output(2,0)/angle_factor;
     if (theta > (float) 2 * 3.14159) {
     	theta = theta - (float) 2 * 3.14159;
     }
