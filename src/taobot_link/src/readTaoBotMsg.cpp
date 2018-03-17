@@ -22,7 +22,7 @@ ros::Publisher odom_pub;
 ros::Publisher odom_official_pub;
 ros::Subscriber odom_sub;
 ros::Subscriber vicon_sub;
-tf::TransformBroadcaster odom_broadcaster;
+
 
 #define _USE_MATH_DEFINES;
 int counter;
@@ -131,7 +131,7 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
 
     //need to convert theta(yaw) to a quarternion value
     geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(theta);
-
+    tf::TransformBroadcaster odom_broadcaster;
 
     geometry_msgs::TransformStamped odom_trans;
 
