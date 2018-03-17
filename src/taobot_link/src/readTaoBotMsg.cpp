@@ -22,6 +22,8 @@ ros::Publisher odom_pub;
 ros::Publisher odom_official_pub;
 ros::Subscriber odom_sub;
 ros::Subscriber vicon_sub;
+tf::TransformBroadcaster odom_broadcaster;
+
 #define _USE_MATH_DEFINES;
 int counter;
 float x_pos;
