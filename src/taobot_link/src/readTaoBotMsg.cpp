@@ -9,6 +9,8 @@
 #include <Eigen/Dense>
 #include <cmath>
 #include <math.h>
+#include <tf/transform_broadcaster.h>
+#include <nav_msgs/Odometry.h>
 
 using Eigen::MatrixXd;
 
@@ -17,6 +19,7 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg);
 void viconPoseCallback(const vicon_xb::viconPoseMsg& msg);
 int checkIfUpdate(int motorA_encoder, int motorB_encoder, int motorC_encoder);
 ros::Publisher odom_pub;
+ros::Publisher odom_official_pub;
 ros::Subscriber odom_sub;
 ros::Subscriber vicon_sub;
 #define _USE_MATH_DEFINES;
@@ -30,6 +33,7 @@ float initial_vicon_yaw;
 float current_vicon_x;
 float current_vicon_y;
 float current_vicon_yaw;
+ros::Time current_time;
 
 
 using namespace std;
@@ -123,6 +127,47 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
     odomMsg.y_pos = y_pos;
     odomMsg.theta = theta; 
 
+    //need to convert theta(yaw) to a quarternion value
+    geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(theta);
+
+
+    geometry_msgs::TransformStamped odom_trans;
+
+    current_time = ros::Time::now();
+
+    odom_trans.header.stamp = current_time;
+    odom_trans.header.frame_id = "odom";
+    odom_trans.child_frame_id = "base_link";
+
+    odom_trans.transform.translation.x = x_pos;
+    odom_trans.transform.translation.y = y_pos;
+    odom_trans.transform.translation.z = 0.0;
+    odom_trans.transform.rotation = odom_quat;
+
+
+
+    //send the transform
+    odom_broadcaster.sendTransform(odom_trans);
+
+
+    nav_msgs::Odometry odom;
+    odom.header.stamp = current_time;
+    odom.header.frame_id = "odom";
+
+    odom.pose.pose.position.x = x_pos;
+    odom.pose.pose.position.y = y_pos;
+    odom.pose.pose.position.z = 0.0;
+    odom.pose.pose.orientation = odom_quat;
+
+    //SPEED IS 0 cause IDK WHAT IT IS FOR NOW
+	odom.child_frame_id = "base_link";
+    odom.twist.twist.linear.x = 0;
+    odom.twist.twist.linear.y = 0;
+    odom.twist.twist.angular.z = 0;
+
+
+
+    odom_official_pub.publish(odom);
     ROS_INFO("%f is final X %f is final Y %f is final theta", x_pos, y_pos, theta);
     ROS_INFO("%f is vicon X %f is vicon Y %f is vicon theta", current_vicon_x - initial_vicon_x
     											,current_vicon_y - initial_vicon_y, 
@@ -163,8 +208,26 @@ int main(int argc, char **argv){
     theta = 0;
 
 	odom_pub = n.advertise<taobot_link::Odom>("taobot_odom", 1000);
+	odom_official_pub = n.advertise<nav_msgs::Odometry>("odom",50);
 	odom_sub = n.subscribe("taobot_listener", 1000, taoBotOdomCallback);
 	vicon_sub = n.subscribe("vicon_xb_node/viconPoseTopic", 1000, viconPoseCallback);
+
+	//SETUP FOR ODOM
+
+	double x_odom = 0;
+	double y_odom = 0;
+	double theta_odom = 0;
+
+
+	//for tf
+
+
+
+
+
+    // odom_trans.header.stamp = current_time;
+    // odom_trans.header.frame_id = "odom";
+    // odom_trans.child_frame_id = "base_link";
 	
 
 	ros::spin();
