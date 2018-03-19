@@ -1,9 +1,7 @@
 digraph G {
-"base_link" -> "laser"[label="Broadcaster: /robot_state_publisher\nAverage rate: 50.195 Hz\nMost recent transform: 1521455896.477 ( -0.506 sec old)\nBuffer length: 4.941 sec\n"];
-"odom" -> "base_link"[label="Broadcaster: /map_to_laser\nAverage rate: 10.177 Hz\nMost recent transform: 1521455896.038 ( -0.067 sec old)\nBuffer length: 4.815 sec\n"];
-"map" -> "odom"[label="Broadcaster: /amcl\nAverage rate: 40.279 Hz\nMost recent transform: 1521455896.032 ( -0.061 sec old)\nBuffer length: 4.916 sec\n"];
+"odom" -> "base_link"[label="Broadcaster: /Taobot_reciever\nAverage rate: 10.208 Hz\nMost recent transform: 4110.705 ( 1521465386.405 sec old)\nBuffer length: 4.800 sec\n"];
 edge [style=invis];
  subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
-"Recorded at time: 1521455895.971"[ shape=plaintext ] ;
- }->"map";
+"Recorded at time: 1521469497.110"[ shape=plaintext ] ;
+ }->"odom";
 }
