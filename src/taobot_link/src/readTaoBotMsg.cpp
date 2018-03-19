@@ -115,8 +115,12 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
     ROS_INFO("%f is X %f is Y %f is theta", output(0,0), output(1,0), output(2,0));
 
     x_pos = x_pos + output(0,0)/magical_factor;
-    y_pos = y_pos + -1* output(1,0)/magical_factor;
+    y_pos = y_pos + -1*output(1,0)/magical_factor;
     theta = theta + output(2,0)/angle_factor;
+
+    float x_vel = output(0,0)/magical_factor;
+    float y_vel = -1*output(1,0)/magical_factor;
+    float theta_vel = output(2,0)/angle_factor;
     if (theta > (float) 2 * 3.14159) {
     	theta = theta - (float) 2 * 3.14159;
     }
@@ -165,9 +169,9 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
 
     //SPEED IS just distance travelled for now. not sure about time atm!
 	odom.child_frame_id = "base_link";
-    odom.twist.twist.linear.x = x_pos;
-    odom.twist.twist.linear.y = y_pos;
-    odom.twist.twist.angular.z = theta;
+    odom.twist.twist.linear.x = x_vel;
+    odom.twist.twist.linear.y = y_vel;
+    odom.twist.twist.angular.z = theta_vel;
 
 
 
@@ -218,9 +222,6 @@ int main(int argc, char **argv){
 
 	//SETUP FOR ODOM
 
-	double x_odom = 0;
-	double y_odom = 0;
-	double theta_odom = 0;
 
 
 	//for tf
@@ -229,14 +230,67 @@ int main(int argc, char **argv){
 
 
 
-    // odom_trans.header.stamp = current_time;
-    // odom_trans.header.frame_id = "odom";
-    // odom_trans.child_frame_id = "base_link";
+
 	
 
-	ros::spin();
+	
 
     //test;
+    while(n.ok()){
+
+    ros::spinOnce();               // check for incoming messages
+    current_time = ros::Time::now();
+
+    //compute odometry in a typical way given the velocities of the robot
+    // double dt = (current_time - last_time).toSec();
+    // double delta_x = (vx * cos(th) - vy * sin(th)) * dt;
+    // double delta_y = (vx * sin(th) + vy * cos(th)) * dt;
+    // double delta_th = vth * dt;
+
+    // x += delta_x;
+    // y += delta_y;
+    // th += delta_th;
+
+    //since all odometry is 6DOF we'll need a quaternion created from yaw
+    geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(theta);
+
+    //first, we'll publish the transform over tf
+    geometry_msgs::TransformStamped odom_trans;
+    odom_trans.header.stamp = current_time;
+    odom_trans.header.frame_id = "odom";
+    odom_trans.child_frame_id = "base_link";
+
+    odom_trans.transform.translation.x = x_pos;
+    odom_trans.transform.translation.y = y_pos;
+    odom_trans.transform.translation.z = 0.0;
+    odom_trans.transform.rotation = odom_quat;
+
+    //send the transform
+    odom_broadcaster.sendTransform(odom_trans);
+
+    //next, we'll publish the odometry message over ROS
+    nav_msgs::Odometry odom;
+    odom.header.stamp = current_time;
+    odom.header.frame_id = "odom";
+
+    //set the position
+    odom.pose.pose.position.x = x_pos;
+    odom.pose.pose.position.y = y_pos;
+    odom.pose.pose.position.z = 0.0;
+    odom.pose.pose.orientation = odom_quat;
+
+    //set the velocity
+    odom.child_frame_id = "base_link";
+    odom.twist.twist.linear.x = 0;
+    odom.twist.twist.linear.y = 0;
+    odom.twist.twist.angular.z = 0;
+
+    //publish the message
+    odom_official_pub.publish(odom);
+
+    last_time = current_time;
+    r.sleep();
+  }
 
 
 	return 0;
