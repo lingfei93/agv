@@ -1,0 +1,5 @@
+<launch>
+  
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find taobot_link)/move_base_config/single_robot.rviz" /> 
+
+</launch>
