@@ -222,7 +222,12 @@ int main(int argc, char **argv){
 
 	//SETUP FOR ODOM
 
-
+    tf::TransformBroadcaster odom_broadcaster;
+    ros::Time current_time, last_time;
+    current_time = ros::Time::now();
+    
+    last_time = ros::Time::now();
+    ros::Rate r(10);
 
 	//for tf
 
