@@ -115,7 +115,7 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
     ROS_INFO("%f is X %f is Y %f is theta", output(0,0), output(1,0), output(2,0));
 
     x_pos = x_pos + output(0,0)/magical_factor;
-    y_pos = y_pos + output(1,0)/magical_factor;
+    y_pos = y_pos + -1* output(1,0)/magical_factor;
     theta = theta + output(2,0)/angle_factor;
     if (theta > (float) 2 * 3.14159) {
     	theta = theta - (float) 2 * 3.14159;
@@ -138,6 +138,8 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
     current_time = ros::Time::now();
 
     odom_trans.header.stamp = current_time;
+
+    
     odom_trans.header.frame_id = "odom";
     odom_trans.child_frame_id = "base_link";
 
@@ -161,16 +163,16 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
     odom.pose.pose.position.z = 0.0;
     odom.pose.pose.orientation = odom_quat;
 
-    //SPEED IS 0 cause IDK WHAT IT IS FOR NOW
+    //SPEED IS just distance travelled for now. not sure about time atm!
 	odom.child_frame_id = "base_link";
-    odom.twist.twist.linear.x = 0;
-    odom.twist.twist.linear.y = 0;
-    odom.twist.twist.angular.z = 0;
+    odom.twist.twist.linear.x = x_pos;
+    odom.twist.twist.linear.y = y_pos;
+    odom.twist.twist.angular.z = theta;
 
 
 
     odom_official_pub.publish(odom);
-    ROS_INFO("%f is final X %f is final Y %f is final theta", x_pos, y_pos, theta);
+    ROS_INFO("%f is final X %f is final Y %f is floatinal theta", x_pos, y_pos, theta);
     ROS_INFO("%f is vicon X %f is vicon Y %f is vicon theta", current_vicon_x - initial_vicon_x
     											,current_vicon_y - initial_vicon_y, 
     											current_vicon_yaw - initial_vicon_yaw);
