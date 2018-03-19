@@ -31,6 +31,7 @@ Created by Janus
   </link>
 
   <link name="laser" />
+  <link name="base_link"/>
 <!--
   <joint name="imu_link_joint" type="fixed">
     <parent link="base_link" />
@@ -45,7 +46,7 @@ Created by Janus
   </joint>
 
   -->
-  <joint name="horizontal_laser_link_joint" type="fixed">
+    <joint name="horizontal_laser_link_joint" type="fixed">
     <parent link="base_link" />
     <child link="laser" />
     <origin xyz="0.1007 0 0.0558" />
