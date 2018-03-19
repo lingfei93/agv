@@ -14,6 +14,7 @@
 <node pkg="amcl" type="amcl" name="amcl" respawn="true">
   <remap from="scan" to="scan" />
   <!-- Publish scans from best pose at a max of 10 Hz -->
+  <param name = "tf_broadcast"            value="true"/>
   <param name="odom_model_type" value="omni"/>
   <param name="odom_alpha5" value="0.1"/>
   <param name="transform_tolerance" value="0.2" />
