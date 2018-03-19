@@ -20,7 +20,16 @@ Created by Janus
     </visual>
   </link>
 -->
-  <link name="horizontal_laser_link">
+ <!--  <link name="horizontal_laser_link">
+    <visual>
+      <origin xyz="0 0 0" />
+      <geometry>
+        <cylinder length="0.05" radius="0.03" />
+      </geometry>
+      <material name="gray" />
+    </visual>
+  </link> -->
+   <link name="base_link">
     <visual>
       <origin xyz="0 0 0" />
       <geometry>
@@ -31,7 +40,7 @@ Created by Janus
   </link>
 
   <link name="laser" />
-  <link name="base_link"/>
+  
 <!--
   <joint name="imu_link_joint" type="fixed">
     <parent link="base_link" />
