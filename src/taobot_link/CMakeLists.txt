@@ -223,6 +223,10 @@ add_executable(joy_ctrl_taobot_node src/joy_ctrl_taobot_node.cpp)
 add_dependencies(joy_ctrl_taobot_node taobot_link_generate_messages_cpp)
 target_link_libraries(joy_ctrl_taobot_node ${catkin_LIBRARIES})
 
+add_executable(cmdVelToTaoBot src/cmdVelToTaoBot.cpp)
+add_dependencies(cmdVelToTaoBot taobot_link_generate_messages_cpp)
+target_link_libraries(cmdVelToTaoBot ${catkin_LIBRARIES})
+
 
 
 ## Mark executables and/or libraries for installation
