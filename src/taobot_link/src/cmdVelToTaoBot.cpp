@@ -109,8 +109,8 @@ void format(uint8_t* reply, int N){
 
             msg.voltage        = voltage / 10 ;
 	    msg_voltage.data = voltage / 10;
-            taobot_pub.publish(msg);
-	    taobot_voltage_pub.publish(msg_voltage);
+     //    taobot_pub.publish(msg);
+	    // taobot_voltage_pub.publish(msg_voltage);
         //print every set of correct messages
         for (int j = 0; j < 14; j ++){
             ROS_INFO("0x%d%d\n", reply[i+j]/16, reply[i+j] % 16);
