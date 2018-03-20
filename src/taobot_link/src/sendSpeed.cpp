@@ -78,7 +78,7 @@ void usart_send(uint8_t* toSend)
         
 		temp = toSend[0];
         temp2 = toSend[1];
-		ROS_INFO("%d %d %d %d this is tosend updated", temp/16,temp%16, temp, N);
+		//ROS_INFO("%d %d %d %d this is tosend updated", temp/16,temp%16, temp, N);
 	}
 
 //format the reply so that it becomes nice. checks if the data is formatted properly. throws away the last set of 
@@ -95,7 +95,7 @@ void format(uint8_t* reply, int N){
     for (int i = 0; i < N; i ++)
         if(reply[i] == 0xff && reply[i+11] == 0xff && reply[i+1] ==0xfe && reply[i+12] == 0xfe)
 		{
-            ROS_INFO("%d set of data, i is %d", count + 1, i);
+           // ROS_INFO("%d set of data, i is %d", count + 1, i);
             count = count + 1;
             //assigning message here and publishing it here probably
             msg.motorA_encoder = reply[i+2];
@@ -113,7 +113,7 @@ void format(uint8_t* reply, int N){
 	    taobot_voltage_pub.publish(msg_voltage);
         //print every set of correct messages
         for (int j = 0; j < 14; j ++){
-            ROS_INFO("0x%d%d\n", reply[i+j]/16, reply[i+j] % 16);
+            //ROS_INFO("0x%d%d\n", reply[i+j]/16, reply[i+j] % 16);
         }
         }
 
@@ -124,10 +124,10 @@ void sendCommand(uint8_t* arrayToSend, int length){
     ROS_INFO("%d", arrayToSend[0]);
     for (int i = 0; i < length; i ++){
      
-        ROS_INFO("%d", arrayToSend[i]);
+        //ROS_INFO("%d", arrayToSend[i]);
         toSend[0] = arrayToSend[i];
         usart_send(toSend);
-        ROS_INFO("sending from here! %d %d", toSend[0]/16, toSend[0]%16);
+        //ROS_INFO("sending from here! %d %d", toSend[0]/16, toSend[0]%16);
     }
 
 
