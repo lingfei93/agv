@@ -53,7 +53,8 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
     float motorA_incr;
     float motorB_incr;
     float motorC_incr;
-    float magical_factor = 2755;
+    float magical_x_factor = 2760;
+    float magical_y_factor = 2700
     float angle_factor = 2755/150;
   // ROS_INFO("I heard: [%d %d %d %d %d %d %f]", msg.motorA_encoder, msg.motorA_dir, 
   // 	msg.motorB_encoder, msg.motorB_dir, msg.motorC_encoder, 
@@ -114,8 +115,8 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
 
     ROS_INFO("%f is X %f is Y %f is theta", output(0,0), output(1,0), output(2,0));
 
-    x_pos = x_pos + output(0,0)/magical_factor;
-    y_pos = y_pos + -1*output(1,0)/magical_factor;
+    x_pos = x_pos + output(0,0)/magical_x_factor;
+    y_pos = y_pos + -1*output(1,0)/magical_y_factor;
     theta = theta + output(2,0)/angle_factor;
 
     float x_vel = output(0,0)/magical_factor;
@@ -277,7 +278,7 @@ int main(int argc, char **argv){
     nav_msgs::Odometry odom;
     odom.header.stamp = current_time;
     odom.header.frame_id = "odom";
-//fi
+
     //set the position
     odom.pose.pose.position.x = x_pos;
     odom.pose.pose.position.y = y_pos;
