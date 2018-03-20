@@ -193,7 +193,7 @@ uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double 
     ROS_INFO("going LEFT and RIGHT right RIGHT");
     motorA_speed = std::abs(motorA_speed)/max;
     motorB_speed = std::abs(motorB_speed)/max;
-    motorC_speed = std::abs(motorC_speed)/max;
+    motorC_speed = std::abs(motorC_speed)/max; * 1.040;
     }
     //prepare the message in the taobot format
     toSend[0] = 0xff;
