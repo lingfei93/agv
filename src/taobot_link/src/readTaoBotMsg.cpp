@@ -54,7 +54,7 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
     float motorB_incr;
     float motorC_incr;
     float magical_x_factor = 2760;
-    float magical_y_factor = 2700
+    float magical_y_factor = 2700;
     float angle_factor = 2755/150;
   // ROS_INFO("I heard: [%d %d %d %d %d %d %f]", msg.motorA_encoder, msg.motorA_dir, 
   // 	msg.motorB_encoder, msg.motorB_dir, msg.motorC_encoder, 
@@ -119,8 +119,8 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
     y_pos = y_pos + -1*output(1,0)/magical_y_factor;
     theta = theta + output(2,0)/angle_factor;
 
-    float x_vel = output(0,0)/magical_factor;
-    float y_vel = -1*output(1,0)/magical_factor;
+    float x_vel = output(0,0)/magical_x_factor;
+    float y_vel = -1*output(1,0)/magical_y_factor;
     float theta_vel = output(2,0)/angle_factor;
     if (theta > (float) 2 * 3.14159) {
     	theta = theta - (float) 2 * 3.14159;
