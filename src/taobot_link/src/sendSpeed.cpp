@@ -32,6 +32,7 @@ serial::Serial device(port, baud, serial::Timeout::simpleTimeout(1000));
 ros::Publisher taobot_pub;
 ros::Publisher taobot_voltage_pub;
 ros::Subscriber cmd_vel_sub_;
+ros::Subscriber move_base_cmd_vel_sub;
 
 int count_average = 0;
 double total_difference = 0;
@@ -246,6 +247,28 @@ void cmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel){
     
 }
 
+void moveBaseCmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel){
+    geometry_msgs::Twist wlr_cmd;
+    uint8_t reply[30];
+
+    //NOT SURE WHY I NEED TO FLIP THIS
+    float x_vel         = cmd_vel->linear.x * -1;
+    float y_vel         = cmd_vel->linear.y;
+    float theta_vel     = cmd_vel->angular.z;
+    
+    uint8_t* arrayToSend;
+
+    arrayToSend = changeToOmniSpeed(x_vel, y_vel, theta_vel);
+
+    sendCommand(arrayToSend, 10);
+
+     
+  
+    
+}
+
+
+
 int main(int argc, char** argv)
 {
 
@@ -257,7 +280,7 @@ int main(int argc, char** argv)
     taobot_voltage_pub = n.advertise<std_msgs::Float32>("taobot_voltage_listener", 1000);
     //this channel is to subscribe to velocity commands from the joystick
     cmd_vel_sub_  = n.subscribe<geometry_msgs::Twist>("taobot_cmd_vel", 1000, cmdVelReceived);
-
+    move_base_cmd_vel_sub  = n.subscribe<geometry_msgs::Twist>("cmd_vel", 1000, moveBaseCmdVelReceived);
   
 
     ros::Rate loop_rate(5);
