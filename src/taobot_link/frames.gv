@@ -1,9 +1,12 @@
 digraph G {
-"base_link" -> "laser"[label="Broadcaster: /robot_state_publisher\nAverage rate: 50.196 Hz\nMost recent transform: 505.183 ( 1521439179.022 sec old)\nBuffer length: 4.921 sec\n"];
-"odom" -> "base_link"[label="Broadcaster: /map_to_laser\nAverage rate: 10.187 Hz\nMost recent transform: 504.741 ( 1521439179.465 sec old)\nBuffer length: 4.810 sec\n"];
-"map" -> "odom"[label="Broadcaster: /map_to_odom\nAverage rate: 10.182 Hz\nMost recent transform: 504.703 ( 1521439179.502 sec old)\nBuffer length: 4.812 sec\n"];
+"laser" -> "horizontal_laser_link"[label="Broadcaster: /robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1521559604.363 sec old)\nBuffer length: 0.000 sec\n"];
+"odom" -> "base_link"[label="Broadcaster: /readTaoBotMsg\nAverage rate: 10.208 Hz\nMost recent transform: 762.593 ( 1521558841.769 sec old)\nBuffer length: 4.800 sec\n"];
 edge [style=invis];
  subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
-"Recorded at time: 1521439684.206"[ shape=plaintext ] ;
- }->"map";
+"Recorded at time: 1521559604.363"[ shape=plaintext ] ;
+ }->"laser";
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1521559604.363"[ shape=plaintext ] ;
+ }->"odom";
 }
