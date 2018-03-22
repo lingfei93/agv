@@ -227,7 +227,9 @@ add_executable(cmdVelToTaoBot src/cmdVelToTaoBot.cpp)
 add_dependencies(cmdVelToTaoBot taobot_link_generate_messages_cpp)
 target_link_libraries(cmdVelToTaoBot ${catkin_LIBRARIES})
 
-
+add_executable(pathToVel src/pathToVel.cpp)
+add_dependencies(pathToVel taobot_link_generate_messages_cpp)
+target_link_libraries(pathToVel ${catkin_LIBRARIES})
 
 ## Mark executables and/or libraries for installation
 #install(TARGETS taobot_link

@@ -145,7 +145,7 @@ void MovePathCallback(const nav_msgs::Path::ConstPtr& path_data)
                   
 
                 }
-                //DO ANGLE PLANNING skokLATER;
+                //DO ANGLE PLANNING skok LATER;
                 //sendFinalAngleCommand(path_data->poses[len-1].pose.orientation);
 
             //     
