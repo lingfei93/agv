@@ -55,7 +55,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
     double plan[4][2000] = {{0}};
 
     //double plan[4][len+100] = {{0}};
-    double tsegc[2000] = {{0}};
+    double tsegc[2000] = {0};
     //double tsegc[len+100] = {0};
   
    
