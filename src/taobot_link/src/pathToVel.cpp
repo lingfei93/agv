@@ -175,8 +175,10 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
             }
         finishPath = 1;
         }
-        }
             else printf("PLAN_SIZE ZERO\n");
+            finishPath = 1;
+
+        }
     }
 
 
