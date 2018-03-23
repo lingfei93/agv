@@ -150,14 +150,14 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
                     ROS_INFO("in loop %d", i);
                     current_time = ros::Time::now();
                     time_elapsed = current_time - start_time;
-                    ROS_INFO("time elapsed is %f, tsegc[i] is %f, tsegc[i+1] is %f", time_elapsed, tsegc[i], tsegc[i+1]);
+                    ROS_INFO("time elapsed is %f, tsegc[i] is %f, tsegc[i+1] is %f ", time_elapsed, tsegc[i], tsegc[i+1]);
                     dseg=convertToEuclid(plan[0][i],plan[1][i],plan[0][i-1],plan[1][i-1]);
                     dsegc=dsegc+dseg;
 
                     
 
 
-                    while((time_elapsed.toSec()> tsegc[i] && time_elapsed.toSec() < tsegc[i+1])){
+                    while(time_elapsed.toSec()> tsegc[i] && time_elapsed.toSec() < tsegc[i+1]){
 
                     ROS_INFO("sending a vel command");
                     ROS_INFO("time elapsed is %f, tsegc[i] is %f, tsegc[i+1] is %f", time_elapsed, tsegc[i], tsegc[i+1]);
