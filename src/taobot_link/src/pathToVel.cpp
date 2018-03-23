@@ -62,6 +62,9 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
     double dsegc, dseg;
     int finishPath = 0;
 
+
+    ROS_INFO("ENTERED CALLBACK WITH SIZE = %d", len);
+
     // for (i = 0; i < len; i++){
     //      plan[0][i]=path_data->poses[i].pose.position.x;                 //x
     //      plan[1][i]=path_data->poses[i].pose.position.y;                 //y
