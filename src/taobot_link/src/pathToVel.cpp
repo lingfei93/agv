@@ -138,9 +138,10 @@ void MovePathCallback(const nav_msgs::Path::ConstPtr& path_data)
 
                     
 
-                    while(!(time_elapsed> tsegc[i] && time_elapsed < tsegc[i+1])){
+                    while((time_elapsed> tsegc[i] && time_elapsed < tsegc[i+1])){
 
                     ROS_INFO("sending a vel command");
+                    ROS_INFO("time elapsed is %f, tsegc[i] is %f, tsegc[i+1] is %f", time_elapsed, tsegc[i], tsegc[i+1]);
                     sendVelCommand(plan[0][i],plan[1][i],plan[0][i+1],plan[1][i+1]);
                     current_time = ros::Time::now();
                     time_elapsed = current_time - start_time;
