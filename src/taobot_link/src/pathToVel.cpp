@@ -76,7 +76,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
         {
             distanceToGoal = convertToEuclid(path_data->poses[0].pose.position.x, path_data->poses[0].pose.position.y , 
                 path_data->poses[len-2].pose.position.x, path_data->poses[len-2].pose.position.y);
-	   ROS_INFO("distance to goal is %d", distanceToGoal);
+	   ROS_INFO("distance to goal is %f", distanceToGoal);
             //dis2=DIS_XY(rc.x_c, rc.y_c, path_data->poses[len-1].pose.position.x, path_data->poses[len-1].pose.position.y); //last path point
             if (distanceToGoal >= 0 )
                 path_plan = 1 ;
@@ -117,7 +117,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
 
                 eachTimeSlot = timeForPath / len;
 
-                ROS_INFO("Each time slot is %d, time for totalPath is %d,", eachTimeSlot, timeForPath);
+                ROS_INFO("Each time slot is %f, time for totalPath is %f,", eachTimeSlot, timeForPath);
 
                 
 
@@ -137,7 +137,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
                 start_time = ros::Time::now();
                 current_time = ros::Time::now();
                 time_elapsed = current_time - start_time;
-                for (i=0;i<len;i++)
+                for (i=0;i<len+50;i++)
                 {
                     current_time = ros::Time::now();
                     time_elapsed = current_time - start_time;
