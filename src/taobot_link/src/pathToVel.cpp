@@ -51,15 +51,16 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
     double eachTimeSlot;
 
     len = path_data->poses.size();
-    ROS_INFO("break_1");
-    double plan[4][len+101] = {{0}};
- ROS_INFO("break_2");
+  
+    double plan[4][len+100] = {{0}};
+
     double tsegc[len+100] = {0};
 
     double dis, dis2 = 0;
     double distanceToGoal;
     double timeForPath;
     double dsegc, dseg;
+    int finishPath = 0;
 
     // for (i = 0; i < len; i++){
     //      plan[0][i]=path_data->poses[i].pose.position.x;                 //x
@@ -68,8 +69,8 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
     //      //plan[3][i]=Quat_to_Yaw(path_data->poses[i].pose.orientation);                    
     // }
 
+    while (!finishPath);
 
- ROS_INFO("break_3");
         if (len>0){
 
 
@@ -121,7 +122,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
 
                 
 
-               ;
+               
 
                 tsegc[0]=0.0;
                 for (i=1; i < len; i++){
@@ -141,7 +142,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
                 start_time = ros::Time::now();
                 current_time = ros::Time::now();
                 time_elapsed = current_time - start_time;
-                for (i=0;i<len+2;i++)
+                for (i=0;i<len+50;i++)
                 {
                     ROS_INFO("in loop %d", i);
                     current_time = ros::Time::now();
@@ -172,7 +173,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
 
             //     
             }
-
+        finishPath = 1;
         }
             else printf("PLAN_SIZE ZERO\n");
     }
