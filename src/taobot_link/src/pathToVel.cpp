@@ -58,8 +58,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
     double tsegc[2000] = {{0}};
     //double tsegc[len+100] = {0};
   
-    
-    memset( tsegc, 0, (len+100)*sizeof(double) );
+   
     double dis, dis2 = 0;
     double distanceToGoal;
     double timeForPath;
