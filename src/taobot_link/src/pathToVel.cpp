@@ -52,10 +52,13 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
 
     len = path_data->poses.size();
   
-    double plan[4][len+100] = {{0}};
+    double plan[4][2000] = {{0}};
 
-    double tsegc[len+100] = {0};
-
+    //double plan[4][len+100] = {{0}};
+    double tsegc[2000] = {0};
+    //double tsegc[len+100] = {0};
+  
+   
     double dis, dis2 = 0;
     double distanceToGoal;
     double timeForPath;
@@ -171,7 +174,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
                   
 
                 }
-                //send a 0 command to stop the bot;
+                //send a 0 command to stop the bot;ZERO
                 sendVelCommand(0,0,0,0);
                 //DO ANGLE PLANNING skok LATER;
                 //sendFinalAngleCommand(path_data->poses[len-1].pose.orientation);
