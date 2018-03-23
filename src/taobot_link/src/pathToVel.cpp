@@ -69,7 +69,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
     //      //plan[3][i]=Quat_to_Yaw(path_data->poses[i].pose.orientation);                    
     // }
 
-    while (!finishPath);
+    while (finishPath == 0){
 
         if (len>0){
 
@@ -174,6 +174,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
             //     
             }
         finishPath = 1;
+        }
         }
             else printf("PLAN_SIZE ZERO\n");
     }
