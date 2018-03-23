@@ -137,8 +137,9 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
                 start_time = ros::Time::now();
                 current_time = ros::Time::now();
                 time_elapsed = current_time - start_time;
-                for (i=0;i<len+50;i++)
+                for (i=0;i<len+2;i++)
                 {
+                    ROS_INFO("in loop %d", i);
                     current_time = ros::Time::now();
                     time_elapsed = current_time - start_time;
 
