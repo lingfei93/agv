@@ -52,12 +52,12 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
 
     len = path_data->poses.size();
   
-    
-    double plan[][] = {{...}};
-    //double plan[4][len+100] = {{0}};
+    double plan[4][2000] = {{0}};
 
+    //double plan[4][len+100] = {{0}};
+    double tsegc[2000] = {{0}};
     //double tsegc[len+100] = {0};
-    double tsegc[] = {...};
+  
     
     memset( tsegc, 0, (len+100)*sizeof(double) );
     double dis, dis2 = 0;
