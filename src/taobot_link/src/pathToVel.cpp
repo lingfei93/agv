@@ -119,21 +119,24 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
 
                 ROS_INFO("Each time slot is %d, time for totalPath is %d,", eachTimeSlot, timeForPath);
 
-                ros::Time current_time, start_time;
-		ros::Duration time_elapsed;
                 
-                start_time = ros::Time::now();
-                current_time = ros::Time::now();
 
-                time_elapsed = current_time - start_time;
+               ;
 
                 tsegc[0]=0.0;
                 for (i=1; i < len; i++){
                     tsegc[i] = eachTimeSlot * i;
 		 ROS_INFO("tsegc is %f",tsegc[i]);
                 }
+                
 
                 dsegc=0.0;
+                ros::Time current_time, start_time;
+                ros::Duration time_elapsed;
+                
+                start_time = ros::Time::now();
+                current_time = ros::Time::now();
+                time_elapsed = current_time - start_time
                 for (i=0;i<len;i++)
                 {
                     current_time = ros::Time::now();
@@ -144,9 +147,12 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
 
                     
 
-                    while(!(time_elapsed.toSec()> tsegc[i] && time_elapsed.toSec() < tsegc[i+1])){
-		   ROS_INFO("time elapsed is %f, tsegc is %f, tsegc+1 is %f", time_elapsed.toSec(), tsegc[i], tsegc[i+1]);	
-                   // ROS_INFO("sending a vel command");
+
+                    while((time_elapsed> tsegc[i] && time_elapsed < tsegc[i+1])){
+
+                    ROS_INFO("sending a vel command");
+                    ROS_INFO("time elapsed is %f, tsegc[i] is %f, tsegc[i+1] is %f", time_elapsed, tsegc[i], tsegc[i+1]);
+
                     sendVelCommand(plan[0][i],plan[1][i],plan[0][i+1],plan[1][i+1]);
                     current_time = ros::Time::now();
                     time_elapsed = current_time - start_time;
