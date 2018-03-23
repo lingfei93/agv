@@ -150,7 +150,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
                     ROS_INFO("in loop %d", i);
                     current_time = ros::Time::now();
                     time_elapsed = current_time - start_time;
-                    ROS_INFO("time elapsed is %f, tsegc[i] is %f, tsegc[i+1] is %f, number 2 is %f", time_elapsed, tsegc[i], tsegc[i+1], tsegc[i+2]);
+                    ROS_INFO("time elapsed is %f, tsegc[i] is %f, tsegc[i+1] is %f, number 2 is %f", time_elapsed.toSec(), tsegc[i], tsegc[i+1], tsegc[i+2]);
                     dseg=convertToEuclid(plan[0][i],plan[1][i],plan[0][i-1],plan[1][i-1]);
                     dsegc=dsegc+dseg;
 
