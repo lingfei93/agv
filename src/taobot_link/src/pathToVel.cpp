@@ -114,20 +114,23 @@ void MovePathCallback(const nav_msgs::Path::ConstPtr& path_data)
 
                 ROS_INFO("Each time slot is %d, time for totalPath is %d,", eachTimeSlot, timeForPath);
 
-                ros::Time current_time, start_time;
-		ros::Duration time_elapsed;
                 
-                start_time = ros::Time::now();
-                current_time = ros::Time::now();
 
-                time_elapsed = current_time - start_time;
+               ;
 
                 tsegc[0]=0.0;
                 for (i=1; i < len; i++){
                     tsegc[i] = eachTimeSlot * i;
                 }
+                
 
                 dsegc=0.0;
+                ros::Time current_time, start_time;
+                ros::Duration time_elapsed;
+                
+                start_time = ros::Time::now();
+                current_time = ros::Time::now();
+                time_elapsed = current_time - start_time
                 for (i=0;i<len;i++)
                 {
                     current_time = ros::Time::now();
