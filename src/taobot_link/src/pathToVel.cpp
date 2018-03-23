@@ -133,7 +133,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
 		 ROS_INFO("tsegc is %f",tsegc[i]);
                 }
 
-                for (i= 100; i < len + 100; i++){
+                for (i= len; i < len + 100; i++){
                     tsegc[i] = timeForPath;
                 }
                 
