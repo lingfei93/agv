@@ -130,7 +130,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
                 tsegc[0]=0.0;
                 for (i=1; i < len; i++){
                     tsegc[i] = eachTimeSlot * i;
-		 ROS_INFO("tsegc is %f",tsegc[i]);
+		 ROS_INFO("tsegc is %f, %f",tsegc[i], tsegc[i+1]);
                 }
 
                 for (i= len; i < len + 100; i++){
