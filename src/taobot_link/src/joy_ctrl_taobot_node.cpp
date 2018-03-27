@@ -50,13 +50,22 @@ int cmd_vel_rot_cw=0;
 int cmd_vel_rot_ccw=0;
 double cmd_scale=0.05;
 double old_cmd_scale=0.05;
+int rotor_up = 0;
+int rotor_down = 0;
 
 //Publish output command
-void CTRL_OUT(double V, double W, int clockwise, int counterclockwise)
+void CTRL_OUT(double V, double W, int clockwise, int counterclockwise, int rotorup, int rotordown)
 {
     geometry_msgs::Twist cmd_vel;
     cmd_vel.linear.x=V;
     cmd_vel.angular.z=W;
+    if (rotorup == 1){
+    cmd_vel.angular.x = 1;}
+    if (rotordown ==1){
+    cmd_vel.angular.x = -1;
+    }
+    
+
     if (clockwise == 1){
     cmd_vel.linear.y=1;
         }
@@ -98,6 +107,8 @@ void JoySubCallback(const sensor_msgs::Joy::ConstPtr& joy_msg)
     cmd_vel_w=joy_axes[0]*1;
     cmd_vel_rot_cw = joy_buttons[4];
     cmd_vel_rot_ccw = joy_buttons[5];
+    rotor_up = joy_buttons[9];
+    rotor_down = joy_buttons[10];
     //cmd_vel_v=joy_axes[1]*cmd_scale*1;
     //cmd_vel_w=joy_axes[0]*cmd_scale*1;
     printf("Joy V=%+3.3f W=%+3.3f\n", cmd_vel_v, cmd_vel_w);
@@ -122,7 +133,7 @@ int main(int argc, char** argv)
     ros::Rate loop_rate(main_freg_);      //50HZ
     while(ros::ok())
     {
-        CTRL_OUT(cmd_vel_v, cmd_vel_w, cmd_vel_rot_cw, cmd_vel_rot_ccw);
+        CTRL_OUT(cmd_vel_v, cmd_vel_w, cmd_vel_rot_cw, cmd_vel_rot_ccw, rotor_up, rotor_down);
         //==============================================
         ros::spinOnce();
         loop_rate.sleep();

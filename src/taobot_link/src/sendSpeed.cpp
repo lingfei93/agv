@@ -21,7 +21,7 @@ using namespace std;
 
 // for SERIAL communication
 #define TIMEOUT 1000
-#define port "/dev/ttyUSB0"
+#define port "/dev/ttyUSB2"
 #define baud 115200
 
 void format(uint8_t* reply, int N);
