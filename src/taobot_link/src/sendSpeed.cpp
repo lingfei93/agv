@@ -105,11 +105,10 @@ void format(uint8_t* reply, int N){
             msg.motorB_dir     = reply[i+5];
             msg.motorC_encoder = reply[i+6];
             msg.motorC_dir     = reply[i+7];
-
-                    voltage = reply[i+10];
+            voltage            = reply[i+10];
 
             msg.voltage        = voltage / 10 ;
-	    msg_voltage.data = voltage / 10;
+	        msg_voltage.data = voltage / 10;
             taobot_pub.publish(msg);
 	    taobot_voltage_pub.publish(msg_voltage);
         //print every set of correct messages
@@ -198,18 +197,14 @@ uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double 
     }
     //prepare the message in the taobot format
     toSend[0] = 0xff;
-
     toSend[1] = 0xfe;
     toSend[2] = 2;
     toSend[3] = 0;
     toSend[4] = motorA_speed * 0xf;
     toSend[5] = 0;
     toSend[6] = motorB_speed * 0xf;
-
     toSend[7] = 0;
-    
     toSend[8] = motorC_speed * 0xf; 
-
     toSend[9] = count;
 
     return toSend;
