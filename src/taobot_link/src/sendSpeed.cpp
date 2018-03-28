@@ -274,7 +274,7 @@ int main(int argc, char** argv)
     taobot_pub = n.advertise<taobot_link::Taobot>("taobot_listener", 1000);
     taobot_voltage_pub = n.advertise<std_msgs::Float32>("taobot_voltage_listener", 1000);
     //this channel is to subscribe to velocity commands from the joystick
-    cmd_vel_sub_  = n.subscribe<geometry_msgs::Twist>("taobot_cmd_vel", 1000, cmdVelReceived);
+    //cmd_vel_sub_  = n.subscribe<geometry_msgs::Twist>("taobot_cmd_vel", 1000, cmdVelReceived);
     //move_base_cmd_vel_sub  = n.subscribe<geometry_msgs::Twist>("cmd_vel_path", 1000, moveBaseCmdVelReceived);
     move_base_cmd_vel_sub  = n.subscribe<geometry_msgs::Twist>("cmd_vel", 1000, moveBaseCmdVelReceived);
   
