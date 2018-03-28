@@ -163,9 +163,8 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
                 plan[0][i]=path_data->poses[len-1].pose.position.x;                 //x
                 plan[1][i]=path_data->poses[len-1].pose.position.y;                 //y
                 plan[2][i]=0;                                                   //z
-               plan[3][i]=tf::getYaw(path_data->poses
-[len-1].pose.orientation);  
-  ROS_INFO("this is w, %f", path_data->poses[i].pose.orientation.w);
+               plan[3][i]=tf::getYaw(path_data->poses[len-1].pose.orientation);  
+
 		ROS_INFO("this is yaw, %f", plan[3][i]); //angle(yaw)
                 //printf("NUM=%d x=%+3.3f y=%+3.3f z=%+3.3f yaw=%+3.3f\n", i, plan[0][i], plan[1][i], plan[2][i], plan[3][i]);
             }
