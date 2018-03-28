@@ -90,7 +90,7 @@ test_trigger_matcher_EXTERNAL_OBJECTS =
 
 /home/eee/lingfei_ws/agv/devel/lib/timestamp_tools/test_trigger_matcher: driver_common/timestamp_tools/CMakeFiles/test_trigger_matcher.dir/test/test_trigger_matcher.cpp.o
 /home/eee/lingfei_ws/agv/devel/lib/timestamp_tools/test_trigger_matcher: driver_common/timestamp_tools/CMakeFiles/test_trigger_matcher.dir/build.make
-/home/eee/lingfei_ws/agv/devel/lib/timestamp_tools/test_trigger_matcher: gtest/libgtest.so
+/home/eee/lingfei_ws/agv/devel/lib/timestamp_tools/test_trigger_matcher: gtest/gtest/libgtest.so
 /home/eee/lingfei_ws/agv/devel/lib/timestamp_tools/test_trigger_matcher: /opt/ros/kinetic/lib/libroslib.so
 /home/eee/lingfei_ws/agv/devel/lib/timestamp_tools/test_trigger_matcher: /opt/ros/kinetic/lib/librospack.so
 /home/eee/lingfei_ws/agv/devel/lib/timestamp_tools/test_trigger_matcher: /usr/lib/x86_64-linux-gnu/libpython2.7.so
@@ -105,8 +105,8 @@ test_trigger_matcher_EXTERNAL_OBJECTS =
 /home/eee/lingfei_ws/agv/devel/lib/timestamp_tools/test_trigger_matcher: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
 /home/eee/lingfei_ws/agv/devel/lib/timestamp_tools/test_trigger_matcher: /usr/lib/x86_64-linux-gnu/libboost_regex.so
 /home/eee/lingfei_ws/agv/devel/lib/timestamp_tools/test_trigger_matcher: /opt/ros/kinetic/lib/libroscpp_serialization.so
-/home/eee/lingfei_ws/agv/devel/lib/timestamp_tools/test_trigger_matcher: /opt/ros/kinetic/lib/librostime.so
 /home/eee/lingfei_ws/agv/devel/lib/timestamp_tools/test_trigger_matcher: /opt/ros/kinetic/lib/libxmlrpcpp.so
+/home/eee/lingfei_ws/agv/devel/lib/timestamp_tools/test_trigger_matcher: /opt/ros/kinetic/lib/librostime.so
 /home/eee/lingfei_ws/agv/devel/lib/timestamp_tools/test_trigger_matcher: /opt/ros/kinetic/lib/libcpp_common.so
 /home/eee/lingfei_ws/agv/devel/lib/timestamp_tools/test_trigger_matcher: /usr/lib/x86_64-linux-gnu/libboost_system.so
 /home/eee/lingfei_ws/agv/devel/lib/timestamp_tools/test_trigger_matcher: /usr/lib/x86_64-linux-gnu/libboost_thread.so

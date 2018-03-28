@@ -91,6 +91,7 @@ vicon_xb_node_EXTERNAL_OBJECTS =
 /home/eee/lingfei_ws/agv/devel/lib/vicon_xb/vicon_xb_node: vicon_xb/CMakeFiles/vicon_xb_node.dir/src/vicon_xb.cpp.o
 /home/eee/lingfei_ws/agv/devel/lib/vicon_xb/vicon_xb_node: vicon_xb/CMakeFiles/vicon_xb_node.dir/build.make
 /home/eee/lingfei_ws/agv/devel/lib/vicon_xb/vicon_xb_node: /home/eee/lingfei_ws/agv/devel/lib/libserial.so
+/home/eee/lingfei_ws/agv/devel/lib/vicon_xb/vicon_xb_node: /usr/lib/x86_64-linux-gnu/librt.so
 /home/eee/lingfei_ws/agv/devel/lib/vicon_xb/vicon_xb_node: /opt/ros/kinetic/lib/libtf.so
 /home/eee/lingfei_ws/agv/devel/lib/vicon_xb/vicon_xb_node: /opt/ros/kinetic/lib/libtf2_ros.so
 /home/eee/lingfei_ws/agv/devel/lib/vicon_xb/vicon_xb_node: /opt/ros/kinetic/lib/libactionlib.so

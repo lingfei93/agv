@@ -39,6 +39,7 @@ struct viconXbSrvResponse_
 
 
 
+
   typedef boost::shared_ptr< ::vicon_xb::viconXbSrvResponse_<ContainerAllocator> > Ptr;
   typedef boost::shared_ptr< ::vicon_xb::viconXbSrvResponse_<ContainerAllocator> const> ConstPtr;
 

@@ -90,7 +90,7 @@ serial__test_EXTERNAL_OBJECTS =
 
 /home/eee/lingfei_ws/agv/devel/lib/serial/serial-test: serial/tests/CMakeFiles/serial-test.dir/unix_serial_tests.cc.o
 /home/eee/lingfei_ws/agv/devel/lib/serial/serial-test: serial/tests/CMakeFiles/serial-test.dir/build.make
-/home/eee/lingfei_ws/agv/devel/lib/serial/serial-test: gtest/libgtest.so
+/home/eee/lingfei_ws/agv/devel/lib/serial/serial-test: gtest/gtest/libgtest.so
 /home/eee/lingfei_ws/agv/devel/lib/serial/serial-test: /home/eee/lingfei_ws/agv/devel/lib/libserial.so
 /home/eee/lingfei_ws/agv/devel/lib/serial/serial-test: serial/tests/CMakeFiles/serial-test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/eee/lingfei_ws/agv/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/eee/lingfei_ws/agv/devel/lib/serial/serial-test"

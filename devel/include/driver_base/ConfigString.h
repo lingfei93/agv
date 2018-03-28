@@ -44,6 +44,7 @@ struct ConfigString_
 
 
 
+
   typedef boost::shared_ptr< ::driver_base::ConfigString_<ContainerAllocator> > Ptr;
   typedef boost::shared_ptr< ::driver_base::ConfigString_<ContainerAllocator> const> ConstPtr;
 

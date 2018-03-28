@@ -61,13 +61,13 @@ taobot_link/CMakeFiles/taobot_link_generate_messages_cpp: /home/eee/lingfei_ws/a
 /home/eee/lingfei_ws/agv/devel/include/taobot_link/Odom.h: /home/eee/lingfei_ws/agv/src/taobot_link/msg/Odom.msg
 /home/eee/lingfei_ws/agv/devel/include/taobot_link/Odom.h: /opt/ros/kinetic/share/gencpp/msg.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/eee/lingfei_ws/agv/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code from taobot_link/Odom.msg"
-	cd /home/eee/lingfei_ws/agv/build/taobot_link && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/eee/lingfei_ws/agv/src/taobot_link/msg/Odom.msg -Itaobot_link:/home/eee/lingfei_ws/agv/src/taobot_link/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p taobot_link -o /home/eee/lingfei_ws/agv/devel/include/taobot_link -e /opt/ros/kinetic/share/gencpp/cmake/..
+	cd /home/eee/lingfei_ws/agv/src/taobot_link && /home/eee/lingfei_ws/agv/build/catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/eee/lingfei_ws/agv/src/taobot_link/msg/Odom.msg -Itaobot_link:/home/eee/lingfei_ws/agv/src/taobot_link/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p taobot_link -o /home/eee/lingfei_ws/agv/devel/include/taobot_link -e /opt/ros/kinetic/share/gencpp/cmake/..
 
 /home/eee/lingfei_ws/agv/devel/include/taobot_link/Taobot.h: /opt/ros/kinetic/lib/gencpp/gen_cpp.py
 /home/eee/lingfei_ws/agv/devel/include/taobot_link/Taobot.h: /home/eee/lingfei_ws/agv/src/taobot_link/msg/Taobot.msg
 /home/eee/lingfei_ws/agv/devel/include/taobot_link/Taobot.h: /opt/ros/kinetic/share/gencpp/msg.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/eee/lingfei_ws/agv/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating C++ code from taobot_link/Taobot.msg"
-	cd /home/eee/lingfei_ws/agv/build/taobot_link && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/eee/lingfei_ws/agv/src/taobot_link/msg/Taobot.msg -Itaobot_link:/home/eee/lingfei_ws/agv/src/taobot_link/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p taobot_link -o /home/eee/lingfei_ws/agv/devel/include/taobot_link -e /opt/ros/kinetic/share/gencpp/cmake/..
+	cd /home/eee/lingfei_ws/agv/src/taobot_link && /home/eee/lingfei_ws/agv/build/catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/eee/lingfei_ws/agv/src/taobot_link/msg/Taobot.msg -Itaobot_link:/home/eee/lingfei_ws/agv/src/taobot_link/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p taobot_link -o /home/eee/lingfei_ws/agv/devel/include/taobot_link -e /opt/ros/kinetic/share/gencpp/cmake/..
 
 taobot_link_generate_messages_cpp: taobot_link/CMakeFiles/taobot_link_generate_messages_cpp
 taobot_link_generate_messages_cpp: /home/eee/lingfei_ws/agv/devel/include/taobot_link/Odom.h

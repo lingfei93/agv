@@ -34,10 +34,13 @@ struct SensorLevels_
 
 
 
-    enum { RECONFIGURE_CLOSE = 3 };
-     enum { RECONFIGURE_STOP = 1 };
-     enum { RECONFIGURE_RUNNING = 0 };
- 
+
+  enum {
+    RECONFIGURE_CLOSE = 3,
+    RECONFIGURE_STOP = 1,
+    RECONFIGURE_RUNNING = 0,
+  };
+
 
   typedef boost::shared_ptr< ::driver_base::SensorLevels_<ContainerAllocator> > Ptr;
   typedef boost::shared_ptr< ::driver_base::SensorLevels_<ContainerAllocator> const> ConstPtr;

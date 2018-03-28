@@ -8,6 +8,9 @@ hokuyo_node/CMakeFiles/hokuyo_node.dir/src/hokuyo_node.cpp.o
  /home/eee/lingfei_ws/agv/src/driver_common/driver_base/include/driver_base/driver_node.h
  /home/eee/lingfei_ws/agv/src/hokuyo_node/include/hokuyo_node/hokuyo.h
  /home/eee/lingfei_ws/agv/src/hokuyo_node/src/hokuyo_node.cpp
+ /opt/ros/kinetic/include/boost_161_condition_variable.h
+ /opt/ros/kinetic/include/boost_161_pthread_condition_variable.h
+ /opt/ros/kinetic/include/boost_161_pthread_condition_variable_fwd.h
  /opt/ros/kinetic/include/diagnostic_msgs/DiagnosticArray.h
  /opt/ros/kinetic/include/diagnostic_msgs/DiagnosticStatus.h
  /opt/ros/kinetic/include/diagnostic_msgs/KeyValue.h

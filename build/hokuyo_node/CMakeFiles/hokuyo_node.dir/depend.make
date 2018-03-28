@@ -7,6 +7,9 @@ hokuyo_node/CMakeFiles/hokuyo_node.dir/src/hokuyo_node.cpp.o: /home/eee/lingfei_
 hokuyo_node/CMakeFiles/hokuyo_node.dir/src/hokuyo_node.cpp.o: /home/eee/lingfei_ws/agv/src/driver_common/driver_base/include/driver_base/driver_node.h
 hokuyo_node/CMakeFiles/hokuyo_node.dir/src/hokuyo_node.cpp.o: /home/eee/lingfei_ws/agv/src/hokuyo_node/include/hokuyo_node/hokuyo.h
 hokuyo_node/CMakeFiles/hokuyo_node.dir/src/hokuyo_node.cpp.o: /home/eee/lingfei_ws/agv/src/hokuyo_node/src/hokuyo_node.cpp
+hokuyo_node/CMakeFiles/hokuyo_node.dir/src/hokuyo_node.cpp.o: /opt/ros/kinetic/include/boost_161_condition_variable.h
+hokuyo_node/CMakeFiles/hokuyo_node.dir/src/hokuyo_node.cpp.o: /opt/ros/kinetic/include/boost_161_pthread_condition_variable.h
+hokuyo_node/CMakeFiles/hokuyo_node.dir/src/hokuyo_node.cpp.o: /opt/ros/kinetic/include/boost_161_pthread_condition_variable_fwd.h
 hokuyo_node/CMakeFiles/hokuyo_node.dir/src/hokuyo_node.cpp.o: /opt/ros/kinetic/include/diagnostic_msgs/DiagnosticArray.h
 hokuyo_node/CMakeFiles/hokuyo_node.dir/src/hokuyo_node.cpp.o: /opt/ros/kinetic/include/diagnostic_msgs/DiagnosticStatus.h
 hokuyo_node/CMakeFiles/hokuyo_node.dir/src/hokuyo_node.cpp.o: /opt/ros/kinetic/include/diagnostic_msgs/KeyValue.h

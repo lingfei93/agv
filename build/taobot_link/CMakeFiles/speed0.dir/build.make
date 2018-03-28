@@ -92,6 +92,7 @@ speed0_EXTERNAL_OBJECTS =
 /home/eee/lingfei_ws/agv/devel/lib/taobot_link/speed0: taobot_link/CMakeFiles/speed0.dir/build.make
 /home/eee/lingfei_ws/agv/devel/lib/taobot_link/speed0: /home/eee/lingfei_ws/agv/devel/lib/libcereal_port.so
 /home/eee/lingfei_ws/agv/devel/lib/taobot_link/speed0: /home/eee/lingfei_ws/agv/devel/lib/libserial.so
+/home/eee/lingfei_ws/agv/devel/lib/taobot_link/speed0: /usr/lib/x86_64-linux-gnu/librt.so
 /home/eee/lingfei_ws/agv/devel/lib/taobot_link/speed0: /opt/ros/kinetic/lib/libtf.so
 /home/eee/lingfei_ws/agv/devel/lib/taobot_link/speed0: /opt/ros/kinetic/lib/libtf2_ros.so
 /home/eee/lingfei_ws/agv/devel/lib/taobot_link/speed0: /opt/ros/kinetic/lib/libactionlib.so

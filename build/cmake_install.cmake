@@ -125,6 +125,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/eee/lingfei_ws/agv/build/driver_common/driver_base/cmake_install.cmake")
   include("/home/eee/lingfei_ws/agv/build/hokuyo_node/cmake_install.cmake")
   include("/home/eee/lingfei_ws/agv/build/taobot_link/cmake_install.cmake")
+  include("/home/eee/lingfei_ws/agv/build/usb_cam/cmake_install.cmake")
   include("/home/eee/lingfei_ws/agv/build/vicon_xb/cmake_install.cmake")
 
 endif()

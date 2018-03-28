@@ -92,6 +92,7 @@ joy_ctrl_taobot_node_EXTERNAL_OBJECTS =
 /home/eee/lingfei_ws/agv/devel/lib/taobot_link/joy_ctrl_taobot_node: taobot_link/CMakeFiles/joy_ctrl_taobot_node.dir/build.make
 /home/eee/lingfei_ws/agv/devel/lib/taobot_link/joy_ctrl_taobot_node: /home/eee/lingfei_ws/agv/devel/lib/libcereal_port.so
 /home/eee/lingfei_ws/agv/devel/lib/taobot_link/joy_ctrl_taobot_node: /home/eee/lingfei_ws/agv/devel/lib/libserial.so
+/home/eee/lingfei_ws/agv/devel/lib/taobot_link/joy_ctrl_taobot_node: /usr/lib/x86_64-linux-gnu/librt.so
 /home/eee/lingfei_ws/agv/devel/lib/taobot_link/joy_ctrl_taobot_node: /opt/ros/kinetic/lib/libtf.so
 /home/eee/lingfei_ws/agv/devel/lib/taobot_link/joy_ctrl_taobot_node: /opt/ros/kinetic/lib/libtf2_ros.so
 /home/eee/lingfei_ws/agv/devel/lib/taobot_link/joy_ctrl_taobot_node: /opt/ros/kinetic/lib/libactionlib.so

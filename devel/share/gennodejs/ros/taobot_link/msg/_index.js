@@ -1,10 +1,10 @@
 
 "use strict";
 
-let Odom = require('./Odom.js');
 let Taobot = require('./Taobot.js');
+let Odom = require('./Odom.js');
 
 module.exports = {
-  Odom: Odom,
   Taobot: Taobot,
+  Odom: Odom,
 };

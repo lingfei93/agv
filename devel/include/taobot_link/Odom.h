@@ -49,6 +49,7 @@ struct Odom_
 
 
 
+
   typedef boost::shared_ptr< ::taobot_link::Odom_<ContainerAllocator> > Ptr;
   typedef boost::shared_ptr< ::taobot_link::Odom_<ContainerAllocator> const> ConstPtr;
 

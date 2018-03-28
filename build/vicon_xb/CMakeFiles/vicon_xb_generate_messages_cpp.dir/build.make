@@ -61,14 +61,14 @@ vicon_xb/CMakeFiles/vicon_xb_generate_messages_cpp: /home/eee/lingfei_ws/agv/dev
 /home/eee/lingfei_ws/agv/devel/include/vicon_xb/viconPoseMsg.h: /home/eee/lingfei_ws/agv/src/vicon_xb/msg/viconPoseMsg.msg
 /home/eee/lingfei_ws/agv/devel/include/vicon_xb/viconPoseMsg.h: /opt/ros/kinetic/share/gencpp/msg.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/eee/lingfei_ws/agv/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code from vicon_xb/viconPoseMsg.msg"
-	cd /home/eee/lingfei_ws/agv/build/vicon_xb && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/eee/lingfei_ws/agv/src/vicon_xb/msg/viconPoseMsg.msg -Ivicon_xb:/home/eee/lingfei_ws/agv/src/vicon_xb/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p vicon_xb -o /home/eee/lingfei_ws/agv/devel/include/vicon_xb -e /opt/ros/kinetic/share/gencpp/cmake/..
+	cd /home/eee/lingfei_ws/agv/src/vicon_xb && /home/eee/lingfei_ws/agv/build/catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/eee/lingfei_ws/agv/src/vicon_xb/msg/viconPoseMsg.msg -Ivicon_xb:/home/eee/lingfei_ws/agv/src/vicon_xb/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p vicon_xb -o /home/eee/lingfei_ws/agv/devel/include/vicon_xb -e /opt/ros/kinetic/share/gencpp/cmake/..
 
 /home/eee/lingfei_ws/agv/devel/include/vicon_xb/viconXbSrv.h: /opt/ros/kinetic/lib/gencpp/gen_cpp.py
 /home/eee/lingfei_ws/agv/devel/include/vicon_xb/viconXbSrv.h: /home/eee/lingfei_ws/agv/src/vicon_xb/srv/viconXbSrv.srv
 /home/eee/lingfei_ws/agv/devel/include/vicon_xb/viconXbSrv.h: /opt/ros/kinetic/share/gencpp/msg.h.template
 /home/eee/lingfei_ws/agv/devel/include/vicon_xb/viconXbSrv.h: /opt/ros/kinetic/share/gencpp/srv.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/eee/lingfei_ws/agv/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating C++ code from vicon_xb/viconXbSrv.srv"
-	cd /home/eee/lingfei_ws/agv/build/vicon_xb && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/eee/lingfei_ws/agv/src/vicon_xb/srv/viconXbSrv.srv -Ivicon_xb:/home/eee/lingfei_ws/agv/src/vicon_xb/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p vicon_xb -o /home/eee/lingfei_ws/agv/devel/include/vicon_xb -e /opt/ros/kinetic/share/gencpp/cmake/..
+	cd /home/eee/lingfei_ws/agv/src/vicon_xb && /home/eee/lingfei_ws/agv/build/catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/eee/lingfei_ws/agv/src/vicon_xb/srv/viconXbSrv.srv -Ivicon_xb:/home/eee/lingfei_ws/agv/src/vicon_xb/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p vicon_xb -o /home/eee/lingfei_ws/agv/devel/include/vicon_xb -e /opt/ros/kinetic/share/gencpp/cmake/..
 
 vicon_xb_generate_messages_cpp: vicon_xb/CMakeFiles/vicon_xb_generate_messages_cpp
 vicon_xb_generate_messages_cpp: /home/eee/lingfei_ws/agv/devel/include/vicon_xb/viconPoseMsg.h

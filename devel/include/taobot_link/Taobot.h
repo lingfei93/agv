@@ -69,6 +69,7 @@ struct Taobot_
 
 
 
+
   typedef boost::shared_ptr< ::taobot_link::Taobot_<ContainerAllocator> > Ptr;
   typedef boost::shared_ptr< ::taobot_link::Taobot_<ContainerAllocator> const> ConstPtr;
 

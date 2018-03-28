@@ -84,6 +84,7 @@ struct viconPoseMsg_
 
 
 
+
   typedef boost::shared_ptr< ::vicon_xb::viconPoseMsg_<ContainerAllocator> > Ptr;
   typedef boost::shared_ptr< ::vicon_xb::viconPoseMsg_<ContainerAllocator> const> ConstPtr;
 
