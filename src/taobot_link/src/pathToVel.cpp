@@ -88,7 +88,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
     int len;
     int idx, flag, path_plan;
     //set the idealSpeed as a rando.
-    double idealSpeed = 0.5;
+    double idealSpeed = 0.25;
     double eachTimeSlot;
 
     len = path_data->poses.size();
@@ -118,6 +118,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
 
     while (finishPath == 0){
 	if (wasInPath == 1 && len > 0){
+           
 	   checkPath(lastX, lastY, path_data->poses[0].pose.position.x, path_data->poses[0].pose.position.y);
 	}
         if (len>0 && wasInPath == 0){
