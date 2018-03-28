@@ -203,7 +203,8 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
                 start_time = ros::Time::now();
                 current_time = ros::Time::now();
                 time_elapsed = current_time - start_time;
-                turnRobot(plan[3][0], plan[3][len+5]);
+                ROS_INFO("send to turnRobot with values %f, %f", plan[3][0], plan[3][len-1]);
+                turnRobot(plan[3][0], plan[3][len-1]);
                 for (i=0;i<len+50;i++)
                 {
                   //  ROS_INFO("in loop %d", i);
