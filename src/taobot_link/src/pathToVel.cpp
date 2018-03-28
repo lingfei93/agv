@@ -52,6 +52,31 @@ void checkPath(float x1, float y1, float x2, float y2){
   if (abs(y2 - y1) < 0.5  && abs(x2 - x1) < 0.5){
    wasInPath = 0;
  }
+
+void turnRobot(float initial, float end);
+    ROS_INFO("initial is %f and end is %f", initial, end);
+    geometry_msgs::Twist wlr_cmd;
+    double timeToSleep;
+    if (initial < 0){
+    initial = initial + 2 * 3.14;
+    }   
+    if (end > initial) {
+    timeToSleep = end - initial;
+    wlr_cmd.angular.z = 1;
+	}
+    else {
+    timeToSleep = initial - end;
+    wlr_cmd.angular.z = -1;
+     }
+    
+    move_base_path_pub.publish(wlr_cmd);
+    ros::Duration(timeToSleep).sleep(); // sleep for however long
+  
+
+    wlr_cmd.angular.z = 0;
+
+    move_base_path_pub.publish(wlr_cmd);
+    
  
 }
 
@@ -169,7 +194,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
                 start_time = ros::Time::now();
                 current_time = ros::Time::now();
                 time_elapsed = current_time - start_time;
-                //turnRobot(plan[3][0], plan[3][len]);
+                turnRobot(plan[3][0], plan[3][len]);
                 for (i=0;i<len+50;i++)
                 {
                   //  ROS_INFO("in loop %d", i);

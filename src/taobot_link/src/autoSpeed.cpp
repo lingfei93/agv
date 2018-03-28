@@ -248,9 +248,9 @@ void moveBaseCmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel){
     uint8_t reply[30];
 
     //NOT SURE WHY I NEED TO FLIP THIS
-    float x_vel         = cmd_vel->linear.x * 0.01;
-    float y_vel         = cmd_vel->linear.y* 0.01;
-    float theta_vel     = cmd_vel->angular.z * 0.01;
+    float x_vel         = cmd_vel->linear.x * -1;
+    float y_vel         = cmd_vel->linear.y;
+    float theta_vel     = cmd_vel->angular.z /0.5;
     
     uint8_t* arrayToSend;
 	
