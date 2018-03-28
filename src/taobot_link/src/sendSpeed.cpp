@@ -248,7 +248,7 @@ void moveBaseCmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel){
 
     //NOT SURE WHY I NEED TO FLIP THIS
     float x_vel         = cmd_vel->linear.x * 5;
-    float y_vel         = cmd_vel->linear.y; * 5;
+    float y_vel         = cmd_vel->linear.y* 5;
     float theta_vel     = cmd_vel->angular.z / 0.5;
     
     uint8_t* arrayToSend;
