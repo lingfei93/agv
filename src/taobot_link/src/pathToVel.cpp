@@ -122,6 +122,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
 
     while (finishPath == 0){
 	if (wasInPath == 1 && len > 0){
+	   ROS_INFO("last quat is %f", tf::getYaw(path_data->poses[len-1].pose.orientation))
            
 	   checkPath(lastX, lastY, path_data->poses[0].pose.position.x, path_data->poses[0].pose.position.y, len);
 	}
@@ -162,7 +163,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
                 plan[0][i]=path_data->poses[len-1].pose.position.x;                 //x
                 plan[1][i]=path_data->poses[len-1].pose.position.y;                 //y
                 plan[2][i]=0;                                                   //z
-               plan[3][i]=tf::getYaw(path_data->poses[len].pose.orientation);   //angle(yaw)
+               plan[3][i]=tf::getYaw(path_data->poses[len-1].pose.orientation);   //angle(yaw)
                 //printf("NUM=%d x=%+3.3f y=%+3.3f z=%+3.3f yaw=%+3.3f\n", i, plan[0][i], plan[1][i], plan[2][i], plan[3][i]);
             }
 	ROS_INFO("distanceToGoal is %f", distanceToGoal);
