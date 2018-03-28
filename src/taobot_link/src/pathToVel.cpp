@@ -162,7 +162,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
                 plan[0][i]=path_data->poses[len-1].pose.position.x;                 //x
                 plan[1][i]=path_data->poses[len-1].pose.position.y;                 //y
                 plan[2][i]=0;                                                   //z
-               // plan[3][i]=Quat_to_Yaw(path_data->poses[len-1].pose.orientation);   //angle(yaw)
+               plan[3][i]=tf::getYaw(path_data->poses[len].pose.orientation);   //angle(yaw)
                 //printf("NUM=%d x=%+3.3f y=%+3.3f z=%+3.3f yaw=%+3.3f\n", i, plan[0][i], plan[1][i], plan[2][i], plan[3][i]);
             }
 	ROS_INFO("distanceToGoal is %f", distanceToGoal);
@@ -202,7 +202,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
                 start_time = ros::Time::now();
                 current_time = ros::Time::now();
                 time_elapsed = current_time - start_time;
-                turnRobot(plan[3][0], plan[3][len]);
+                turnRobot(plan[3][0], plan[3][len+5]);
                 for (i=0;i<len+50;i++)
                 {
                   //  ROS_INFO("in loop %d", i);
