@@ -21,8 +21,8 @@ DWAPlannerROS:
   sim_time: 1.7
   sim_granularity: 0.025
 
-  goal_distance_bias: 32.0
-  path_distance_bias: 24.0
+  goal_distance_bias: 24.0
+  path_distance_bias: 6.0
   occdist_scale: 0.01
 
   stop_time_buffer: 0.2
@@ -31,7 +31,7 @@ DWAPlannerROS:
   forward_point_distance: 0.325
 
   scaling_speed: 0.25
-  max_scaling_factor: 0.2
+  max_scaling_factor: 0.5
 
   vx_samples: 3
   vy_samples: 10
