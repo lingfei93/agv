@@ -2,7 +2,7 @@
 <launch>
   <param name="/use_sim_time" value="false"/>
 
-  <node pkg="taobot_link" name="sendSpeed" type="sendSpeed" output="screen">
+  <node pkg="taobot_link" name="autoSpeed" type="autoSpeed" output="screen">
 	<!--<rosparam file="$(find axon_link)/config/axon_param.yaml" command="load"/> -->        
   </node>
 

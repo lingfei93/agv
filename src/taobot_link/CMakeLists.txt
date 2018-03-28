@@ -231,6 +231,10 @@ add_executable(pathToVel src/pathToVel.cpp)
 add_dependencies(pathToVel taobot_link_generate_messages_cpp)
 target_link_libraries(pathToVel ${catkin_LIBRARIES})
 
+add_executable(autoSpeed src/autoSpeed.cpp)
+add_dependencies(autoSpeed taobot_link_generate_messages_cpp)
+target_link_libraries(autoSpeed ${catkin_LIBRARIES})
+
 ## Mark executables and/or libraries for installation
 #install(TARGETS taobot_link
 #  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}

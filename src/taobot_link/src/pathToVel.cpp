@@ -5,9 +5,12 @@
 #include <iostream>
 #include <math.h>
 #include "serial/serial.h"
+#include <tf/transform_datatypes.h>
 #include <taobot_link/Taobot.h>
 #include <Eigen/Dense>
 #include <nav_msgs/Path.h>
+
+
 #include <cmath>
 using Eigen::MatrixXd;
 using namespace std;
@@ -30,15 +33,26 @@ ros::Publisher move_base_path_pub;
 ros::Subscriber move_base_path_sub;
 void MovePathCallback(const nav_msgs::Path::ConstPtr& path_data);
 double convertToEuclid(float x1, float y1, float x2, float y2);
+void checkPath(float x1, float y1, float x2, float y2);
 void sendVelCommand(float x_start, float y_start, float x_end, float y_end);
 uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double angle);
 int count_average = 0;
 double total_difference = 0;
+int wasInPath = 0;
+float lastY = 0;
+float lastX = 0;
 // char reply[9];
 
 double convertToEuclid(double x1, double y1, double x2, double y2){
     ROS_INFO("x1 is %f, y1 is %f, x2 is %f, y2 is %f",x1,y1,x2,y2);
     return sqrt(pow((x1 - x2),2) + pow((y1 - y2),2));
+}
+
+void checkPath(float x1, float y1, float x2, float y2){
+  if (abs(y2 - y1) < 0.5  && abs(x2 - x1) < 0.5){
+   wasInPath = 0;
+ }
+ 
 }
 
 void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
@@ -76,13 +90,16 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
     // }
 
     while (finishPath == 0){
-
-        if (len>0){
+	if (wasInPath == 1 && len > 0){
+	   checkPath(lastX, lastY, path_data->poses[0].pose.position.x, path_data->poses[0].pose.position.y);
+	}
+        if (len>0 && wasInPath == 0){
 
 
         {
-            distanceToGoal = convertToEuclid(path_data->poses[0].pose.position.x, path_data->poses[0].pose.position.y , 
-                path_data->poses[len-2].pose.position.x, path_data->poses[len-2].pose.position.y);
+	    distanceToGoal = 0;
+
+            //distanceToGoal = convertToEuclid(path_data->poses[0].pose.position.x, path_data->poses[0].pose.position.y ,    path_data->poses[len-2].pose.position.x, path_data->poses[len-2].pose.position.y);
 	   ROS_INFO("distance to goal is %f", distanceToGoal);
             //dis2=DIS_XY(rc.x_c, rc.y_c, path_data->poses[len-1].pose.position.x, path_data->poses[len-1].pose.position.y); //last path point
             if (distanceToGoal >= 0 )
@@ -99,9 +116,13 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
                 plan[0][i]=path_data->poses[i].pose.position.x;                 //x
                 plan[1][i]=path_data->poses[i].pose.position.y;                 //y
                 plan[2][i]=0;    
-                             		               //z
-                //plan[3][i]=Quat_to_Yaw(path_data->poses[i].pose.orientation);   //angle(yaw)
+                   		               //z
+                plan[3][i]=tf::getYaw(path_data->poses[i].pose.orientation);   //angle(yaw)
                 //printf("NUM=%d x=%+3.3f y=%+3.3f z=%+3.3f yaw=%+3.3f\n", i, plan[0][i],  q[1][i], plan[2][i], plan[3][i]);
+                ROS_INFO("this is w, %f", path_data->poses[i].pose.orientation.w);
+		ROS_INFO("this is yaw, %f", plan[3][i]);	
+	    if(i > 0){
+            distanceToGoal = distanceToGoal + convertToEuclid(plan[0][i-1],plan[1][i-1], plan[0][i],plan[1][i]);}
             }
             for (i=len;i<len+100;i++)
             {
@@ -111,7 +132,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
                // plan[3][i]=Quat_to_Yaw(path_data->poses[len-1].pose.orientation);   //angle(yaw)
                 //printf("NUM=%d x=%+3.3f y=%+3.3f z=%+3.3f yaw=%+3.3f\n", i, plan[0][i], plan[1][i], plan[2][i], plan[3][i]);
             }
-
+	ROS_INFO("distanceToGoal is %f", distanceToGoal);
         }
 
 
@@ -124,7 +145,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
 
                 eachTimeSlot = timeForPath / len;
 
-                ROS_INFO("Each time slot is %f, time for totalPath is %f,", eachTimeSlot, timeForPath);
+              //  ROS_INFO("Each time slot is %f, time for totalPath is %f,", eachTimeSlot, timeForPath);
 
                 
 
@@ -133,7 +154,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
                 tsegc[0]=0.0;
                 for (i=1; i < len; i++){
                     tsegc[i] = eachTimeSlot * i;
-		 ROS_INFO("tsegc is %f, %f",tsegc[i], tsegc[i+1]);
+		// ROS_INFO("tsegc is %f, %f",tsegc[i], tsegc[i+1]);
                 }
 
                 for (i= len; i < len + 100; i++){
@@ -148,12 +169,13 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
                 start_time = ros::Time::now();
                 current_time = ros::Time::now();
                 time_elapsed = current_time - start_time;
+                //turnRobot(plan[3][0], plan[3][len]);
                 for (i=0;i<len+50;i++)
                 {
-                    ROS_INFO("in loop %d", i);
+                  //  ROS_INFO("in loop %d", i);
                     current_time = ros::Time::now();
                     time_elapsed = current_time - start_time;
-                    ROS_INFO("time elapsed is %f, tsegc[i] is %f, tsegc[i+1] is %f, number 2 is %f", time_elapsed.toSec(), tsegc[i], tsegc[i+1], tsegc[i+2]);
+                  //  ROS_INFO("time elapsed is %f, tsegc[i] is %f, tsegc[i+1] is %f, number 2 is %f", time_elapsed.toSec(), tsegc[i], tsegc[i+1], tsegc[i+2]);
                     dseg=convertToEuclid(plan[0][i],plan[1][i],plan[0][i-1],plan[1][i-1]);
                     dsegc=dsegc+dseg;
 
@@ -162,8 +184,8 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
 
                     while(time_elapsed.toSec() < tsegc[i]){
 
-                    ROS_INFO("sending a vel command");
-                    ROS_INFO("time elapsed is %f, tsegc[i] is %f, tsegc[i+1] is %f", time_elapsed.toSec(), tsegc[i], tsegc[i+1]);
+                   // ROS_INFO("sending a vel command");
+                  //  ROS_INFO("time elapsed is %f, tsegc[i] is %f, tsegc[i+1] is %f", time_elapsed.toSec(), tsegc[i], tsegc[i+1]);
 
                     sendVelCommand(plan[0][i],plan[1][i],plan[0][i+1],plan[1][i+1]);
                     current_time = ros::Time::now();
@@ -181,7 +203,9 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
 
             //     
             }
-        finishPath = 1;
+        wasInPath = 1;
+        lastX = plan[0][len];
+	lastY = plan[1][len];
         }
             else printf("PLAN_SIZE ZERO\n");
             finishPath = 1;
