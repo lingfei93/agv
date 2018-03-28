@@ -252,6 +252,8 @@ void moveBaseCmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel){
     float theta_vel     = cmd_vel->angular.z / 0.5;
     
     uint8_t* arrayToSend;
+	
+    ROS_INFO("im sending %f, %f, %f", x_vel, y_vel, theta_vel);
 
     arrayToSend = changeToOmniSpeed(x_vel, y_vel, theta_vel);
 
