@@ -124,7 +124,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
 	if (wasInPath == 1 && len > 0){
            
            ROS_INFO("send to turnRobot with values %f, %f",tf::getYaw(path_data->poses[0].pose.orientation), tf::getYaw(path_data->poses[len-1].pose.orientation));
-           turnRobot(plan[3][0], plan[3][len-1]);
+           turnRobot(tf::getYaw(path_data->poses[0].pose.orientation), tf::getYaw(path_data->poses[len-1].pose.orientation));
 	   ROS_INFO("last quat is %f, %f", tf::getYaw(path_data->poses[len-1].pose.orientation), path_data->poses[len-1].pose.orientation.w);
            
 	   checkPath(lastX, lastY, path_data->poses[0].pose.position.x, path_data->poses[0].pose.position.y, len);
