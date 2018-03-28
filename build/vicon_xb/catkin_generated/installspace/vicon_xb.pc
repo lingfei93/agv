@@ -1,0 +1,8 @@
+prefix=/home/eee/lingfei_ws/agv/install
+
+Name: vicon_xb
+Description: Description of vicon_xb
+Version: 0.0.0
+Cflags: -I/home/eee/lingfei_ws/agv/install/include
+Libs: -L/home/eee/lingfei_ws/agv/install/lib 
+Requires: roscpp rospy std_msgs message_runtime
