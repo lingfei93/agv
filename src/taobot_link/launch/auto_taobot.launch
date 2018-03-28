@@ -2,13 +2,13 @@
 <launch>
   <param name="/use_sim_time" value="false"/>
 
-  <node pkg="taobot_link" name="autoSpeed" type="autoSpeed" output="screen">
+  <node pkg="taobot_link" name="autoSpeed" type="autoSpeed">
 	<!--<rosparam file="$(find axon_link)/config/axon_param.yaml" command="load"/> -->        
   </node>
 
   <node pkg="taobot_link" name="readTaoBotMsg" type="readTaoBotMsg">
  </node>
-<node pkg="taobot_link" name="pathToVel" type="pathToVel">
+<node pkg="taobot_link" name="pathToVel" type="pathToVel" output = "screen">
  </node>
   <node pkg="joy" name="joy_node" type="joy_node">
     <param name="joy_node/dev" value="/dev/input/js0"/>
