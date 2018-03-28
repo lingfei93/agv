@@ -1,0 +1,8 @@
+prefix=/home/eee/lingfei_ws/agv/devel
+
+Name: taobot_link
+Description: Description of taobot_link
+Version: 0.0.0
+Cflags: -I/home/eee/lingfei_ws/agv/devel/include -I/usr/include/eigen3
+Libs: -L/home/eee/lingfei_ws/agv/devel/lib 
+Requires: cereal_port geometry_msgs roscpp rospy std_msgs tf serial message_runtime

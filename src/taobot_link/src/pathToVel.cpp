@@ -53,8 +53,9 @@ void checkPath(float x1, float y1, float x2, float y2){
   if (abs(y2 - y1) < 0.5  && abs(x2 - x1) < 0.5){
    wasInPath = 0;
  }
+}
 
-void turnRobot(float initial, float end);
+void turnRobot(float initial, float end){
     ROS_INFO("initial is %f and end is %f", initial, end);
     geometry_msgs::Twist wlr_cmd;
     double timeToSleep;
