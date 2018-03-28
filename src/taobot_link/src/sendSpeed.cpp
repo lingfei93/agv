@@ -121,10 +121,10 @@ void format(uint8_t* reply, int N){
 //send in an array of bytes and it will send for you;
 void sendCommand(uint8_t* arrayToSend, int length){
     uint8_t toSend[1];
-    ROS_INFO("%d", arrayToSend[0]);
+    ROS_INFO("%d is array to send", arrayToSend[0]);
     for (int i = 0; i < length; i ++){
      
-        //ROS_INFO("%d", arrayToSend[i]);
+        ROS_INFO("%d", arrayToSend[i]);
         toSend[0] = arrayToSend[i];
         usart_send(toSend);
         //ROS_INFO("sending from here! %d %d", toSend[0]/16, toSend[0]%16);
@@ -257,7 +257,7 @@ void moveBaseCmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel){
     ROS_INFO("im sending %f, %f, %f", x_vel, y_vel, theta_vel);
 
     arrayToSend = changeToOmniSpeed(x_vel, y_vel, theta_vel);
-
+    ROS_INFO("reach here");
     sendCommand(arrayToSend, 10);
 
      
