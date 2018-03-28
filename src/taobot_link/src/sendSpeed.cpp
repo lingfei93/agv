@@ -195,7 +195,7 @@ uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double 
     motorB_speed = std::abs(motorB_speed)/max * 1.025;
     motorC_speed = std::abs(motorC_speed)/max;
     }
-    ROS_INFO("motor a speed is %f, motor b speed is %f, motor c speed is %f", motorA_speed, motorB_speed, motorC_speed);
+    //ROS_INFO("motor a speed is %f, motor b speed is %f, motor c speed is %f", motorA_speed, motorB_speed, motorC_speed);
     //prepare the message in the taobot format
     toSend[0] = 0xff;
     toSend[1] = 0xfe;
@@ -207,7 +207,7 @@ uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double 
     toSend[7] = 0;
     toSend[8] = motorC_speed * 0xf; 
     toSend[9] = count;
-    ROS_INFO("motor a speed is %f, motor b speed is %f, motor c speed is %f", toSend[4], toSend[6], toSend[8]);
+    //ROS_INFO("motor a speed is %f, motor b speed is %f, motor c speed is %f", toSend[4], toSend[6], toSend[8]);
     return toSend;
 }
 
@@ -277,7 +277,7 @@ int main(int argc, char** argv)
     taobot_pub = n.advertise<taobot_link::Taobot>("taobot_listener", 1000);
     taobot_voltage_pub = n.advertise<std_msgs::Float32>("taobot_voltage_listener", 1000);
     //this channel is to subscribe to velocity commands from the joystick
-    cmd_vel_sub_  = n.subscribe<geometry_msgs::Twist>("taobot_cmd_vel", 1000, cmdVelReceived);
+    //cmd_vel_sub_  = n.subscribe<geometry_msgs::Twist>("taobot_cmd_vel", 1000, cmdVelReceived);
     //move_base_cmd_vel_sub  = n.subscribe<geometry_msgs::Twist>("cmd_vel_path", 1000, moveBaseCmdVelReceived);
     move_base_cmd_vel_sub  = n.subscribe<geometry_msgs::Twist>("cmd_vel", 1000, moveBaseCmdVelReceived);
   
