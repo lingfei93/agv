@@ -1,8 +1,0 @@
-prefix=/home/eee/lingfei_ws/agv/devel
-
-Name: cereal_port
-Description: Description of cereal_port
-Version: 0.0.0
-Cflags: -I/home/eee/lingfei_ws/agv/src/cereal_port/include
-Libs: -L/home/eee/lingfei_ws/agv/devel/lib -lcereal_port
-Requires: roscpp

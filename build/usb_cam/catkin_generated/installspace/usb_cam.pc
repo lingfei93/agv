@@ -1,8 +1,0 @@
-prefix=/home/eee/lingfei_ws/agv/install
-
-Name: usb_cam
-Description: Description of usb_cam
-Version: 0.3.6
-Cflags: -I/home/eee/lingfei_ws/agv/install/include
-Libs: -L/home/eee/lingfei_ws/agv/install/lib -lusb_cam
-Requires: 

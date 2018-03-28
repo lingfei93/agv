@@ -1,2 +1,0 @@
-beginner_tutorials:cereal_port:driver_common/driver_base:driver_common/driver_common:driver_common/timestamp_tools:hokuyo_node:serial:taobot_link:usb_cam:vicon_xb
--DCATKIN_DEVEL_PREFIX=/home/eee/lingfei_ws/agv/devel -DCMAKE_INSTALL_PREFIX=/home/eee/lingfei_ws/agv/install -G Unix Makefiles

@@ -40,6 +40,7 @@ uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double 
 int count_average = 0;
 double total_difference = 0;
 int wasInPath = 0;
+int previousLength;
 float lastY = 0;
 float lastX = 0;
 // char reply[9];
@@ -49,10 +50,13 @@ double convertToEuclid(double x1, double y1, double x2, double y2){
     return sqrt(pow((x1 - x2),2) + pow((y1 - y2),2));
 }
 
-void checkPath(float x1, float y1, float x2, float y2){
+void checkPath(float x1, float y1, float x2, float y2, int len){
   if (abs(y2 - y1) < 0.5  && abs(x2 - x1) < 0.5){
    wasInPath = 0;
  }
+ if ((len -1) != previousLength){
+    wasInPath = 0;
+	}
 }
 
 void turnRobot(float initial, float end){
@@ -119,7 +123,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
     while (finishPath == 0){
 	if (wasInPath == 1 && len > 0){
            
-	   checkPath(lastX, lastY, path_data->poses[0].pose.position.x, path_data->poses[0].pose.position.y);
+	   checkPath(lastX, lastY, path_data->poses[0].pose.position.x, path_data->poses[0].pose.position.y, len);
 	}
         if (len>0 && wasInPath == 0){
 
@@ -138,6 +142,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
 
         if ( (len>0) && (path_plan==1) )
         {
+	    previousLength = len;
             printf("START LOADING PATH, PLAN_SIZE=%d\n", len);
             for (i=0;i<len;i++)
             {
