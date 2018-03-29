@@ -43,6 +43,7 @@ int wasInPath = 0;
 int previousLength;
 float lastY = 0;
 float lastX = 0;
+float lastKnownYaw = 0;
 // char reply[9];
 
 double convertToEuclid(double x1, double y1, double x2, double y2){
@@ -84,6 +85,12 @@ void turnRobot(float initial, float end){
     move_base_path_pub.publish(wlr_cmd);
     
  
+}
+
+void getPoseCallBack(const geometry_msgs::PoseWithCovarianceStamped& pose_data){
+    lastKnownYaw = tf::getYaw(pose_data.pose.pose.orientation);
+    ROS_INFO("last known yaw updated, it is now %f", lastKnownYaw);
+
 }
 
 void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
@@ -284,7 +291,9 @@ int main(int argc, char** argv)
     move_base_path_pub = n.advertise<geometry_msgs::Twist>("cmd_vel_path", 1000);
     
     move_base_path_sub  = n.subscribe<nav_msgs::Path>("/move_base_node/NavfnROS/plan", 1000, movePathCallBack);
-    
+ 	
+
+   amcl_pose_sub = n.subscribe<geometry_msgs::PoseWithCovarianceStamped>("/amcl_pose",1000, getPoseCallBack);
   
 
     ros::Rate loop_rate(5);
