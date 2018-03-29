@@ -4,6 +4,7 @@
 #include <std_msgs/Float32.h>
 #include <iostream>
 #include <math.h>
+#include <geometry_msgs/PoseWithCovarianceStamped.h>
 #include "serial/serial.h"
 #include <tf/transform_datatypes.h>
 #include <taobot_link/Taobot.h>
