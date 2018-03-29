@@ -90,7 +90,7 @@ void turnRobot(float initial, float end){
 }
 
 void getPoseCallBack(const geometry_msgs::PoseWithCovarianceStamped::ConstPtr& pose_data){
-    lastKnownYaw = tf::getYaw(pose_data.pose.orientation);
+    lastKnownYaw = tf::getYaw(pose_data->pose.pose.orientation);
     ROS_INFO("last known yaw updated, it is now %f", lastKnownYaw);
 
 }
