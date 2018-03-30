@@ -139,6 +139,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
 	   checkPath(lastX, lastY, path_data->poses[0].pose.position.x, path_data->poses[0].pose.position.y, len);
 	}
         if (len>0 && wasInPath == 0){
+           turnRobot(lastKnownYaw, 0);
 
 
         {
