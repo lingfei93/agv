@@ -305,10 +305,11 @@ int main(int argc, char** argv)
   
 
     ros::Rate loop_rate(5);
-    while (ros::ok()){
+    //while (ros::ok()){
 
+   // ros::spin();
+    //}
     ros::spin();
-    }
     
     
     }
