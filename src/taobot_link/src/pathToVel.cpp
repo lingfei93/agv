@@ -85,7 +85,7 @@ void turnRobot(float initial, float end){
     wlr_cmd.angular.z = 0;
 
     move_base_path_pub.publish(wlr_cmd);
-    ros::Duration(1).sleep(); //sleep for one second to read the lastKnownYaw
+    ros::Duration(2).sleep(); //sleep for one second to read the lastKnownYaw
     difference = abs(lastKnownYaw - end);
     ROS_INFO("last known yaw is %f", lastKnownYaw);
     ROS_INFO("difference is %f", difference);
@@ -183,7 +183,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
                 plan[2][i]=0;                                                   //z
                plan[3][i]=tf::getYaw(path_data->poses[len-1].pose.orientation);  
 
-		ROS_INFO("this is yaw, %f", plan[3][i]); //angle(yaw)
+		//ROS_INFO("this is yaw, %f", plan[3][i]); //angle(yaw)
                 //printf("NUM=%d x=%+3.3f y=%+3.3f z=%+3.3f yaw=%+3.3f\n", i, plan[0][i], plan[1][i], plan[2][i], plan[3][i]);
             }
 	ROS_INFO("distanceToGoal is %f", distanceToGoal);
@@ -224,7 +224,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
                 current_time = ros::Time::now();
                 time_elapsed = current_time - start_time;
                 ROS_INFO("send to turnRobot with values %f, %f", plan[3][0], plan[3][len-1]);
-                turnRobot(plan[3][0], plan[3][len-1]);
+                //turnRobot(plan[3][0], plan[3][len-1]);
                 for (i=0;i<len+50;i++)
                 {
                   //  ROS_INFO("in loop %d", i);
@@ -294,7 +294,7 @@ int main(int argc, char** argv)
 
     ros::init(argc, argv, "Taobot_Info");
     ros::NodeHandle n;
-    ros::AsyncSpinner spinner(4); 
+    ros::AsyncSpinner spinner(2); 
     spinner.start();
 
     move_base_path_pub = n.advertise<geometry_msgs::Twist>("cmd_vel_path", 1000);
