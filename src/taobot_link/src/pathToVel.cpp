@@ -71,12 +71,12 @@ void turnRobot(float initial, float end){
   
     if ((end - initial) < 3.14) {
     timeToSleep = end - initial;
-    wlr_cmd.angular.z = -1;
+    wlr_cmd.angular.z = 1;
     ROS_INFO("here 1, end is %f, initial is %f,", end, initial);
 	}
     else {
     timeToSleep = abs(initial - (end - 3.14));
-    wlr_cmd.angular.z = 1;
+    wlr_cmd.angular.z = -1;
 ROS_INFO("here 2, end is %f, initial is %f, time to sleep is %f", end, initial, timeToSleep);
      }
     
@@ -297,7 +297,7 @@ int main(int argc, char** argv)
 
     ros::init(argc, argv, "Taobot_Info");
     ros::NodeHandle n;
-    ros::AsyncSpinner spinner(2); 
+    ros::AsyncSpinner spinner(3); 
     spinner.start();
 
     move_base_path_pub = n.advertise<geometry_msgs::Twist>("cmd_vel_path", 1000);
