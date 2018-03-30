@@ -66,11 +66,13 @@ void turnRobot(float initial, float end){
     ROS_INFO("initial is %f and end is %f", initial, end);
     geometry_msgs::Twist wlr_cmd;
     double timeToSleep;
-    double difference = 2 * 3.14;   
-    while (difference > 0.15){
+    double difference = 2 * 3.14; 
+    difference = end - initial;
+
+    while (abs(difference) > 0.15){
   
-    if ((end - initial) < 3.14) {
-    timeToSleep = end - initial;
+    if (difference > 0) {
+    timeToSleep = difference;
     wlr_cmd.angular.z = 1;
     ROS_INFO("here 1, end is %f, initial is %f,", end, initial);
     move_base_path_pub.publish(wlr_cmd);
@@ -81,7 +83,7 @@ void turnRobot(float initial, float end){
     
 	}
     else {
-    timeToSleep = abs(initial - (end - 3.14));
+    timeToSleep = abs(difference + 6.28); // just making sure it is positive
     wlr_cmd.angular.z = -1;
     ROS_INFO("here 2, end is %f, initial is %f, time to sleep is %f", end, initial, timeToSleep);
     move_base_path_pub.publish(wlr_cmd);
@@ -103,6 +105,7 @@ void turnRobot(float initial, float end){
     ROS_INFO("last known yaw is %f", lastKnownYaw);
     ROS_INFO("difference is %f", difference);
     initial = lastKnownYaw;
+    difference = end - initial;
     }
     
  
