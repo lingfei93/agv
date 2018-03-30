@@ -73,21 +73,32 @@ void turnRobot(float initial, float end){
     timeToSleep = end - initial;
     wlr_cmd.angular.z = 1;
     ROS_INFO("here 1, end is %f, initial is %f,", end, initial);
+    move_base_path_pub.publish(wlr_cmd);
+    ros::Duration(timeToSleep * 0.63/(0.65)).sleep();
+    wlr_cmd.angular.z = 0;
+    ROS_INFO("published_3");
+    move_base_path_pub.publish(wlr_cmd);
+    
 	}
     else {
     timeToSleep = abs(initial - (end - 3.14));
     wlr_cmd.angular.z = -1;
-ROS_INFO("here 2, end is %f, initial is %f, time to sleep is %f", end, initial, timeToSleep);
-     }
-    
+    ROS_INFO("here 2, end is %f, initial is %f, time to sleep is %f", end, initial, timeToSleep);
     move_base_path_pub.publish(wlr_cmd);
-    ros::Duration(timeToSleep * 0.63/(0.65)).sleep(); // sleep for however long
-    
-
+    ros::Duration(timeToSleep * 0.63/(0.65)).sleep();
     wlr_cmd.angular.z = 0;
-
+    ROS_INFO("published_3");
     move_base_path_pub.publish(wlr_cmd);
-    ros::Duration(8).sleep(); //sleep for one second to read the lastKnownYaw
+     }
+    //ROS_INFO("published_1");
+   // move_base_path_pub.publish(wlr_cmd);
+    //ros::Duration(timeToSleep * 0.63/(0.65)).sleep(); // sleep for however long
+    //ROS_INFO("published_2");
+
+    //wlr_cmd.angular.z = 0;
+   // ROS_INFO("published_3");
+    //move_base_path_pub.publish(wlr_cmd);
+    ros::Duration(5).sleep(); //sleep for one second to read the lastKnownYaw
     difference = abs(lastKnownYaw - end);
     ROS_INFO("last known yaw is %f", lastKnownYaw);
     ROS_INFO("difference is %f", difference);
@@ -297,7 +308,7 @@ int main(int argc, char** argv)
 
     ros::init(argc, argv, "Taobot_Info");
     ros::NodeHandle n;
-    ros::AsyncSpinner spinner(3); 
+    ros::AsyncSpinner spinner(2); 
     spinner.start();
 
     move_base_path_pub = n.advertise<geometry_msgs::Twist>("cmd_vel_path", 1000);
