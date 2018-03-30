@@ -74,7 +74,7 @@ void turnRobot(float initial, float end){
     wlr_cmd.angular.z = 1;
 	}
     else {
-    timeToSleep = abs(3.14 - (end - 3.14));
+    timeToSleep = abs(initial - (end - 3.14));
     wlr_cmd.angular.z = -1;
      }
     
