@@ -85,6 +85,7 @@ void turnRobot(float initial, float end){
     wlr_cmd.angular.z = 0;
 
     move_base_path_pub.publish(wlr_cmd);
+    ros::Duration(1).sleep(); //sleep for one second to read the lastKnownYaw
     difference = lastKnownYaw - end;
     ROS_INFO("difference is %f", difference);
     }
