@@ -69,12 +69,12 @@ void turnRobot(float initial, float end){
     double difference = 2 * 3.14;   
     while (difference > 0.15){
   
-    if (end > initial) {
+    if ((end - initial) < 3.14) {
     timeToSleep = end - initial;
     wlr_cmd.angular.z = 1;
 	}
     else {
-    timeToSleep = initial - end;
+    timeToSleep = abs(3.14 - (end - 3.14));
     wlr_cmd.angular.z = -1;
      }
     
@@ -85,7 +85,7 @@ void turnRobot(float initial, float end){
     wlr_cmd.angular.z = 0;
 
     move_base_path_pub.publish(wlr_cmd);
-    ros::Duration(4).sleep(); //sleep for one second to read the lastKnownYaw
+    ros::Duration(8).sleep(); //sleep for one second to read the lastKnownYaw
     difference = abs(lastKnownYaw - end);
     ROS_INFO("last known yaw is %f", lastKnownYaw);
     ROS_INFO("difference is %f", difference);
