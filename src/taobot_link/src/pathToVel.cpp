@@ -66,9 +66,9 @@ void turnRobot(float initial, float end){
     ROS_INFO("initial is %f and end is %f", initial, end);
     geometry_msgs::Twist wlr_cmd;
     double timeToSleep;
-    if (initial < 0){
-    initial = initial + 2 * 3.14;
-    }   
+    double difference = 2 * 3.14;   
+    while (difference > 0.05){
+  
     if (end > initial) {
     timeToSleep = end - initial;
     wlr_cmd.angular.z = 1;
@@ -79,18 +79,21 @@ void turnRobot(float initial, float end){
      }
     
     move_base_path_pub.publish(wlr_cmd);
-    ros::Duration(timeToSleep).sleep(); // sleep for however long
-  
+    ros::Duration(timeToSleep * 0.62/(0.65)).sleep(); // sleep for however long
+    
 
     wlr_cmd.angular.z = 0;
 
     move_base_path_pub.publish(wlr_cmd);
+    difference = lastKnownYaw - end
+    ROS_INFO("difference is %f", difference);
+    }
     
  
 }
 
 void getPoseCallBack(const geometry_msgs::PoseWithCovarianceStamped::ConstPtr& pose_data){
-    lastKnownYaw = tf::getYaw(pose_data->pose.pose.orientation);
+    lastKnownYaw = tf::getYaw(pose_data->pose.pose.orientation) + 3.14;
     ROS_INFO("last known yaw updated, it is now %f", lastKnownYaw);
 
 }
@@ -133,13 +136,13 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
 	if (wasInPath == 1 && len > 0){
            
            ROS_INFO("send to turnRobot with values %f, %f",tf::getYaw(path_data->poses[0].pose.orientation), tf::getYaw(path_data->poses[len-1].pose.orientation));
-           turnRobot(tf::getYaw(path_data->poses[0].pose.orientation), tf::getYaw(path_data->poses[len-1].pose.orientation));
+           turnRobot(tf::getYaw(path_data->poses[0].pose.orientation) + 3.14, tf::getYaw(path_data->poses[len-1].pose.orientation) + 3.14);
 	   ROS_INFO("last quat is %f, %f", tf::getYaw(path_data->poses[len-1].pose.orientation), path_data->poses[len-1].pose.orientation.w);
            
 	   checkPath(lastX, lastY, path_data->poses[0].pose.position.x, path_data->poses[0].pose.position.y, len);
 	}
         if (len>0 && wasInPath == 0){
-           turnRobot(lastKnownYaw, 0);
+           turnRobot(lastKnownYaw, 3.14);
 
 
         {
