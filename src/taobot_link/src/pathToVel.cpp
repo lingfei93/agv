@@ -72,10 +72,12 @@ void turnRobot(float initial, float end){
     if ((end - initial) < 3.14) {
     timeToSleep = end - initial;
     wlr_cmd.angular.z = -1;
+    ROS_INFO("here 1, end is %f, initial is %f,", end, initial);
 	}
     else {
     timeToSleep = abs(initial - (end - 3.14));
     wlr_cmd.angular.z = 1;
+ROS_INFO("here 2, end is %f, initial is %f, time to sleep is %f", end, initial, timeToSleep);
      }
     
     move_base_path_pub.publish(wlr_cmd);
