@@ -294,9 +294,9 @@ int main(int argc, char** argv)
 
     ros::init(argc, argv, "Taobot_Info");
     ros::NodeHandle n;
+    ros::AsyncSpinner spinner(4); 
+    spinner.start();
 
-    ros::MultiThreadedSpinner spinner(4); // Use 4 threads
-   // spin() will not return until the node has been shutdown
     move_base_path_pub = n.advertise<geometry_msgs::Twist>("cmd_vel_path", 1000);
     
     move_base_path_sub  = n.subscribe<nav_msgs::Path>("/move_base_node/NavfnROS/plan", 1000, movePathCallBack);
@@ -310,8 +310,8 @@ int main(int argc, char** argv)
 
    // ros::spin();
     //}
-    ros::spin();
-    spinner.spin(); 
+   ros::waitForShutdown();
+    
     
     
     }
