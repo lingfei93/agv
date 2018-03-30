@@ -71,11 +71,11 @@ void turnRobot(float initial, float end){
   
     if ((end - initial) < 3.14) {
     timeToSleep = end - initial;
-    wlr_cmd.angular.z = 1;
+    wlr_cmd.angular.z = -1;
 	}
     else {
     timeToSleep = abs(initial - (end - 3.14));
-    wlr_cmd.angular.z = -1;
+    wlr_cmd.angular.z = 1;
      }
     
     move_base_path_pub.publish(wlr_cmd);
