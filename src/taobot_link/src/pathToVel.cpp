@@ -89,6 +89,7 @@ void turnRobot(float initial, float end){
     difference = abs(lastKnownYaw - end);
     ROS_INFO("last known yaw is %f", lastKnownYaw);
     ROS_INFO("difference is %f", difference);
+    initial = lastKnownYaw;
     }
     
  
