@@ -99,14 +99,14 @@ void turnRobot(float initial, float end){
     move_base_path_pub.publish(wlr_cmd);
     ros::Duration(timeToSleep).sleep();
     wlr_cmd.angular.z = 0;
-    ROS_INFO("published_3");
+   
     move_base_path_pub.publish(wlr_cmd);
-    ros::Duration(5).sleep(); //sleep for five second to read the lastKnownYaw
+    ros::Duration(10).sleep(); //sleep for five second to read the lastKnownYaw
    // difference = abs(lastKnownYaw - end);
-    ROS_INFO("last known yaw is %f", lastKnownYaw);
-    ROS_INFO("difference is %f", difference);
     initial = lastKnownYaw;
     difference = end - initial;
+    ROS_INFO("last known yaw is %f", lastKnownYaw);
+    ROS_INFO("difference is %f", difference);
     }
     
  
