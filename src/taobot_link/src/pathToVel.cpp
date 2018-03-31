@@ -131,7 +131,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
     int len;
     int idx, flag, path_plan;
     //set the idealSpeed as a rando.
-    double idealSpeed = 0.20;
+    double idealSpeed = 0.25;
     double eachTimeSlot;
 
     len = path_data->poses.size();
@@ -300,8 +300,8 @@ void sendVelCommand(float x_start, float y_start, float x_end, float y_end){
     uint8_t reply[30];
 
     //NOT SURE WHY I NEED TO FLIP THIS
-    wlr_cmd.linear.x         = (x_end - x_start) * 0.85;
-    wlr_cmd.linear.y        = (y_end - y_start) * 0.85;
+    wlr_cmd.linear.x         = (x_end - x_start) * 0.75;
+    wlr_cmd.linear.y        = (y_end - y_start) * 0.75;
     wlr_cmd.angular.z = 0;
 
     move_base_path_pub.publish(wlr_cmd);
