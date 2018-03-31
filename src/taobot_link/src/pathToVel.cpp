@@ -131,7 +131,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
     int len;
     int idx, flag, path_plan;
     //set the idealSpeed as a rando.
-    double idealSpeed = 0.24;
+    double idealSpeed = 0.20;
     double eachTimeSlot;
 
     len = path_data->poses.size();
