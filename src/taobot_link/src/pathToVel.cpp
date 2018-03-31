@@ -97,14 +97,14 @@ void turnRobot(float initial, float end){
     double difference = 2 * 3.14; 
     difference = end - initial;
 
-    while (amountToTurn(difference) > 0.2){
+    while (amountToTurn(difference) > 0.26){
      
 
 
     timeToSleep = amountToTurn(difference);
     wlr_cmd.angular.z = directionToRotate(initial, end);
     move_base_path_pub.publish(wlr_cmd);
-    ros::Duration(timeToSleep * 1.05).sleep();
+    ros::Duration(timeToSleep * 1.02).sleep();
     wlr_cmd.angular.z = 0;
    
     move_base_path_pub.publish(wlr_cmd);
@@ -131,7 +131,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
     int len;
     int idx, flag, path_plan;
     //set the idealSpeed as a rando.
-    double idealSpeed = 0.25;
+    double idealSpeed = 0.22;
     double eachTimeSlot;
 
     len = path_data->poses.size();
