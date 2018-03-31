@@ -104,7 +104,7 @@ void turnRobot(float initial, float end){
     timeToSleep = amountToTurn(difference);
     wlr_cmd.angular.z = directionToRotate(initial, end);
     move_base_path_pub.publish(wlr_cmd);
-    ros::Duration(timeToSleep * 1.1).sleep();
+    ros::Duration(timeToSleep * 1.07).sleep();
     wlr_cmd.angular.z = 0;
    
     move_base_path_pub.publish(wlr_cmd);
