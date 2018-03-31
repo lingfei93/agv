@@ -39,6 +39,7 @@ void checkPath(float x1, float y1, float x2, float y2);
 void sendVelCommand(float x_start, float y_start, float x_end, float y_end);
 void turnRobot(float initial, float end);
 uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double angle);
+int directionToRotate(float initial, float end);
 int count_average = 0;
 double total_difference = 0;
 int wasInPath = 0;
@@ -62,6 +63,26 @@ void checkPath(float x1, float y1, float x2, float y2, int len){
 	}
 }
 
+int directionToRotate(float initial, float end){
+
+  float otherRange = end - 3.14;
+
+  if (otherRange > 0) {
+     if(end > initial  && initial > otherRange) return 1;
+     else  return -1;
+
+   }
+
+  else {
+   otherRange += 6.28;
+     if(end > initial || initial > otherRange) return 1;
+     else return -1;
+   
+
+   }
+}
+
+
 void turnRobot(float initial, float end){
     ROS_INFO("initial is %f and end is %f", initial, end);
     geometry_msgs::Twist wlr_cmd;
@@ -70,38 +91,18 @@ void turnRobot(float initial, float end){
     difference = end - initial;
 
     while (abs(difference) > 0.15){
-  
-    if (difference > 0) {
-    timeToSleep = difference;
-    wlr_cmd.angular.z = -1;
-    ROS_INFO("here 1, end is %f, initial is %f,", end, initial);
-    move_base_path_pub.publish(wlr_cmd);
-    ros::Duration(timeToSleep * 0.63/(0.65)).sleep();
-    wlr_cmd.angular.z = 0;
-    ROS_INFO("published_3");
-    move_base_path_pub.publish(wlr_cmd);
-    
-	}
-    else {
-    timeToSleep = abs(difference + 6.28); // just making sure it is positive
-    wlr_cmd.angular.z = 1;
-    ROS_INFO("here 2, end is %f, initial is %f, time to sleep is %f", end, initial, timeToSleep);
-    move_base_path_pub.publish(wlr_cmd);
-    ros::Duration(timeToSleep * 0.63/(0.65)).sleep();
-    wlr_cmd.angular.z = 0;
-    ROS_INFO("published_3");
-    move_base_path_pub.publish(wlr_cmd);
-     }
-    //ROS_INFO("published_1");
-   // move_base_path_pub.publish(wlr_cmd);
-    //ros::Duration(timeToSleep * 0.63/(0.65)).sleep(); // sleep for however long
-    //ROS_INFO("published_2");
+     
 
-    //wlr_cmd.angular.z = 0;
-   // ROS_INFO("published_3");
-    //move_base_path_pub.publish(wlr_cmd);
-    ros::Duration(5).sleep(); //sleep for one second to read the lastKnownYaw
-    difference = abs(lastKnownYaw - end);
+
+    timeToSleep = abs(difference);
+    wlr_cmd.angular.z = directionToRotate(initial, end);
+    move_base_path_pub.publish(wlr_cmd);
+    ros::Duration(timeToSleep).sleep();
+    wlr_cmd.angular.z = 0;
+    ROS_INFO("published_3");
+    move_base_path_pub.publish(wlr_cmd);
+    ros::Duration(5).sleep(); //sleep for five second to read the lastKnownYaw
+   // difference = abs(lastKnownYaw - end);
     ROS_INFO("last known yaw is %f", lastKnownYaw);
     ROS_INFO("difference is %f", difference);
     initial = lastKnownYaw;
