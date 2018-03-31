@@ -65,7 +65,7 @@ void checkPath(float x1, float y1, float x2, float y2, int len){
 
 int directionToRotate(float initial, float end){
 
-  float otherRange = end - 3.14;
+  float otherRange = end - 3.14159;
 
   if (otherRange > 0) {
      if(end > initial  && initial > otherRange) return 1;
@@ -75,7 +75,7 @@ int directionToRotate(float initial, float end){
 
   else {
    otherRange += 6.28;
-     if(end > initial || initial > otherRange) return 1;
+     if(end < initial && initial < otherRange) return 1;
      else return -1;
    
 
@@ -97,7 +97,7 @@ void turnRobot(float initial, float end){
     timeToSleep = abs(difference);
     wlr_cmd.angular.z = directionToRotate(initial, end);
     move_base_path_pub.publish(wlr_cmd);
-    ros::Duration(timeToSleep).sleep();
+    ros::Duration(timeToSleep * 1.05).sleep();
     wlr_cmd.angular.z = 0;
    
     move_base_path_pub.publish(wlr_cmd);
