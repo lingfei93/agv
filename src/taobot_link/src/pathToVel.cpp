@@ -40,6 +40,7 @@ void sendVelCommand(float x_start, float y_start, float x_end, float y_end);
 void turnRobot(float initial, float end);
 uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double angle);
 int directionToRotate(float initial, float end);
+float amountToTurn(float difference);
 int count_average = 0;
 double total_difference = 0;
 int wasInPath = 0;
@@ -82,6 +83,12 @@ int directionToRotate(float initial, float end){
    }
 }
 
+float amountToTurn(float difference){
+    if (abs(difference) < 3.14) return abs(difference);
+    else return (6.28 - abs(difference));
+
+
+}
 
 void turnRobot(float initial, float end){
     ROS_INFO("initial is %f and end is %f", initial, end);
@@ -90,11 +97,11 @@ void turnRobot(float initial, float end){
     double difference = 2 * 3.14; 
     difference = end - initial;
 
-    while (abs(difference) > 0.15){
+    while (amountToTurn(difference) > 0.2){
      
 
 
-    timeToSleep = abs(difference);
+    timeToSleep = amountToTurn(difference);
     wlr_cmd.angular.z = directionToRotate(initial, end);
     move_base_path_pub.publish(wlr_cmd);
     ros::Duration(timeToSleep * 1.05).sleep();
