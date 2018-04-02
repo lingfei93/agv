@@ -348,7 +348,7 @@ int main(int argc, char** argv)
         tf::StampedTransform poseRobot;
         lastKnownYaw = 0;
     try{
-      listener.lookupTransform("/map", "/base_link",
+      listener.lookupTransform("/map", "/odom",
                                ros::Time(0), poseRobot);
       robot_pose.pose.orientation.x = poseRobot.getRotation().getX();
       robot_pose.pose.orientation.y = poseRobot.getRotation().getY();
