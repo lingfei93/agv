@@ -348,37 +348,26 @@ int main(int argc, char** argv)
     tf::StampedTransform poseRobot;
     lastKnownYaw = 0;
     while (ros::ok()){
-    try{
+        try{
+            listener.lookupTransform("/map", "/base_link", ros::Time(0), poseRobot);
+            robot_pose.pose.orientation.x = poseRobot.getRotation().getX();
+            robot_pose.pose.orientation.y = poseRobot.getRotation().getY();
+            robot_pose.pose.orientation.z = poseRobot.getRotation().getZ();
+            robot_pose.pose.orientation.w = poseRobot.getRotation().getW();
+            lastKnownYaw = tf::getYaw(robot_pose.pose.orientation) + 3.14;
 
-      listener.lookupTransform("/base_link", "/map",
-                               ros::Time(0), poseRobot);
-      robot_pose.pose.orientation.x = poseRobot.getRotation().getX();
-      robot_pose.pose.orientation.y = poseRobot.getRotation().getY();
-      robot_pose.pose.orientation.z = poseRobot.getRotation().getZ();
-      robot_pose.pose.orientation.w = poseRobot.getRotation().getW();
-
-      lastKnownYaw = tf::getYaw(robot_pose.pose.orientation);
-
-      if (previousYaw != lastKnownYaw){
-      ROS_INFO("last known yaw updated, it is %f ", lastKnownYaw);
-      previousYaw = lastKnownYaw;
-      }
-
-    }
-    catch (tf::TransformException &ex) {
-      ROS_ERROR("%s",ex.what());
-      ros::Duration(1.0).sleep();
-      continue;
-    }
-
-       }
-
-
-    //while (ros::ok()){
-
-   ros::spinOnce();
-    //}
-
-    }
+            if (previousYaw != lastKnownYaw){
+                ROS_INFO("last known yaw updated, it is %f ", lastKnownYaw);
+                previousYaw = lastKnownYaw;
+            }
+        }
+        catch (tf::TransformException &ex) {
+            ROS_ERROR("%s",ex.what());
+            ros::Duration(1.0).sleep();
+            continue;
+        }
+    ros::spinOnce();
+   }//end while (ros::ok)
+}// end main()
     
 
