@@ -457,12 +457,7 @@ void sendVelCommand(float x_start, float y_start, float x_end, float y_end){
 
 
 void getPose(){
-    tf::TransformListener listener;
 
-    geometry_msgs::PoseStamped robot_pose;
-    tf::StampedTransform poseRobot;
-
-    listener.lookupTransform("/map", "/base_link", ros::Time(0), poseRobot);
     robot_pose.pose.orientation.x = poseRobot.getRotation().getX();
     robot_pose.pose.orientation.y = poseRobot.getRotation().getY();
     robot_pose.pose.orientation.z = poseRobot.getRotation().getZ();
@@ -499,9 +494,19 @@ int main(int argc, char** argv)
 
     lastKnownYaw = 0;
     while (ros::ok()){
+    tf::TransformListener listener;
+
+    geometry_msgs::PoseStamped robot_pose;
+    tf::StampedTransform poseRobot;
+
+    listener.lookupTransform("/map", "/base_link", ros::Time(0), poseRobot);
         try{
 
-            getPose();
+        robot_pose.pose.orientation.x = poseRobot.getRotation().getX();
+        robot_pose.pose.orientation.y = poseRobot.getRotation().getY();
+        robot_pose.pose.orientation.z = poseRobot.getRotation().getZ();
+        robot_pose.pose.orientation.w = poseRobot.getRotation().getW();
+        lastKnownYaw = tf::getYaw(robot_pose.pose.orientation) + 3.14;
 
 
             if (previousYaw != lastKnownYaw){
@@ -510,11 +515,22 @@ int main(int argc, char** argv)
             }
 
             if (pathAvailable == 1){
-                getPose();
+                robot_pose.pose.orientation.x = poseRobot.getRotation().getX();
+                robot_pose.pose.orientation.y = poseRobot.getRotation().getY();
+                robot_pose.pose.orientation.z = poseRobot.getRotation().getZ();
+                robot_pose.pose.orientation.w = poseRobot.getRotation().getW();
+                lastKnownYaw = tf::getYaw(robot_pose.pose.orientation) + 3.14;
+
                 difference = 3.14 - lastKnownYaw;
                 while (amountToTurn(difference) > 0.25){
                 turnRobot(lastKnownYaw, 3.14);
-                getPose();
+
+                robot_pose.pose.orientation.x = poseRobot.getRotation().getX();
+                robot_pose.pose.orientation.y = poseRobot.getRotation().getY();
+                robot_pose.pose.orientation.z = poseRobot.getRotation().getZ();
+                robot_pose.pose.orientation.w = poseRobot.getRotation().getW();
+                lastKnownYaw = tf::getYaw(robot_pose.pose.orientation) + 3.14;
+
                 difference = 3.14 - lastKnownYaw;
                 }
 
@@ -522,11 +538,22 @@ int main(int argc, char** argv)
                 pathAvailable = 0;
             }
             if (wasInPath == 1){
-                getPose();
+
+                robot_pose.pose.orientation.x = poseRobot.getRotation().getX();
+                robot_pose.pose.orientation.y = poseRobot.getRotation().getY();
+                robot_pose.pose.orientation.z = poseRobot.getRotation().getZ();
+                robot_pose.pose.orientation.w = poseRobot.getRotation().getW();
+                lastKnownYaw = tf::getYaw(robot_pose.pose.orientation) + 3.14;
 
                 while (amountToTurn(difference) > 0.25){
                 turnRobot(lastKnownYaw, yawToTurn);
-                getPose();
+
+                robot_pose.pose.orientation.x = poseRobot.getRotation().getX();
+                robot_pose.pose.orientation.y = poseRobot.getRotation().getY();
+                robot_pose.pose.orientation.z = poseRobot.getRotation().getZ();
+                robot_pose.pose.orientation.w = poseRobot.getRotation().getW();
+                lastKnownYaw = tf::getYaw(robot_pose.pose.orientation) + 3.14;
+
                 difference = yawToTurn - lastKnownYaw;
                 }
                 wasInPath = 0;
