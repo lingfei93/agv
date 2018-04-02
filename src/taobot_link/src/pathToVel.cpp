@@ -575,7 +575,7 @@ int main(int argc, char** argv)
                     ros::Duration(1.0).sleep();
                     continue;
                 }
-
+                difference = yawToTurn - lastKnownYaw;
 
                 while (amountToTurn(difference) > 0.25){
                 turnRobot(lastKnownYaw, yawToTurn);
