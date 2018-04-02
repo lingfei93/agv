@@ -55,6 +55,7 @@ float lastKnownYaw = 0;
 float yawToTurn;
 double plan[4][2000];
 double tsegc[2000];
+int len;
 tf::TransformListener listener;
 geometry_msgs::Twist wlr_cmd;
 geometry_msgs::PoseStamped robot_pose;
@@ -146,6 +147,9 @@ void getImuPoseCallBack(const sensor_msgs::Imu::ConstPtr& imu_pose_data){
 }
 
 void moveRobotAlongPath(){
+    int i;
+    ros::Time current_time, start_time;
+    ros::Duration time_elapsed;
 
     for (i=0;i<len+50;i++)
     {
@@ -179,9 +183,17 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr &path_data){
    tsegc[2000] = {0};
    len = path_data->poses.size();
 
+   float distanceToGoal;
+
+   float timeForPath;
+   float idealSpeed = 0.21;
+   float eachTimeSlot;
+
+
+
    ROS_INFO("ENTERED CALLBACK WITH SIZE = %d", len);
    int i;
-   int len;
+
    if (len == previousLength + 1){
        wasInPath = 1;
        yawToTurn = tf::getYaw(path_data->poses[len-1].pose.orientation) + 3.14;
@@ -463,7 +475,7 @@ void getPose(){
 
 int main(int argc, char** argv)
 {
-    float previousYaw;
+    float previousYaw, difference;
     ros::init(argc, argv, "Taobot_Info");
     ros::NodeHandle n;
     //ros::AsyncSpinner spinner(2);
