@@ -338,7 +338,7 @@ int main(int argc, char** argv)
     move_base_path_sub  = n.subscribe<nav_msgs::Path>("/move_base_node/NavfnROS/plan", 5, movePathCallBack);
  	
    //imu_pose_sub  = n.subscribe<sensor_msgs::Imu>("/imu/data",1000, getImuPoseCallBack);
-   amcl_pose_sub = n.subscribe<geometry_msgs::PoseWithCovarianceStamped>("/amcl_pose",5, getPoseCallBack);
+  // amcl_pose_sub = n.subscribe<geometry_msgs::PoseWithCovarianceStamped>("/amcl_pose",5, getPoseCallBack);
   
     ROS_INFO(("enter into here"));
     ros::Rate loop_rate(5);
@@ -376,7 +376,7 @@ int main(int argc, char** argv)
 
     //while (ros::ok()){
 
-   ros::spin();
+   ros::spinOnce();
     //}
 
     }
