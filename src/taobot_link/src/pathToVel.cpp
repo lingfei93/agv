@@ -53,7 +53,7 @@ float lastY = 0;
 float lastX = 0;
 float lastKnownYaw = 0;
 float yawToTurn;
-double plan[4][2000];
+double plan[4][2000] = {{0}};
 double tsegc[2000];
 int len;
 tf::TransformListener listener;
@@ -179,7 +179,6 @@ void moveRobotAlongPath(){
 }
 
 void movePathCallBack(const nav_msgs::Path::ConstPtr &path_data){
-   plan[4][2000] = {{0}};
    tsegc[2000] = {0};
    len = path_data->poses.size();
 
