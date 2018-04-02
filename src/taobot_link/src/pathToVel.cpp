@@ -496,6 +496,7 @@ int main(int argc, char** argv)
     while (ros::ok()){
     tf::TransformListener listener;
     geometry_msgs::PoseStamped robot_pose;
+    tf::StampedTransform poseRobot;
 
 
 
