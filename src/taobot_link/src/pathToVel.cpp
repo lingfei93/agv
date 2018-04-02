@@ -327,8 +327,8 @@ int main(int argc, char** argv)
 
     ros::init(argc, argv, "Taobot_Info");
     ros::NodeHandle n;
-    ros::AsyncSpinner spinner(2); 
-    spinner.start();
+    //ros::AsyncSpinner spinner(2);
+   // spinner.start();
 
 
 
@@ -347,6 +347,7 @@ int main(int argc, char** argv)
     geometry_msgs::PoseStamped robot_pose;
     tf::StampedTransform poseRobot;
     lastKnownYaw = 0;
+    while (ros::ok()){
     try{
       listener.lookupTransform("/map", "/odom",
                                ros::Time(0), poseRobot);
@@ -365,13 +366,14 @@ int main(int argc, char** argv)
       continue;
     }
 
+       }
+
 
     //while (ros::ok()){
 
    // ros::spin();
     //}
-   ros::waitForShutdown();
-    
+
     }
     
 
