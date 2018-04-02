@@ -48,6 +48,7 @@ int count_average = 0;
 double total_difference = 0;
 int wasInPath = 0;
 int pathAvailable;
+int executePath;
 int previousLength;
 float lastY = 0;
 float lastX = 0;
@@ -173,6 +174,7 @@ void moveRobotAlongPath(){
 
 
     }
+    executePath = 1;
 
 }
 
@@ -559,7 +561,7 @@ int main(int argc, char** argv)
                 moveRobotAlongPath();
                 pathAvailable = 0;
             }
-            if (wasInPath == 1){
+            if (wasInPath == 1 && executePath == 1){
                 ROS_INFO("reached wasinPath = 1");
                 try{
                 listener.lookupTransform("/map", "/base_link", ros::Time(0), poseRobot);
