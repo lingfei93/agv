@@ -157,7 +157,7 @@ void moveRobotAlongPath(){
         time_elapsed = current_time - start_time;
 
 
-
+        ROS_INFO("tsegc is %d, %f", i, tsegc[i]);
 
 
         while(time_elapsed.toSec() < tsegc[i]){
