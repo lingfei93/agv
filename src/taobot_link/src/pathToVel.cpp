@@ -149,7 +149,7 @@ void moveRobotAlongPath(){
     ros::Time current_time, start_time;
     ros::Duration time_elapsed;
 
-    for (i=0;i<len+50;i++)
+    for (i=0;i<previousLength+50;i++)
     {
       //  ROS_INFO("in loop %d", i);
         current_time = ros::Time::now();
@@ -161,8 +161,8 @@ void moveRobotAlongPath(){
 
         while(time_elapsed.toSec() < tsegc[i]){
 
-       // ROS_INFO("sending a vel command");
-      //  ROS_INFO("time elapsed is %f, tsegc[i] is %f, tsegc[i+1] is %f", time_elapsed.toSec(), tsegc[i], tsegc[i+1]);
+        ROS_INFO("sending a vel command");
+        ROS_INFO("time elapsed is %f, tsegc[i] is %f, tsegc[i+1] is %f", time_elapsed.toSec(), tsegc[i], tsegc[i+1]);
 
         sendVelCommand(plan[0][i],plan[1][i],plan[0][i+1],plan[1][i+1]);
         current_time = ros::Time::now();
@@ -522,6 +522,7 @@ int main(int argc, char** argv)
             }
 
             if (pathAvailable == 1){
+                ROS_INFO("sending a path data");
                 try{
                 listener.lookupTransform("/map", "/base_link", ros::Time(0), poseRobot);
 
@@ -538,14 +539,6 @@ int main(int argc, char** argv)
                 turnRobot(lastKnownYaw, 3.14);
                 try{
                 listener.lookupTransform("/map", "/base_link", ros::Time(0), poseRobot);
-
-                }
-                catch (tf::TransformException &ex) {
-                    ROS_ERROR("%s",ex.what());
-                    ros::Duration(1.0).sleep();
-                    continue;
-                }
-
                 robot_pose.pose.orientation.x = poseRobot.getRotation().getX();
                 robot_pose.pose.orientation.y = poseRobot.getRotation().getY();
                 robot_pose.pose.orientation.z = poseRobot.getRotation().getZ();
@@ -554,13 +547,27 @@ int main(int argc, char** argv)
 
                 difference = 3.14 - lastKnownYaw;
                 }
+                catch (tf::TransformException &ex) {
+                    ROS_ERROR("%s",ex.what());
+                    ros::Duration(1.0).sleep();
+                    continue;
+                }
+
+
+                }
 
                 moveRobotAlongPath();
                 pathAvailable = 0;
             }
             if (wasInPath == 1){
+                ROS_INFO("reached wasinPath = 1");
                 try{
                 listener.lookupTransform("/map", "/base_link", ros::Time(0), poseRobot);
+                robot_pose.pose.orientation.x = poseRobot.getRotation().getX();
+                robot_pose.pose.orientation.y = poseRobot.getRotation().getY();
+                robot_pose.pose.orientation.z = poseRobot.getRotation().getZ();
+                robot_pose.pose.orientation.w = poseRobot.getRotation().getW();
+                lastKnownYaw = tf::getYaw(robot_pose.pose.orientation) + 3.14;
 
                 }
                 catch (tf::TransformException &ex) {
@@ -569,11 +576,6 @@ int main(int argc, char** argv)
                     continue;
                 }
 
-                robot_pose.pose.orientation.x = poseRobot.getRotation().getX();
-                robot_pose.pose.orientation.y = poseRobot.getRotation().getY();
-                robot_pose.pose.orientation.z = poseRobot.getRotation().getZ();
-                robot_pose.pose.orientation.w = poseRobot.getRotation().getW();
-                lastKnownYaw = tf::getYaw(robot_pose.pose.orientation) + 3.14;
 
                 while (amountToTurn(difference) > 0.25){
                 turnRobot(lastKnownYaw, yawToTurn);
@@ -581,6 +583,11 @@ int main(int argc, char** argv)
                 try{
                 listener.lookupTransform("/map", "/base_link", ros::Time(0), poseRobot);
 
+                robot_pose.pose.orientation.x = poseRobot.getRotation().getX();
+                robot_pose.pose.orientation.y = poseRobot.getRotation().getY();
+                robot_pose.pose.orientation.z = poseRobot.getRotation().getZ();
+                robot_pose.pose.orientation.w = poseRobot.getRotation().getW();
+                lastKnownYaw = tf::getYaw(robot_pose.pose.orientation) + 3.14;
                 }
                 catch (tf::TransformException &ex) {
                     ROS_ERROR("%s",ex.what());
@@ -588,11 +595,6 @@ int main(int argc, char** argv)
                     continue;
                 }
 
-                robot_pose.pose.orientation.x = poseRobot.getRotation().getX();
-                robot_pose.pose.orientation.y = poseRobot.getRotation().getY();
-                robot_pose.pose.orientation.z = poseRobot.getRotation().getZ();
-                robot_pose.pose.orientation.w = poseRobot.getRotation().getW();
-                lastKnownYaw = tf::getYaw(robot_pose.pose.orientation) + 3.14;
 
                 difference = yawToTurn - lastKnownYaw;
                 }
