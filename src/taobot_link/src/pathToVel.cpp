@@ -349,6 +349,7 @@ int main(int argc, char** argv)
     lastKnownYaw = 0;
     while (ros::ok()){
     try{
+      ROS_INFO("enter into hereeee");
       listener.lookupTransform("/map", "/odom",
                                ros::Time(0), poseRobot);
       robot_pose.pose.orientation.x = poseRobot.getRotation().getX();
