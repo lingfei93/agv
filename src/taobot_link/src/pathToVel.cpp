@@ -83,8 +83,8 @@ int directionToRotate(float initial, float end){
   float otherRange = end - 3.14159;
 
   if (otherRange > 0) {
-     if(end > initial  && initial > otherRange) return 1;
-     else  return -1;
+     if(end > initial  && initial > otherRange) return -1;
+     else  return 1;
 
    }
 
