@@ -2,6 +2,7 @@
 #include <ros/ros.h>
 #include <geometry_msgs/Twist.h>
 #include <std_msgs/Float32.h>
+#include <sensor_msgs/Imu.h>
 #include <iostream>
 #include <math.h>
 #include <geometry_msgs/PoseWithCovarianceStamped.h>
@@ -121,6 +122,12 @@ void turnRobot(float initial, float end){
 
 void getPoseCallBack(const geometry_msgs::PoseWithCovarianceStamped::ConstPtr& pose_data){
     lastKnownYaw = tf::getYaw(pose_data->pose.pose.orientation) + 3.14;
+    ROS_INFO("last known yaw updated, it is now %f", lastKnownYaw);
+
+}
+
+void getImuPoseCallBack(const sensor_msgs::Imu::ConstPtr& imu_pose_data){
+    lastKnownYaw = tf::getYaw(imu_pose_data->orientation) + 3.14;
     ROS_INFO("last known yaw updated, it is now %f", lastKnownYaw);
 
 }
@@ -326,7 +333,7 @@ int main(int argc, char** argv)
     
     move_base_path_sub  = n.subscribe<nav_msgs::Path>("/move_base_node/NavfnROS/plan", 1000, movePathCallBack);
  	
-
+   imu_pose_sub  = n.subscribe<sensor_msgs::Imu>("/imu_data",1000, getImuPoseCallBack);
    amcl_pose_sub = n.subscribe<geometry_msgs::PoseWithCovarianceStamped>("/amcl_pose",1000, getPoseCallBack);
   
 
