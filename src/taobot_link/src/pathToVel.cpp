@@ -499,9 +499,9 @@ int main(int argc, char** argv)
     geometry_msgs::PoseStamped robot_pose;
     tf::StampedTransform poseRobot;
 
-    listener.lookupTransform("/map", "/base_link", ros::Time(0), poseRobot);
-        try{
 
+        try{
+ listener.lookupTransform("/map", "/base_link", ros::Time(0), poseRobot);
         robot_pose.pose.orientation.x = poseRobot.getRotation().getX();
         robot_pose.pose.orientation.y = poseRobot.getRotation().getY();
         robot_pose.pose.orientation.z = poseRobot.getRotation().getZ();
