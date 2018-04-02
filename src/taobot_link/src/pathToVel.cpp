@@ -11,13 +11,12 @@
 #include <taobot_link/Taobot.h>
 #include <Eigen/Dense>
 #include <nav_msgs/Path.h>
+#include <tf/transform_listener.h>
 
 
 #include <cmath>
 using Eigen::MatrixXd;
 using namespace std;
-
-
 
 
 #define PI           3.14159265358979323846
@@ -50,6 +49,7 @@ int previousLength;
 float lastY = 0;
 float lastX = 0;
 float lastKnownYaw = 0;
+
 // char reply[9];
 
 double convertToEuclid(double x1, double y1, double x2, double y2){
@@ -330,21 +330,48 @@ int main(int argc, char** argv)
     ros::AsyncSpinner spinner(2); 
     spinner.start();
 
-    move_base_path_pub = n.advertise<geometry_msgs::Twist>("cmd_vel_path", 1000);
+
+
+
+    move_base_path_pub = n.advertise<geometry_msgs::Twist>("cmd_vel_path", 100);
     
-    move_base_path_sub  = n.subscribe<nav_msgs::Path>("/move_base_node/NavfnROS/plan", 1000, movePathCallBack);
+    move_base_path_sub  = n.subscribe<nav_msgs::Path>("/move_base_node/NavfnROS/plan", 1, movePathCallBack);
  	
    //imu_pose_sub  = n.subscribe<sensor_msgs::Imu>("/imu/data",1000, getImuPoseCallBack);
-   amcl_pose_sub = n.subscribe<geometry_msgs::PoseWithCovarianceStamped>("/amcl_pose",1000, getPoseCallBack);
+   amcl_pose_sub = n.subscribe<geometry_msgs::PoseWithCovarianceStamped>("/amcl_pose",1, getPoseCallBack);
   
 
     ros::Rate loop_rate(5);
+    tf::TransformListener listener;
+    while (n.ok()){
+        geometry_msgs::PoseStamped robot_pose;
+        tf::StampedTransform poseRobot;
+        lastKnownYaw = 0;
+    try{
+      listener.lookupTransform("/map", "/base_link",
+                               ros::Time(0), poseRobot);
+      robot_pose.pose.orientation.x = poseRobot.getRotation().getX();
+      robot_pose.pose.orientation.y = poseRobot.getRotation().getY();
+      robot_pose.pose.orientation.z = poseRobot.getRotation().getZ();
+      robot_pose.pose.orientation.w = poseRobot.getRotation().getW();
+
+      lastKnownYaw = tf::getYaw(robot_pose.pose.orinetation);
+      ROS_INFO("last known yaw updated, it is %f ", lastKnownYaw);
+
+    }
+    catch (tf::TransformException &ex) {
+      ROS_ERROR("%s",ex.what());
+      ros::Duration(1.0).sleep();
+      continue;
+    }
+
+
     //while (ros::ok()){
 
    // ros::spin();
     //}
    ros::waitForShutdown();
     
-    
+    }
     
     }
