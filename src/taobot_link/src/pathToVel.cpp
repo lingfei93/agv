@@ -324,7 +324,7 @@ void sendVelCommand(float x_start, float y_start, float x_end, float y_end){
 
 int main(int argc, char** argv)
 {
-
+    float previousYaw;
     ros::init(argc, argv, "Taobot_Info");
     ros::NodeHandle n;
     //ros::AsyncSpinner spinner(2);
@@ -349,7 +349,7 @@ int main(int argc, char** argv)
     lastKnownYaw = 0;
     while (ros::ok()){
     try{
-      ROS_INFO("enter into hereeee");
+
       listener.lookupTransform("/base_link", "/map",
                                ros::Time(0), poseRobot);
       robot_pose.pose.orientation.x = poseRobot.getRotation().getX();
@@ -358,7 +358,11 @@ int main(int argc, char** argv)
       robot_pose.pose.orientation.w = poseRobot.getRotation().getW();
 
       lastKnownYaw = tf::getYaw(robot_pose.pose.orientation);
+
+      if (previousYaw != lastKnownYaw){
       ROS_INFO("last known yaw updated, it is %f ", lastKnownYaw);
+      previousYaw = lastKnownYaw;
+      }
 
     }
     catch (tf::TransformException &ex) {
