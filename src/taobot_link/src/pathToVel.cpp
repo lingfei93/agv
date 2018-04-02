@@ -57,8 +57,7 @@ double plan[4][2000] = {{0}};
 double tsegc[2000];
 int len;
 geometry_msgs::Twist wlr_cmd;
-geometry_msgs::PoseStamped robot_pose;
-tf::StampedTransform poseRobot;
+
 
 
 
@@ -459,6 +458,9 @@ void sendVelCommand(float x_start, float y_start, float x_end, float y_end){
 
 void getPose(){
     tf::TransformListener listener;
+
+    geometry_msgs::PoseStamped robot_pose;
+    tf::StampedTransform poseRobot;
 
     listener.lookupTransform("/map", "/base_link", ros::Time(0), poseRobot);
     robot_pose.pose.orientation.x = poseRobot.getRotation().getX();
