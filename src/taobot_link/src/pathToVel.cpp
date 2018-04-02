@@ -152,7 +152,7 @@ void moveRobotAlongPath(){
 
     for (i=0;i<previousLength+50;i++)
     {
-      //  ROS_INFO("in loop %d", i);
+        ROS_INFO("in loop %d", i);
         current_time = ros::Time::now();
         time_elapsed = current_time - start_time;
 
@@ -174,6 +174,7 @@ void moveRobotAlongPath(){
 
 
     }
+    ROS_INFO(" i reached executePath");
     executePath = 1;
 
 }
@@ -580,6 +581,7 @@ int main(int argc, char** argv)
                 difference = yawToTurn - lastKnownYaw;
 
                 while (amountToTurn(difference) > 0.25){
+                ROS_INFO("turn robot sent with commands %f, %f", lastKnownYaw, yawToTurn);
                 turnRobot(lastKnownYaw, yawToTurn);
 
                 try{
@@ -590,6 +592,7 @@ int main(int argc, char** argv)
                 robot_pose.pose.orientation.z = poseRobot.getRotation().getZ();
                 robot_pose.pose.orientation.w = poseRobot.getRotation().getW();
                 lastKnownYaw = tf::getYaw(robot_pose.pose.orientation) + 3.14;
+
                 }
                 catch (tf::TransformException &ex) {
                     ROS_ERROR("%s",ex.what());
