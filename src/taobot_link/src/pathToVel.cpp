@@ -343,7 +343,7 @@ int main(int argc, char** argv)
 
     ros::Rate loop_rate(5);
     tf::TransformListener listener;
-    while (n.ok()){
+    while (spinner.ok()){
         geometry_msgs::PoseStamped robot_pose;
         tf::StampedTransform poseRobot;
         lastKnownYaw = 0;
