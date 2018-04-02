@@ -55,7 +55,7 @@ float lastX = 0;
 float lastKnownYaw = 0;
 float yawToTurn;
 double plan[4][2000] = {{0}};
-double tsegc[2000];
+double tsegc[2000] = {0};
 int len;
 geometry_msgs::Twist wlr_cmd;
 
@@ -180,7 +180,7 @@ void moveRobotAlongPath(){
 }
 
 void movePathCallBack(const nav_msgs::Path::ConstPtr &path_data){
-   tsegc[2000] = {0};
+
    len = path_data->poses.size();
 
    float distanceToGoal;
@@ -253,6 +253,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr &path_data){
 
                    for (i= len; i < len + 100; i++){
                        tsegc[i] = timeForPath;
+                       ROS_INFO("tsegc is %f", tsegc[i]);
                    }
 
 
@@ -528,7 +529,11 @@ int main(int argc, char** argv)
                 ROS_INFO("sending a path data");
                 try{
                 listener.lookupTransform("/map", "/base_link", ros::Time(0), poseRobot);
-
+                robot_pose.pose.orientation.x = poseRobot.getRotation().getX();
+                robot_pose.pose.orientation.y = poseRobot.getRotation().getY();
+                robot_pose.pose.orientation.z = poseRobot.getRotation().getZ();
+                robot_pose.pose.orientation.w = poseRobot.getRotation().getW();
+                lastKnownYaw = tf::getYaw(robot_pose.pose.orientation) + 3.14;
                 }
                 catch (tf::TransformException &ex) {
                     ROS_ERROR("%s",ex.what());
