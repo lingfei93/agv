@@ -149,12 +149,14 @@ void moveRobotAlongPath(){
     int i;
     ros::Time current_time, start_time;
     ros::Duration time_elapsed;
-
+    start_time = ros::Time::now();
+    current_time = ros::Time::now();
+    time_elapsed = current_time - start_time;
     for (i=0;i<previousLength+50;i++)
     {
         ROS_INFO("in loop %d", i);
 
-        start_time = ros::Time::now();
+
         current_time = ros::Time::now();
         time_elapsed = current_time - start_time;
 
