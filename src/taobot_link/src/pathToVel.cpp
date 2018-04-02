@@ -128,7 +128,7 @@ void getPoseCallBack(const geometry_msgs::PoseWithCovarianceStamped::ConstPtr& p
 }
 
 void getImuPoseCallBack(const sensor_msgs::Imu::ConstPtr& imu_pose_data){
-    lastKnownYaw = tf::getYaw(imu_pose_data->orientation) + 3.14;
+    lastKnownYaw = tf::getYaw(imu_pose_data->orientation);
     ROS_INFO("last known yaw updated, it is now %f", lastKnownYaw);
 
 }
