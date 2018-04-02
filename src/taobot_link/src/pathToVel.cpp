@@ -459,6 +459,8 @@ void sendVelCommand(float x_start, float y_start, float x_end, float y_end){
 
 
 void getPose(){
+    tf::TransformListener listener;
+
     listener.lookupTransform("/map", "/base_link", ros::Time(0), poseRobot);
     robot_pose.pose.orientation.x = poseRobot.getRotation().getX();
     robot_pose.pose.orientation.y = poseRobot.getRotation().getY();
@@ -474,9 +476,10 @@ void getPose(){
 
 int main(int argc, char** argv)
 {
-    float previousYaw, difference;
+
     ros::init(argc, argv, "Taobot_Info");
     ros::NodeHandle n;
+    float previousYaw, difference;
     //ros::AsyncSpinner spinner(2);
    //spinner.start();
 
