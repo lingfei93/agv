@@ -327,8 +327,8 @@ int main(int argc, char** argv)
     float previousYaw;
     ros::init(argc, argv, "Taobot_Info");
     ros::NodeHandle n;
-    //ros::AsyncSpinner spinner(2);
-   // spinner.start();
+    ros::AsyncSpinner spinner(2);
+    spinner.start();
 
 
 
