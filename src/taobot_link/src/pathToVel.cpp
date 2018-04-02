@@ -597,7 +597,6 @@ int main(int argc, char** argv)
                 wasInPath = 0;
             }
 
-        }
 
     ros::spinOnce();
    }//end while (ros::ok)
