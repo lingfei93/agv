@@ -355,7 +355,7 @@ int main(int argc, char** argv)
       robot_pose.pose.orientation.z = poseRobot.getRotation().getZ();
       robot_pose.pose.orientation.w = poseRobot.getRotation().getW();
 
-      lastKnownYaw = tf::getYaw(robot_pose.pose.orinetation);
+      lastKnownYaw = tf::getYaw(robot_pose.pose.orientation);
       ROS_INFO("last known yaw updated, it is %f ", lastKnownYaw);
 
     }
