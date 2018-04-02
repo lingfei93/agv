@@ -340,7 +340,7 @@ int main(int argc, char** argv)
    //imu_pose_sub  = n.subscribe<sensor_msgs::Imu>("/imu/data",1000, getImuPoseCallBack);
    amcl_pose_sub = n.subscribe<geometry_msgs::PoseWithCovarianceStamped>("/amcl_pose",1, getPoseCallBack);
   
-
+    ROS_INFO(("enter into here"));
     ros::Rate loop_rate(5);
     tf::TransformListener listener;
 
@@ -372,7 +372,7 @@ int main(int argc, char** argv)
 
     //while (ros::ok()){
 
-   // ros::spin();
+   ros::spin();
     //}
 
     }
