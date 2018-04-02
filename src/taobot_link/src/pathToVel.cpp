@@ -98,7 +98,7 @@ int directionToRotate(float initial, float end){
 
 float amountToTurn(float difference){
     if (abs(difference) < 3.14) return abs(difference);
-    else return (6.28 - abs(difference));
+    else return (3.14159*2 - abs(difference));
 
 
 }
@@ -126,7 +126,7 @@ void turnRobot(float initial, float end){
     initial = lastKnownYaw;
     difference = end - initial;
     ROS_INFO("last known yaw is %f", lastKnownYaw);
-    ROS_INFO("difference is %f", difference);
+    ROS_INFO("difference is %f", amountToTurn(difference));
 
     
  
