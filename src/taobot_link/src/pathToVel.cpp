@@ -350,7 +350,7 @@ int main(int argc, char** argv)
     while (ros::ok()){
     try{
       ROS_INFO("enter into hereeee");
-      listener.lookupTransform("/map", "/odom",
+      listener.lookupTransform("/odom", "/map",
                                ros::Time(0), poseRobot);
       robot_pose.pose.orientation.x = poseRobot.getRotation().getX();
       robot_pose.pose.orientation.y = poseRobot.getRotation().getY();
