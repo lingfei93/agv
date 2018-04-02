@@ -56,7 +56,6 @@ float yawToTurn;
 double plan[4][2000] = {{0}};
 double tsegc[2000];
 int len;
-tf::TransformListener listener;
 geometry_msgs::Twist wlr_cmd;
 geometry_msgs::PoseStamped robot_pose;
 tf::StampedTransform poseRobot;
