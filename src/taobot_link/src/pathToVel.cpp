@@ -492,16 +492,22 @@ int main(int argc, char** argv)
     ROS_INFO(("enter into here"));
     ros::Rate loop_rate(5);
 
-    lastKnownYaw = 0;
-    while (ros::ok()){
     tf::TransformListener listener;
     geometry_msgs::PoseStamped robot_pose;
     tf::StampedTransform poseRobot;
+    lastKnownYaw = 0;
+    while (ros::ok()){
+
 
 
 
         try{
         listener.lookupTransform("/map", "/base_link", ros::Time(0), poseRobot);
+        robot_pose.pose.orientation.x = poseRobot.getRotation().getX();
+        robot_pose.pose.orientation.y = poseRobot.getRotation().getY();
+        robot_pose.pose.orientation.z = poseRobot.getRotation().getZ();
+        robot_pose.pose.orientation.w = poseRobot.getRotation().getW();
+        lastKnownYaw = tf::getYaw(robot_pose.pose.orientation) + 3.14;
 
         }
         catch (tf::TransformException &ex) {
@@ -525,11 +531,7 @@ int main(int argc, char** argv)
                     ros::Duration(1.0).sleep();
                     continue;
                 }
-                robot_pose.pose.orientation.x = poseRobot.getRotation().getX();
-                robot_pose.pose.orientation.y = poseRobot.getRotation().getY();
-                robot_pose.pose.orientation.z = poseRobot.getRotation().getZ();
-                robot_pose.pose.orientation.w = poseRobot.getRotation().getW();
-                lastKnownYaw = tf::getYaw(robot_pose.pose.orientation) + 3.14;
+
 
                 difference = 3.14 - lastKnownYaw;
                 while (amountToTurn(difference) > 0.25){
