@@ -343,10 +343,10 @@ int main(int argc, char** argv)
 
     ros::Rate loop_rate(5);
     tf::TransformListener listener;
-    while (spinner.ok()){
-        geometry_msgs::PoseStamped robot_pose;
-        tf::StampedTransform poseRobot;
-        lastKnownYaw = 0;
+
+    geometry_msgs::PoseStamped robot_pose;
+    tf::StampedTransform poseRobot;
+    lastKnownYaw = 0;
     try{
       listener.lookupTransform("/map", "/odom",
                                ros::Time(0), poseRobot);
@@ -374,4 +374,4 @@ int main(int argc, char** argv)
     
     }
     
-    }
+
