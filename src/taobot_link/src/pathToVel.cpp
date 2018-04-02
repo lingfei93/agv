@@ -117,6 +117,7 @@ void turnRobot(float initial, float end){
 
     timeToSleep = amountToTurn(difference);
     wlr_cmd.angular.z = directionToRotate(initial, end);
+    ROS_INFO("direction to rotate is %f", wlr_cmd.angular.z);
     move_base_path_pub.publish(wlr_cmd);
     ros::Duration(timeToSleep * 1.07).sleep();
     wlr_cmd.angular.z = 0;
@@ -166,8 +167,7 @@ void moveRobotAlongPath(){
 
         while(time_elapsed.toSec() < tsegc[i]){
 
-        ROS_INFO("sending a vel command");
-        ROS_INFO("time elapsed is %f, tsegc[i] is %f, tsegc[i+1] is %f", time_elapsed.toSec(), tsegc[i], tsegc[i+1]);
+
 
         sendVelCommand(plan[0][i],plan[1][i],plan[0][i+1],plan[1][i+1]);
         current_time = ros::Time::now();
@@ -454,8 +454,8 @@ void sendVelCommand(float x_start, float y_start, float x_end, float y_end){
     uint8_t reply[30];
 
     //NOT SURE WHY I NEED TO FLIP THIS
-    wlr_cmd.linear.x         = (x_end - x_start) * 0.71;
-    wlr_cmd.linear.y        = (y_end - y_start) * 0.71;
+    wlr_cmd.linear.x         = (x_end - x_start) * 0.68;
+    wlr_cmd.linear.y        = (y_end - y_start) * 0.68;
     wlr_cmd.angular.z = 0;
 
     move_base_path_pub.publish(wlr_cmd);
@@ -498,7 +498,7 @@ int main(int argc, char** argv)
   // amcl_pose_sub = n.subscribe<geometry_msgs::PoseWithCovarianceStamped>("/amcl_pose",5, getPoseCallBack);
   
     ROS_INFO(("enter into here"));
-    ros::Rate loop_rate(5);
+    ros::Rate loop_rate(20);
 
     tf::TransformListener listener;
     geometry_msgs::PoseStamped robot_pose;
@@ -613,6 +613,7 @@ int main(int argc, char** argv)
                 difference = yawToTurn - lastKnownYaw;
                 }
                 wasInPath = 0;
+                executePath = 0;
             }
 
 
