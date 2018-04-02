@@ -458,11 +458,11 @@ void sendVelCommand(float x_start, float y_start, float x_end, float y_end){
 
 void getPose(){
 
-    robot_pose.pose.orientation.x = poseRobot.getRotation().getX();
-    robot_pose.pose.orientation.y = poseRobot.getRotation().getY();
-    robot_pose.pose.orientation.z = poseRobot.getRotation().getZ();
-    robot_pose.pose.orientation.w = poseRobot.getRotation().getW();
-    lastKnownYaw = tf::getYaw(robot_pose.pose.orientation) + 3.14;
+//    robot_pose.pose.orientation.x = poseRobot.getRotation().getX();
+//    robot_pose.pose.orientation.y = poseRobot.getRotation().getY();
+//    robot_pose.pose.orientation.z = poseRobot.getRotation().getZ();
+//    robot_pose.pose.orientation.w = poseRobot.getRotation().getW();
+//    lastKnownYaw = tf::getYaw(robot_pose.pose.orientation) + 3.14;
 }
 
 
