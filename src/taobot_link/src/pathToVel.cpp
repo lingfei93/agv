@@ -33,8 +33,9 @@ using namespace std;
 
 ros::Publisher move_base_path_pub;
 ros::Subscriber move_base_path_sub;
+ros::Subscriber imu_pose_sub;
 ros::Subscriber amcl_pose_sub;
-void MovePathCallback(const nav_msgs::Path::ConstPtr& path_data);
+
 double convertToEuclid(float x1, float y1, float x2, float y2);
 void checkPath(float x1, float y1, float x2, float y2);
 void sendVelCommand(float x_start, float y_start, float x_end, float y_end);
