@@ -16,5 +16,5 @@
   </node> -->
   <include file="$(find taobot_link)/move_base_config/amcl_node.xml"/>
 
-  <node name="map_server" pkg="map_server" type="map_server" args="$(find taobot_link)/map/mymap.pgm 0.05" respawn="false" />
-</launch>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find taobot_link)/map/makersmap.pgm 0.05" respawn="false" />
+</laun
