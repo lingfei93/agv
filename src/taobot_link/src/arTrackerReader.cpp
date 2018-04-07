@@ -11,7 +11,7 @@ float lastSeenZDistanceToAR; //this is the z orientation which the ar_pose_track
 
 void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tracker_data){
 	
-	if (ar_tracker_data->markers){
+	if (ar_tracker_data->markers.size() > 0){
 		ar_track_alvar_msgs::AlvarMarker currentMarker = ar_tracker_data->markers[0];
 		ROS_INFO("currentMarker is, %f", currentMarker.pose.pose.position.x);
 	}
