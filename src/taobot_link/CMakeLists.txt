@@ -235,6 +235,10 @@ add_executable(autoSpeed src/autoSpeed.cpp)
 add_dependencies(autoSpeed taobot_link_generate_messages_cpp)
 target_link_libraries(autoSpeed ${catkin_LIBRARIES})
 
+add_executable(arTrackerReader src/arTrackerReader.cpp)
+add_dependencies(arTrackerReader taobot_link_generate_messages_cpp)
+target_link_libraries(arTrackerReader ${catkin_LIBRARIES})
+
 ## Mark executables and/or libraries for installation
 #install(TARGETS taobot_link
 #  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}

@@ -17,4 +17,5 @@
   <node pkg="taobot_link" name="joy_ctrl_taobot_node" type="joy_ctrl_taobot_node">
   	<remap from="cmd_vel" to="taobot_cmd_vel"/>
   </node>
+  <node pkg="taobot_link" name="arTrackerReader" type="arTrackerReader" output = "screen"/>
 </launch>
