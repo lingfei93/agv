@@ -60,5 +60,10 @@ Created by Janus
     <child link="laser" />
     <origin xyz="0.1007 0 0.0558" />
   </joint>
+   <joint name="horizontal_camera_link_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="head_camera" />
+    <origin xyz="0.1007 0.2 0.0558" />
+  </joint>
 
 </robot>
