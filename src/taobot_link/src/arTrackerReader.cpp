@@ -8,7 +8,7 @@ ros::Publisher move_base_clear_goal;
 float lastSeenZDistanceToAR; //this is the z orientation which the ar_pose_tracker should take over the steering of robot
 
 
-void arTrackerCallBack(const ar_track_alvar::AlvarMarker::ConstPtr &ar_tracker_data){
+void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarker::ConstPtr &ar_tracker_data){
 	ar_track_alvar::AlvarMarker currentMarker = ar_tracker_data->markers[0];
 	if (currentMarker.header != null){
 
@@ -30,7 +30,7 @@ int main(int argc, char** argv){
     
 
 
-    ar_tracker_sub = n.subscribe<ar_track_alvar::AlvarMarker>("/ar_pose_marker", 5, arTrackerCallBack);
+    ar_tracker_sub = n.subscribe<ar_track_alvar_msgs::AlvarMarker>("/ar_pose_marker", 5, arTrackerCallBack);
     while (ros::ok()){
 
 
