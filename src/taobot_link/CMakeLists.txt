@@ -14,6 +14,7 @@ find_package(catkin REQUIRED COMPONENTS
   tf
   message_generation
   cmake_modules
+  ar_track_alvar
 )
 
 ## System dependencies are found with CMake's conventions
