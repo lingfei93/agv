@@ -4,13 +4,13 @@
 
 
 ros::Publisher move_base_clear_goal;
-
+ros::Subscriber ar_tracker_sub
 float lastSeenZDistanceToAR; //this is the z orientation which the ar_pose_tracker should take over the steering of robot
 
 
 void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarker::ConstPtr &ar_tracker_data){
-	ar_track_alvar::AlvarMarker currentMarker = ar_tracker_data->markers[0];
-	if (currentMarker.header != null){
+	ar_track_alvar_msgs::AlvarMarker currentMarker = ar_tracker_data->markers[0];
+	if (currentMarker.header != NULL){
 
 		ROS_INFO("currentMarker is, %f", currentMarker.pose.pose.position.x);
 	}
@@ -23,8 +23,8 @@ int main(int argc, char** argv){
     ros::NodeHandle n;
 
     actionlib_msgs::GoalID emptyGoal;
-    emptyGoal.id = {}; //define an emptyGoal
-    emptyGoal.time = {};
+    // emptyGoal.id = {}; //define an emptyGoal
+    // emptyGoal.time = {};
 
     move_base_clear_goal =  n.advertise<actionlib_msgs::GoalID>("/move_base/cancel", 10);
     
