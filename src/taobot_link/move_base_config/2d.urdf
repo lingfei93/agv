@@ -40,7 +40,7 @@ Created by Janus
   </link>
 
   <link name="laser" />
-  
+  <link name="head_camera" />  
 <!--
   <joint name="imu_link_joint" type="fixed">
     <parent link="base_link" />
