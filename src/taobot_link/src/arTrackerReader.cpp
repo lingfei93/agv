@@ -1,6 +1,6 @@
 #include <ros/ros.h>
 #include <actionlib_msgs/GoalID.h>
-#include <ar_track_alvar/AlvarMarker.h>
+#include <ar_track_alvar_msgs/AlvarMarker.h>
 
 
 ros::Publisher move_base_clear_goal;
