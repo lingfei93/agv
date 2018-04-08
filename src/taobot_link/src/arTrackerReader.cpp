@@ -5,12 +5,14 @@
 #include <ar_track_alvar_msgs/AlvarMarkers.h>
 #include <ar_track_alvar_msgs/AlvarMarkers.h>
 #include <tf/transform_datatypes.h> //for yaw;
+#include <tf/transform_listener.h> //for transform_listener
 
 
 
 ros::Publisher move_base_clear_goal;
 ros::Subscriber ar_tracker_sub;
 ros::Publisher move_base_path_pub;
+ros::Subscriber move_to_trolley_sub;
 float lastZ, lastX, lastYaw; //this is the z orientation which the ar_pose_tracker should take over the steering of robot
 float orientationOfQR;
 int followPath, moveToAngular, moveToVertical, moveToHorizontal, angularPositionReached, count;
@@ -99,7 +101,7 @@ void sendVelToRobot(float x_speed, float y_speed, float angle, float timeToWrite
 	wlr_cmd.linear.x         = x_speed * 0.2;
     wlr_cmd.linear.y        = x_speed * 0.2;
     wlr_cmd.angular.z = angle * 0.2;
-    ROS_INFO("timeToWriteSpeed is %f," timeToWriteSpeed);
+    ROS_INFO("timeToWriteSpeed is %f", timeToWriteSpeed);
     ros::Duration(timeToWriteSpeed * 1.07).sleep();
     move_base_path_pub.publish(wlr_cmd);
 	wlr_cmd.linear.x         = 0;
