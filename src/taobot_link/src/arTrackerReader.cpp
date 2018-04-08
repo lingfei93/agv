@@ -1,4 +1,5 @@
 #include <ros/ros.h>
+#include <std_msgs/Int32.h>
 #include <actionlib_msgs/GoalID.h>
 #include <ar_track_alvar_msgs/AlvarMarkers.h>
 #include <ar_track_alvar_msgs/AlvarMarkers.h>
@@ -11,7 +12,7 @@ ros::Subscriber ar_tracker_sub;
 ros::Publisher move_base_path_pub;
 float lastZ, lastX, lastYaw; //this is the z orientation which the ar_pose_tracker should take over the steering of robot
 float orientationOfQR;
-int followPath, moveToAngular, moveToVertical, moveToVertical, count;
+int followPath, moveToAngular, moveToVertical, moveToHorizontal, count;
 
 void moveToAngularPosition();
 void moveToVerticalPosition();
@@ -141,7 +142,7 @@ int main(int argc, char** argv){
     		moveToAngularPosition();
     	}
     	if (followPath == 1 && angularPositionReached == 1){
-    		moveToTrolley();
+    		//moveToTrolley();
     	}
 
 
