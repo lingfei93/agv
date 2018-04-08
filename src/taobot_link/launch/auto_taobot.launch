@@ -20,5 +20,5 @@
   </node>
 
   <node pkg="taobot_link" name="arTrackerReader" type="arTrackerReader" output = "screen"/>
-  <rosparam command="load" file="keyparams.yaml" />
+  <rosparam command="load" file="$(find taobot_link)/keyparams.yaml" />
 </launch>
