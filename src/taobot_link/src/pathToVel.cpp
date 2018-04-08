@@ -450,7 +450,7 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr &path_data){
 
 void sendVelCommand(float x_start, float y_start, float x_end, float y_end){
     geometry_msgs::Twist wlr_cmd;
-    uint8_t reply[30];
+    //uint8_t reply[30];
 
     //NOT SURE WHY I NEED TO FLIP THIS
     wlr_cmd.linear.x         = (x_end - x_start) * 0.70;

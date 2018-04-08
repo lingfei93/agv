@@ -185,14 +185,14 @@ uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double 
     //normalize the speed
     motorA_speed = std::abs(motorA_speed)/max;
     motorB_speed = std::abs(motorB_speed)/max;
-    motorC_speed = std::abs(motorC_speed)/max * 1.025 ;
+    motorC_speed = std::abs(motorC_speed)/max  ;  //in the lab, this value is 1.025 for straight
     }   
 
     else {
 
     ROS_INFO("going LEFT and RIGHT right RIGHT");
     motorA_speed = std::abs(motorA_speed)/max;
-    motorB_speed = std::abs(motorB_speed)/max * 1.025;
+    motorB_speed = std::abs(motorB_speed)/max * 1.025;   //in the lab, this value is 1.025 for straight
     motorC_speed = std::abs(motorC_speed)/max;
     }
     //ROS_INFO("motor a speed is %f, motor b speed is %f, motor c speed is %f", motorA_speed, motorB_speed, motorC_speed);
