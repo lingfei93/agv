@@ -99,7 +99,7 @@ void moveToAngularPosition(){
 void sendVelToRobot(float x_speed, float y_speed, float angle, float timeToWriteSpeed){
 	geometry_msgs::Twist wlr_cmd;
 	wlr_cmd.linear.x         = x_speed * 0.2;
-    wlr_cmd.linear.y        = x_speed * 0.2;
+    wlr_cmd.linear.y        = y_speed * 0.2;
     wlr_cmd.angular.z = angle * 0.2;
     ROS_INFO("timeToWriteSpeed is %f", timeToWriteSpeed);
     move_base_path_pub.publish(wlr_cmd);
