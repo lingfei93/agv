@@ -184,7 +184,8 @@ uint8_t* changeToOmniSpeed(double verticalPress, double horizontalPress, double 
     ROS_INFO("going up and down");
     //normalize the speed
     motorA_speed = std::abs(motorA_speed)/max;
-    motorB_speed = std::abs(motorB_speed)/max * 1.0665; //turning too high atm
+    motorB_speed = std::abs(motorB_speed)/max * 1.0665; //turning too high atm this is decent, 24.6V
+    
     motorC_speed = std::abs(motorC_speed)/max;  //in the lab, this value is 1.025 for straight this is the right wheel
     }   
 

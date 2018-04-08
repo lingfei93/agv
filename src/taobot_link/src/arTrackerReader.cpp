@@ -107,10 +107,17 @@ void sendVelToRobot(float x_speed, float y_speed, float angle, float timeToWrite
 	wlr_cmd.linear.x         = 0;
     wlr_cmd.linear.y        = 0;
     wlr_cmd.angular.z = 0;
+    move_base_path_pub.publish(wlr_cmd);
 
 
 
 
+}
+
+void moveToTrolley(){
+	ROS_INFO("enter moveTrolley");
+	float timeToWriteSpeed = lastZ * 10;
+	sendVelToRobot(1, 0, 0, timeToWriteSpeed);
 }
 
 int main(int argc, char** argv){
@@ -134,9 +141,10 @@ int main(int argc, char** argv){
     tf::TransformListener listener;
     geometry_msgs::PoseStamped robot_pose;
     tf::StampedTransform poseRobot;
-    while (ros::ok()){
+    while (   ros::ok()){
     	if (followPath == 1 && moveToVertical == 1){
-    		moveToVerticalPosition();
+    		moveToTrolley(); //testMoveToTrolley();
+    		//moveToVerticalPosition();
     	}
     	if (followPath == 1 && moveToHorizontal ==1){
     		moveToHorizontalPosition();
@@ -145,7 +153,7 @@ int main(int argc, char** argv){
     		moveToAngularPosition();
     	}
     	if (followPath == 1 && angularPositionReached == 1){
-    		//moveToTrolley();
+    		moveToTrolley();
     	}
 
 
