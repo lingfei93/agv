@@ -104,7 +104,7 @@ void sendVelToRobot(float x_speed, float y_speed, float angle, float timeToWrite
     ROS_INFO("timeToWriteSpeed is %f", timeToWriteSpeed);
     move_base_path_pub.publish(wlr_cmd);
 
-    ros::Duration(timeToWriteSpeed * 1.07).sleep();
+    ros::Duration(timeToWriteSpeed).sleep();
     wlr_cmd.linear.x         = 0;
     wlr_cmd.linear.y        = 0;
     wlr_cmd.angular.z = 0;
@@ -117,7 +117,7 @@ void sendVelToRobot(float x_speed, float y_speed, float angle, float timeToWrite
 
 void moveToTrolley(){
 	ROS_INFO("enter moveTrolley");
-	float timeToWriteSpeed = lastZ * 6.50;
+	float timeToWriteSpeed = lastZ * 6.25;
 	sendVelToRobot(1, 0, 0, timeToWriteSpeed);
 }
 
