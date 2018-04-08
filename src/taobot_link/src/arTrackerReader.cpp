@@ -102,9 +102,10 @@ void sendVelToRobot(float x_speed, float y_speed, float angle, float timeToWrite
     wlr_cmd.linear.y        = x_speed * 0.2;
     wlr_cmd.angular.z = angle * 0.2;
     ROS_INFO("timeToWriteSpeed is %f", timeToWriteSpeed);
-    ros::Duration(timeToWriteSpeed * 1.07).sleep();
     move_base_path_pub.publish(wlr_cmd);
-	wlr_cmd.linear.x         = 0;
+
+    ros::Duration(timeToWriteSpeed * 1.07).sleep();
+    wlr_cmd.linear.x         = 0;
     wlr_cmd.linear.y        = 0;
     wlr_cmd.angular.z = 0;
     move_base_path_pub.publish(wlr_cmd);
@@ -143,7 +144,8 @@ int main(int argc, char** argv){
     tf::StampedTransform poseRobot;
     while (   ros::ok()){
     	if (followPath == 1 && moveToVertical == 1){
-    		moveToTrolley(); //testMoveToTrolley();
+    		moveToTrolley(); 
+    		moveToVertical = 0;//testMoveToTrolley();
     		//moveToVerticalPosition();
     	}
     	if (followPath == 1 && moveToHorizontal ==1){
