@@ -117,7 +117,7 @@ void sendVelToRobot(float x_speed, float y_speed, float angle, float timeToWrite
 
 void moveToTrolley(){
 	ROS_INFO("enter moveTrolley");
-	float timeToWriteSpeed = lastZ * 7.25;
+	float timeToWriteSpeed = lastZ * 6.75;
 	sendVelToRobot(1, 0, 0, timeToWriteSpeed);
 }
 
