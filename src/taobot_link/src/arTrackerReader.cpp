@@ -15,6 +15,7 @@ ros::Publisher move_base_path_pub;
 ros::Subscriber move_to_trolley_sub;
 float lastZ, lastX, lastYaw; //this is the z orientation which the ar_pose_tracker should take over the steering of robot
 float orientationOfQR;
+float sleepFactor;
 int followPath, moveToAngular, moveToVertical, moveToHorizontal, angularPositionReached, count;
 
 void moveToAngularPosition();
@@ -117,13 +118,15 @@ void sendVelToRobot(float x_speed, float y_speed, float angle, float timeToWrite
 
 void moveToTrolley(){
 	ROS_INFO("enter moveTrolley");
-	float timeToWriteSpeed = lastZ * 6.25;
+	float timeToWriteSpeed = lastZ * sleepFactor;
 	sendVelToRobot(1, 0, 0, timeToWriteSpeed);
 }
 
 int main(int argc, char** argv){
 	ros::init(argc, argv, "Taobot_Info");
     ros::NodeHandle n;
+
+    n.getParam("sleepFactor", sleepFactor)
 
     actionlib_msgs::GoalID emptyGoal;
     // emptyGoal.id = {}; //define an emptyGoal
