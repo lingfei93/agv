@@ -126,7 +126,7 @@ int main(int argc, char** argv){
 	ros::init(argc, argv, "Taobot_Info");
     ros::NodeHandle n;
 
-    n.getParam("sleepFactor", sleepFactor)
+    n.getParam("sleepFactor", sleepFactor);
 
     actionlib_msgs::GoalID emptyGoal;
     // emptyGoal.id = {}; //define an emptyGoal
