@@ -18,5 +18,5 @@
   	<remap from="cmd_vel" to="taobot_cmd_vel"/>
   </node>
   <node pkg="taobot_link" name="arTrackerReader" type="arTrackerReader" output = "screen"/>
-  <rosparam command="load" file="$(find taobot_link)/keyparams.yaml" />
+  <rosparam command="load" file="$(find taobot_link)/launch/keyparams.yaml" />
 </launch>
