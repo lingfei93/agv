@@ -90,6 +90,7 @@ void moveToVerticalPosition(){
     ROS_INFO("trying to move to Vertical Position");
     if(timeToSendSpeed < 0.05){
     	moveToVertical = 0;
+        ROS_INFO("move into Vertical success");
     	//moveToHorizontal = 1;
     }
     else {
