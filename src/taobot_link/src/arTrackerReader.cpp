@@ -207,6 +207,7 @@ int main(int argc, char** argv){
     tf::TransformListener listener;
     geometry_msgs::PoseStamped robot_pose;
     tf::StampedTransform poseRobot;
+    ros::Rate r(10);
     while (   ros::ok()){
     	if (followPath == 1 && moveToVertical == 1){
     		//moveToTrolley(); 
@@ -226,5 +227,6 @@ int main(int argc, char** argv){
 
 
     ros::spinOnce();
+    r.sleep();
     }//for ros::ok();
 }
