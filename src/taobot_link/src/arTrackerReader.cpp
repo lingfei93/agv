@@ -109,10 +109,10 @@ void moveToVerticalPosition(){
     ROS_INFO("trying to move to Vertical Position");
     ROS_INFO("timeToSendSpeed is %f", timeToSendSpeed);
     int verticalCount;
-    if(timeToSendSpeed < 0.05){
-        count++;
-        ROS_INFO("Count is %d", count);
-        if (count > 3){
+    if(timeToSendSpeed < 0.005){
+        verticalCount++;
+        ROS_INFO("Count is %d", verticalCount);
+        if (verticalCount > 3){
     	moveToVertical = 0;
         ROS_INFO("move into Vertical success");
         }
