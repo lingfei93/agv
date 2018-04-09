@@ -54,7 +54,7 @@ void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tra
 				currentMarker = ar_tracker_data->markers[0];
 			}
 			else {
-				currentMarker = ar_tracker_data->markers[1];
+				xcurrentMarker = ar_tracker_data->markers[1];
 			}
 			lastZ = currentMarker.pose.pose.position.z;
 			lastX = currentMarker.pose.pose.position.x;
@@ -155,6 +155,8 @@ int main(int argc, char** argv){
     n.getParam("sleepFactor", sleepFactor);
     n.getParam("speedFactor", speedFactor);
 
+    ROS_INFO("sleepFactor: %f". sleepFactor);
+    ROS_INFO("speedFactor: %f". speedFactor);
 
     actionlib_msgs::GoalID emptyGoal;
     // emptyGoal.id = {}; //define an emptyGoal
