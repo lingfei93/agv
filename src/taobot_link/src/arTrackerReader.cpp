@@ -102,7 +102,8 @@ void arMarkerMoveCallBack(const std_msgs::Int32::ConstPtr &msg){
 }
 void moveToVerticalPosition(){
 	
-	float timeToSendSpeed = abs(desiredX - lastX);
+	float timeToSendSpeed;
+    timeToSendSpeed = abs(desiredX - lastX);
     ROS_INFO("desiredX is %f, lastX is %f", desiredX, lastX);
     ROS_INFO("trying to move to Vertical Position");
     ROS_INFO("timeToSendSpeed is %f", timeToSendSpeed);
