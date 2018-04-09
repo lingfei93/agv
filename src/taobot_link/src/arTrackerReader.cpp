@@ -15,7 +15,7 @@ ros::Publisher move_base_path_pub;
 ros::Subscriber move_to_trolley_sub;
 float lastZ, lastX, lastYaw; //this is the z orientation which the ar_pose_tracker should take over the steering of robot
 float orientationOfQR;
-float sleepFactor, speedFactor;
+float sleepFactor, speedFactor, calibratedParam;
 int followPath, moveToAngular, moveToVertical, moveToHorizontal, angularPositionReached, count;
 
 void moveToAngularPosition();
@@ -144,7 +144,7 @@ void sendVelToRobot(float x_speed, float y_speed, float angle, float timeToWrite
 
 void moveToTrolley(){
 	ROS_INFO("enter moveTrolley");
-	float timeToWriteSpeed = lastZ * sleepFactor;
+	float timeToWriteSpeed = lastZ * sleepFactor * calibratedParam/lastZ;
 	sendVelToRobot(1, 0, 0, timeToWriteSpeed);
 }
 
@@ -154,6 +154,7 @@ int main(int argc, char** argv){
 
     n.getParam("sleepFactor", sleepFactor);
     n.getParam("speedFactor", speedFactor);
+    n.getParam("calibratedParam", calibratedParam);
 
     ROS_INFO("sleepFactor: %f", sleepFactor);
     ROS_INFO("speedFactor: %f", speedFactor);
