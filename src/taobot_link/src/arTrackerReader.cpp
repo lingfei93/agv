@@ -88,6 +88,7 @@ void moveToVerticalPosition(){
 	
 	float timeToSendSpeed = abs(desiredX - lastX);
     ROS_INFO("trying to move to Vertical Position");
+    ROS_INFO("timeToSendSpeed is %f", timeToSendSpeed);
     if(timeToSendSpeed < 0.05){
     	moveToVertical = 0;
         ROS_INFO("move into Vertical success");
