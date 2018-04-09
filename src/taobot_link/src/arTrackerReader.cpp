@@ -16,12 +16,15 @@ ros::Publisher move_base_path_pub;
 ros::Subscriber move_to_trolley_sub;
 float lastZ, lastX, lastYaw; //this is the z orientation which the ar_pose_tracker should take over the steering of robot
 float orientationOfQR;
+float previousZ, previousX, previousYaw;
 float sleepFactor, speedFactor, calibratedParam,verticalScalingTime,verticalSpeedScale;
 int followPath, moveToAngular, moveToVertical, moveToHorizontal, angularPositionReached, count, inFinalControl = 0;
 int verticalCount;
 void moveToAngularPosition();
 void moveToVerticalPosition();
 void moveToHorizontalPosition(); 
+int checkIfShouldUpdate(float z, float x, float yaw);
+//void updateValues(float z, float x, float yaw);
 void sendVelToRobot(float x_speed, float y_speed, float angle, float timeToWriteSpeed);
 float desiredZ = 0.800;
 float desiredX = 0.2136;
@@ -29,20 +32,44 @@ float desiredYaw = 0.02;
 //z is 0.637
 //x is 0.196
 
+int checkIfShouldUpdate(float z, float x, float yaw){
+    if (fabs(z - previousZ) < 0.005 && fabs(x - previousX) < 0.005 && fabs(yaw - previousYaw) < 0.005){
+        lastZ = z;
+        lastX = x;
+        lastYaw = yaw;
+    }
+    else {
+        previousZ = z;
+        previousX = x;
+        previousYaw = yaw;
+    };
+}
+
+// void updateValues(float z, float x, float yaw){
+//     previousZ = z;
+//     previousX = x;
+//     previousYaw = yaw;
+// }
 
 void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tracker_data){
 	ar_track_alvar_msgs::AlvarMarker currentMarker;
 	if (ar_tracker_data->markers.size() == 1 && inFinalControl == 1){
+            currentMarker = ar_tracker_data->markers[0];
+            //updateValues(currentMarker.pose.pose.position.z,currentMarker.pose.pose.position.x, 
+            //tf::getYaw(currentMarker.pose.pose.orientation) );
 
-			currentMarker = ar_tracker_data->markers[0];
-			lastZ = currentMarker.pose.pose.position.z;
-			lastX = currentMarker.pose.pose.position.x;
+			
+            checkIfShouldUpdate(currentMarker.pose.pose.position.z, currentMarker.pose.pose.position.x,
+                tf::getYaw(currentMarker.pose.pose.orientation));
 
-			ROS_INFO("currentMarker z is, %f", currentMarker.pose.pose.position.z);
-			ROS_INFO("currentMarker x is, %f", currentMarker.pose.pose.position.x);
-			ROS_INFO("currentMarker y is, %f", currentMarker.pose.pose.position.y);
+			//lastZ = currentMarker.pose.pose.position.z;
+			//lastX = currentMarker.pose.pose.position.x;
 
-		 	lastYaw = tf::getYaw(currentMarker.pose.pose.orientation);
+			ROS_INFO("currentMarker z is, %f", lastZ);
+			ROS_INFO("currentMarker x is, %f", lastX);
+			//ROS_INFO("currentMarker y is, %f", currentMarker.pose.pose.position.y);
+
+		 	//lastYaw = tf::getYaw(currentMarker.pose.pose.orientation);
 
 		 	ROS_INFO("orientationOfQR is, %f", lastYaw);
 		 	count++;
@@ -52,17 +79,19 @@ void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tra
     if (ar_tracker_data->markers.size() == 1 && ((ar_tracker_data->markers[0].id % 2) == 0) ){
 
             currentMarker = ar_tracker_data->markers[0];
-            lastZ = currentMarker.pose.pose.position.z;
-            lastX = currentMarker.pose.pose.position.x;
+            checkIfShouldUpdate(currentMarker.pose.pose.position.z, currentMarker.pose.pose.position.x,
+                tf::getYaw(currentMarker.pose.pose.orientation));
+            //lastZ = currentMarker.pose.pose.position.z;
+            //lastX = currentMarker.pose.pose.position.x;
 
-            ROS_INFO("currentMarker z is, %f", currentMarker.pose.pose.position.z);
-            ROS_INFO("currentMarker x is, %f", currentMarker.pose.pose.position.x);
-            ROS_INFO("currentMarker y is, %f", currentMarker.pose.pose.position.y);
+            // ROS_INFO("currentMarker z is, %f", currentMarker.pose.pose.position.z);
+            // ROS_INFO("currentMarker x is, %f", currentMarker.pose.pose.position.x);
+            // ROS_INFO("currentMarker y is, %f", currentMarker.pose.pose.position.y);
 
-            lastYaw = tf::getYaw(currentMarker.pose.pose.orientation);
+            // lastYaw = tf::getYaw(currentMarker.pose.pose.orientation);
 
             ROS_INFO("orientationOfQR is, %f", lastYaw);
-            count++;
+            //count++;
     }
 
 	if (ar_tracker_data->markers.size() == 2){
@@ -73,17 +102,20 @@ void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tra
 			else {
 				currentMarker = ar_tracker_data->markers[1];
 			}
-			lastZ = currentMarker.pose.pose.position.z;
-			lastX = currentMarker.pose.pose.position.x;
 
-			ROS_INFO("currentMarker z is, %f", currentMarker.pose.pose.position.z);
-			ROS_INFO("currentMarker x is, %f", currentMarker.pose.pose.position.x);
-			ROS_INFO("currentMarker y is, %f", currentMarker.pose.pose.position.y);
+            checkIfShouldUpdate(currentMarker.pose.pose.position.z, currentMarker.pose.pose.position.x,
+                tf::getYaw(currentMarker.pose.pose.orientation));
+			// lastZ = currentMarker.pose.pose.position.z;
+			// lastX = currentMarker.pose.pose.position.x;
 
-		 	lastYaw = tf::getYaw(currentMarker.pose.pose.orientation);
+			   ROS_INFO("currentMarker z is, %f", lastZ);
+			// ROS_INFO("currentMarker x is, %f", currentMarker.pose.pose.position.x);
+			// ROS_INFO("currentMarker y is, %f", currentMarker.pose.pose.position.y);
 
-		 	ROS_INFO("orientationOfQR is, %f", lastYaw);
-		 	count++;
+		 // 	lastYaw = tf::getYaw(currentMarker.pose.pose.orientation);
+
+		 // 	ROS_INFO("orientationOfQR is, %f", lastYaw);
+		 // 	count++;
 
 	}
 	
@@ -112,7 +144,7 @@ void moveToVerticalPosition(){
     if(timeToSendSpeed < 0.005){
         verticalCount++;
         ROS_INFO("verticalCount is %d", verticalCount);
-        if (verticalCount > 10){
+        if (verticalCount > 10 ){
     	moveToVertical = 0;
         ROS_INFO("move into Vertical success");
         }
