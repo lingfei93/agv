@@ -30,10 +30,10 @@ float desiredYaw = 0.02;
 
 
 void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tracker_data){
-	
+	ar_track_alvar_msgs::AlvarMarker currentMarker;
 	if (ar_tracker_data->markers.size() == 1){
 
-			ar_track_alvar_msgs::AlvarMarker currentMarker = ar_tracker_data->markers[0];
+			currentMarker = ar_tracker_data->markers[0];
 			lastZ = currentMarker.pose.pose.position.z;
 			lastX = currentMarker.pose.pose.position.x;
 
@@ -51,12 +51,12 @@ void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tra
 	if (ar_tracker_data->markers.size() == 2){
 
 			if((ar_tracker_data->markers[0].id % 2) == 0){
-				ar_track_alvar_msgs::AlvarMarker currentMarker = ar_tracker_data->markers[0];
+				currentMarker = ar_tracker_data->markers[0];
 			}
 			else {
-				ar_track_alvar_msgs::AlvarMarker currentMarker = ar_tracker_data->markers[1];
+				currentMarker = ar_tracker_data->markers[1];
 			}
-						lastZ = currentMarker.pose.pose.position.z;
+			lastZ = currentMarker.pose.pose.position.z;
 			lastX = currentMarker.pose.pose.position.x;
 
 			ROS_INFO("currentMarker z is, %f", currentMarker.pose.pose.position.z);
