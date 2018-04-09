@@ -70,7 +70,7 @@ double convertToEuclid(double x1, double y1, double x2, double y2){
 }
 
 void checkPath(float x1, float y1, float x2, float y2, int len){
-  if (abs(y2 - y1) < 0.5  && abs(x2 - x1) < 0.5){
+  if (fabs(y2 - y1) < 0.5  && fabs(x2 - x1) < 0.5){
    wasInPath = 0;
  }
  if ((len -1) != previousLength){
@@ -98,8 +98,8 @@ int directionToRotate(float initial, float end){
 }
 
 float amountToTurn(float difference){
-    if (abs(difference) < 3.14) return abs(difference);
-    else return (3.14159*2 - abs(difference));
+    if (fabs(difference) < 3.14) return fabs(difference);
+    else return (3.14159*2 - fabs(difference));
 
 
 }
@@ -124,7 +124,7 @@ void turnRobot(float initial, float end){
    
     move_base_path_pub.publish(wlr_cmd);
     ros::Duration(10).sleep(); //sleep for five second to read the lastKnownYaw
-   // difference = abs(lastKnownYaw - end);
+   // difference = fabs(lastKnownYaw - end);
     initial = lastKnownYaw;
     difference = end - initial;
     ROS_INFO("last known yaw is %f", lastKnownYaw);
