@@ -120,7 +120,7 @@ void moveToVerticalPosition(){
     }
     else {
         ROS_INFO("Time sent is %f", timeToSendSpeed * verticalScalingTime);
-    	sendVelToRobot(0, (desiredX - lastX)/timeToSendSpeed, 0, timeToSendSpeed * verticalScalingTime); //second variable is direction, last is control amount to send
+    	sendVelToRobot(0, (desiredX - lastX)/timeToSendSpeed * verticalSpeedScale, 0, timeToSendSpeed * verticalScalingTime); //second variable is direction, last is control amount to send
 	}
 }
 
@@ -185,6 +185,7 @@ int main(int argc, char** argv){
     n.getParam("speedFactor", speedFactor);
     n.getParam("calibratedParam", calibratedParam);
     n.getParam("verticalScalingTime", verticalScalingTime);
+    n.getParam("verticalSpeedScale", verticalSpeedScale);
 
     ROS_INFO("verticalScalingTime: %f", verticalScalingTime);
     ROS_INFO("speedFactor: %f", speedFactor);
