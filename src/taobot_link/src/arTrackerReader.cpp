@@ -40,9 +40,9 @@ int checkIfShouldUpdate(float z, float x, float yaw){
         ROS_INFO("updated lastX");
     }
     else {
-        previousZ = z;
-        previousX = x;
-        previousYaw = yaw;
+        lastZ = z;
+        lastX = x;
+        lastYaw = yaw;
     };
 }
 
