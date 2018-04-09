@@ -31,16 +31,42 @@ float desiredYaw = 0.02;
 
 void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tracker_data){
 	
-	if (ar_tracker_data->markers.size() > 0){
-		ar_track_alvar_msgs::AlvarMarker currentMarker = ar_tracker_data->markers[0];
-		lastZ = currentMarker.pose.pose.position.z;
-		lastX = currentMarker.pose.pose.position.x;
-		ROS_INFO("currentMarker z is, %f", currentMarker.pose.pose.position.z);
-		ROS_INFO("currentMarker x is, %f", currentMarker.pose.pose.position.x);
-		ROS_INFO("currentMarker y is, %f", currentMarker.pose.pose.position.y);
-	 	lastYaw = tf::getYaw(currentMarker.pose.pose.orientation);
-	 	ROS_INFO("orientationOfQR is, %f", lastYaw);
-	 	count++;
+	if (ar_tracker_data->markers.size() == 1){
+
+			ar_track_alvar_msgs::AlvarMarker currentMarker = ar_tracker_data->markers[0];
+			lastZ = currentMarker.pose.pose.position.z;
+			lastX = currentMarker.pose.pose.position.x;
+
+			ROS_INFO("currentMarker z is, %f", currentMarker.pose.pose.position.z);
+			ROS_INFO("currentMarker x is, %f", currentMarker.pose.pose.position.x);
+			ROS_INFO("currentMarker y is, %f", currentMarker.pose.pose.position.y);
+
+		 	lastYaw = tf::getYaw(currentMarker.pose.pose.orientation);
+
+		 	ROS_INFO("orientationOfQR is, %f", lastYaw);
+		 	count++;
+
+	}
+
+	if (ar_tracker_data->markers.size() == 2){
+
+			if((ar_tracker_data->markers[0].id % 2) == 0){
+				ar_track_alvar_msgs::AlvarMarker currentMarker = ar_tracker_data->markers[0];
+			}
+			else {
+				ar_track_alvar_msgs::AlvarMarker currentMarker = ar_tracker_data->markers[1];
+			}
+						lastZ = currentMarker.pose.pose.position.z;
+			lastX = currentMarker.pose.pose.position.x;
+
+			ROS_INFO("currentMarker z is, %f", currentMarker.pose.pose.position.z);
+			ROS_INFO("currentMarker x is, %f", currentMarker.pose.pose.position.x);
+			ROS_INFO("currentMarker y is, %f", currentMarker.pose.pose.position.y);
+
+		 	lastYaw = tf::getYaw(currentMarker.pose.pose.orientation);
+
+		 	ROS_INFO("orientationOfQR is, %f", lastYaw);
+		 	count++;
 
 	}
 	
