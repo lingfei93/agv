@@ -1,6 +1,6 @@
 #include <ros/ros.h>
 #include <std_msgs/Int32.h>
-#include <cmath.h>
+#include <cmath>
 #include <geometry_msgs/Twist.h>
 #include <actionlib_msgs/GoalID.h>
 #include <ar_track_alvar_msgs/AlvarMarkers.h>
@@ -104,7 +104,7 @@ void arMarkerMoveCallBack(const std_msgs::Int32::ConstPtr &msg){
 void moveToVerticalPosition(){
 	
 	float timeToSendSpeed;
-    timeToSendSpeed = (desiredX - lastX);
+    timeToSendSpeed = abs(desiredX - lastX);
     ROS_INFO("desiredX is %f, lastX is %f", desiredX, lastX);
     ROS_INFO("trying to move to Vertical Position");
     ROS_INFO("timeToSendSpeed is %f", timeToSendSpeed);

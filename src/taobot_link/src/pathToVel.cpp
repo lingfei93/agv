@@ -4,7 +4,7 @@
 #include <sensor_msgs/Imu.h>
 #include <iostream>
 #include <math.h>
-#include <cmath.h>
+#include <cmath>
 #include <geometry_msgs/PoseWithCovarianceStamped.h>
 #include "serial/serial.h"
 #include <tf/transform_datatypes.h>
