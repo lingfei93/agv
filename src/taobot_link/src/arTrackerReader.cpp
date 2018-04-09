@@ -16,7 +16,7 @@ ros::Publisher move_base_path_pub;
 ros::Subscriber move_to_trolley_sub;
 float lastZ, lastX, lastYaw; //this is the z orientation which the ar_pose_tracker should take over the steering of robot
 float orientationOfQR;
-float sleepFactor, speedFactor, calibratedParam,verticalScalingTime;
+float sleepFactor, speedFactor, calibratedParam,verticalScalingTime,verticalSpeedScale;
 int followPath, moveToAngular, moveToVertical, moveToHorizontal, angularPositionReached, count, inFinalControl = 0;
 
 void moveToAngularPosition();
