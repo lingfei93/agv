@@ -16,7 +16,7 @@ ros::Subscriber move_to_trolley_sub;
 float lastZ, lastX, lastYaw; //this is the z orientation which the ar_pose_tracker should take over the steering of robot
 float orientationOfQR;
 float sleepFactor, speedFactor, calibratedParam,verticalScalingTime;
-int followPath, moveToAngular, moveToVertical, moveToHorizontal, angularPositionReached, count;
+int followPath, moveToAngular, moveToVertical, moveToHorizontal, angularPositionReached, count, inFinalControl = 0;
 
 void moveToAngularPosition();
 void moveToVerticalPosition();
@@ -31,7 +31,7 @@ float desiredYaw = 0.02;
 
 void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tracker_data){
 	ar_track_alvar_msgs::AlvarMarker currentMarker;
-	if (ar_tracker_data->markers.size() == 1){
+	if (ar_tracker_data->markers.size() == 1 && inFinalControl == 1){
 
 			currentMarker = ar_tracker_data->markers[0];
 			lastZ = currentMarker.pose.pose.position.z;
@@ -47,6 +47,22 @@ void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tra
 		 	count++;
 
 	}
+
+    if (ar_tracker_data->markers.size() == 1 && ((ar_tracker_data->markers[0].id % 2) == 0) ){
+
+            currentMarker = ar_tracker_data->markers[0];
+            lastZ = currentMarker.pose.pose.position.z;
+            lastX = currentMarker.pose.pose.position.x;
+
+            ROS_INFO("currentMarker z is, %f", currentMarker.pose.pose.position.z);
+            ROS_INFO("currentMarker x is, %f", currentMarker.pose.pose.position.x);
+            ROS_INFO("currentMarker y is, %f", currentMarker.pose.pose.position.y);
+
+            lastYaw = tf::getYaw(currentMarker.pose.pose.orientation);
+
+            ROS_INFO("orientationOfQR is, %f", lastYaw);
+            count++;
+    }
 
 	if (ar_tracker_data->markers.size() == 2){
 
@@ -87,6 +103,7 @@ void arMarkerMoveCallBack(const std_msgs::Int32::ConstPtr &msg){
 void moveToVerticalPosition(){
 	
 	float timeToSendSpeed = abs(desiredX - lastX);
+    ROS_INFO("desiredX is %f, lastX is %f", desiredX, lastX);
     ROS_INFO("trying to move to Vertical Position");
     ROS_INFO("timeToSendSpeed is %f", timeToSendSpeed);
     if(timeToSendSpeed < 0.05){
