@@ -17,17 +17,17 @@ ros::Subscriber move_to_trolley_sub;
 float lastZ, lastX, lastYaw; //this is the z orientation which the ar_pose_tracker should take over the steering of robot
 float orientationOfQR;
 float previousZ, previousX, previousYaw;
-float sleepFactor, speedFactor, calibratedParam,verticalScalingTime,verticalSpeedScale;
+float sleepFactor, speedFactor, calibratedParam,verticalScalingTime,verticalSpeedScale, horizontalScalingTime, horizontalSpeedScale;
 int followPath, moveToAngular, moveToVertical, moveToHorizontal, angularPositionReached, count, inFinalControl = 0;
-int verticalCount;
+int verticalCount, horizontalCount;
 void moveToAngularPosition();
 void moveToVerticalPosition();
 void moveToHorizontalPosition(); 
 int checkIfShouldUpdate(float z, float x, float yaw);
 //void updateValues(float z, float x, float yaw);
 void sendVelToRobot(float x_speed, float y_speed, float angle, float timeToWriteSpeed);
-float desiredZ = 0.800;
-float desiredX = 0.2136;
+float desiredZ = 0.745;
+float desiredX = 0.229;
 float desiredYaw = 0.02;
 //z is 0.637
 //x is 0.196
@@ -146,8 +146,9 @@ void moveToVerticalPosition(){
         verticalCount++;
         ROS_INFO("verticalCount is %d", verticalCount);
         if (verticalCount > 10 ){
-    	moveToVertical = 0;
-        ROS_INFO("move into Vertical success");
+            verticalCount = 0;
+    	    moveToVertical = 0;
+            ROS_INFO("move into Vertical success");
         }
     	//moveToHorizontal = 1;
     }
@@ -158,14 +159,22 @@ void moveToVerticalPosition(){
 }
 
 void moveToHorizontalPosition(){
-	float scalingFactor = 5.5;
-	float timeToSendSpeed = fabs(desiredZ - lastZ);
-    if(timeToSendSpeed < 0.05){
-    	moveToHorizontal = 0;
-    	moveToAngular = 1;
+	float timeToSendSpeed;
+    timeToSendSpeed = fabs(desiredZ - lastZ);
+    ROS_INFO("desiredZ is %f, lastZ is %f", desiredZ, lastZ);
+    ROS_INFO("trying to move to Horizontal Position");
+    ROS_INFO("timeToSendSpeed is %f", timeToSendSpeed);
+    if(timeToSendSpeed < 0.01){
+        horizontalCount++;
+    	if (horizontalCount > 10 ){
+            horizontalCount = 0;
+            moveToHorizontal = 0;
+            ROS_INFO("move into Horizontal success");
+        }
     }
     else {
-    	sendVelToRobot((desiredZ - lastZ)/timeToSendSpeed, 0 , 0, timeToSendSpeed * scalingFactor); //second variable is direction, last is control amount to send
+    	ROS_INFO("Time sent is %f", timeToSendSpeed * horizontalScalingTime);
+        sendVelToRobot((desiredZ - lastZ)/timeToSendSpeed * horizontalSpeedScale, 0 , 0, timeToSendSpeed * horizontalScalingTime); 
 	}
 }
 
@@ -219,6 +228,8 @@ int main(int argc, char** argv){
     n.getParam("calibratedParam", calibratedParam);
     n.getParam("verticalScalingTime", verticalScalingTime);
     n.getParam("verticalSpeedScale", verticalSpeedScale);
+    n.getParam("horizontalScalingTime", horizontalScalingTime);
+    n.getParam("horizontalSpeedScale", horizontalSpeedScale);
 
     ROS_INFO("verticalScalingTime: %f", verticalScalingTime);
     ROS_INFO("speedFactor: %f", speedFactor);
