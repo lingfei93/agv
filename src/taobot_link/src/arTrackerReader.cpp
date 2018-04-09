@@ -18,7 +18,7 @@ float lastZ, lastX, lastYaw; //this is the z orientation which the ar_pose_track
 float orientationOfQR;
 float sleepFactor, speedFactor, calibratedParam,verticalScalingTime,verticalSpeedScale;
 int followPath, moveToAngular, moveToVertical, moveToHorizontal, angularPositionReached, count, inFinalControl = 0;
-
+int verticalCount;
 void moveToAngularPosition();
 void moveToVerticalPosition();
 void moveToHorizontalPosition(); 
@@ -108,10 +108,10 @@ void moveToVerticalPosition(){
     ROS_INFO("desiredX is %f, lastX is %f", desiredX, lastX);
     ROS_INFO("trying to move to Vertical Position");
     ROS_INFO("timeToSendSpeed is %f", timeToSendSpeed);
-    int verticalCount;
+    
     if(timeToSendSpeed < 0.005){
         verticalCount++;
-        ROS_INFO("Count is %d", verticalCount);
+        ROS_INFO("verticalCount is %d", verticalCount);
         if (verticalCount > 3){
     	moveToVertical = 0;
         ROS_INFO("move into Vertical success");
