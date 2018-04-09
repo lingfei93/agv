@@ -1,4 +1,4 @@
-#include <ros/ros.h>
+
 #include <std_msgs/Int32.h>
 #include <math.h>
 #include <geometry_msgs/Twist.h>
@@ -135,7 +135,7 @@ void moveToAngularPosition(){
 	ROS_INFO("entering angular control");
 	float scalingFactor = 5.5;
 	float timeToSendSpeed = fabs(desiredYaw - lastYaw);
-    if(timeToSendSpeed < 0.05){
+    if(timeToSendSpeed < 0.005){
     	moveToAngular = 0;
     	angularPositionReached = 1;
     }
