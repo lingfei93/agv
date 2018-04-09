@@ -15,15 +15,15 @@ ros::Publisher move_base_path_pub;
 ros::Subscriber move_to_trolley_sub;
 float lastZ, lastX, lastYaw; //this is the z orientation which the ar_pose_tracker should take over the steering of robot
 float orientationOfQR;
-float sleepFactor, speedFactor, calibratedParam;
-int followPath, moveToAngular, moveToVertical, moveToHorizontal, angularPositionReached, count;
+float sleepFactor, speedFactor, calibratedParam,verticalScalingTime;
+int followPath, moveToAngular, moveToVertical, moveToHoizontal, angularPositionReached, count;
 
 void moveToAngularPosition();
 void moveToVerticalPosition();
 void moveToHorizontalPosition(); 
 void sendVelToRobot(float x_speed, float y_speed, float angle, float timeToWriteSpeed);
-float desiredZ = 0.637;
-float desiredX = 0.196;
+float desiredZ = 0.800;
+float desiredX = 0.2136;
 float desiredYaw = 0.02;
 //z is 0.637
 //x is 0.196
@@ -85,14 +85,15 @@ void arMarkerMoveCallBack(const std_msgs::Int32::ConstPtr &msg){
 	}
 }
 void moveToVerticalPosition(){
-	float scalingFactor = 5.5;
+	
 	float timeToSendSpeed = abs(desiredX - lastX);
+    ROS_INFO("trying to move to Vertical Position");
     if(timeToSendSpeed < 0.05){
     	moveToVertical = 0;
-    	moveToHorizontal = 1;
+    	//moveToHorizontal = 1;
     }
     else {
-    	sendVelToRobot(0, (desiredX - lastX)/timeToSendSpeed, 0, timeToSendSpeed * scalingFactor); //second variable is direction, last is control amount to send
+    	sendVelToRobot(0, (desiredX - lastX)/timeToSendSpeed, 0, timeToSendSpeed * verticalScalingTime); //second variable is direction, last is control amount to send
 	}
 }
 
@@ -132,6 +133,7 @@ void sendVelToRobot(float x_speed, float y_speed, float angle, float timeToWrite
     move_base_path_pub.publish(wlr_cmd);
 
     ros::Duration(timeToWriteSpeed).sleep();
+
     wlr_cmd.linear.x         = 0;
     wlr_cmd.linear.y        = 0;
     wlr_cmd.angular.z = 0;
@@ -155,8 +157,9 @@ int main(int argc, char** argv){
     n.getParam("sleepFactor", sleepFactor);
     n.getParam("speedFactor", speedFactor);
     n.getParam("calibratedParam", calibratedParam);
+    n.getParam("verticalScalingTime", verticalScalingTime);
 
-    ROS_INFO("sleepFactor: %f", sleepFactor);
+    ROS_INFO("verticalScalingTime: %f", verticalScalingTime);
     ROS_INFO("speedFactor: %f", speedFactor);
 
     actionlib_msgs::GoalID emptyGoal;
@@ -178,9 +181,9 @@ int main(int argc, char** argv){
     tf::StampedTransform poseRobot;
     while (   ros::ok()){
     	if (followPath == 1 && moveToVertical == 1){
-    		moveToTrolley(); 
-    		moveToVertical = 0;//testMoveToTrolley();
-    		//moveToVerticalPosition();
+    		//moveToTrolley(); 
+    		//moveToVertical = 0;//testMoveToTrolley();
+    		moveToVerticalPosition();
     	}
     	if (followPath == 1 && moveToHorizontal ==1){
     		moveToHorizontalPosition();
