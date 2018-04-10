@@ -1,7 +1,7 @@
 sleepFactor: 6.50
 speedFactor: 0.0675
 calibratedParam: 0.843
-verticalScalingTime: 0.8
+verticalScalingTime: 5
 verticalSpeedScale: 0.015
-horizontalScalingTime: 0.8
+horizontalScalingTime: 5
 horizontalSpeedScale: 0.010
