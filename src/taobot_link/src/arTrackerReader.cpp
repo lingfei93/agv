@@ -305,9 +305,11 @@ void moveToAngularPosition(){
             ROS_INFO("cannot see marker");
             sendVelToRobot(0, lastDirection , 0, lastTime);
         }
+        else {
     	sendVelToRobot(0, 0 , (desiredYaw - lastYaw)/timeToSendSpeed, timeToSendSpeed * scalingFactor); //second variable is direction, last is control amount to send
         lastDirection = (desiredYaw - lastYaw)/timeToSendSpeed;
         lastTime = timeToSendSpeed * scalingFactor;
+        }
     }
 }
 
