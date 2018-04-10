@@ -152,7 +152,7 @@ void moveToVerticalPosition(){
     ROS_INFO("trying to move to Vertical Position");
     ROS_INFO("timeToSendSpeed is %f", timeToSendSpeed);
     
-    if(timeToSendSpeed < 0.01){
+    if(timeToSendSpeed < 0.015){
         verticalCount++;
         ROS_INFO("verticalCount is %d", verticalCount);
         if (verticalCount > 10 ){
@@ -175,7 +175,7 @@ void moveToHorizontalPosition(){
     ROS_INFO("desiredZ is %f, lastZ is %f", desiredZ, lastZ);
     ROS_INFO("trying to move to Horizontal Position");
     ROS_INFO("timeToSendSpeed is %f", timeToSendSpeed);
-    if(timeToSendSpeed < 0.01){
+    if(timeToSendSpeed < 0.015){
         horizontalCount++;
     	if (horizontalCount > 10 ){
             horizontalCount = 0;
