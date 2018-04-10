@@ -148,6 +148,7 @@ void moveToVerticalPosition(){
         if (verticalCount > 10 ){
             verticalCount = 0;
     	    moveToVertical = 0;
+            moveToHorizontal = 1;
             ROS_INFO("move into Vertical success");
         }
     	//moveToHorizontal = 1;
@@ -251,7 +252,7 @@ int main(int argc, char** argv){
     tf::TransformListener listener;
     geometry_msgs::PoseStamped robot_pose;
     tf::StampedTransform poseRobot;
-    ros::Rate r(5);
+    ros::Rate r(3);
     while (   ros::ok()){
     	if (followPath == 1 && moveToVertical == 1){
     		//moveToTrolley(); 
