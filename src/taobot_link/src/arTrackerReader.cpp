@@ -29,6 +29,7 @@ void sendVelToRobot(float x_speed, float y_speed, float angle, float timeToWrite
 float desiredZ = 0.745;
 float desiredX = 0.229;
 float desiredYaw = 0.02;
+int lastSeenMarker = 0;
 //z is 0.637
 //x is 0.196
 
@@ -43,7 +44,7 @@ int checkIfShouldUpdate(float z, float x, float yaw){
         lastZ = z;
         lastX = x;
         lastYaw = yaw;
-    };
+    }
 }
 
 // void updateValues(float z, float x, float yaw){
@@ -74,6 +75,7 @@ void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tra
 
 		 	ROS_INFO("orientationOfQR is, %f", lastYaw);
 		 	count++;
+            lastSeenMarker = 1;
 
 	}
 
@@ -92,6 +94,7 @@ void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tra
             // lastYaw = tf::getYaw(currentMarker.pose.pose.orientation);
 
             ROS_INFO("orientationOfQR is, %f", lastYaw);
+            lastSeenMarker = 1;
             //count++;
     }
 
@@ -117,8 +120,15 @@ void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tra
 
 		 // 	ROS_INFO("orientationOfQR is, %f", lastYaw);
 		 // 	count++;
+               lastSeenMarker = 1;
 
 	}
+
+    if(ar_tracker_data->markers.size() == 0){
+        //lastseenMarkeris 0
+        ROS_INFO("CANNOT SEE MARKER");
+        lastSeenMarker = 0;
+    }
 	
 
 
@@ -174,9 +184,16 @@ void moveToHorizontalPosition(){
         }
     }
     else {
+        if(lastSeenMarker == 0){
+            ROS_INFO("cannot see marker, moving forward");
+            sendVelToRobot(1, 0, 0, 0.5);
+        }
+        else {
     	ROS_INFO("Time sent is %f", timeToSendSpeed * horizontalScalingTime);
         sendVelToRobot((desiredZ - lastZ)/timeToSendSpeed * horizontalSpeedScale, 0 , 0, timeToSendSpeed * horizontalScalingTime); 
+        }
 	}
+    
 }
 
 void moveToAngularPosition(){
@@ -252,7 +269,7 @@ int main(int argc, char** argv){
     tf::TransformListener listener;
     geometry_msgs::PoseStamped robot_pose;
     tf::StampedTransform poseRobot;
-    ros::Rate r(3);
+    ros::Rate r(1);
     while (   ros::ok()){
     	if (followPath == 1 && moveToVertical == 1){
     		//moveToTrolley(); 
@@ -272,6 +289,6 @@ int main(int argc, char** argv){
 
 
     ros::spinOnce();
-    r.sleep();
+    ros::Duration(0.5).sleep();
     }//for ros::ok();
 }
