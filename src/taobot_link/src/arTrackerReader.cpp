@@ -4,7 +4,7 @@
 #include <geometry_msgs/Twist.h>
 #include <actionlib_msgs/GoalID.h>
 #include <ar_track_alvar_msgs/AlvarMarkers.h>
-#include <ar_track_alvar_msgs/AlvarMarkers.h>
+#include <ar_track_alvar_msgs/AlvarMarker.h>
 #include <tf/transform_datatypes.h> //for yaw;
 #include <tf/transform_listener.h> //for transform_listener
 
@@ -19,16 +19,20 @@ float orientationOfQR;
 float previousZ, previousX, previousYaw;
 float sleepFactor, speedFactor, calibratedParam,verticalScalingTime,verticalSpeedScale, horizontalScalingTime, horizontalSpeedScale;
 int followPath, moveToAngular, moveToVertical, moveToHorizontal, angularPositionReached, count, inFinalControl = 0;
+int finalMoveHorizontal, finalMoveVertical; 
 int verticalCount, horizontalCount;
 void moveToAngularPosition();
 void moveToVerticalPosition();
 void moveToHorizontalPosition(); 
+void finalMoveToHorizontalPosition();
 int checkIfShouldUpdate(float z, float x, float yaw);
 //void updateValues(float z, float x, float yaw);
 void sendVelToRobot(float x_speed, float y_speed, float angle, float timeToWriteSpeed);
 float desiredZ = 0.745;
 float desiredX = 0.220;
 float desiredYaw = 0.02;
+float finalDesiredZ = 0.1777;
+float finalDesiredX = 0378;
 int lastSeenMarker = 0;
 //z is 0.637
 //x is 0.196
@@ -93,7 +97,8 @@ void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tra
 
             // lastYaw = tf::getYaw(currentMarker.pose.pose.orientation);
 
-            ROS_INFO("orientationOfQR is, %f", lastYaw);
+            ROS_INFO("yaw orientationOfQR is, %f", lastYaw);
+            ROS_INFO("")
             lastSeenMarker = 1;
             //count++;
     }
@@ -148,7 +153,7 @@ void moveToVerticalPosition(){
 	
 	float timeToSendSpeed;
     timeToSendSpeed = fabs(desiredX - lastX);
-    ROS_INFO("desiredX is %f, lastX is %f", desiredX, lastX);
+    ROS_INFO("desiredX is %f, lastX is %f", finalDesiredX, lastX);
     ROS_INFO("trying to move to Vertical Position");
     ROS_INFO("timeToSendSpeed is %f", timeToSendSpeed);
     
@@ -198,6 +203,65 @@ void moveToHorizontalPosition(){
 	}
     
 }
+
+
+void finalMoveToHorizontalPosition(){
+    float timeToSendSpeed;
+    timeToSendSpeed = fabs(lastZ - finalDesiredZ);
+    ROS_INFO("desiredZ is %f, lastZ is %f", finalDesiredZ, lastZ);
+    ROS_INFO("trying to move to Horizontal Position");
+    ROS_INFO("timeToSendSpeed is %f", timeToSendSpeed);
+    if(timeToSendSpeed < 0.03){
+        horizontalCount++;
+        if (horizontalCount > 10 ){
+            horizontalCount = 0;
+            finalMoveToHorizontal = 0;
+            finalMoveToVertical = 1;
+           
+
+            ROS_INFO("move into final Horizontal success");
+        }
+    }
+    else {
+        if(lastSeenMarker == 0){
+            ROS_INFO("cannot see marker, moving backwards");
+            sendVelToRobot(0.5, 0, 0, 0.5);
+        }
+        else {
+        ROS_INFO("Time sent is %f", timeToSendSpeed * horizontalScalingTime);
+        sendVelToRobot((lastZ - desiredZ)/timeToSendSpeed * horizontalSpeedScale * 0.1, 0 , 0, timeToSendSpeed * horizontalScalingTime); 
+        }
+    }
+    
+}
+
+
+void finalMoveToVerticalPosition(){
+    
+    float timeToSendSpeed;
+    timeToSendSpeed = fabs(finalDesiredX - lastX);
+    ROS_INFO("desiredX is %f, lastX is %f", finalDesiredX, lastX);
+    ROS_INFO("trying to move to Vertical Position");
+    ROS_INFO("timeToSendSpeed is %f", timeToSendSpeed);
+    
+    if(timeToSendSpeed < 0.03){
+        verticalCount++;
+        ROS_INFO("verticalCount is %d", verticalCount);
+        if (verticalCount > 10 ){
+            verticalCount = 0;
+            finalMoveToVertical = 0;
+            reachedGoal = 1;
+            ROS_INFO("move into Vertical success");
+        }
+        //moveToHorizontal = 1;
+    }
+    else {
+        ROS_INFO("Time sent is %f", timeToSendSpeed * verticalScalingTime);
+        sendVelToRobot(0, (desiredX - lastX)/timeToSendSpeed * verticalSpeedScale, 0, timeToSendSpeed * verticalScalingTime); //second variable is direction, last is control amount to send
+    }
+}
+
+
 
 void moveToAngularPosition(){
 	ROS_INFO("entering angular control");
@@ -275,7 +339,7 @@ int main(int argc, char** argv){
     geometry_msgs::PoseStamped robot_pose;
     tf::StampedTransform poseRobot;
     ros::Rate r(1);
-    while (   ros::ok()){
+    while (ros::ok()){
         if (followPath == 1 && moveToHorizontal ==1){
             moveToHorizontalPosition();
         }
@@ -289,9 +353,24 @@ int main(int argc, char** argv){
     	//if (followPath == 1 && moveToAngular == 1){
     	//	moveToAngularPosition();
     	//}
+        //execute trolleyMove
     	if (followPath == 1 && angularPositionReached == 1){
     		moveToTrolley();
+            inFinalControl = 1;
+            finalMoveHorizontal = 1;
     	}
+        //checkQRcodeInside, final move();
+        if (inFinalControl == 1 && finalMoveHorizontal == 1){
+            finalMoveToHorizontalPosition();
+        }
+        //checkQRcodeinside, final vertical move
+        if (inFinalControl == 1 && finalMoveToVertical == 1){
+            finalMoveToVerticalPosition();
+        }
+        if (reachedGoal){
+            sendCommandToArduino();
+
+        }
 
 
 
