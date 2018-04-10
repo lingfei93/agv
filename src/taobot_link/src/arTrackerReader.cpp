@@ -20,7 +20,7 @@ float previousZ, previousX, previousYaw;
 float sleepFactor, speedFactor, calibratedParam,verticalScalingTime,verticalSpeedScale, horizontalScalingTime, horizontalSpeedScale;
 int followPath, moveToAngular, moveToVertical, moveToHorizontal, angularPositionReached, count, inFinalControl = 0;
 int finalMoveToHorizontal, finalMoveToVertical, reachedGoal; 
-int verticalCount, horizontalCount;
+int verticalCount, horizontalCount, angularCount, lastDirection, lastTime;
 void moveToAngularPosition();
 void moveToVerticalPosition();
 void moveToHorizontalPosition(); 
@@ -30,7 +30,7 @@ int checkIfShouldUpdate(float z, float x, float yaw);
 void sendVelToRobot(float x_speed, float y_speed, float angle, float timeToWriteSpeed);
 float desiredZ = 0.745;
 float desiredX = 0.220;
-float desiredYaw = 0.02;
+float desiredYaw = 0.00;
 float finalDesiredZ = 0.1777;
 float finalDesiredX = 0.378;
 int lastSeenMarker = 0;
@@ -41,13 +41,13 @@ int checkIfShouldUpdate(float z, float x, float yaw){
     if (fabs(z - previousZ) < 0.005 && fabs(x - previousX) < 0.005 && fabs(yaw - previousYaw) < 0.005){
         lastZ = z;
         lastX = x;
-        lastYaw = yaw;
+       // lastYaw = yaw;
         ROS_INFO("updated lastX");
     }
     else {
         lastZ = z;
         lastX = x;
-        lastYaw = yaw;
+     //   lastYaw = yaw;
     }
 }
 
@@ -59,11 +59,14 @@ int checkIfShouldUpdate(float z, float x, float yaw){
 
 void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tracker_data){
 	ar_track_alvar_msgs::AlvarMarker currentMarker;
+    float z, w, angle, angle2;
 	if (ar_tracker_data->markers.size() == 1 && inFinalControl == 1){
             currentMarker = ar_tracker_data->markers[0];
             //updateValues(currentMarker.pose.pose.position.z,currentMarker.pose.pose.position.x, 
             //tf::getYaw(currentMarker.pose.pose.orientation) );
 
+
+            
 			
             checkIfShouldUpdate(currentMarker.pose.pose.position.z, currentMarker.pose.pose.position.x,
                 tf::getYaw(currentMarker.pose.pose.orientation));
@@ -78,6 +81,13 @@ void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tra
 		 	//lastYaw = tf::getYaw(currentMarker.pose.pose.orientation);
 
 		 	ROS_INFO("orientationOfQR is, %f", lastYaw);
+
+            z = currentMarker.pose.pose.orientation.z;
+            w = currentMarker.pose.pose.orientation.w;
+
+            angle = (2*acos(w));
+            lastYaw = z/sin(angle/2);
+
 		 	count++;
             lastSeenMarker = 1;
 
@@ -100,6 +110,10 @@ void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tra
             ROS_INFO("yaw orientationOfQR is, %f", lastYaw);
             ROS_INFO("");
             lastSeenMarker = 1;
+            z = currentMarker.pose.pose.orientation.z;
+            w = currentMarker.pose.pose.orientation.w;
+
+            angle = (2*acos(w));
             //count++;
     }
 
@@ -127,6 +141,13 @@ void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tra
 		 // 	count++;
                lastSeenMarker = 1;
 
+            z = currentMarker.pose.pose.orientation.z;
+            w = currentMarker.pose.pose.orientation.w;
+
+            angle = (2*acos(w));
+
+
+
 	}
 
     if(ar_tracker_data->markers.size() == 0){
@@ -143,7 +164,7 @@ void arMarkerMoveCallBack(const std_msgs::Int32::ConstPtr &msg){
 	ROS_INFO("recieved info for ar_marker_callback, it is, %d", msg->data);
 	if (msg->data == 1){
 		followPath = 1;
-		moveToHorizontal = 1;
+		moveToAngular = 1;
 	}
 	if (msg->data == 0){
 		followPath = 0;
@@ -225,7 +246,7 @@ void finalMoveToHorizontalPosition(){
     else {
         if(lastSeenMarker == 0){
             ROS_INFO("cannot see marker, moving backwards");
-            sendVelToRobot(0.5, 0, 0, 0.5);
+            sendVelToRobot(-0.5, 0, 0, 0.5);
         }
         else {
         ROS_INFO("Time sent is %f", timeToSendSpeed * horizontalScalingTime);
@@ -256,8 +277,12 @@ void finalMoveToVerticalPosition(){
         //moveToHorizontal = 1;
     }
     else {
+        if(lastSeenMarker == 0){
+            ROS_INFO("cannot see marker, moving rightwards");
+            sendVelToRobot(0, 0.5, 0, 0.5);
+        }
         ROS_INFO("Time sent is %f", timeToSendSpeed * verticalScalingTime);
-        sendVelToRobot(0, (desiredX - lastX)/timeToSendSpeed * verticalSpeedScale, 0, timeToSendSpeed * verticalScalingTime); //second variable is direction, last is control amount to send
+        sendVelToRobot(0, (desiredX - lastX)/timeToSendSpeed * verticalSpeedScale * 0.1, 0, timeToSendSpeed * verticalScalingTime); //second variable is direction, last is control amount to send
     }
 }
 
@@ -268,12 +293,22 @@ void moveToAngularPosition(){
 	float scalingFactor = 5.5;
 	float timeToSendSpeed = fabs(desiredYaw - lastYaw);
     if(timeToSendSpeed < 0.005){
+        angularCount++;
+        if (angularCount > 10){
     	moveToAngular = 0;
-    	angularPositionReached = 1;
+    	moveToHorizontal = 1;
+        }
     }
     else {
+
+        if(lastSeenMarker == 0){
+            ROS_INFO("cannot see marker");
+            sendVelToRobot(0, lastDirection , 0, lastTime);
+        }
     	sendVelToRobot(0, 0 , (desiredYaw - lastYaw)/timeToSendSpeed, timeToSendSpeed * scalingFactor); //second variable is direction, last is control amount to send
-	}
+        lastDirection = (desiredYaw - lastYaw)/timeToSendSpeed;
+        lastTime = timeToSendSpeed * scalingFactor;
+    }
 }
 
 
@@ -340,6 +375,9 @@ int main(int argc, char** argv){
     tf::StampedTransform poseRobot;
     ros::Rate r(1);
     while (ros::ok()){
+        if (followPath == 1 && moveToAngular == 1){
+            moveToAngularPosition();
+        }
         if (followPath == 1 && moveToHorizontal ==1){
             moveToHorizontalPosition();
         }
@@ -368,6 +406,8 @@ int main(int argc, char** argv){
             finalMoveToVerticalPosition();
         }
         if (reachedGoal){
+
+            ROS_INFO("Have reached the end");
            // sendCommandToArduino();
 
         }
