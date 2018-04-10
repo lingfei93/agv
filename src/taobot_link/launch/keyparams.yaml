@@ -3,3 +3,5 @@ speedFactor: 0.0675
 calibratedParam: 0.843
 verticalScalingTime: 0.8
 verticalSpeedScale: 0.020
+horizontalScalingTime: 0.8
+horizontalSpeedScale: 0.020
