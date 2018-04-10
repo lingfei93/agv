@@ -27,7 +27,7 @@ int checkIfShouldUpdate(float z, float x, float yaw);
 //void updateValues(float z, float x, float yaw);
 void sendVelToRobot(float x_speed, float y_speed, float angle, float timeToWriteSpeed);
 float desiredZ = 0.745;
-float desiredX = 0.240;
+float desiredX = 0.220;
 float desiredYaw = 0.02;
 int lastSeenMarker = 0;
 //z is 0.637
@@ -138,7 +138,7 @@ void arMarkerMoveCallBack(const std_msgs::Int32::ConstPtr &msg){
 	ROS_INFO("recieved info for ar_marker_callback, it is, %d", msg->data);
 	if (msg->data == 1){
 		followPath = 1;
-		moveToVertical = 1;
+		moveToHorizontal = 1;
 	}
 	if (msg->data == 0){
 		followPath = 0;
@@ -158,7 +158,7 @@ void moveToVerticalPosition(){
         if (verticalCount > 10 ){
             verticalCount = 0;
     	    moveToVertical = 0;
-            moveToHorizontal = 1;
+            angularPositionReached = 1;
             ROS_INFO("move into Vertical success");
         }
     	//moveToHorizontal = 1;
@@ -180,7 +180,8 @@ void moveToHorizontalPosition(){
     	if (horizontalCount > 10 ){
             horizontalCount = 0;
             moveToHorizontal = 0;
-            angularPositionReached = 1;
+            moveToVertical = 1;
+           
 
             ROS_INFO("move into Horizontal success");
         }
@@ -275,14 +276,16 @@ int main(int argc, char** argv){
     tf::StampedTransform poseRobot;
     ros::Rate r(1);
     while (   ros::ok()){
+        if (followPath == 1 && moveToHorizontal ==1){
+            moveToHorizontalPosition();
+        }
+
     	if (followPath == 1 && moveToVertical == 1){
     		//moveToTrolley(); 
     		//moveToVertical = 0;//testMoveToTrolley();
     		moveToVerticalPosition();
     	}
-    	if (followPath == 1 && moveToHorizontal ==1){
-    		moveToHorizontalPosition();
-    	}
+
     	//if (followPath == 1 && moveToAngular == 1){
     	//	moveToAngularPosition();
     	//}
