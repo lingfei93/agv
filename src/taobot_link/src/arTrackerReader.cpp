@@ -175,11 +175,13 @@ void moveToHorizontalPosition(){
     ROS_INFO("desiredZ is %f, lastZ is %f", desiredZ, lastZ);
     ROS_INFO("trying to move to Horizontal Position");
     ROS_INFO("timeToSendSpeed is %f", timeToSendSpeed);
-    if(timeToSendSpeed < 0.015){
+    if(timeToSendSpeed < 0.015   ){
         horizontalCount++;
     	if (horizontalCount > 10 ){
             horizontalCount = 0;
             moveToHorizontal = 0;
+            angularPositionReached = 1;
+
             ROS_INFO("move into Horizontal success");
         }
     }
@@ -280,9 +282,9 @@ int main(int argc, char** argv){
     	if (followPath == 1 && moveToHorizontal ==1){
     		moveToHorizontalPosition();
     	}
-    	if (followPath == 1 && moveToAngular == 1){
-    		moveToAngularPosition();
-    	}
+    	//if (followPath == 1 && moveToAngular == 1){
+    	//	moveToAngularPosition();
+    	//}
     	if (followPath == 1 && angularPositionReached == 1){
     		moveToTrolley();
     	}
