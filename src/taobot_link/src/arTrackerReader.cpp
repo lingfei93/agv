@@ -27,7 +27,7 @@ int checkIfShouldUpdate(float z, float x, float yaw);
 //void updateValues(float z, float x, float yaw);
 void sendVelToRobot(float x_speed, float y_speed, float angle, float timeToWriteSpeed);
 float desiredZ = 0.745;
-float desiredX = 0.229;
+float desiredX = 0.240;
 float desiredYaw = 0.02;
 int lastSeenMarker = 0;
 //z is 0.637
@@ -152,7 +152,7 @@ void moveToVerticalPosition(){
     ROS_INFO("trying to move to Vertical Position");
     ROS_INFO("timeToSendSpeed is %f", timeToSendSpeed);
     
-    if(timeToSendSpeed < 0.015){
+    if(timeToSendSpeed < 0.03){
         verticalCount++;
         ROS_INFO("verticalCount is %d", verticalCount);
         if (verticalCount > 10 ){
@@ -175,7 +175,7 @@ void moveToHorizontalPosition(){
     ROS_INFO("desiredZ is %f, lastZ is %f", desiredZ, lastZ);
     ROS_INFO("trying to move to Horizontal Position");
     ROS_INFO("timeToSendSpeed is %f", timeToSendSpeed);
-    if(timeToSendSpeed < 0.015   ){
+    if(timeToSendSpeed < 0.03   ){
         horizontalCount++;
     	if (horizontalCount > 10 ){
             horizontalCount = 0;
