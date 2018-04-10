@@ -171,7 +171,7 @@ void moveToVerticalPosition(){
 
 void moveToHorizontalPosition(){
 	float timeToSendSpeed;
-    timeToSendSpeed = fabs(desiredZ - lastZ);
+    timeToSendSpeed = fabs(lastZ - desiredZ);
     ROS_INFO("desiredZ is %f, lastZ is %f", desiredZ, lastZ);
     ROS_INFO("trying to move to Horizontal Position");
     ROS_INFO("timeToSendSpeed is %f", timeToSendSpeed);
@@ -190,7 +190,7 @@ void moveToHorizontalPosition(){
         }
         else {
     	ROS_INFO("Time sent is %f", timeToSendSpeed * horizontalScalingTime);
-        sendVelToRobot((desiredZ - lastZ)/timeToSendSpeed * horizontalSpeedScale, 0 , 0, timeToSendSpeed * horizontalScalingTime); 
+        sendVelToRobot((lastZ - desiredZ)/timeToSendSpeed * horizontalSpeedScale, 0 , 0, timeToSendSpeed * horizontalScalingTime); 
         }
 	}
     
