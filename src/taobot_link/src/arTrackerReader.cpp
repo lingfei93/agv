@@ -238,6 +238,7 @@ void moveToTrolley(){
 	ROS_INFO("enter moveTrolley");
 	float timeToWriteSpeed = lastZ * sleepFactor * calibratedParam/(lastZ);
 	sendVelToRobot(1, 0, 0, timeToWriteSpeed);
+    angularPositionReached = 0;
 }
 
 int main(int argc, char** argv){
