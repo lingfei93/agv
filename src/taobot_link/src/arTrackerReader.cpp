@@ -216,6 +216,7 @@ void sendVelToRobot(float x_speed, float y_speed, float angle, float timeToWrite
 	wlr_cmd.linear.x         = x_speed * speedFactor;
     wlr_cmd.linear.y        = y_speed * speedFactor;
     wlr_cmd.angular.z = angle * speedFactor;
+    ROS_INFO("x speed is %f, y speed is %f, angular speed is %f",wlr_cmd.linear.x, wlr_cmd.linear.y, wlr_cmd.angular.z );
     ROS_INFO("timeToWriteSpeed is %f", timeToWriteSpeed);
     move_base_path_pub.publish(wlr_cmd);
 
@@ -289,6 +290,6 @@ int main(int argc, char** argv){
 
 
     ros::spinOnce();
-    ros::Duration(0.5).sleep();
+    ros::Duration(1).sleep();
     }//for ros::ok();
 }
