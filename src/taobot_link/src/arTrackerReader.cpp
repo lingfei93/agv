@@ -19,7 +19,7 @@ float orientationOfQR;
 float previousZ, previousX, previousYaw;
 float sleepFactor, speedFactor, calibratedParam,verticalScalingTime,verticalSpeedScale, horizontalScalingTime, horizontalSpeedScale;
 int followPath, moveToAngular, moveToVertical, moveToHorizontal, angularPositionReached, count, inFinalControl = 0;
-int finalMoveHorizontal, finalMoveVertical; 
+int finalMoveToHorizontal, finalMoveToVertical, reachedGoal; 
 int verticalCount, horizontalCount;
 void moveToAngularPosition();
 void moveToVerticalPosition();
@@ -32,7 +32,7 @@ float desiredZ = 0.745;
 float desiredX = 0.220;
 float desiredYaw = 0.02;
 float finalDesiredZ = 0.1777;
-float finalDesiredX = 0378;
+float finalDesiredX = 0.378;
 int lastSeenMarker = 0;
 //z is 0.637
 //x is 0.196
@@ -98,7 +98,7 @@ void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tra
             // lastYaw = tf::getYaw(currentMarker.pose.pose.orientation);
 
             ROS_INFO("yaw orientationOfQR is, %f", lastYaw);
-            ROS_INFO("")
+            ROS_INFO("");
             lastSeenMarker = 1;
             //count++;
     }
@@ -357,10 +357,10 @@ int main(int argc, char** argv){
     	if (followPath == 1 && angularPositionReached == 1){
     		moveToTrolley();
             inFinalControl = 1;
-            finalMoveHorizontal = 1;
+            finalMoveToHorizontal = 1;
     	}
         //checkQRcodeInside, final move();
-        if (inFinalControl == 1 && finalMoveHorizontal == 1){
+        if (inFinalControl == 1 && finalMoveToHorizontal == 1){
             finalMoveToHorizontalPosition();
         }
         //checkQRcodeinside, final vertical move
@@ -368,7 +368,7 @@ int main(int argc, char** argv){
             finalMoveToVerticalPosition();
         }
         if (reachedGoal){
-            sendCommandToArduino();
+           // sendCommandToArduino();
 
         }
 

@@ -21,7 +21,7 @@ void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tra
             y = currentMarker.pose.pose.orientation.y;
             x = currentMarker.pose.pose.orientation.x;
             angle = (2*acos(w));
-            angle2 = atan(z,w)*2;
+            angle2 = z/sin(angle/2);
             ROS_INFO("angle 1 is : %f,angle2 is : %f", angle, angle2);
             
             yaw = atan2(2.0*(y*z + w*x), w*w - x*x - y*y + z*z);
@@ -34,7 +34,7 @@ void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tra
     else if(ar_tracker_data->markers.size() == 0){
         //lastseenMarkeris 0
         ROS_INFO("CANNOT SEE MARKER");
-        lastSeenMarker = 0;
+        //lastSeenMarker = 0;
     }
 
 }
