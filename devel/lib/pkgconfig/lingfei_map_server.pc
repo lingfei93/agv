@@ -1,0 +1,8 @@
+prefix=/home/eee/lingfei_ws/agv/devel
+
+Name: lingfei_map_server
+Description: Description of lingfei_map_server
+Version: 1.14.3
+Cflags: -I/home/eee/lingfei_ws/agv/src/lingfei_map_server/include
+Libs: -L/home/eee/lingfei_ws/agv/devel/lib -lmap_server_image_loader
+Requires: roscpp nav_msgs tf2

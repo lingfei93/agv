@@ -1,0 +1,8 @@
+prefix=/home/eee/lingfei_ws/agv/install
+
+Name: serial
+Description: Description of serial
+Version: 1.2.1
+Cflags: -I/home/eee/lingfei_ws/agv/install/include
+Libs: -L/home/eee/lingfei_ws/agv/install/lib -lserial -lrt -lpthread
+Requires: 

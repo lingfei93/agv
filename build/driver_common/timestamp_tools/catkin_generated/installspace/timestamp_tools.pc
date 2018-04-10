@@ -1,0 +1,8 @@
+prefix=/home/eee/lingfei_ws/agv/install
+
+Name: timestamp_tools
+Description: Description of timestamp_tools
+Version: 1.6.8
+Cflags: -I/home/eee/lingfei_ws/agv/install/include
+Libs: -L/home/eee/lingfei_ws/agv/install/lib 
+Requires: roslib roscpp
