@@ -302,7 +302,7 @@ void moveToAngularPosition(){
 	float scalingFactor = 5.5/2;
 	float timeToSendSpeed = fabs(desiredYaw - lastYaw);
     ROS_INFO("desiredYaw is %f, lastYaw is %f, timeToSendSpeed is %f", desiredYaw, lastYaw, timeToSendSpeed);
-    if(timeToSendSpeed < 0.001){
+    if(timeToSendSpeed < 0.09){
         angularCount++;
         if (angularCount > 10){
     	moveToAngular = 0;
