@@ -301,7 +301,7 @@ void finalMoveToVerticalPosition(){
 
 void moveToAngularPosition(){
 	ROS_INFO("entering angular control");
-	float scalingFactor = 5.5/2;
+	float scalingFactor = 5.5/4;
 	float timeToSendSpeed = fabs(desiredYaw - lastYaw);
     ROS_INFO("desiredYaw is %f, lastYaw is %f, timeToSendSpeed is %f", desiredYaw, lastYaw, timeToSendSpeed);
     if(timeToSendSpeed < 0.09){
@@ -318,7 +318,7 @@ void moveToAngularPosition(){
             sendVelToRobot(0, lastDirection , 0, 0.5);
         }
         else {
-    	sendVelToRobot(0, 0 , (desiredYaw - lastYaw)/timeToSendSpeed, timeToSendSpeed * scalingFactor); //second variable is direction, last is control amount to send
+    	sendVelToRobot(0, 0 , (desiredYaw - lastYaw)/timeToSendSpeed * 0.5, timeToSendSpeed * scalingFactor); //second variable is direction, last is control amount to send
         lastDirection = (desiredYaw - lastYaw)/timeToSendSpeed;
         lastTime = timeToSendSpeed * scalingFactor;
         ROS_INFO("last time is %f", lastTime);
@@ -392,6 +392,7 @@ int main(int argc, char** argv){
     while (ros::ok()){
         if (followPath == 1 && moveToAngular == 1){
             moveToAngularPosition();
+            ros::Duration(5).sleep();
         }
         if (followPath == 1 && moveToHorizontal ==1){
             moveToHorizontalPosition();
