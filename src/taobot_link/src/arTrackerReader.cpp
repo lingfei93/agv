@@ -190,8 +190,15 @@ void moveToVerticalPosition(){
     	//moveToHorizontal = 1;
     }
     else {
+        if(lastSeenMarker == 0){
+            ROS_INFO("cannot see marker, moving right");
+            sendVelToRobot(0, 1, 0, 0.5);
+        }
+        else {
+
         ROS_INFO("Time sent is %f", timeToSendSpeed * verticalScalingTime);
     	sendVelToRobot(0, (desiredX - lastX)/timeToSendSpeed * verticalSpeedScale, 0, timeToSendSpeed * verticalScalingTime); //second variable is direction, last is control amount to send
+        }
 	}
 }
 
@@ -292,7 +299,8 @@ void moveToAngularPosition(){
 	ROS_INFO("entering angular control");
 	float scalingFactor = 5.5;
 	float timeToSendSpeed = fabs(desiredYaw - lastYaw);
-    if(timeToSendSpeed < 0.005){
+    ROS_INFO("desiredYaw is %f, lastYaw is %f, timeToSendSpeed is %f", desiredYaw, lastYaw, timeToSendSpeed);
+    if(timeToSendSpeed < 0.001){
         angularCount++;
         if (angularCount > 10){
     	moveToAngular = 0;
