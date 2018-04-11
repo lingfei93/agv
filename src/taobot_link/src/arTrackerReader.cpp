@@ -425,8 +425,8 @@ int main(int argc, char** argv){
         }
 
 
-
+    ros::Duration(2).sleep();
     ros::spinOnce();
-    ros::Duration(1).sleep();
+    
     }//for ros::ok();
 }
