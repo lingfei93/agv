@@ -114,6 +114,7 @@ void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tra
             w = currentMarker.pose.pose.orientation.w;
 
             angle = (2*acos(w));
+            lastYaw = z/sin(angle/2);
             //count++;
     }
 
@@ -145,6 +146,7 @@ void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tra
             w = currentMarker.pose.pose.orientation.w;
 
             angle = (2*acos(w));
+            lastYaw = z/sin(angle/2);
 
 
 
