@@ -110,12 +110,13 @@ void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tra
             ROS_INFO("yaw orientationOfQR is, %f", lastYaw);
             ROS_INFO("");
             lastSeenMarker = 1;
-            ROS_INFO(" z is %f, w is %f",z,w);
+            
             z = currentMarker.pose.pose.orientation.z;
             w = currentMarker.pose.pose.orientation.w;
 
             angle = (2*acos(w));
             lastYaw = z/sin(angle/2);
+            ROS_INFO(" z is %f, w is %f",z,w);
             //count++;
     }
 
