@@ -110,6 +110,7 @@ void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tra
             ROS_INFO("yaw orientationOfQR is, %f", lastYaw);
             ROS_INFO("");
             lastSeenMarker = 1;
+            ROS_INFO(" z is %f, w is %f",z,w);
             z = currentMarker.pose.pose.orientation.z;
             w = currentMarker.pose.pose.orientation.w;
 
@@ -313,12 +314,13 @@ void moveToAngularPosition(){
 
         if(lastSeenMarker == 0){
             ROS_INFO("cannot see marker");
-            sendVelToRobot(0, lastDirection , 0, lastTime);
+            sendVelToRobot(0, lastDirection , 0, 0.5);
         }
         else {
     	sendVelToRobot(0, 0 , (desiredYaw - lastYaw)/timeToSendSpeed, timeToSendSpeed * scalingFactor); //second variable is direction, last is control amount to send
         lastDirection = (desiredYaw - lastYaw)/timeToSendSpeed;
         lastTime = timeToSendSpeed * scalingFactor;
+        ROS_INFO("last time is %f", lastTime);
         }
     }
 }
