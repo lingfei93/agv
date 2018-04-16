@@ -12,10 +12,12 @@ void actuatorSubCallback(const std_msgs::Int32::ConstPtr &msg){
 	ROS_INFO("recieved info for ar_marker_callback, it is, %d", msg->data);
 	if (msg->data == 1){
 		goUp = 1;
+		goDown = 0;
 		
 	}
 	if (msg->data == 0){
 		goDown = 1;
+		goUp = 0;
 	}
 }
 
@@ -38,7 +40,7 @@ int main(int argc, char** argv)
     			ROS_INFO("in this loop 1");
     			cmd_vel_pub_.publish(cmd_vel);
     		}
-    		goUp = 0;
+    		//goUp = 0;
     	}
 
     	if(goDown == 1){
@@ -47,7 +49,7 @@ int main(int argc, char** argv)
     			ROS_INFO("in this loop 2");
     			cmd_vel_pub_.publish(cmd_vel);
     		}
-    		goDown = 0;
+    		//goDown = 0;
 
     	}
 
