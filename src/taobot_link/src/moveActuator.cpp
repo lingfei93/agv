@@ -6,6 +6,7 @@
 int goUp = 0;
 int goDown = 0;
 ros::Publisher cmd_vel_pub_;
+ros::Subscriber actuator_sub;
 
 void actuatorSubCallback(const std_msgs::Int32::ConstPtr &msg){
 	ROS_INFO("recieved info for ar_marker_callback, it is, %d", msg->data);
