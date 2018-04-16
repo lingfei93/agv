@@ -243,6 +243,11 @@ target_link_libraries(arTrackerReader ${catkin_LIBRARIES})
 add_executable(angleTest src/angleTest.cpp)
 add_dependencies(angleTest taobot_link_generate_messages_cpp)
 target_link_libraries(angleTest ${catkin_LIBRARIES})
+
+add_executable(moveActuator src/moveActuator.cpp)
+add_dependencies(moveActuator taobot_link_generate_messages_cpp)
+target_link_libraries(moveActuator ${catkin_LIBRARIES})
+
 ## Mark executables and/or libraries for installation
 #install(TARGETS taobot_link
 #  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}

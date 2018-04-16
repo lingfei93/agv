@@ -279,173 +279,6 @@ void movePathCallBack(const nav_msgs::Path::ConstPtr &path_data){
 
 }
 
-//void movePathCallBack(const nav_msgs::Path::ConstPtr& path_data)
-//{
-//    int i;
-//    int len;
-//    int idx, flag, path_plan;
-//    //set the idealSpeed as a rando.
-//    double idealSpeed = 0.21;
-//    double eachTimeSlot;
-
-//    len = path_data->poses.size();
-  
-//    double plan[4][2000] = {{0}};
-
-//    //double plan[4][len+100] = {{0}};
-//    double tsegc[2000] = {0};
-//    //double tsegc[len+100] = {0};
-  
-   
-//    double dis, dis2 = 0;
-//    double distanceToGoal;
-//    double timeForPath;
-//    double dsegc, dseg;
-//    int finishPath = 0;
-
-
-//    ROS_INFO("ENTERED CALLBACK WITH SIZE = %d", len);
-
-//    // for (i = 0; i < len; i++){
-//    //      plan[0][i]=path_data->poses[i].pose.position.x;                 //x
-//    //      plan[1][i]=path_data->poses[i].pose.position.y;                 //y
-//    //      plan[2][i]=0;
-//    //      //plan[3][i]=Quat_to_Yaw(path_data->poses[i].pose.orientation);
-//    // }
-
-//    while (finishPath == 0){
-//	if (wasInPath == 1 && len > 0){
-           
-//           ROS_INFO("send to turnRobot with values %f, %f",tf::getYaw(path_data->poses[0].pose.orientation), tf::getYaw(path_data->poses[len-1].pose.orientation));
-//           turnRobot(tf::getYaw(path_data->poses[0].pose.orientation) + 3.14, tf::getYaw(path_data->poses[len-1].pose.orientation) + 3.14); //move somewhere
-//	   ROS_INFO("last quat is %f, %f", tf::getYaw(path_data->poses[len-1].pose.orientation), path_data->poses[len-1].pose.orientation.w);
-           
-//	   checkPath(lastX, lastY, path_data->poses[0].pose.position.x, path_data->poses[0].pose.position.y, len);
-//	}
-//        if (len>0 && wasInPath == 0){
-//           turnRobot(lastKnownYaw, 3.14);
-
-
-//        {
-//	    distanceToGoal = 0;
-
-//            //distanceToGoal = convertToEuclid(path_data->poses[0].pose.position.x, path_data->poses[0].pose.position.y ,    path_data->poses[len-2].pose.position.x, path_data->poses[len-2].pose.position.y);
-//	   ROS_INFO("distance to goal is %f", distanceToGoal);
-//            //dis2=DIS_XY(rc.x_c, rc.y_c, path_data->poses[len-1].pose.position.x, path_data->poses[len-1].pose.position.y); //last path point
-//            if (distanceToGoal >= 0 )
-//                path_plan = 1 ;
-//            else
-//                path_plan = 0 ;
-//        }
-
-//        if ( (len>0) && (path_plan==1) )
-//        {
-//	    previousLength = len;
-//            printf("START LOADING PATH, PLAN_SIZE=%d\n", len);
-//            for (i=0;i<len;i++)
-//            {
-//                plan[0][i]=path_data->poses[i].pose.position.x;                 //x
-//                plan[1][i]=path_data->poses[i].pose.position.y;                 //y
-//                plan[2][i]=0;
-//                   		               //z
-//                plan[3][i]=tf::getYaw(path_data->poses[i].pose.orientation);   //angle(yaw)
-//                //printf("NUM=%d x=%+3.3f y=%+3.3f z=%+3.3f yaw=%+3.3f\n", i, plan[0][i],  q[1][i], plan[2][i], plan[3][i]);
-//                ROS_INFO("this is w, %f", path_data->poses[i].pose.orientation.w);
-//		ROS_INFO("this is yaw, %f", plan[3][i]);
-//	    if(i > 0){
-//            distanceToGoal = distanceToGoal + convertToEuclid(plan[0][i-1],plan[1][i-1], plan[0][i],plan[1][i]);}
-//            }
-//            for (i=len;i<len+100;i++)
-//            {
-//                plan[0][i]=path_data->poses[len-1].pose.position.x;                 //x
-//                plan[1][i]=path_data->poses[len-1].pose.position.y;                 //y
-//                plan[2][i]=0;                                                   //z
-//               plan[3][i]=tf::getYaw(path_data->poses[len-1].pose.orientation);
-
-//		//ROS_INFO("this is yaw, %f", plan[3][i]); //angle(yaw)
-//                //printf("NUM=%d x=%+3.3f y=%+3.3f z=%+3.3f yaw=%+3.3f\n", i, plan[0][i], plan[1][i], plan[2][i], plan[3][i]);
-//            }
-//	ROS_INFO("distanceToGoal is %f", distanceToGoal);
-//        }
-
-
-//            //making angle by path
-//            if (len>=2)
-//            {
-//                timeForPath = distanceToGoal/idealSpeed;
-
-
-
-//                eachTimeSlot = timeForPath / len;
-
-//              //  ROS_INFO("Each time slot is %f, time for totalPath is %f,", eachTimeSlot, timeForPath);
-
-                
-
-               
-
-//                tsegc[0]=0.0;
-//                for (i=1; i < len; i++){
-//                    tsegc[i] = eachTimeSlot * i;
-//		// ROS_INFO("tsegc is %f, %f",tsegc[i], tsegc[i+1]);
-//                }
-
-//                for (i= len; i < len + 100; i++){
-//                    tsegc[i] = timeForPath;
-//                }
-                
-
-//                dsegc=0.0;
-//                ros::Time current_time, start_time;
-//                ros::Duration time_elapsed;
-                
-//                start_time = ros::Time::now();
-//                current_time = ros::Time::now();
-//                time_elapsed = current_time - start_time;
-//                ROS_INFO("send to turnRobot with values %f, %f", plan[3][0], plan[3][len-1]);
-//                //turnRobot(plan[3][0], plan[3][len-1]);
-//                for (i=0;i<len+50;i++)
-//                {
-//                  //  ROS_INFO("in loop %d", i);
-//                    current_time = ros::Time::now();
-//                    time_elapsed = current_time - start_time;
-//                  //  ROS_INFO("time elapsed is %f, tsegc[i] is %f, tsegc[i+1] is %f, number 2 is %f", time_elapsed.toSec(), tsegc[i], tsegc[i+1], tsegc[i+2]);
-//                    dseg=convertToEuclid(plan[0][i],plan[1][i],plan[0][i-1],plan[1][i-1]);
-//                    dsegc=dsegc+dseg;
-
-                    
-
-
-//                    while(time_elapsed.toSec() < tsegc[i]){
-
-//                   // ROS_INFO("sending a vel command");
-//                  //  ROS_INFO("time elapsed is %f, tsegc[i] is %f, tsegc[i+1] is %f", time_elapsed.toSec(), tsegc[i], tsegc[i+1]);
-
-//                    sendVelCommand(plan[0][i],plan[1][i],plan[0][i+1],plan[1][i+1]);
-//                    current_time = ros::Time::now();
-//                    time_elapsed = current_time - start_time;
-
-//                    }
-
-                  
-
-//                }
-//                //send a 0 command to stop the bot;ZERO
-//                sendVelCommand(0,0,0,0);
-//                //DO ANGLE PLANNING skok LATER;
-//                //sendFinalAngleCommand(path_data->poses[len-1].pose.orientation);
-
-//            //
-//            }
-//        wasInPath = 1;
-//        lastX = plan[0][len];
-//	lastY = plan[1][len];
-//        }
-//            else printf("PLAN_SIZE ZERO\n");
-//            finishPath = 1;
-
-//        }
-//    }
 
 
 
@@ -462,18 +295,6 @@ void sendVelCommand(float x_start, float y_start, float x_end, float y_end){
     //double directionToRotate = 0; 
 
 }
-
-
-void getPose(){
-
-//    robot_pose.pose.orientation.x = poseRobot.getRotation().getX();
-//    robot_pose.pose.orientation.y = poseRobot.getRotation().getY();
-//    robot_pose.pose.orientation.z = poseRobot.getRotation().getZ();
-//    robot_pose.pose.orientation.w = poseRobot.getRotation().getW();
-//    lastKnownYaw = tf::getYaw(robot_pose.pose.orientation) + 3.14;
-}
-
-
 
 
 
@@ -494,9 +315,7 @@ int main(int argc, char** argv)
     
     move_base_path_sub  = n.subscribe<nav_msgs::Path>("/move_base_node/NavfnROS/plan", 5, movePathCallBack);
  	
-   //imu_pose_sub  = n.subscribe<sensor_msgs::Imu>("/imu/data",1000, getImuPoseCallBack);
-  // amcl_pose_sub = n.subscribe<geometry_msgs::PoseWithCovarianceStamped>("/amcl_pose",5, getPoseCallBack);
-  
+   
     ROS_INFO(("enter into here"));
     ros::Rate loop_rate(20);
 

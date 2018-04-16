@@ -395,7 +395,7 @@ int main(int argc, char** argv){
             count = 0;
         if (followPath == 1 && moveToAngular == 1){
             moveToAngularPosition();
-            ros::Duration(5).sleep();
+            
         }
         if (followPath == 1 && moveToHorizontal ==1){
             moveToHorizontalPosition();
@@ -434,7 +434,7 @@ int main(int argc, char** argv){
     }
 
 
-    ros::Duration(2).sleep();
+    ros::Duration(0.5).sleep();
     ros::spinOnce();
     
     }//for ros::ok();

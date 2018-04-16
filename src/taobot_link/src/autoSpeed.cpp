@@ -52,12 +52,7 @@ void callback1(const ros::TimerEvent&)
 
         format(reply, 39);
 
-    // for (int i =0; i < 43; i ++){
-    // //ROS_INFO("%c", reply[i]);}
-    // temp=reply[i];
-    // printf("0x%d%d\n", temp/16, temp % 16);
 
-    // }
     }
 
     catch(exception& e)
@@ -74,17 +69,15 @@ void usart_send(uint8_t* toSend)
 		size_t N;
         N = device.write(toSend, 1);
         
-        //below is just testing purposes
+
 		unsigned char temp, temp2;
         
 		temp = toSend[0];
         temp2 = toSend[1];
-		//ROS_INFO("%d %d %d %d this is tosend updated", temp/16,temp%16, temp, N);
+
 	}
 
-//format the reply so that it becomes nice. checks if the data is formatted properly. throws away the last set of 
-    //data for now
-    //TODO: can we check if the last set of data can be read?, actually i think it works for now!
+
 void format(uint8_t* reply, int N){
     int count = 0;
 
@@ -269,25 +262,20 @@ void moveBaseCmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel){
 
 int main(int argc, char** argv)
 {
-
     ros::init(argc, argv, "Taobot_Info");
     ros::NodeHandle n;
-
-    //this channel publishes news recieved from the robot
     taobot_pub = n.advertise<taobot_link::Taobot>("taobot_listener", 1000);
     taobot_voltage_pub = n.advertise<std_msgs::Float32>("taobot_voltage_listener", 1000);
-    //this channel is to subscribe to velocity commands from the joystick
-    //cmd_vel_sub_  = n.subscribe<geometry_msgs::Twist>("taobot_cmd_vel", 1000, cmdVelReceived);
+
     move_base_cmd_vel_sub  = n.subscribe<geometry_msgs::Twist>("cmd_vel_path", 1000, moveBaseCmdVelReceived);
-   // move_base_cmd_vel_sub  = n.subscribe<geometry_msgs::Twist>("cmd_vel", 1000, moveBaseCmdVelReceived);
+
   
 
     ros::Rate loop_rate(5);
     while (ros::ok()){
 	uint8_t reply[50];
 	uint8_t sendArray[10];
-    //INFO: THIS WAS NOT IN THE CODE
-    //ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1); 
+
 
     int i;
 
@@ -314,29 +302,8 @@ int main(int argc, char** argv)
 
     ros::Rate r(10);
 
-   /**
-    firstByte[0] = 0xFF;
-    secondByte[0] = 0xFE;
-    thirdByte[0] = 2;
-    fourthByte[0] = 0;
-    fifthByte[0] = 0x00;
-    sixthByte[0] = 0;
-    seventhByte[0] = 0x00;
-    eigthByte[0] = 0;
-    ninthByte[0] = 0x00;
-    tenthByte[0] = 0x07;
 
-    usart_send(firstByte);
-    usart_send(secondByte);
-    usart_send(thirdByte);
-    usart_send(fourthByte);
-    usart_send(fifthByte);
-    usart_send(sixthByte);
-    usart_send(seventhByte);
-    usart_send(eigthByte);
-    usart_send(ninthByte);
-    usart_send(tenthByte);
-    **/
+
     //try an initialization array
     sendArray[0] = 0xFF;
     sendArray[1] = 0xFE;
@@ -352,9 +319,7 @@ int main(int argc, char** argv)
     sendCommand(sendArray, 10);
     
 	try{ device.read(reply, 50);
-    // for (int i = 0; i < 43; i++){
-    //     ROS_INFO("0x%d%d\n YOHOOOO NEW ONE", reply[i]/16, reply[i] % 16);
-    // }
+
     format(reply, 49);
 
 
@@ -366,9 +331,6 @@ int main(int argc, char** argv)
         ROS_BREAK();
     }
 
-    //comment out this first so i dont keep finding reply
-            //keep calling 1 and 3
-    //ros::Timer timer2 = n.createTimer(ros::Duration(1.0), callback2);
     ros::Timer timer1 = n.createTimer(ros::Duration(0.1), callback1); 
 
     ros::spin();
