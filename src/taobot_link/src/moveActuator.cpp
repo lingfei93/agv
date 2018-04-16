@@ -1,6 +1,8 @@
 #include <ros/ros.h>
 #include <geometry_msgs/Twist.h>
 
+#include <std_msgs/Int32.h>
+
 int goUp = 0;
 int goDown = 0;
 ros::Publisher cmd_vel_pub_;
