@@ -14,13 +14,13 @@ ros::Publisher move_base_clear_goal;
 ros::Subscriber ar_tracker_sub;
 ros::Publisher move_base_path_pub;
 ros::Subscriber move_to_trolley_sub;
-float lastZ, lastX, lastYaw; //this is the z orientation which the ar_pose_tracker should take over the steering of robot
+float lastZ, lastX, lastYaw, lastTime; //this is the z orientation which the ar_pose_tracker should take over the steering of robot
 float orientationOfQR;
 float previousZ, previousX, previousYaw;
 float sleepFactor, speedFactor, calibratedParam,verticalScalingTime,verticalSpeedScale, horizontalScalingTime, horizontalSpeedScale;
 int followPath, moveToAngular, moveToVertical, moveToHorizontal, angularPositionReached, count, inFinalControl = 0;
 int finalMoveToHorizontal, finalMoveToVertical, reachedGoal; 
-int verticalCount, horizontalCount, angularCount, lastDirection, lastTime;
+int verticalCount, horizontalCount, angularCount, lastDirection;
 void moveToAngularPosition();
 void moveToVerticalPosition();
 void moveToHorizontalPosition(); 
@@ -117,7 +117,7 @@ void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tra
             angle = (2*acos(w));
             lastYaw = z/sin(angle/2);
             ROS_INFO(" z is %f, w is %f",z,w);
-            //count++;
+            count++;
     }
 
 	if (ar_tracker_data->markers.size() == 2){
@@ -149,6 +149,7 @@ void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tra
 
             angle = (2*acos(w));
             lastYaw = z/sin(angle/2);
+            count++;
 
 
 
@@ -390,9 +391,11 @@ int main(int argc, char** argv){
     tf::StampedTransform poseRobot;
     ros::Rate r(1);
     while (ros::ok()){
+        if (count > 10){
+            count = 0;
         if (followPath == 1 && moveToAngular == 1){
             moveToAngularPosition();
-            ros::Duration(5).sleep();
+            
         }
         if (followPath == 1 && moveToHorizontal ==1){
             moveToHorizontalPosition();
@@ -428,8 +431,10 @@ int main(int argc, char** argv){
 
         }
 
+    }
 
-    ros::Duration(2).sleep();
+
+    ros::Duration(0.5).sleep();
     ros::spinOnce();
     
     }//for ros::ok();

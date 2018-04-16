@@ -1,9 +1,9 @@
-<!-- Joystick Control TAOBOT platform -->
+<!-- Auto Control TAOBOT platform -->
 <launch>
   <param name="/use_sim_time" value="false"/>
 
   <node pkg="taobot_link" name="autoSpeed" type="autoSpeed">
-	<!--<rosparam file="$(find axon_link)/config/axon_param.yaml" command="load"/> -->        
+	      
   </node>
 
   <node pkg="taobot_link" name="readTaoBotMsg" type="readTaoBotMsg">
