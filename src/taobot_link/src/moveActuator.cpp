@@ -38,7 +38,7 @@ int main(int argc, char** argv)
     			ROS_INFO("in this loop 1");
     			cmd_vel_pub_.publish(cmd_vel);
     		}
-    		//goUp = 1;
+    		goUp = 0;
     	}
 
     	if(goDown == 1){
@@ -47,9 +47,11 @@ int main(int argc, char** argv)
     			ROS_INFO("in this loop 2");
     			cmd_vel_pub_.publish(cmd_vel);
     		}
-    		//goUp = 0;
+    		goDown = 0;
 
     	}
+
+    	ros::spinOnce();
 
     }//ros::ok
 }//main
