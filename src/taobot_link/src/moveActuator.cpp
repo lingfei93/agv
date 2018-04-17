@@ -28,7 +28,7 @@ int main(int argc, char** argv)
     
     geometry_msgs::Twist cmd_vel;
 
-    cmd_vel_pub_= n.advertise<geometry_msgs::Twist>("/cmd_vel", 1);
+    cmd_vel_pub_= n.advertise<geometry_msgs::Twist>("/taobot_cmd_vel", 1);
 
     actuator_sub = n.subscribe<std_msgs::Int32>("/actuator", 1, actuatorSubCallback);
 
