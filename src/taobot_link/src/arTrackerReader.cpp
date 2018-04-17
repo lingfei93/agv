@@ -159,6 +159,7 @@ void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tra
         //lastseenMarkeris 0
         ROS_INFO("CANNOT SEE MARKER");
         lastSeenMarker = 0;
+        count++;
     }
 	
 
@@ -391,6 +392,7 @@ int main(int argc, char** argv){
     tf::StampedTransform poseRobot;
     ros::Rate r(1);
     while (ros::ok()){
+        ROS_INFO("last yaw is %f", lastYaw);
         if (count > 10){
             count = 0;
         if (followPath == 1 && moveToAngular == 1){
@@ -432,7 +434,13 @@ int main(int argc, char** argv){
 
         }
 
+        count++;
+
     }
+
+    // else {
+    //     count++;//increase loop withoutdoing anything
+    // }
 
 
     ros::Duration(0.5).sleep();
