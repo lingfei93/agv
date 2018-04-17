@@ -74,8 +74,8 @@ void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tra
 			//lastZ = currentMarker.pose.pose.position.z;
 			//lastX = currentMarker.pose.pose.position.x;
 
-			ROS_INFO("currentMarker z is, %f", lastZ);
-			ROS_INFO("currentMarker x is, %f", lastX);
+			// ROS_INFO("currentMarker z is, %f", lastZ);
+			// ROS_INFO("currentMarker x is, %f", lastX);
 			//ROS_INFO("currentMarker y is, %f", currentMarker.pose.pose.position.y);
 
 		 	//lastYaw = tf::getYaw(currentMarker.pose.pose.orientation);
@@ -149,6 +149,7 @@ void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tra
 
             angle = (2*acos(w));
             lastYaw = z/sin(angle/2);
+            ROS_INFO(" z is %f, w is %f",z,w);
             count++;
 
 
