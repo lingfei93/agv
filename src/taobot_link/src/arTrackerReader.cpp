@@ -302,7 +302,7 @@ void finalMoveToVerticalPosition(){
 
 void moveToAngularPosition(){
 	ROS_INFO("entering angular control");
-	float scalingFactor = 5.5/4;
+	float scalingFactor = 5.5/4 * 3;
 	float timeToSendSpeed = fabs(desiredYaw - lastYaw);
     ROS_INFO("desiredYaw is %f, lastYaw is %f, timeToSendSpeed is %f", desiredYaw, lastYaw, timeToSendSpeed);
     if(timeToSendSpeed < 0.09){
