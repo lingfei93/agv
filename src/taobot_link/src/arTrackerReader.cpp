@@ -18,7 +18,7 @@ float lastZ, lastX, lastYaw, lastTime; //this is the z orientation which the ar_
 float orientationOfQR;
 float previousZ, previousX, previousYaw;
 float sleepFactor, speedFactor, calibratedParam,verticalScalingTime,verticalSpeedScale, horizontalScalingTime, horizontalSpeedScale;
-int followPath, moveToAngular, moveToVertical, moveToHorizontal, angularPositionReached, count, inFinalControl = 0;
+int followPath, moveToAngular, moveToVertical, moveToHorizontal, verticalPositionReached, count, inFinalControl = 0;
 int finalMoveToHorizontal, finalMoveToVertical, reachedGoal; 
 int verticalCount, horizontalCount, angularCount, lastDirection;
 void moveToAngularPosition();
@@ -31,8 +31,8 @@ void sendVelToRobot(float x_speed, float y_speed, float angle, float timeToWrite
 float desiredZ = 0.745;
 float desiredX = 0.220;
 float desiredYaw = 0.00;
-float finalDesiredZ = 0.1777;
-float finalDesiredX = 0.378;
+float finalDesiredZ = 0.158;
+float finalDesiredX = 0.024;
 int lastSeenMarker = 0;
 //z is 0.637
 //x is 0.196
@@ -189,7 +189,7 @@ void moveToVerticalPosition(){
         if (verticalCount > 10 ){
             verticalCount = 0;
     	    moveToVertical = 0;
-            angularPositionReached = 1;
+            verticalPositionReached = 1;
             ROS_INFO("move into Vertical success");
         }
     	//moveToHorizontal = 1;
@@ -354,7 +354,7 @@ void moveToTrolley(){
 	ROS_INFO("enter moveTrolley");
 	float timeToWriteSpeed = lastZ * sleepFactor * calibratedParam/(lastZ);
 	sendVelToRobot(1, 0, 0, timeToWriteSpeed);
-    angularPositionReached = 0;
+    verticalPositionReached = 0;
 }
 
 int main(int argc, char** argv){
@@ -407,11 +407,12 @@ int main(int argc, char** argv){
     		moveToVerticalPosition();
     	}
 
+
     	//if (followPath == 1 && moveToAngular == 1){
     	//	moveToAngularPosition();
     	//}
         //execute trolleyMove
-    	if (followPath == 1 && angularPositionReached == 1){
+    	if (followPath == 1 && verticalPositionReached == 1){
     		moveToTrolley();
             inFinalControl = 1;
             finalMoveToHorizontal = 1;
