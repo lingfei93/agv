@@ -70,6 +70,9 @@ if (count>6){
           }
         }
         lastYaw = yawStore[index];
+        for (int i = 0; i < 11; i ++){
+            ROS_INFO("yawStore[%d] is %f", i, yawStore[i]);
+        }
         ROS_INFO("yawstore's lastYaw is %f",lastYaw);
     }
 
@@ -345,6 +348,7 @@ int main(int argc, char** argv){
     tf::StampedTransform poseRobot;
     ros::Rate r(1);
     while (ros::ok()){
+        RO_SINFO("count is %d", count);
         ROS_INFO("last yaw is %f", lastYaw);
         if (count > 10){
             count = 0;
