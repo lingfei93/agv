@@ -184,7 +184,7 @@ void moveToHorizontalPosition(){
     ROS_INFO("desiredZ is %f, lastZ is %f", desiredZ, lastZ);
     ROS_INFO("trying to move to Horizontal Position");
     ROS_INFO("timeToSendSpeed is %f", timeToSendSpeed);
-    if(timeToSendSpeed < 0.03   ){
+    if(timeToSendSpeed < 0.05  ){
         horizontalCount++;
         if (horizontalCount > 5 ){
             horizontalCount = 0;
@@ -348,7 +348,7 @@ int main(int argc, char** argv){
     ros::Rate r(1);
     while (ros::ok()){
         ROS_INFO("count is %d", count);
-        ROS_INFO("last yaw is %f", lastYaw);
+        //ROS_INFO("last yaw is %f", lastYaw);
         if (count > 10){
             count = 0;
         if (followPath == 1 && moveToAngular == 1){
@@ -366,6 +366,7 @@ int main(int argc, char** argv){
         }
         if (followPath == 1 && verticalPositionReached == 1){
             moveToTrolley();
+            ros::Duration(10).sleep();
             inFinalControl = 1;
             finalMoveToHorizontal = 1;
         }
