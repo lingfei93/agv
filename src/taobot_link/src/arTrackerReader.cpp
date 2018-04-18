@@ -35,6 +35,7 @@ float desiredYaw = -0.278;
 float finalDesiredZ = 0.158;
 float finalDesiredX = 0.024;
 int lastSeenMarker = 0;
+float yawStore[5] = {0.0, 0.0, 0.0, 0.0, 0.0}; 
 //z is 0.637
 //x is 0.196
 
@@ -43,9 +44,41 @@ void updateValues(float z, float x){
     lastX = x;
 }
 
+void avgYaw(){
+
+if (count>6){
+        yawStore[count-7] = lastYaw;
+    }
+    if (count == 11){
+        ROS_INFO("checking this");
+        float avgYaw, sum = 0.0;
+        float diffYaw[5] = {0.0, 0.0, 0.0, 0.0, 0.0};
+        for (int i = 1; i < 5; i++){
+             sum += yawStore[i];
+        }
+        avgYaw = sum / 5.0; 
+        for (int i = 1; i < 5; i++){
+          diffYaw[i] = fabs(yawStore[i]-avgYaw);
+        }
+        float diff = 100.0;
+        int index;
+        for (int i = 1; i < 5; i++){
+    
+          if (diffYaw[i] < diff){
+            diff = diffYaw[i];
+            index = i;
+          }
+        }
+        lastYaw = yawStore[index];
+        ROS_INFO("yawstore's lastYaw is %f,"lastYaw);
+    }
+
+}
+
+
 void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tracker_data){
 	ar_track_alvar_msgs::AlvarMarker currentMarker;
-    float z, w, angle, angle2;
+    float z, w, angle;
 	if (ar_tracker_data->markers.size() == 1 && inFinalControl == 1){
         currentMarker = ar_tracker_data->markers[0];
         updateValues(currentMarker.pose.pose.position.z, currentMarker.pose.pose.position.x);
@@ -53,6 +86,7 @@ void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tra
         w = currentMarker.pose.pose.orientation.w;
         angle   = (2*acos(w));
         lastYaw = z/sin(angle/2);
+        avgYaw();
 	 	count++;
         lastSeenMarker = 1;
 
@@ -65,6 +99,7 @@ void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tra
         w = currentMarker.pose.pose.orientation.w;
         angle   = (2*acos(w));
         lastYaw = z/sin(angle/2);
+        avgYaw();//calculate avg to throw away misnomers
         ROS_INFO(" z is %f, w is %f",z,w);
         count++;
         lastSeenMarker = 1;
@@ -84,6 +119,7 @@ void arTrackerCallBack(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr &ar_tra
         w = currentMarker.pose.pose.orientation.w;
         angle = (2*acos(w));
         lastYaw = z/sin(angle/2);
+        avgYaw();
         count++;
         lastSeenMarker = 1;
 	}
