@@ -212,7 +212,7 @@ void finalMoveToHorizontalPosition(){
     ROS_INFO("desiredZ is %f, lastZ is %f", finalDesiredZ, lastZ);
     ROS_INFO("trying to move to Horizontal Position");
     ROS_INFO("timeToSendSpeed is %f", timeToSendSpeed);
-    if(timeToSendSpeed < 0.03){
+    if(timeToSendSpeed < 0.02){
         horizontalCount++;
         if (horizontalCount > 5 ){
             horizontalCount = 0;
