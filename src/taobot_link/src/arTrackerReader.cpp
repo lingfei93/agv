@@ -348,7 +348,7 @@ int main(int argc, char** argv){
     tf::StampedTransform poseRobot;
     ros::Rate r(1);
     while (ros::ok()){
-        RO_SINFO("count is %d", count);
+        ROS_INFO("count is %d", count);
         ROS_INFO("last yaw is %f", lastYaw);
         if (count > 10){
             count = 0;
