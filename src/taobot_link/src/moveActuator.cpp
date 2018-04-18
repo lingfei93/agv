@@ -39,7 +39,7 @@ int main(int argc, char** argv)
     		for(int i = 0; i < 2000; i ++){
     			ROS_INFO("in this loop 1");
     			cmd_vel_pub_.publish(cmd_vel);
-                ros::Duration(0.05).sleep();
+                ros::Duration(0.025).sleep();
     		}
     		goUp = 0;
     	}
@@ -49,7 +49,7 @@ int main(int argc, char** argv)
     		for(int i = 0; i < 2000; i ++){
     			ROS_INFO("in this loop 2");
     			cmd_vel_pub_.publish(cmd_vel);
-                ros::Duration(0.05).sleep();
+                ros::Duration(0.025).sleep();
     		}
     		goDown = 0;
 
