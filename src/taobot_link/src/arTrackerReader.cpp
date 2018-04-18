@@ -356,15 +356,18 @@ int main(int argc, char** argv){
             //moveToAngularPosition(); do not uncomment
             moveToAngular = 0;
             moveToHorizontal = 1;
+            ROS_INFO("stuck in loop 1");
             }
         else if (followPath == 1 && moveToHorizontal ==1){
             moveToHorizontal = 0;
             moveToVertical = 1;
+            ROS_INFO("stuck in loop 2");
             //moveToHorizontalPosition();test, UNCOMMENT LATER
         }
         else if (followPath == 1 && moveToVertical == 1){
             moveToVertical = 0;
             verticalPositionReached =1;
+            ROS_INFO("stuck in loop 3");
             //moveToVerticalPosition(); test, UNCOMMENT LATER
         }
         else if (followPath == 1 && verticalPositionReached == 1){
@@ -373,9 +376,11 @@ int main(int argc, char** argv){
             inFinalControl = 1;
             finalMoveToHorizontal = 1;
             followPath = 0; //COMMENT THIS OUT LATER
+            ROS_INFO("stuck in loop 4");
         }
         //checkQRcodeInside, final move();
         else if (inFinalControl == 1 && finalMoveToHorizontal == 1){
+            ROS_INFO("stuck in loop 5");
             finalMoveToHorizontalPosition();
         }
         //checkQRcodeinside, final vertical move
