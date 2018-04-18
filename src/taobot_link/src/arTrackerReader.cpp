@@ -340,8 +340,8 @@ int main(int argc, char** argv){
     actionlib_msgs::GoalID emptyGoal;
     move_base_clear_goal =  n.advertise<actionlib_msgs::GoalID>("/move_base/cancel", 10);  
 	move_base_path_pub = n.advertise<geometry_msgs::Twist>("cmd_vel_path", 100);
-    ar_tracker_sub = n.subscribe<ar_track_alvar_msgs::AlvarMarkers>("/ar_pose_marker", 5, arTrackerCallBack);
-    move_to_trolley_sub = n.subscribe<std_msgs::Int32>("/tow_cmd", 5, arMarkerMoveCallBack);
+    ar_tracker_sub = n.subscribe<ar_track_alvar_msgs::AlvarMarkers>("/ar_pose_marker", 1, arTrackerCallBack);
+    move_to_trolley_sub = n.subscribe<std_msgs::Int32>("/tow_cmd", 1, arMarkerMoveCallBack);
 	//this is for the pose of the ar_tag for control purposes
     tf::TransformListener listener;
     geometry_msgs::PoseStamped robot_pose;
