@@ -70,11 +70,9 @@ if (count>5 && count < 11){
           }
         }
         lastYaw = yawStore[index];
-        for (int i = 0; i < 5; i ++){
-            ROS_INFO("yawStore[%d] is %f", i, yawStore[i]);
-        }
-        ROS_INFO("awg yaw is :%f, index is %d", avgYaw, index);
-        ROS_INFO("yawstore's lastYaw is %f",lastYaw);
+       
+        //ROS_INFO("awg yaw is :%f, index is %d", avgYaw, index);
+        //ROS_INFO("yawstore's lastYaw is %f",lastYaw);
     }
 
 }
@@ -188,7 +186,7 @@ void moveToHorizontalPosition(){
     ROS_INFO("timeToSendSpeed is %f", timeToSendSpeed);
     if(timeToSendSpeed < 0.03   ){
         horizontalCount++;
-        if (horizontalCount > 10 ){
+        if (horizontalCount > 5 ){
             horizontalCount = 0;
             moveToHorizontal = 0;
             moveToVertical = 1;
@@ -216,7 +214,7 @@ void finalMoveToHorizontalPosition(){
     ROS_INFO("timeToSendSpeed is %f", timeToSendSpeed);
     if(timeToSendSpeed < 0.03){
         horizontalCount++;
-        if (horizontalCount > 10 ){
+        if (horizontalCount > 5 ){
             horizontalCount = 0;
             finalMoveToHorizontal = 0;
             finalMoveToVertical = 1;
@@ -230,7 +228,7 @@ void finalMoveToHorizontalPosition(){
         }
         else {
         ROS_INFO("Time sent is %f", timeToSendSpeed * horizontalScalingTime);
-        sendVelToRobot((lastZ - desiredZ)/timeToSendSpeed * horizontalSpeedScale * 0.1, 0 , 0, timeToSendSpeed * horizontalScalingTime); 
+        sendVelToRobot((desiredZ - lastZ)/timeToSendSpeed * horizontalSpeedScale * 0.1, 0 , 0, timeToSendSpeed * horizontalScalingTime); 
         }
     }
     
@@ -248,7 +246,7 @@ void finalMoveToVerticalPosition(){
     if(timeToSendSpeed < 0.03){
         verticalCount++;
         ROS_INFO("verticalCount is %d", verticalCount);
-        if (verticalCount > 10 ){
+        if (verticalCount > 5 ){
             verticalCount = 0;
             finalMoveToVertical = 0;
             reachedGoal = 1;
@@ -354,7 +352,9 @@ int main(int argc, char** argv){
         if (count > 10){
             count = 0;
         if (followPath == 1 && moveToAngular == 1){
-            moveToAngularPosition();
+            //moveToAngularPosition();
+            moveToAngular = 0;
+            moveToHorizontal = 1;
             }
         if (followPath == 1 && moveToHorizontal ==1){
             moveToHorizontalPosition();
