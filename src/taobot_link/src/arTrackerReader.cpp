@@ -150,14 +150,14 @@ void moveToVerticalPosition(){
     
     float timeToSendSpeed;
     timeToSendSpeed = fabs(desiredX - lastX);
-    ROS_INFO("desiredX is %f, lastX is %f", finalDesiredX, lastX);
+    ROS_INFO("desiredX is %f, lastX is %f", desiredX, lastX);
     ROS_INFO("trying to move to Vertical Position");
     ROS_INFO("timeToSendSpeed is %f", timeToSendSpeed);
     
     if(timeToSendSpeed < 0.03){
         verticalCount++;
         ROS_INFO("verticalCount is %d", verticalCount);
-        if (verticalCount > 10 ){
+        if (verticalCount > 5 ){
             verticalCount = 0;
             moveToVertical = 0;
             verticalPositionReached = 1;
@@ -228,7 +228,7 @@ void finalMoveToHorizontalPosition(){
         }
         else {
         ROS_INFO("Time sent is %f", timeToSendSpeed * horizontalScalingTime);
-        sendVelToRobot((desiredZ - lastZ)/timeToSendSpeed * horizontalSpeedScale * 0.1, 0 , 0, timeToSendSpeed * horizontalScalingTime); 
+        sendVelToRobot((lastZ - desiredZ)/timeToSendSpeed * horizontalSpeedScale * 0.1, 0 , 0, timeToSendSpeed * horizontalScalingTime); 
         }
     }
     
