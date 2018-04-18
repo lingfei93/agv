@@ -32,8 +32,8 @@ void sendVelToRobot(float x_speed, float y_speed, float angle, float timeToWrite
 float desiredZ = 0.756;
 float desiredX = 0.309;
 float desiredYaw = -0.09;
-float finalDesiredZ = 0.155;
-float finalDesiredX = 0.02;
+float finalDesiredZ = 0.170;
+float finalDesiredX = 0.0255;
 int lastSeenMarker = 0;
 float yawStore[5] = {0.0, 0.0, 0.0, 0.0, 0.0}; 
 //z is 0.637
@@ -229,7 +229,7 @@ void finalMoveToHorizontalPosition(){
         else {
         ROS_INFO("Time sent is %f", timeToSendSpeed * horizontalScalingTime);
         ROS_INFO("send to robot these values first value %f, second value x%f ",((lastZ - desiredZ)/timeToSendSpeed * horizontalSpeedScale * 0.1), timeToSendSpeed * horizontalScalingTime );
-        sendVelToRobot((lastZ - desiredZ)/timeToSendSpeed * horizontalSpeedScale * -0.1, 0 , 0, timeToSendSpeed * horizontalScalingTime); 
+        sendVelToRobot((lastZ - desiredZ)/timeToSendSpeed * horizontalSpeedScale * -0.1, 0 , 0, timeToSendSpeed * horizontalScalingTime * 0.75); 
         }
     }
     
