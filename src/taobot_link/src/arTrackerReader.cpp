@@ -53,16 +53,16 @@ if (count>5 && count < 11){
         ROS_INFO("checking this");
         float avgYaw, sum = 0.0;
         float diffYaw[5] = {0.0, 0.0, 0.0, 0.0, 0.0};
-        for (int i = 1; i < 5; i++){
+        for (int i = 0; i < 5; i++){
              sum += yawStore[i];
         }
         avgYaw = sum / 5.0; 
-        for (int i = 1; i < 5; i++){
+        for (int i = 0; i < 5; i++){
           diffYaw[i] = fabs(yawStore[i]-avgYaw);
         }
         float diff = 100.0;
         int index;
-        for (int i = 1; i < 5; i++){
+        for (int i = 0; i < 5; i++){
     
           if (diffYaw[i] < diff){
             diff = diffYaw[i];
