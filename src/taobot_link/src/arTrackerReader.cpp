@@ -31,7 +31,7 @@ void updateValues(float z, float x);
 void sendVelToRobot(float x_speed, float y_speed, float angle, float timeToWriteSpeed);
 float desiredZ = 0.745;
 float desiredX = 0.220;
-float desiredYaw = -0.278;
+float desiredYaw = -0.09;
 float finalDesiredZ = 0.158;
 float finalDesiredX = 0.024;
 int lastSeenMarker = 0;
