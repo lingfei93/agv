@@ -356,6 +356,7 @@ int main(int argc, char** argv){
             //moveToAngularPosition(); do not uncomment
             moveToAngular = 0;
             moveToHorizontal = 1;
+            inFinalControl = 1;
             }
         else if (followPath == 1 && moveToHorizontal ==1){
             moveToHorizontal = 0;
