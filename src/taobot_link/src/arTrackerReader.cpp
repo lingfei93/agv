@@ -69,10 +69,11 @@ if (count>5 && count < 11){
             index = i;
           }
         }
-        lastYaw = yawStore[index];
-        for (int i = 0; i < 4; i ++){
+        finalYaw = yawStore[index];
+        for (int i = 0; i < 5; i ++){
             ROS_INFO("yawStore[%d] is %f", i, yawStore[i]);
         }
+        ROS_INFO("awg yaw is :%f, index is %d", avgYaw, index);
         ROS_INFO("yawstore's lastYaw is %f",lastYaw);
     }
 
