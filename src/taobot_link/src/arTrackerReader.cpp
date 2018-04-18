@@ -70,7 +70,7 @@ if (count>6){
           }
         }
         lastYaw = yawStore[index];
-        ROS_INFO("yawstore's lastYaw is %f,"lastYaw);
+        ROS_INFO("yawstore's lastYaw is %f",lastYaw);
     }
 
 }
