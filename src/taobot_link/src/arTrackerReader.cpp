@@ -229,7 +229,7 @@ void finalMoveToHorizontalPosition(){
         else {
         ROS_INFO("Time sent is %f", timeToSendSpeed * horizontalScalingTime);
         ROS_INFO("send to robot these values first value %f, second value x%f ",((lastZ - desiredZ)/timeToSendSpeed * horizontalSpeedScale * 0.1), timeToSendSpeed * horizontalScalingTime );
-        sendVelToRobot((lastZ - desiredZ)/timeToSendSpeed * horizontalSpeedScale * 0.1, 0 , 0, timeToSendSpeed * horizontalScalingTime); 
+        sendVelToRobot((lastZ - desiredZ)/timeToSendSpeed * horizontalSpeedScale * -0.1, 0 , 0, timeToSendSpeed * horizontalScalingTime); 
         }
     }
     
