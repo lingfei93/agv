@@ -46,10 +46,10 @@ void updateValues(float z, float x){
 
 void avgYaw(){
 
-if (count>6){
-        yawStore[count-7] = lastYaw;
+if (count>5 && count < 11){
+        yawStore[count-6] = lastYaw;
     }
-    if (count == 11){
+    if (count == 10){
         ROS_INFO("checking this");
         float avgYaw, sum = 0.0;
         float diffYaw[5] = {0.0, 0.0, 0.0, 0.0, 0.0};
@@ -70,7 +70,7 @@ if (count>6){
           }
         }
         lastYaw = yawStore[index];
-        for (int i = 0; i < 11; i ++){
+        for (int i = 0; i < 4; i ++){
             ROS_INFO("yawStore[%d] is %f", i, yawStore[i]);
         }
         ROS_INFO("yawstore's lastYaw is %f",lastYaw);
