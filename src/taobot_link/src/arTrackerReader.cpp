@@ -228,7 +228,7 @@ void finalMoveToHorizontalPosition(){
         }
         else {
         ROS_INFO("Time sent is %f", timeToSendSpeed * horizontalScalingTime);
-        ROS_INFO("send to robot these values first value %f, second value %f ",((lastZ - desiredZ)/timeToSendSpeed * horizontalSpeedScale * 0.1), timeToSendSpeed * horizontalScalingTime );
+        ROS_INFO("send to robot these values first value %f, second value x%f ",((lastZ - desiredZ)/timeToSendSpeed * horizontalSpeedScale * 0.1), timeToSendSpeed * horizontalScalingTime );
         sendVelToRobot((lastZ - desiredZ)/timeToSendSpeed * horizontalSpeedScale * 0.1, 0 , 0, timeToSendSpeed * horizontalScalingTime); 
         }
     }
@@ -258,7 +258,7 @@ void finalMoveToVerticalPosition(){
     else {
         if(lastSeenMarker == 0){
             ROS_INFO("cannot see marker, moving rightwards");
-            sendVelToRobot(0, 0.5, 0, 0.5);
+            sendVelToRobot(0, -0.5, 0, 0.5);
         }
         ROS_INFO("Time sent is %f", timeToSendSpeed * verticalScalingTime);
         sendVelToRobot(0, (desiredX - lastX)/timeToSendSpeed * verticalSpeedScale * 0.1, 0, timeToSendSpeed * verticalScalingTime); //second variable is direction, last is control amount to send
@@ -353,21 +353,23 @@ int main(int argc, char** argv){
         if (count > 5){
             count = 0;
         if (followPath == 1 && moveToAngular == 1){
-            //moveToAngularPosition();
+            //moveToAngularPosition(); do not uncomment
             moveToAngular = 0;
             moveToHorizontal = 1;
             }
         else if (followPath == 1 && moveToHorizontal ==1){
-            moveToHorizontalPosition();
+            moveToHorizontal = 0;
+            moveToVertical = 1;
+            //moveToHorizontalPosition();test, UNCOMMENT LATER
         }
         else if (followPath == 1 && moveToVertical == 1){
-            //moveToTrolley(); 
-            //moveToVertical = 0;//testMoveToTrolley();
-            moveToVerticalPosition();
+            moveToVertical = 0;
+            verticalPositionReached =1;
+            //moveToVerticalPosition(); test, UNCOMMENT LATER
         }
         else if (followPath == 1 && verticalPositionReached == 1){
-            moveToTrolley();
-            ros::Duration(10).sleep();
+            //moveToTrolley();
+            //ros::Duration(10).sleep();
             inFinalControl = 1;
             finalMoveToHorizontal = 1;
         }
