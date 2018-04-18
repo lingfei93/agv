@@ -349,6 +349,7 @@ int main(int argc, char** argv){
     ros::Rate r(1);
     while (ros::ok()){
         ROS_INFO("count is %d", count);
+        inFinalControl = 1; //UNCOMMENT OUT LATER;
         //ROS_INFO("last yaw is %f", lastYaw);
         if (count > 5){
             count = 0;
