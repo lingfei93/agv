@@ -46,10 +46,10 @@ void updateValues(float z, float x){
 
 void avgYaw(){
 
-if (count>5 && count < 11){
-        yawStore[count-6] = lastYaw;
+if (count < 5){
+        yawStore[count] = lastYaw;
     }
-    if (count == 10){
+    if (count == 4){
         ROS_INFO("checking this");
         float avgYaw, sum = 0.0;
         float diffYaw[5] = {0.0, 0.0, 0.0, 0.0, 0.0};
@@ -154,7 +154,7 @@ void moveToVerticalPosition(){
     ROS_INFO("trying to move to Vertical Position");
     ROS_INFO("timeToSendSpeed is %f", timeToSendSpeed);
     
-    if(timeToSendSpeed < 0.03){
+    if(timeToSendSpeed < 0.05){
         verticalCount++;
         ROS_INFO("verticalCount is %d", verticalCount);
         if (verticalCount > 5 ){
@@ -349,33 +349,33 @@ int main(int argc, char** argv){
     while (ros::ok()){
         ROS_INFO("count is %d", count);
         //ROS_INFO("last yaw is %f", lastYaw);
-        if (count > 10){
+        if (count > 5){
             count = 0;
         if (followPath == 1 && moveToAngular == 1){
             //moveToAngularPosition();
             moveToAngular = 0;
             moveToHorizontal = 1;
             }
-        if (followPath == 1 && moveToHorizontal ==1){
+        else if (followPath == 1 && moveToHorizontal ==1){
             moveToHorizontalPosition();
         }
-        if (followPath == 1 && moveToVertical == 1){
+        else if (followPath == 1 && moveToVertical == 1){
             //moveToTrolley(); 
             //moveToVertical = 0;//testMoveToTrolley();
             moveToVerticalPosition();
         }
-        if (followPath == 1 && verticalPositionReached == 1){
+        else if (followPath == 1 && verticalPositionReached == 1){
             moveToTrolley();
             ros::Duration(10).sleep();
             inFinalControl = 1;
             finalMoveToHorizontal = 1;
         }
         //checkQRcodeInside, final move();
-        if (inFinalControl == 1 && finalMoveToHorizontal == 1){
+        else if (inFinalControl == 1 && finalMoveToHorizontal == 1){
             finalMoveToHorizontalPosition();
         }
         //checkQRcodeinside, final vertical move
-        if (inFinalControl == 1 && finalMoveToVertical == 1){
+        else if (inFinalControl == 1 && finalMoveToVertical == 1){
             finalMoveToVerticalPosition();
         }
         if (reachedGoal){
