@@ -33,7 +33,7 @@ float desiredZ = 0.756;
 float desiredX = 0.309;
 float desiredYaw = -0.09;
 float finalDesiredZ = 0.155;
-float finalDesiredX = 0.040;
+float finalDesiredX = 0.02;
 int lastSeenMarker = 0;
 float yawStore[5] = {0.0, 0.0, 0.0, 0.0, 0.0}; 
 //z is 0.637
@@ -243,7 +243,7 @@ void finalMoveToVerticalPosition(){
     ROS_INFO("trying to move to Vertical Position");
     ROS_INFO("timeToSendSpeed is %f", timeToSendSpeed);
     
-    if(timeToSendSpeed < 0.03){
+    if(timeToSendSpeed < 0.02){
         verticalCount++;
         ROS_INFO("verticalCount is %d", verticalCount);
         if (verticalCount > 5 ){
