@@ -29,11 +29,11 @@ void finalMoveToHorizontalPosition();
 void updateValues(float z, float x);
 //void updateValues(float z, float x, float yaw);
 void sendVelToRobot(float x_speed, float y_speed, float angle, float timeToWriteSpeed);
-float desiredZ = 0.745;
-float desiredX = 0.220;
+float desiredZ = 0.756;
+float desiredX = 0.309;
 float desiredYaw = -0.09;
-float finalDesiredZ = 0.158;
-float finalDesiredX = 0.024;
+float finalDesiredZ = 0.155;
+float finalDesiredX = 0.040;
 int lastSeenMarker = 0;
 float yawStore[5] = {0.0, 0.0, 0.0, 0.0, 0.0}; 
 //z is 0.637
@@ -390,4 +390,4 @@ int main(int argc, char** argv){
     ros::spinOnce();
     
     }//for ros::ok();
-}
+}   
