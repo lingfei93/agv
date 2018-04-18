@@ -36,20 +36,20 @@ int main(int argc, char** argv)
 
     	if(goUp == 1){
     		cmd_vel.angular.x = 1;
-    		for(int i = 0; i < 2000; i ++){
+    		for(int i = 0; i < 100; i ++){
     			ROS_INFO("in this loop 1");
     			cmd_vel_pub_.publish(cmd_vel);
-                ros::Duration(0.025).sleep();
+                ros::Duration(0.1).sleep();
     		}
     		goUp = 0;
     	}
 
     	if(goDown == 1){
     		cmd_vel.angular.x = -1;
-    		for(int i = 0; i < 2000; i ++){
+    		for(int i = 0; i < 100; i ++){
     			ROS_INFO("in this loop 2");
     			cmd_vel_pub_.publish(cmd_vel);
-                ros::Duration(0.025).sleep();
+                ros::Duration(0.1).sleep();
     		}
     		goDown = 0;
 
