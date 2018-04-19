@@ -185,7 +185,7 @@ void moveToHorizontalPosition(){
     ROS_INFO("desiredZ is %f, lastZ is %f", desiredZ, lastZ);
     ROS_INFO("trying to move to Horizontal Position");
     ROS_INFO("timeToSendSpeed is %f", timeToSendSpeed);
-    if(timeToSendSpeed < 0.05  ){
+    if(timeToSendSpeed < 0.05){
         horizontalCount++;
         if (horizontalCount > 5 ){
             horizontalCount = 0;
@@ -263,7 +263,7 @@ void finalMoveToVerticalPosition(){
         }
         else {
             ROS_INFO("Time sent is %f", timeToSendSpeed * verticalScalingTime);
-        lastSeenVertical = (finaldesiredX - lastYaw)/timeToSendSpeed;
+        lastSeenVertical = (finalDesiredX - lastX)/timeToSendSpeed;
         ROS_INFO("lastSeenVertical is %f", lastSeenVertical);
         sendVelToRobot(0, (finalDesiredX - lastX)/timeToSendSpeed * verticalSpeedScale * 0.1, 0, timeToSendSpeed * verticalScalingTime);
         } //second variable is direction, last is control amount to send
