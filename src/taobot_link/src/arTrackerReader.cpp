@@ -371,7 +371,7 @@ int main(int argc, char** argv){
             // moveToVertical = 0;
             // verticalPositionReached =1;
             // ROS_INFO("stuck in loop 3");
-            moveToVerticalPosition(); test, UNCOMMENT LATER
+            moveToVerticalPosition(); //ttest, UNCOMMENT LATER
         }
         else if (followPath == 1 && verticalPositionReached == 1){
             moveToTrolley();
