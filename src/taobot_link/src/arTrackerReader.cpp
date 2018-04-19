@@ -22,6 +22,7 @@ int followPath, moveToAngular, moveToVertical, moveToHorizontal, verticalPositio
 int finalMoveToHorizontal, finalMoveToVertical, reachedGoal; 
 int verticalCount, horizontalCount, angularCount, lastDirection;
 float distanceToClearGoal = 0.900;
+float lastSeenVertical;
 void moveToAngularPosition();
 void moveToVerticalPosition();
 void moveToHorizontalPosition(); 
@@ -228,8 +229,8 @@ void finalMoveToHorizontalPosition(){
         }
         else {
         ROS_INFO("Time sent is %f", timeToSendSpeed * horizontalScalingTime);
-        ROS_INFO("send to robot these values first value %f, second value x%f ",((lastZ - desiredZ)/timeToSendSpeed * horizontalSpeedScale * 0.1), timeToSendSpeed * horizontalScalingTime );
-        sendVelToRobot((lastZ - desiredZ)/timeToSendSpeed * horizontalSpeedScale * -0.1, 0 , 0, timeToSendSpeed * horizontalScalingTime * 0.75); 
+        ROS_INFO("send to robot these values first value %f, second value x%f ",((lastZ - finalDesiredZ)/timeToSendSpeed * horizontalSpeedScale * 0.1), timeToSendSpeed * horizontalScalingTime );
+        sendVelToRobot((lastZ - finalDesiredZ)/timeToSendSpeed * horizontalSpeedScale * 0.1, 0 , 0, timeToSendSpeed * horizontalScalingTime * 0.75); 
         }
     }
     
@@ -262,7 +263,9 @@ void finalMoveToVerticalPosition(){
         }
         else {
             ROS_INFO("Time sent is %f", timeToSendSpeed * verticalScalingTime);
-        sendVelToRobot(0, (desiredX - lastX)/timeToSendSpeed * verticalSpeedScale * -0.1, 0, timeToSendSpeed * verticalScalingTime);
+        lastSeenVertical = (finaldesiredX - lastYaw)/timeToSendSpeed;
+        ROS_INFO("lastSeenVertical is %f", lastSeenVertical);
+        sendVelToRobot(0, (finalDesiredX - lastX)/timeToSendSpeed * verticalSpeedScale * 0.1, 0, timeToSendSpeed * verticalScalingTime);
         } //second variable is direction, last is control amount to send
     }
 }
