@@ -10,10 +10,7 @@
   <node name="hokuyo_node" pkg="hokuyo_node" type="hokuyo_node"/>
 
  <include file="$(find taobot_link)/move_base_config/move_base.xml"/>
-  <!--  <node name="map_server" pkg="map_server" type="map_server" args="$(find navigation_stage)/stage_config/maps/willow-full.pgm 0.1" respawn="false" />
-  <node pkg="stage_ros" type="stageros" name="stageros" args="$(find navigation_stage)/stage_config/worlds/willow-pr2.world" respawn="false">
-    <param name="base_watchdog_timeout" value="0.2"/>
-  </node> -->
+ 
   <include file="$(find taobot_link)/move_base_config/amcl_node.xml"/>
 
   <node name="map_server" pkg="map_server" type="map_server" args="$(find taobot_link)/map/makersmap.pgm 0.05" respawn="false" />
