@@ -260,8 +260,10 @@ void finalMoveToVerticalPosition(){
             ROS_INFO("cannot see marker, moving rightwards");
             sendVelToRobot(0, -0.5, 0, 0.5);
         }
-        ROS_INFO("Time sent is %f", timeToSendSpeed * verticalScalingTime);
-        sendVelToRobot(0, (desiredX - lastX)/timeToSendSpeed * verticalSpeedScale * 0.1, 0, timeToSendSpeed * verticalScalingTime); //second variable is direction, last is control amount to send
+        else {
+            ROS_INFO("Time sent is %f", timeToSendSpeed * verticalScalingTime);
+        sendVelToRobot(0, (desiredX - lastX)/timeToSendSpeed * verticalSpeedScale * 0.1, 0, timeToSendSpeed * verticalScalingTime);
+        } //second variable is direction, last is control amount to send
     }
 }
 
@@ -349,7 +351,7 @@ int main(int argc, char** argv){
     ros::Rate r(1);
     while (ros::ok()){
         ROS_INFO("count is %d", count);
-        inFinalControl = 1; //UNCOMMENT OUT LATER;
+        //inFinalControl = 1; //UNCOMMENT OUT LATER;
         //ROS_INFO("last yaw is %f", lastYaw);
         if (count > 5){
             count = 0;
@@ -357,26 +359,26 @@ int main(int argc, char** argv){
             //moveToAngularPosition(); do not uncomment
             moveToAngular = 0;
             moveToHorizontal = 1;
-            ROS_INFO("stuck in loop 1");
+           // ROS_INFO("stuck in loop 1");
             }
         else if (followPath == 1 && moveToHorizontal ==1){
-            moveToHorizontal = 0;
-            moveToVertical = 1;
+            // moveToHorizontal = 0;
+            // moveToVertical = 1;
             ROS_INFO("stuck in loop 2");
-            //moveToHorizontalPosition();test, UNCOMMENT LATER
+            moveToHorizontalPosition();//test, UNCOMMENT LATER
         }
         else if (followPath == 1 && moveToVertical == 1){
-            moveToVertical = 0;
-            verticalPositionReached =1;
-            ROS_INFO("stuck in loop 3");
-            //moveToVerticalPosition(); test, UNCOMMENT LATER
+            // moveToVertical = 0;
+            // verticalPositionReached =1;
+            // ROS_INFO("stuck in loop 3");
+            moveToVerticalPosition(); test, UNCOMMENT LATER
         }
         else if (followPath == 1 && verticalPositionReached == 1){
-            //moveToTrolley();
-            //ros::Duration(10).sleep(); UNCOMMENT THESE TWO LINES LAATER!
+            moveToTrolley();
+            ros::Duration(10).sleep(); //UNCOMMENT THESE TWO LINES LAATER!
             inFinalControl = 1;
             finalMoveToHorizontal = 1;
-            followPath = 0; //COMMENT THIS OUT LATER
+            //followPath = 0; //COMMENT THIS OUT LATER
             ROS_INFO("stuck in loop 4");
         }
         //checkQRcodeInside, final move();
