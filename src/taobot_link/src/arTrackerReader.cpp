@@ -262,7 +262,7 @@ void finalMoveToVerticalPosition(){
         }
         else {
             ROS_INFO("Time sent is %f", timeToSendSpeed * verticalScalingTime);
-        sendVelToRobot(0, (desiredX - lastX)/timeToSendSpeed * verticalSpeedScale * 0.1, 0, timeToSendSpeed * verticalScalingTime);
+        sendVelToRobot(0, (desiredX - lastX)/timeToSendSpeed * verticalSpeedScale * -0.1, 0, timeToSendSpeed * verticalScalingTime);
         } //second variable is direction, last is control amount to send
     }
 }
