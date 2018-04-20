@@ -229,7 +229,10 @@ void finalMoveToHorizontalPosition(){
         if (horizontalCount > 5 ){
             horizontalCount = 0;
             finalMoveToHorizontal = 0;
-            finalMoveToVertical = 1;
+            //finalMoveToVertical = 1;
+            if (finalMoveToVertical == 0){
+                reachedGoal = 1;
+            }
             ROS_INFO("move into final Horizontal success");
         }
     }
@@ -238,12 +241,13 @@ void finalMoveToHorizontalPosition(){
             ROS_INFO("cannot see marker, moving backwards");
             sendVelToRobot(-0.5, 0, 0, 0.5);
             altFlag = 0;
+            finalMoveToVertical = 1;
         }
         else {
             ROS_INFO("Time sent is %f", timeToSendSpeed * horizontalScalingTime);
             ROS_INFO("send to robot these values first value %f, second value x%f ",((lastZ - finalDesiredZ)/timeToSendSpeed * horizontalSpeedScale * 0.1), timeToSendSpeed * horizontalScalingTime );
             sendVelToRobot((lastZ - finalDesiredZ)/timeToSendSpeed * horizontalSpeedScale * 0.1, 0 , 0, timeToSendSpeed * horizontalScalingTime * 0.75); 
-            altFlag = 0;
+            //altFlag = 0;
         }
     }
     
@@ -264,7 +268,9 @@ void finalMoveToVerticalPosition(){
         if (verticalCount > 5 ){
             verticalCount = 0;
             finalMoveToVertical = 0;
+            if (finalMoveToHorizontal == 0){
             reachedGoal = 1;
+            }
             ROS_INFO("move into Vertical success");
             altFlag = 1;
         }
@@ -281,7 +287,7 @@ void finalMoveToVerticalPosition(){
         lastSeenVertical = (finalDesiredX - lastX)/timeToSendSpeed;
         ROS_INFO("lastSeenVertical is %f", lastSeenVertical);
         sendVelToRobot(0, (finalDesiredX - lastX)/timeToSendSpeed * verticalSpeedScale * 0.1, 0, timeToSendSpeed * verticalScalingTime);
-        altFlag = 1;
+        //altFlag = 1;
         } //second variable is direction, last is control amount to send
     }
 }
@@ -415,7 +421,7 @@ int main(int argc, char** argv){
             finalMoveToVerticalPosition();
         }
 
-        if (reachedGoal){
+        else if (reachedGoal){
 
             ROS_INFO("Have reached the end");
            // sendCommandToArduino();
