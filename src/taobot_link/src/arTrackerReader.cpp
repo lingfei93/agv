@@ -245,8 +245,8 @@ void finalMoveToHorizontalPosition(){
         }
         else {
             ROS_INFO("Time sent is %f", timeToSendSpeed * horizontalScalingTime);
-            ROS_INFO("send to robot these values first value %f, second value x%f ",((lastZ - finalDesiredZ)/timeToSendSpeed * horizontalSpeedScale * 0.1), timeToSendSpeed * horizontalScalingTime );
-            sendVelToRobot((lastZ - finalDesiredZ)/timeToSendSpeed * horizontalSpeedScale * 0.1, 0 , 0, timeToSendSpeed * horizontalScalingTime * 0.75); 
+            ROS_INFO("send to robot these values first value %f, second value %f ",((lastZ - finalDesiredZ)/timeToSendSpeed * horizontalSpeedScale * 0.1), timeToSendSpeed * horizontalScalingTime );
+            sendVelToRobot((lastZ - finalDesiredZ)/timeToSendSpeed * horizontalSpeedScale, 0 , 0, timeToSendSpeed * horizontalScalingTime * 0.75); 
             //altFlag = 0;
         }
     }
@@ -286,7 +286,8 @@ void finalMoveToVerticalPosition(){
             ROS_INFO("Time sent is %f", timeToSendSpeed * verticalScalingTime);
         lastSeenVertical = (finalDesiredX - lastX)/timeToSendSpeed;
         ROS_INFO("lastSeenVertical is %f", lastSeenVertical);
-        sendVelToRobot(0, (finalDesiredX - lastX)/timeToSendSpeed * verticalSpeedScale * 0.1, 0, timeToSendSpeed * verticalScalingTime);
+        sendVelToRobot(0, (finalDesiredX - lastX)/timeToSendSpeed * verticalSpeedScale, 0, timeToSendSpeed * verticalScalingTime);
+        altFlag = 1;
         //altFlag = 1;
         } //second variable is direction, last is control amount to send
     }
