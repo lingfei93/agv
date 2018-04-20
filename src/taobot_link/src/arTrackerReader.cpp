@@ -1,4 +1,3 @@
-
 #include <std_msgs/Int32.h>
 #include <math.h>
 #include <geometry_msgs/Twist.h>
@@ -38,6 +37,8 @@ float finalDesiredZ = 0.171;
 float finalDesiredX = 0.0209;
 int lastSeenMarker = 0;
 float yawStore[5] = {0.0, 0.0, 0.0, 0.0, 0.0};
+int altFlag;
+
 ros::Publisher stop_pub;
 
 //z is 0.637
@@ -217,6 +218,7 @@ void moveToHorizontalPosition(){
 
 
 void finalMoveToHorizontalPosition(){
+    
     float timeToSendSpeed;
     timeToSendSpeed = fabs(lastZ - finalDesiredZ);
     ROS_INFO("desiredZ is %f, lastZ is %f", finalDesiredZ, lastZ);
@@ -235,11 +237,13 @@ void finalMoveToHorizontalPosition(){
         if(lastSeenMarker == 0){
             ROS_INFO("cannot see marker, moving backwards");
             sendVelToRobot(-0.5, 0, 0, 0.5);
+            altFlag = 0;
         }
         else {
-        ROS_INFO("Time sent is %f", timeToSendSpeed * horizontalScalingTime);
-        ROS_INFO("send to robot these values first value %f, second value x%f ",((lastZ - finalDesiredZ)/timeToSendSpeed * horizontalSpeedScale * 0.1), timeToSendSpeed * horizontalScalingTime );
-        sendVelToRobot((lastZ - finalDesiredZ)/timeToSendSpeed * horizontalSpeedScale * 0.1, 0 , 0, timeToSendSpeed * horizontalScalingTime * 0.75); 
+            ROS_INFO("Time sent is %f", timeToSendSpeed * horizontalScalingTime);
+            ROS_INFO("send to robot these values first value %f, second value x%f ",((lastZ - finalDesiredZ)/timeToSendSpeed * horizontalSpeedScale * 0.1), timeToSendSpeed * horizontalScalingTime );
+            sendVelToRobot((lastZ - finalDesiredZ)/timeToSendSpeed * horizontalSpeedScale * 0.1, 0 , 0, timeToSendSpeed * horizontalScalingTime * 0.75); 
+            altFlag = 0;
         }
     }
     
@@ -262,6 +266,7 @@ void finalMoveToVerticalPosition(){
             finalMoveToVertical = 0;
             reachedGoal = 1;
             ROS_INFO("move into Vertical success");
+            altFlag = 1;
         }
 
     }
@@ -269,12 +274,14 @@ void finalMoveToVerticalPosition(){
         if(lastSeenMarker == 0){
             ROS_INFO("cannot see marker, moving rightwards");
             sendVelToRobot(0, -lastSeenVertical, 0, 0.5);
+            altFlag = 1;
         }
         else {
             ROS_INFO("Time sent is %f", timeToSendSpeed * verticalScalingTime);
         lastSeenVertical = (finalDesiredX - lastX)/timeToSendSpeed;
         ROS_INFO("lastSeenVertical is %f", lastSeenVertical);
         sendVelToRobot(0, (finalDesiredX - lastX)/timeToSendSpeed * verticalSpeedScale * 0.1, 0, timeToSendSpeed * verticalScalingTime);
+        altFlag = 1;
         } //second variable is direction, last is control amount to send
     }
 }
@@ -393,11 +400,13 @@ int main(int argc, char** argv){
             ros::Duration(10).sleep(); //UNCOMMENT THESE TWO LINES LAATER!
             inFinalControl = 1;
             finalMoveToHorizontal = 1;
+            finalMoveToVertical = 1;
+            altFlag = 1;
             //followPath = 0; //COMMENT THIS OUT LATER
             ROS_INFO("stuck in loop 4");
         }
         //checkQRcodeInside, final move();
-        else if (inFinalControl == 1 && finalMoveToHorizontal == 1){
+        else if (inFinalControl == 1 && finalMoveToHorizontal == 1 && altFlag == 1){
             ROS_INFO("stuck in loop 5");
             finalMoveToHorizontalPosition();
         }
@@ -405,6 +414,7 @@ int main(int argc, char** argv){
         else if (inFinalControl == 1 && finalMoveToVertical == 1){
             finalMoveToVerticalPosition();
         }
+
         if (reachedGoal){
 
             ROS_INFO("Have reached the end");
@@ -418,4 +428,4 @@ int main(int argc, char** argv){
     ros::spinOnce();
     
     }//for ros::ok();
-}   
+}
