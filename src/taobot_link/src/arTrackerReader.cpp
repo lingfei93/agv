@@ -34,8 +34,8 @@ void sendVelToRobot(float x_speed, float y_speed, float angle, float timeToWrite
 float desiredZ = 0.756;
 float desiredX = 0.309;
 float desiredYaw = -0.09;
-float finalDesiredZ = 0.170;
-float finalDesiredX = 0.0255;
+float finalDesiredZ = 0.171;
+float finalDesiredX = 0.0309;
 int lastSeenMarker = 0;
 float yawStore[5] = {0.0, 0.0, 0.0, 0.0, 0.0};
 ros::Publisher stop_pub;
@@ -268,7 +268,7 @@ void finalMoveToVerticalPosition(){
     else {
         if(lastSeenMarker == 0){
             ROS_INFO("cannot see marker, moving rightwards");
-            sendVelToRobot(0, -0.5, 0, 0.5);
+            sendVelToRobot(0, -lastSeenVertical, 0, 0.5);
         }
         else {
             ROS_INFO("Time sent is %f", timeToSendSpeed * verticalScalingTime);
