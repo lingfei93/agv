@@ -35,7 +35,7 @@ float desiredZ = 0.756;
 float desiredX = 0.309;
 float desiredYaw = -0.09;
 float finalDesiredZ = 0.171;
-float finalDesiredX = 0.0309;
+float finalDesiredX = 0.0209;
 int lastSeenMarker = 0;
 float yawStore[5] = {0.0, 0.0, 0.0, 0.0, 0.0};
 ros::Publisher stop_pub;
