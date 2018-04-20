@@ -7,7 +7,7 @@
 #include <ar_track_alvar_msgs/AlvarMarker.h>
 #include <tf/transform_datatypes.h> //for yaw;
 #include <tf/transform_listener.h> //for transform_listener
-
+#include <actionlib_msgs/GoalID>
 
 
 ros::Publisher move_base_clear_goal;
@@ -28,6 +28,7 @@ void moveToVerticalPosition();
 void moveToHorizontalPosition(); 
 void finalMoveToHorizontalPosition();
 void updateValues(float z, float x);
+
 //void updateValues(float z, float x, float yaw);
 void sendVelToRobot(float x_speed, float y_speed, float angle, float timeToWriteSpeed);
 float desiredZ = 0.756;
@@ -36,13 +37,20 @@ float desiredYaw = -0.09;
 float finalDesiredZ = 0.170;
 float finalDesiredX = 0.0255;
 int lastSeenMarker = 0;
-float yawStore[5] = {0.0, 0.0, 0.0, 0.0, 0.0}; 
+float yawStore[5] = {0.0, 0.0, 0.0, 0.0, 0.0};
+
 //z is 0.637
 //x is 0.196
 
 void updateValues(float z, float x){
+
     lastZ = z;
     lastX = x;
+    if (z < 1.0){
+        actionlib_msgs::GoalID stop_msg;
+        stop_msg = {}; 
+        stop_pub.publish(stop_msg);
+    }
 }
 
 void avgYaw(){
@@ -347,6 +355,9 @@ int main(int argc, char** argv){
     move_base_path_pub = n.advertise<geometry_msgs::Twist>("cmd_vel_path", 100);
     ar_tracker_sub = n.subscribe<ar_track_alvar_msgs::AlvarMarkers>("/ar_pose_marker", 1, arTrackerCallBack);
     move_to_trolley_sub = n.subscribe<std_msgs::Int32>("/tow_cmd", 1, arMarkerMoveCallBack);
+
+
+    ros::Publisher stop_pub = n.advertise<actionlib_msgs::GoalID>("move_base/cancel", 1000);    
     //this is for the pose of the ar_tag for control purposes
     tf::TransformListener listener;
     geometry_msgs::PoseStamped robot_pose;
