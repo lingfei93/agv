@@ -38,6 +38,7 @@ float finalDesiredZ = 0.170;
 float finalDesiredX = 0.0255;
 int lastSeenMarker = 0;
 float yawStore[5] = {0.0, 0.0, 0.0, 0.0, 0.0};
+ros::Publisher stop_pub;
 
 //z is 0.637
 //x is 0.196
@@ -357,7 +358,7 @@ int main(int argc, char** argv){
     move_to_trolley_sub = n.subscribe<std_msgs::Int32>("/tow_cmd", 1, arMarkerMoveCallBack);
 
 
-    ros::Publisher stop_pub = n.advertise<actionlib_msgs::GoalID>("move_base/cancel", 1000);    
+    stop_pub = n.advertise<actionlib_msgs::GoalID>("move_base/cancel", 1000);    
     //this is for the pose of the ar_tag for control purposes
     tf::TransformListener listener;
     geometry_msgs::PoseStamped robot_pose;
