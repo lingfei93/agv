@@ -33,11 +33,12 @@ void sendVelToRobot(float x_speed, float y_speed, float angle, float timeToWrite
 float desiredZ = 0.756;
 float desiredX = 0.309;
 float desiredYaw = -0.09;
-float finalDesiredZ = 0.171;
+float finalDesiredZ = 0.175;
 float finalDesiredX = 0.0209;
 int lastSeenMarker = 0;
 float yawStore[5] = {0.0, 0.0, 0.0, 0.0, 0.0};
 int altFlag;
+int stopFlag = 0;
 
 ros::Publisher stop_pub;
 
@@ -48,10 +49,11 @@ void updateValues(float z, float x){
 
     lastZ = z;
     lastX = x;
-    if (z < 1.0){
+    if (z < 1.0 && stopFlag == 0){
         actionlib_msgs::GoalID stop_msg;
         stop_msg = {}; 
         stop_pub.publish(stop_msg);
+        stopFlag = 1;
     }
 }
 
@@ -224,7 +226,7 @@ void finalMoveToHorizontalPosition(){
     ROS_INFO("desiredZ is %f, lastZ is %f", finalDesiredZ, lastZ);
     ROS_INFO("trying to move to Horizontal Position");
     ROS_INFO("timeToSendSpeed is %f", timeToSendSpeed);
-    if(timeToSendSpeed < 0.02){
+    if(timeToSendSpeed < 0.03){
         horizontalCount++;
         if (horizontalCount > 5 ){
             horizontalCount = 0;
@@ -262,7 +264,7 @@ void finalMoveToVerticalPosition(){
     ROS_INFO("trying to move to Vertical Position");
     ROS_INFO("timeToSendSpeed is %f", timeToSendSpeed);
     
-    if(timeToSendSpeed < 0.02){
+    if(timeToSendSpeed < 0.03){
         verticalCount++;
         ROS_INFO("verticalCount is %d", verticalCount);
         if (verticalCount > 5 ){
