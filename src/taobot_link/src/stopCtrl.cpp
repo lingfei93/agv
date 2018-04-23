@@ -19,9 +19,9 @@ int main(int argc, char **argv){
 	ros::NodeHandle n;
 	
 	//Create subscriber
-	ros::Subscriber stop_listener  = n.subscribe<std_msgs::Int32>("stop_cmd", 1000, stopReceived);
+	ros::Subscriber stop_listener  = n.subscribe<std_msgs::Int32>("stop_cmd", 1, stopReceived);
 	//Create publisher
-	stop_pub = n.advertise<actionlib_msgs::GoalID>("move_base/cancel", 1000);
+	stop_pub = n.advertise<actionlib_msgs::GoalID>("move_base/cancel", 1);
 
     actionlib_msgs::GoalID stop_msg;
     stop_msg = {};
