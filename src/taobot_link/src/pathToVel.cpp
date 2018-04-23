@@ -156,13 +156,9 @@ void moveRobotAlongPath(){
     for (i=0;i<previousLength+50;i++)
     {
         ROS_INFO("in loop %d", i);
-
-
         current_time = ros::Time::now();
         time_elapsed = current_time - start_time;
-
-
-        ROS_INFO("tsegc is %d, %f", i, tsegc[i]);
+		ROS_INFO("tsegc is %d, %f", i, tsegc[i]);
 
 
         while(time_elapsed.toSec() < tsegc[i]){
@@ -287,8 +283,8 @@ void sendVelCommand(float x_start, float y_start, float x_end, float y_end){
     //uint8_t reply[30];
 
     //NOT SURE WHY I NEED TO FLIP THIS
-    wlr_cmd.linear.x         = (x_end - x_start) * 0.70;
-    wlr_cmd.linear.y        = (y_end - y_start) * 0.70;
+    wlr_cmd.linear.x         = (x_end - x_start) * 0.65;
+    wlr_cmd.linear.y        = (y_end - y_start) * 0.65;
     wlr_cmd.angular.z = 0;
 
     move_base_path_pub.publish(wlr_cmd);
@@ -311,9 +307,9 @@ int main(int argc, char** argv)
 
 
 
-    move_base_path_pub = n.advertise<geometry_msgs::Twist>("cmd_vel_path", 100);
+    move_base_path_pub = n.advertise<geometry_msgs::Twist>("cmd_vel_path", 10);
     
-    move_base_path_sub  = n.subscribe<nav_msgs::Path>("/move_base_node/NavfnROS/plan", 5, movePathCallBack);
+    move_base_path_sub  = n.subscribe<nav_msgs::Path>("/move_base_node/NavfnROS/plan", 1, movePathCallBack);
  	
    
     ROS_INFO(("enter into here"));

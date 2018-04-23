@@ -49,7 +49,7 @@ void updateValues(float z, float x){
 
     lastZ = z;
     lastX = x;
-    if (z < 1.0 && stopFlag == 0){
+    if (z < 1.4 && stopFlag == 0){
         actionlib_msgs::GoalID stop_msg;
         stop_msg = {}; 
         stop_pub.publish(stop_msg);
