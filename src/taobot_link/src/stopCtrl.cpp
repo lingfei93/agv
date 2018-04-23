@@ -4,6 +4,8 @@
 #include <actionlib_msgs/GoalID.h>
 #include <iostream>
 
+ros::Publisher stop_pub;
+
 void stopReceived(const std_msgs::Int32::ConstPtr& msg){
 	if (msg->data==1){
 		actionlib_msgs::GoalID stop_msg;
@@ -19,7 +21,7 @@ int main(int argc, char **argv){
 	//Create subscriber
 	ros::Subscriber stop_listener  = n.subscribe<std_msgs::Int32>("stop_cmd", 1000, stopReceived);
 	//Create publisher
-	ros::Publisher stop_pub = n.advertise<actionlib_msgs::GoalID>("move_base/cancel", 1000);
+	stop_pub = n.advertise<actionlib_msgs::GoalID>("move_base/cancel", 1000);
 
     actionlib_msgs::GoalID stop_msg;
     stop_msg = {};
