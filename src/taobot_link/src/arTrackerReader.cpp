@@ -13,8 +13,8 @@ ros::Publisher move_base_clear_goal;
 ros::Subscriber ar_tracker_sub;
 ros::Publisher move_base_path_pub;
 ros::Subscriber move_to_trolley_sub;
-ros::Subscriber actuator_pub;
-ros::Subscriber stop_listener_pub;
+ros::Publisher actuator_pub;
+ros::Publisher stop_listener_pub;
 std_msgs::Int32 actuator_msg;
 std_msgs::Int32 stop_msg;
 
