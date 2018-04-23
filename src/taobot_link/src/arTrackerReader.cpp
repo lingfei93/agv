@@ -39,7 +39,7 @@ float desiredZ = 0.756;
 float desiredX = 0.215;
 float desiredYaw = -0.09;
 float finalDesiredZ = 0.200;
-float finalDesiredX = 0.01;
+float finalDesiredX = 0.09;
 int lastSeenMarker = 0;
 float yawStore[5] = {0.0, 0.0, 0.0, 0.0, 0.0};
 int altFlag;
