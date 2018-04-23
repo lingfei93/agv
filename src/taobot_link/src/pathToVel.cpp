@@ -1,6 +1,7 @@
 #include <ros/ros.h>
 #include <geometry_msgs/Twist.h>
 #include <std_msgs/Float32.h>
+#include <std_msgs/Int32.h>
 #include <sensor_msgs/Imu.h>
 #include <iostream>
 #include <math.h>
@@ -313,7 +314,7 @@ int main(int argc, char** argv)
     
     move_base_path_sub  = n.subscribe<nav_msgs::Path>("/move_base_node/NavfnROS/plan", 1, movePathCallBack);
  	
-    stop_listener_pub  = n.advertise<std_msgs::Int32>("stop_cmd", 1);
+    stop_listener_pub  = n.advertise<std_msgs::Int32>("stop_cmd", 10);
     ROS_INFO(("enter into here"));
     ros::Rate loop_rate(20);
     std_msgs::Int32 stopCommand;
