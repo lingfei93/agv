@@ -1,0 +1,7 @@
+image: seminar_room.pgm
+resolution: 0.050000
+origin: [-4.097316, -4.570263, 0.000000]
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.196
+
