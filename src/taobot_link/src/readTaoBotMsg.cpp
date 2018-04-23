@@ -118,9 +118,22 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
     x_pos = x_pos + output(0,0)/magical_x_factor;
     y_pos = y_pos + -1*output(1,0)/magical_y_factor;
     theta = theta + output(2,0)/angle_factor;
-
-    float x_vel = output(0,0)/magical_x_factor;
-    float y_vel = -1*output(1,0)/magical_y_factor;
+    float x_vel = 0;
+    float y_vel = 0;
+    if ((output(0,0)/magical_x_factor) > 0.01){
+        x_vel = 0.2;
+    }
+    if ((output(0,0)/magical_x_factor) < -0.01){
+        x_vel = -0.2;
+    }
+    if ((-1*output(1,0)/magical_y_factor) > 0.01){
+        y_vel = 0.2;
+    }
+    if ((-1*output(1,0)/magical_y_factor) < -0.01){
+        y_vel = -0.2;
+    }
+    // float x_vel = output(0,0)/magical_x_factor;
+    // float y_vel = -1*output(1,0)/magical_y_factor;
     float theta_vel = output(2,0)/angle_factor;
     if (theta > (float) 2 * 3.14159) {
     	theta = theta - (float) 2 * 3.14159;
@@ -129,6 +142,8 @@ void taoBotOdomCallback(const taobot_link::Taobot& msg)
     if (theta < (float) -2 * 3.14159) {
     	theta = theta + (float) 2 * 3.14159;
     }
+
+    theta_vel = theta;
   
     odomMsg.x_pos = x_pos;
     odomMsg.y_pos = y_pos;

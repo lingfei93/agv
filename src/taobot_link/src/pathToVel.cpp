@@ -1,6 +1,7 @@
 #include <ros/ros.h>
 #include <geometry_msgs/Twist.h>
 #include <std_msgs/Float32.h>
+#include <std_msgs/Int32.h>
 #include <sensor_msgs/Imu.h>
 #include <iostream>
 #include <math.h>
@@ -34,6 +35,7 @@ ros::Publisher move_base_path_pub;
 ros::Subscriber move_base_path_sub;
 ros::Subscriber imu_pose_sub;
 ros::Subscriber amcl_pose_sub;
+ros::Publisher stop_listener_pub;
 
 double convertToEuclid(float x1, float y1, float x2, float y2);
 void checkPath(float x1, float y1, float x2, float y2);
@@ -58,6 +60,7 @@ double plan[4][2000] = {{0}};
 double tsegc[2000] = {0};
 int len;
 geometry_msgs::Twist wlr_cmd;
+
 
 
 
@@ -156,13 +159,9 @@ void moveRobotAlongPath(){
     for (i=0;i<previousLength+50;i++)
     {
         ROS_INFO("in loop %d", i);
-
-
         current_time = ros::Time::now();
         time_elapsed = current_time - start_time;
-
-
-        ROS_INFO("tsegc is %d, %f", i, tsegc[i]);
+		ROS_INFO("tsegc is %d, %f", i, tsegc[i]);
 
 
         while(time_elapsed.toSec() < tsegc[i]){
@@ -287,8 +286,8 @@ void sendVelCommand(float x_start, float y_start, float x_end, float y_end){
     //uint8_t reply[30];
 
     //NOT SURE WHY I NEED TO FLIP THIS
-    wlr_cmd.linear.x         = (x_end - x_start) * 0.70;
-    wlr_cmd.linear.y        = (y_end - y_start) * 0.70;
+    wlr_cmd.linear.x         = (x_end - x_start) * 0.65;
+    wlr_cmd.linear.y        = (y_end - y_start) * 0.65;
     wlr_cmd.angular.z = 0;
 
     move_base_path_pub.publish(wlr_cmd);
@@ -311,13 +310,15 @@ int main(int argc, char** argv)
 
 
 
-    move_base_path_pub = n.advertise<geometry_msgs::Twist>("cmd_vel_path", 100);
+    move_base_path_pub = n.advertise<geometry_msgs::Twist>("cmd_vel_path", 10);
     
-    move_base_path_sub  = n.subscribe<nav_msgs::Path>("/move_base_node/NavfnROS/plan", 5, movePathCallBack);
+    move_base_path_sub  = n.subscribe<nav_msgs::Path>("/move_base_node/NavfnROS/plan", 1, movePathCallBack);
  	
-   
+    stop_listener_pub  = n.advertise<std_msgs::Int32>("stop_cmd", 10);
     ROS_INFO(("enter into here"));
     ros::Rate loop_rate(20);
+    std_msgs::Int32 stopCommand;
+    stopCommand.data = 1;
 
     tf::TransformListener listener;
     geometry_msgs::PoseStamped robot_pose;
@@ -389,6 +390,7 @@ int main(int argc, char** argv)
 
                 moveRobotAlongPath();
                 pathAvailable = 0;
+                stop_listener_pub.publish(stopCommand);
             }
             if (wasInPath == 1 && executePath == 1){
                 ROS_INFO("reached wasinPath = 1");

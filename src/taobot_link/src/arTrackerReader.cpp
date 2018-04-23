@@ -13,6 +13,11 @@ ros::Publisher move_base_clear_goal;
 ros::Subscriber ar_tracker_sub;
 ros::Publisher move_base_path_pub;
 ros::Subscriber move_to_trolley_sub;
+ros::Subscriber actuator_pub;
+ros::Subscriber stop_listener_pub;
+std_msgs::Int32 actuator_msg;
+std_msgs::Int32 stop_msg;
+
 float lastZ, lastX, lastYaw, lastTime; //this is the z orientation which the ar_pose_tracker should take over the steering of robot
 float orientationOfQR;
 float previousZ, previousX, previousYaw;
@@ -49,10 +54,9 @@ void updateValues(float z, float x){
 
     lastZ = z;
     lastX = x;
-    if (z < 1.0 && stopFlag == 0){
-        actionlib_msgs::GoalID stop_msg;
-        stop_msg = {}; 
-        stop_pub.publish(stop_msg);
+    if (z < 1.4 && stopFlag == 0){
+        stop_msg.data = 0;
+        stop_listener_pub.publish(stop_msg);
         stopFlag = 1;
     }
 }
@@ -157,6 +161,15 @@ void arMarkerMoveCallBack(const std_msgs::Int32::ConstPtr &msg){
     }
     if (msg->data == 0){
         followPath = 0;
+        
+        stop_msg.data = 0;
+        stop_listener_pub.publish(stop_msg);
+
+        actuator_msg.data = 0;
+        actuator_pub.publish(actuator_msg);
+
+        //lower actuator
+        //cleargoal
     }
 }
 void moveToVerticalPosition(){
@@ -170,7 +183,7 @@ void moveToVerticalPosition(){
     if(timeToSendSpeed < 0.05){
         verticalCount++;
         ROS_INFO("verticalCount is %d", verticalCount);
-        if (verticalCount > 5 ){
+        if (verticalCount > 3 ){
             verticalCount = 0;
             moveToVertical = 0;
             verticalPositionReached = 1;
@@ -199,7 +212,7 @@ void moveToHorizontalPosition(){
     ROS_INFO("timeToSendSpeed is %f", timeToSendSpeed);
     if(timeToSendSpeed < 0.05){
         horizontalCount++;
-        if (horizontalCount > 5 ){
+        if (horizontalCount > 3 ){
             horizontalCount = 0;
             moveToHorizontal = 0;
             moveToVertical = 1;
@@ -228,7 +241,7 @@ void finalMoveToHorizontalPosition(){
     ROS_INFO("timeToSendSpeed is %f", timeToSendSpeed);
     if(timeToSendSpeed < 0.03){
         horizontalCount++;
-        if (horizontalCount > 5 ){
+        if (horizontalCount > 3 ){
             horizontalCount = 0;
             finalMoveToHorizontal = 0;
             //finalMoveToVertical = 1;
@@ -267,7 +280,7 @@ void finalMoveToVerticalPosition(){
     if(timeToSendSpeed < 0.03){
         verticalCount++;
         ROS_INFO("verticalCount is %d", verticalCount);
-        if (verticalCount > 5 ){
+        if (verticalCount > 3 ){
             verticalCount = 0;
             finalMoveToVertical = 0;
             if (finalMoveToHorizontal == 0){
@@ -373,8 +386,11 @@ int main(int argc, char** argv){
     ar_tracker_sub = n.subscribe<ar_track_alvar_msgs::AlvarMarkers>("/ar_pose_marker", 1, arTrackerCallBack);
     move_to_trolley_sub = n.subscribe<std_msgs::Int32>("/tow_cmd", 1, arMarkerMoveCallBack);
 
+    actuator_pub = n.advertise<std_msgs::Int32>("/actuator", 1);
+    
+    stop_listener_pub  = n.advertise<std_msgs::Int32>("stop_cmd", 10);
 
-    stop_pub = n.advertise<actionlib_msgs::GoalID>("move_base/cancel", 1000);    
+       
     //this is for the pose of the ar_tag for control purposes
     tf::TransformListener listener;
     geometry_msgs::PoseStamped robot_pose;
@@ -412,11 +428,11 @@ int main(int argc, char** argv){
             finalMoveToVertical = 1;
             altFlag = 1;
             //followPath = 0; //COMMENT THIS OUT LATER
-            ROS_INFO("stuck in loop 4");
+            //ROS_INFO("stuck in loop 4");
         }
         //checkQRcodeInside, final move();
         else if (inFinalControl == 1 && finalMoveToHorizontal == 1 && altFlag == 1){
-            ROS_INFO("stuck in loop 5");
+            //ROS_INFO("stuck in loop 5");
             finalMoveToHorizontalPosition();
         }
         //checkQRcodeinside, final vertical move
@@ -426,8 +442,9 @@ int main(int argc, char** argv){
 
         else if (reachedGoal){
 
-            ROS_INFO("Have reached the end");
-           // sendCommandToArduino();
+           ROS_INFO("Have reached the end");
+           actuator_msg.data = 1;
+           actuator_pub.publish(actuator_msg);
 
         }
 
