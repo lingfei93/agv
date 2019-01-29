@@ -1,2 +1,3 @@
-- test-sqs:
-  - testqueue: 0
+sqs:
+  - test-sqs:
+    - testqueue: 0
